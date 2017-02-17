@@ -99,8 +99,8 @@
 		78E3082B1E5767DE00CE7059 /* MafiaGame */ = {
 			isa = PBXGroup;
 			children = (
-				78E3085E1E57686700CE7059 /* Resources */,
 				78E3085D1E57685E00CE7059 /* Source */,
+				78E3085E1E57686700CE7059 /* Resources */,
 			);
 			path = MafiaGame;
 			sourceTree = "<group>";
