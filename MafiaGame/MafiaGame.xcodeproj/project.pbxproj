@@ -99,13 +99,8 @@
 		78E3082B1E5767DE00CE7059 /* MafiaGame */ = {
 			isa = PBXGroup;
 			children = (
-				78E3082C1E5767DE00CE7059 /* AppDelegate.swift */,
-				78E3082E1E5767DE00CE7059 /* ViewController.swift */,
-				78E308301E5767DE00CE7059 /* Main.storyboard */,
-				78E308361E5767DE00CE7059 /* Assets.xcassets */,
-				78E308381E5767DE00CE7059 /* LaunchScreen.storyboard */,
-				78E3083B1E5767DE00CE7059 /* Info.plist */,
-				78E308331E5767DE00CE7059 /* MafiaGame.xcdatamodeld */,
+				78E3085E1E57686700CE7059 /* Resources */,
+				78E3085D1E57685E00CE7059 /* Source */,
 			);
 			path = MafiaGame;
 			sourceTree = "<group>";
@@ -113,8 +108,8 @@
 		78E308431E5767DF00CE7059 /* MafiaGameTests */ = {
 			isa = PBXGroup;
 			children = (
-				78E308441E5767DF00CE7059 /* MafiaGameTests.swift */,
-				78E308461E5767DF00CE7059 /* Info.plist */,
+				78E308601E57688000CE7059 /* Resources */,
+				78E3085F1E57687900CE7059 /* Source */,
 			);
 			path = MafiaGameTests;
 			sourceTree = "<group>";
@@ -126,6 +121,83 @@
 				78E308511E5767DF00CE7059 /* Info.plist */,
 			);
 			path = MafiaGameUITests;
+			sourceTree = "<group>";
+		};
+		78E3085D1E57685E00CE7059 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				78E308651E57695700CE7059 /* Extension */,
+				78E308641E57695000CE7059 /* Controller */,
+				78E308631E57694500CE7059 /* Model */,
+				78E308621E57693B00CE7059 /* Service */,
+				78E308611E57692D00CE7059 /* View */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		78E3085E1E57686700CE7059 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				78E308301E5767DE00CE7059 /* Main.storyboard */,
+				78E308361E5767DE00CE7059 /* Assets.xcassets */,
+				78E308381E5767DE00CE7059 /* LaunchScreen.storyboard */,
+				78E3083B1E5767DE00CE7059 /* Info.plist */,
+				78E308331E5767DE00CE7059 /* MafiaGame.xcdatamodeld */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		78E3085F1E57687900CE7059 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				78E308441E5767DF00CE7059 /* MafiaGameTests.swift */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		78E308601E57688000CE7059 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				78E308461E5767DF00CE7059 /* Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		78E308611E57692D00CE7059 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		78E308621E57693B00CE7059 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Service;
+			sourceTree = "<group>";
+		};
+		78E308631E57694500CE7059 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		78E308641E57695000CE7059 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				78E3082C1E5767DE00CE7059 /* AppDelegate.swift */,
+				78E3082E1E5767DE00CE7059 /* ViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		78E308651E57695700CE7059 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
