@@ -1,0 +1,320 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		937C04EA1E52283C00A354EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937C04E91E52283C00A354EB /* AppDelegate.swift */; };
+		937C04EE1E52283C00A354EB /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937C04ED1E52283C00A354EB /* SecondViewController.swift */; };
+		937C04F11E52283C00A354EB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 937C04EF1E52283C00A354EB /* Main.storyboard */; };
+		937C04F31E52283C00A354EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 937C04F21E52283C00A354EB /* Assets.xcassets */; };
+		937C04F61E52283C00A354EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 937C04F41E52283C00A354EB /* LaunchScreen.storyboard */; };
+		937C04FE1E522B1700A354EB /* ConnectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937C04FD1E522B1700A354EB /* ConnectionsViewController.swift */; };
+		937C05001E5239C500A354EB /* MPCManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937C04FF1E5239C500A354EB /* MPCManager.swift */; };
+		93CF848A1E54D6B300AC21FD /* ChatBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CF84891E54D6B300AC21FD /* ChatBoxViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		937C04E61E52283C00A354EB /* MultipeerConnectivityDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MultipeerConnectivityDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		937C04E91E52283C00A354EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		937C04ED1E52283C00A354EB /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		937C04F01E52283C00A354EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		937C04F21E52283C00A354EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		937C04F51E52283C00A354EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		937C04F71E52283C00A354EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		937C04FD1E522B1700A354EB /* ConnectionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionsViewController.swift; sourceTree = "<group>"; };
+		937C04FF1E5239C500A354EB /* MPCManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPCManager.swift; sourceTree = "<group>"; };
+		93CF84891E54D6B300AC21FD /* ChatBoxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatBoxViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		937C04E31E52283C00A354EB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		937C04DD1E52283C00A354EB = {
+			isa = PBXGroup;
+			children = (
+				937C04E81E52283C00A354EB /* MultipeerConnectivityDemo */,
+				937C04E71E52283C00A354EB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		937C04E71E52283C00A354EB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				937C04E61E52283C00A354EB /* MultipeerConnectivityDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		937C04E81E52283C00A354EB /* MultipeerConnectivityDemo */ = {
+			isa = PBXGroup;
+			children = (
+				937C04E91E52283C00A354EB /* AppDelegate.swift */,
+				937C04ED1E52283C00A354EB /* SecondViewController.swift */,
+				937C04FD1E522B1700A354EB /* ConnectionsViewController.swift */,
+				937C04EF1E52283C00A354EB /* Main.storyboard */,
+				93CF84891E54D6B300AC21FD /* ChatBoxViewController.swift */,
+				937C04FF1E5239C500A354EB /* MPCManager.swift */,
+				937C04F21E52283C00A354EB /* Assets.xcassets */,
+				937C04F41E52283C00A354EB /* LaunchScreen.storyboard */,
+				937C04F71E52283C00A354EB /* Info.plist */,
+			);
+			path = MultipeerConnectivityDemo;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		937C04E51E52283C00A354EB /* MultipeerConnectivityDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 937C04FA1E52283C00A354EB /* Build configuration list for PBXNativeTarget "MultipeerConnectivityDemo" */;
+			buildPhases = (
+				937C04E21E52283C00A354EB /* Sources */,
+				937C04E31E52283C00A354EB /* Frameworks */,
+				937C04E41E52283C00A354EB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MultipeerConnectivityDemo;
+			productName = MultipeerConnectivityDemo;
+			productReference = 937C04E61E52283C00A354EB /* MultipeerConnectivityDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		937C04DE1E52283C00A354EB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Yilun Gao";
+				TargetAttributes = {
+					937C04E51E52283C00A354EB = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 9Q6NHY9LT3;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 937C04E11E52283C00A354EB /* Build configuration list for PBXProject "MultipeerConnectivityDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 937C04DD1E52283C00A354EB;
+			productRefGroup = 937C04E71E52283C00A354EB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				937C04E51E52283C00A354EB /* MultipeerConnectivityDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		937C04E41E52283C00A354EB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				937C04F61E52283C00A354EB /* LaunchScreen.storyboard in Resources */,
+				937C04F31E52283C00A354EB /* Assets.xcassets in Resources */,
+				937C04F11E52283C00A354EB /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		937C04E21E52283C00A354EB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				937C04FE1E522B1700A354EB /* ConnectionsViewController.swift in Sources */,
+				937C04EE1E52283C00A354EB /* SecondViewController.swift in Sources */,
+				937C05001E5239C500A354EB /* MPCManager.swift in Sources */,
+				937C04EA1E52283C00A354EB /* AppDelegate.swift in Sources */,
+				93CF848A1E54D6B300AC21FD /* ChatBoxViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		937C04EF1E52283C00A354EB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				937C04F01E52283C00A354EB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		937C04F41E52283C00A354EB /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				937C04F51E52283C00A354EB /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		937C04F81E52283C00A354EB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		937C04F91E52283C00A354EB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		937C04FB1E52283C00A354EB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9Q6NHY9LT3;
+				INFOPLIST_FILE = MultipeerConnectivityDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = none.MultipeerConnectivityDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		937C04FC1E52283C00A354EB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9Q6NHY9LT3;
+				INFOPLIST_FILE = MultipeerConnectivityDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = none.MultipeerConnectivityDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		937C04E11E52283C00A354EB /* Build configuration list for PBXProject "MultipeerConnectivityDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				937C04F81E52283C00A354EB /* Debug */,
+				937C04F91E52283C00A354EB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		937C04FA1E52283C00A354EB /* Build configuration list for PBXNativeTarget "MultipeerConnectivityDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				937C04FB1E52283C00A354EB /* Debug */,
+				937C04FC1E52283C00A354EB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 937C04DE1E52283C00A354EB /* Project object */;
+}
