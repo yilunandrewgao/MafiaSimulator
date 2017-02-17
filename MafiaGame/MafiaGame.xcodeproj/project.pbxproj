@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		78E3082D1E5767DE00CE7059 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3082C1E5767DE00CE7059 /* AppDelegate.swift */; };
-		78E3082F1E5767DE00CE7059 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3082E1E5767DE00CE7059 /* ViewController.swift */; };
 		78E308321E5767DE00CE7059 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78E308301E5767DE00CE7059 /* Main.storyboard */; };
 		78E308351E5767DE00CE7059 /* MafiaGame.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 78E308331E5767DE00CE7059 /* MafiaGame.xcdatamodeld */; };
 		78E308371E5767DE00CE7059 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78E308361E5767DE00CE7059 /* Assets.xcassets */; };
 		78E3083A1E5767DE00CE7059 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78E308381E5767DE00CE7059 /* LaunchScreen.storyboard */; };
 		78E308451E5767DF00CE7059 /* MafiaGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E308441E5767DF00CE7059 /* MafiaGameTests.swift */; };
 		78E308501E5767DF00CE7059 /* MafiaGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3084F1E5767DF00CE7059 /* MafiaGameUITests.swift */; };
+		78E308671E57731000CE7059 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E308661E57731000CE7059 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +37,6 @@
 /* Begin PBXFileReference section */
 		78E308291E5767DE00CE7059 /* MafiaGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MafiaGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78E3082C1E5767DE00CE7059 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		78E3082E1E5767DE00CE7059 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		78E308311E5767DE00CE7059 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		78E308341E5767DE00CE7059 /* MafiaGame.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MafiaGame.xcdatamodel; sourceTree = "<group>"; };
 		78E308361E5767DE00CE7059 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +48,7 @@
 		78E3084B1E5767DF00CE7059 /* MafiaGameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MafiaGameUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		78E3084F1E5767DF00CE7059 /* MafiaGameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MafiaGameUITests.swift; sourceTree = "<group>"; };
 		78E308511E5767DF00CE7059 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		78E308661E57731000CE7059 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,7 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				78E3082C1E5767DE00CE7059 /* AppDelegate.swift */,
-				78E3082E1E5767DE00CE7059 /* ViewController.swift */,
+				78E308661E57731000CE7059 /* LoginViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -334,7 +334,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78E3082F1E5767DE00CE7059 /* ViewController.swift in Sources */,
+				78E308671E57731000CE7059 /* LoginViewController.swift in Sources */,
 				78E3082D1E5767DE00CE7059 /* AppDelegate.swift in Sources */,
 				78E308351E5767DE00CE7059 /* MafiaGame.xcdatamodeld in Sources */,
 			);
