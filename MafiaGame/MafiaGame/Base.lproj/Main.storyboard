@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -74,14 +73,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eGh-Kb-yH0">
-                                <rect key="frame" x="26" y="139" width="323" height="428"/>
+                                <rect key="frame" x="0.0" y="139" width="375" height="528"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RoomCell" textLabel="77a-CA-4QW" detailTextLabel="G9e-yb-j9P" style="IBUITableViewCellStyleValue1" id="0M4-sZ-n4G">
-                                        <rect key="frame" x="0.0" y="28" width="323" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0M4-sZ-n4G" id="lwe-Hq-swP">
-                                            <rect key="frame" x="0.0" y="0.0" width="323" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="77a-CA-4QW">
@@ -92,7 +91,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="G9e-yb-j9P">
-                                                    <rect key="frame" x="249" y="11" width="59" height="21"/>
+                                                    <rect key="frame" x="301" y="11" width="59" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -107,13 +106,22 @@
                                     <outlet property="delegate" destination="k8I-0O-CMK" id="L6c-Dr-YHQ"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose one of the rooms below:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dMO-va-KxO">
+                                <rect key="frame" x="63.5" y="84" width="248" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="cBT-mG-xmi" firstAttribute="top" secondItem="eGh-Kb-yH0" secondAttribute="bottom" constant="100" id="Q59-8k-Bdz"/>
-                            <constraint firstItem="eGh-Kb-yH0" firstAttribute="leading" secondItem="Ns5-xG-0he" secondAttribute="leadingMargin" constant="10" id="tnl-bt-Neg"/>
+                            <constraint firstItem="dMO-va-KxO" firstAttribute="top" secondItem="qUY-Qi-SC2" secondAttribute="bottom" constant="20" id="8ED-50-I9w"/>
+                            <constraint firstItem="cBT-mG-xmi" firstAttribute="top" secondItem="eGh-Kb-yH0" secondAttribute="bottom" id="Q59-8k-Bdz"/>
+                            <constraint firstItem="dMO-va-KxO" firstAttribute="centerX" secondItem="Ns5-xG-0he" secondAttribute="centerX" id="iRy-IC-Ec4"/>
+                            <constraint firstItem="eGh-Kb-yH0" firstAttribute="leading" secondItem="Ns5-xG-0he" secondAttribute="leading" id="tnl-bt-Neg"/>
                             <constraint firstItem="eGh-Kb-yH0" firstAttribute="top" secondItem="qUY-Qi-SC2" secondAttribute="bottom" constant="75" id="zQc-9w-QuX"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="eGh-Kb-yH0" secondAttribute="trailing" constant="10" id="znB-QL-q5R"/>
+                            <constraint firstItem="eGh-Kb-yH0" firstAttribute="centerX" secondItem="Ns5-xG-0he" secondAttribute="centerX" id="zR2-8u-ajf"/>
+                            <constraint firstAttribute="trailing" secondItem="eGh-Kb-yH0" secondAttribute="trailing" id="znB-QL-q5R"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Join a Room" id="JRu-v4-PLJ"/>
@@ -187,7 +195,7 @@
         <!--Create Room Controller-->
         <scene sceneID="pze-xM-pDg">
             <objects>
-                <viewController title="Create Room Controller" id="Xqt-6T-Yje" sceneMemberID="viewController">
+                <viewController title="Create Room Controller" id="Xqt-6T-Yje" customClass="CreateRoomController" customModule="MafiaGame" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aRB-Qx-ZJb"/>
                         <viewControllerLayoutGuide type="bottom" id="XsI-7u-IUj"/>

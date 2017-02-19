@@ -17,6 +17,7 @@
 		78E308671E57731000CE7059 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E308661E57731000CE7059 /* LoginViewController.swift */; };
 		78E308691E577BCC00CE7059 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E308681E577BCC00CE7059 /* MenuViewController.swift */; };
 		78E4647E1E5A544C00758655 /* JoinRoomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E4647D1E5A544C00758655 /* JoinRoomController.swift */; };
+		78E464801E5A576F00758655 /* CreateRoomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E4647F1E5A576F00758655 /* CreateRoomController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		78E308661E57731000CE7059 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		78E308681E577BCC00CE7059 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		78E4647D1E5A544C00758655 /* JoinRoomController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinRoomController.swift; sourceTree = "<group>"; };
+		78E4647F1E5A576F00758655 /* CreateRoomController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRoomController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +197,7 @@
 				78E308661E57731000CE7059 /* LoginViewController.swift */,
 				78E308681E577BCC00CE7059 /* MenuViewController.swift */,
 				78E4647D1E5A544C00758655 /* JoinRoomController.swift */,
+				78E4647F1E5A576F00758655 /* CreateRoomController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78E464801E5A576F00758655 /* CreateRoomController.swift in Sources */,
 				78E308671E57731000CE7059 /* LoginViewController.swift in Sources */,
 				78E3082D1E5767DE00CE7059 /* AppDelegate.swift in Sources */,
 				78E308351E5767DE00CE7059 /* MafiaGame.xcdatamodeld in Sources */,
