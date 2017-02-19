@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -39,6 +40,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="txq-Dp-KyA">
                                 <rect key="frame" x="168" y="448" width="38" height="30"/>
                                 <state key="normal" title="Login"/>
+                                <connections>
+                                    <segue destination="atE-xI-aRg" kind="show" id="6oM-PP-gIK"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -60,7 +64,7 @@
         <!--Join Room Controller-->
         <scene sceneID="gOf-Ga-c2I">
             <objects>
-                <viewController title="Join Room Controller" id="k8I-0O-CMK" sceneMemberID="viewController">
+                <viewController title="Join Room Controller" id="k8I-0O-CMK" customClass="JoinRoomController" customModule="MafiaGame" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qUY-Qi-SC2"/>
                         <viewControllerLayoutGuide type="bottom" id="cBT-mG-xmi"/>
@@ -68,12 +72,58 @@
                     <view key="view" contentMode="scaleToFill" id="Ns5-xG-0he">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eGh-Kb-yH0">
+                                <rect key="frame" x="26" y="139" width="323" height="428"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RoomCell" textLabel="77a-CA-4QW" detailTextLabel="G9e-yb-j9P" style="IBUITableViewCellStyleValue1" id="0M4-sZ-n4G">
+                                        <rect key="frame" x="0.0" y="28" width="323" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0M4-sZ-n4G" id="lwe-Hq-swP">
+                                            <rect key="frame" x="0.0" y="0.0" width="323" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="77a-CA-4QW">
+                                                    <rect key="frame" x="15" y="11" width="34" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="G9e-yb-j9P">
+                                                    <rect key="frame" x="249" y="11" width="59" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="k8I-0O-CMK" id="QTX-mc-bya"/>
+                                    <outlet property="delegate" destination="k8I-0O-CMK" id="L6c-Dr-YHQ"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cBT-mG-xmi" firstAttribute="top" secondItem="eGh-Kb-yH0" secondAttribute="bottom" constant="100" id="Q59-8k-Bdz"/>
+                            <constraint firstItem="eGh-Kb-yH0" firstAttribute="leading" secondItem="Ns5-xG-0he" secondAttribute="leadingMargin" constant="10" id="tnl-bt-Neg"/>
+                            <constraint firstItem="eGh-Kb-yH0" firstAttribute="top" secondItem="qUY-Qi-SC2" secondAttribute="bottom" constant="75" id="zQc-9w-QuX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="eGh-Kb-yH0" secondAttribute="trailing" constant="10" id="znB-QL-q5R"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Join a Room" id="JRu-v4-PLJ"/>
+                    <connections>
+                        <outlet property="roomTable" destination="eGh-Kb-yH0" id="qBv-0m-ghR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B5i-uU-NyU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1831" y="136"/>
+            <point key="canvasLocation" x="1829.5999999999999" y="135.38230884557723"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2AH-1T-2Fu">
@@ -96,7 +146,7 @@
         <!--Menu Controller-->
         <scene sceneID="PZ4-JM-tHj">
             <objects>
-                <viewController title="Menu Controller" id="atE-xI-aRg" sceneMemberID="viewController">
+                <viewController title="Menu Controller" id="atE-xI-aRg" customClass="MenuViewController" customModule="MafiaGame" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qYC-ad-csw"/>
                         <viewControllerLayoutGuide type="bottom" id="dEr-4z-oyf"/>
@@ -104,8 +154,31 @@
                     <view key="view" contentMode="scaleToFill" id="lii-Li-wb8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xRE-hT-D4N">
+                                <rect key="frame" x="145" y="264" width="84" height="30"/>
+                                <state key="normal" title="Join a Room"/>
+                                <connections>
+                                    <segue destination="k8I-0O-CMK" kind="show" id="Diw-7U-xBf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z4e-zD-IS0">
+                                <rect key="frame" x="136" y="334" width="102" height="30"/>
+                                <state key="normal" title="Create a Room"/>
+                                <connections>
+                                    <segue destination="Xqt-6T-Yje" kind="show" id="DWV-Al-QXN"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xRE-hT-D4N" firstAttribute="centerX" secondItem="lii-Li-wb8" secondAttribute="centerX" id="FcN-6c-cOm"/>
+                            <constraint firstItem="Z4e-zD-IS0" firstAttribute="top" secondItem="xRE-hT-D4N" secondAttribute="bottom" constant="40" id="fvk-LW-P6W"/>
+                            <constraint firstItem="xRE-hT-D4N" firstAttribute="top" secondItem="qYC-ad-csw" secondAttribute="bottom" constant="200" id="n7T-y9-Ojw"/>
+                            <constraint firstItem="Z4e-zD-IS0" firstAttribute="centerX" secondItem="lii-Li-wb8" secondAttribute="centerX" id="uSg-mi-hLc"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Menu" id="0Lb-j2-WJC"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iTx-Uq-hf9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -124,6 +197,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Create a Room" id="q8I-Rt-5T5"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lXk-dr-tF2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
