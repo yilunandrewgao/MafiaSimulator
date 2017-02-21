@@ -434,7 +434,6 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="GFf-bI-8bL"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wKF-n2-xnY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
