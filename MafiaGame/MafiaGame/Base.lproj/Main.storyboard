@@ -439,7 +439,52 @@
                     <view key="view" contentMode="scaleToFill" id="kwm-bq-t0e">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jgR-IR-CFh">
+                                <rect key="frame" x="0.0" y="139" width="375" height="428"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UsernameCell" textLabel="5cA-4v-PoW" style="IBUITableViewCellStyleDefault" id="6dc-cT-ySi">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6dc-cT-ySi" id="K52-BS-O61">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5cA-4v-PoW">
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Players Joined:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZX7-DU-uiS">
+                                <rect key="frame" x="129.5" y="89" width="116" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5VX-sM-Uen">
+                                <rect key="frame" x="170" y="607" width="34" height="30"/>
+                                <state key="normal" title="Start"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ZX7-DU-uiS" firstAttribute="top" secondItem="Kml-c5-6SA" secondAttribute="bottom" constant="25" id="9gs-UL-aST"/>
+                            <constraint firstItem="jgR-IR-CFh" firstAttribute="leading" secondItem="kwm-bq-t0e" secondAttribute="leading" id="D16-yV-shM"/>
+                            <constraint firstItem="ZX7-DU-uiS" firstAttribute="centerX" secondItem="kwm-bq-t0e" secondAttribute="centerX" id="F2U-h6-peX"/>
+                            <constraint firstItem="jgR-IR-CFh" firstAttribute="top" secondItem="Kml-c5-6SA" secondAttribute="bottom" constant="75" id="Q9C-rM-pHI"/>
+                            <constraint firstAttribute="trailing" secondItem="jgR-IR-CFh" secondAttribute="trailing" id="RLZ-sJ-ZnI"/>
+                            <constraint firstItem="0lu-ci-f6x" firstAttribute="top" secondItem="jgR-IR-CFh" secondAttribute="bottom" constant="100" id="aLW-ww-Qhh"/>
+                            <constraint firstItem="0lu-ci-f6x" firstAttribute="top" secondItem="5VX-sM-Uen" secondAttribute="bottom" constant="50" id="e9t-rg-YWa"/>
+                            <constraint firstItem="5VX-sM-Uen" firstAttribute="centerX" secondItem="kwm-bq-t0e" secondAttribute="centerX" id="rwA-5h-jga"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Waiting for Players" id="faL-rM-9pY"/>
                 </viewController>
