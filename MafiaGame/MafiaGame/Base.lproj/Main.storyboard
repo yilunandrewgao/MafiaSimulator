@@ -21,42 +21,48 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I5i-O8-mEx">
-                                <rect key="frame" x="97.5" y="318" width="180" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="180" id="Zow-Ut-mRi"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter a Username:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Mt-XM-D9e">
-                                <rect key="frame" x="116.5" y="247" width="142" height="21"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="txq-Dp-KyA">
+                                <rect key="frame" x="168" y="562" width="38" height="30"/>
+                                <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="loginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="h18-Gx-2Bf"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dbK-7g-jd0">
+                                <rect key="frame" x="149.5" y="79" width="76" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="txq-Dp-KyA">
-                                <rect key="frame" x="168" y="448" width="38" height="30"/>
-                                <state key="normal" title="Login"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tbB-na-tnJ">
+                                <rect key="frame" x="170" y="587" width="34" height="30"/>
+                                <state key="normal" title="Start"/>
                                 <connections>
-                                    <segue destination="atE-xI-aRg" kind="show" id="6oM-PP-gIK"/>
+                                    <segue destination="atE-xI-aRg" kind="show" id="nYi-jI-dRO"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cj3-7V-OsT">
+                                <rect key="frame" x="169" y="323" width="37" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="1Mt-XM-D9e" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2sy-vh-Kml"/>
-                            <constraint firstItem="txq-Dp-KyA" firstAttribute="top" secondItem="I5i-O8-mEx" secondAttribute="bottom" constant="100" id="5Ju-fU-Td1"/>
-                            <constraint firstItem="I5i-O8-mEx" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Jfm-yp-Sqj"/>
-                            <constraint firstItem="I5i-O8-mEx" firstAttribute="top" secondItem="1Mt-XM-D9e" secondAttribute="bottom" constant="50" id="RUp-de-55H"/>
+                            <constraint firstItem="cj3-7V-OsT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1mx-AB-LZu"/>
+                            <constraint firstItem="dbK-7g-jd0" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="15" id="Kx8-pg-epY"/>
+                            <constraint firstItem="tbB-na-tnJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="N6z-9l-N6p"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="tbB-na-tnJ" secondAttribute="bottom" constant="50" id="QRk-Gz-Roo"/>
+                            <constraint firstItem="cj3-7V-OsT" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Wwd-Cg-F4f"/>
                             <constraint firstItem="txq-Dp-KyA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bwn-Bw-cNr"/>
-                            <constraint firstItem="I5i-O8-mEx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="e38-1n-qFJ"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="txq-Dp-KyA" secondAttribute="bottom" constant="75" id="i9m-fg-16d"/>
+                            <constraint firstItem="dbK-7g-jd0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="y4G-ZX-SIU"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="CFf-cW-RKs"/>
                     <connections>
-                        <outlet property="usernameTextField" destination="I5i-O8-mEx" id="ab5-Vf-fZp"/>
+                        <outlet property="usernameOutput" destination="cj3-7V-OsT" id="nK0-bd-aZl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -433,33 +439,9 @@
                     <view key="view" contentMode="scaleToFill" id="kwm-bq-t0e">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="H2t-JR-w74">
-                                <rect key="frame" x="87" y="332" width="200" height="2"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="zTb-Xh-uRc"/>
-                                </constraints>
-                            </progressView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4PG-Kv-9tg">
-                                <rect key="frame" x="156" y="384" width="63" height="30"/>
-                                <state key="normal" title="Tap to fill"/>
-                                <connections>
-                                    <action selector="tapButton:" destination="j3M-BO-uRS" eventType="touchUpInside" id="BKH-XR-8eE"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="4PG-Kv-9tg" firstAttribute="centerX" secondItem="kwm-bq-t0e" secondAttribute="centerX" id="QCx-DV-UkD"/>
-                            <constraint firstItem="H2t-JR-w74" firstAttribute="centerY" secondItem="kwm-bq-t0e" secondAttribute="centerY" id="XKe-au-l40"/>
-                            <constraint firstItem="4PG-Kv-9tg" firstAttribute="top" secondItem="H2t-JR-w74" secondAttribute="bottom" constant="50" id="fm2-BY-6nR"/>
-                            <constraint firstItem="H2t-JR-w74" firstAttribute="centerX" secondItem="kwm-bq-t0e" secondAttribute="centerX" id="mrh-hD-z55"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Waiting for Players" id="faL-rM-9pY"/>
-                    <connections>
-                        <outlet property="playerProgress" destination="H2t-JR-w74" id="ahu-6u-PnZ"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="klY-95-Xk5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
