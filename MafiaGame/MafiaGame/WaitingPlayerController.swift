@@ -36,4 +36,5 @@ class WaitingPlayerController: UIViewController, UITableViewDataSource, UITableV
     }
     
   
+    @IBOutlet weak var playerTable: UITableView!
 }

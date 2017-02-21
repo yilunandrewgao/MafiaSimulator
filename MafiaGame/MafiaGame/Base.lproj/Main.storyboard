@@ -263,6 +263,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RHo-ro-uQa">
+                                <rect key="frame" x="209" y="238" width="66" height="30"/>
+                                <state key="normal" title="password"/>
+                                <connections>
+                                    <action selector="setPassword:" destination="Xqt-6T-Yje" eventType="touchUpInside" id="pfX-WY-GkA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -277,16 +284,21 @@
                             <constraint firstItem="JYx-hx-XEL" firstAttribute="top" secondItem="UOL-h8-GVG" secondAttribute="bottom" constant="5" id="Ika-z6-bZv"/>
                             <constraint firstItem="UOL-h8-GVG" firstAttribute="top" secondItem="95B-Jw-0eY" secondAttribute="bottom" constant="40" id="N4v-V0-ZBr"/>
                             <constraint firstItem="apE-Xo-2l9" firstAttribute="top" secondItem="Ou3-c4-nbj" secondAttribute="bottom" constant="15" id="OkE-hG-6hD"/>
+                            <constraint firstAttribute="trailing" secondItem="RHo-ro-uQa" secondAttribute="trailing" constant="100" id="PfK-bF-tlS"/>
                             <constraint firstItem="95B-Jw-0eY" firstAttribute="leading" secondItem="0I3-ql-SmJ" secondAttribute="leading" constant="10" id="Pgq-be-fYq"/>
                             <constraint firstItem="JYx-hx-XEL" firstAttribute="leading" secondItem="UOL-h8-GVG" secondAttribute="leading" id="TnC-ot-hCb"/>
                             <constraint firstItem="apE-Xo-2l9" firstAttribute="leading" secondItem="0I3-ql-SmJ" secondAttribute="leading" constant="10" id="UwY-nt-ZUB"/>
                             <constraint firstItem="95B-Jw-0eY" firstAttribute="top" secondItem="BSp-Hc-Y6R" secondAttribute="bottom" constant="30" id="ggv-eN-yyU"/>
+                            <constraint firstItem="RHo-ro-uQa" firstAttribute="bottom" secondItem="JYx-hx-XEL" secondAttribute="bottom" id="nKl-gf-7by"/>
                             <constraint firstItem="BSp-Hc-Y6R" firstAttribute="top" secondItem="aRB-Qx-ZJb" secondAttribute="bottom" constant="25" id="p9X-jQ-SRw"/>
                             <constraint firstAttribute="trailing" secondItem="GYI-xR-uPT" secondAttribute="trailing" constant="15" id="rAa-DZ-Z1A"/>
                             <constraint firstItem="GYI-xR-uPT" firstAttribute="top" secondItem="aRB-Qx-ZJb" secondAttribute="bottom" constant="20" id="weo-WR-utr"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Create a Room" id="q8I-Rt-5T5"/>
+                    <connections>
+                        <outlet property="privateSwitch" destination="JYx-hx-XEL" id="BMp-9O-KUM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lXk-dr-tF2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -487,6 +499,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Waiting for Players" id="faL-rM-9pY"/>
+                    <connections>
+                        <outlet property="playerTable" destination="jgR-IR-CFh" id="qr1-JN-kMS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="klY-95-Xk5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -36,6 +36,7 @@ class JoinRoomController: UIViewController, UITableViewDataSource, UITableViewDe
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: Properties (IBOutlet) table of lists of available rooms
     @IBOutlet weak var roomTable: UITableView!
     
 }
