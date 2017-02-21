@@ -1,15 +1,14 @@
 //
-//  LoginViewController.swift
+//  CreateRoomController.swift
 //  MafiaGame
 //
-//  Created by Yufang Lin on 2/17/17.
+//  Created by Yufang Lin on 2/19/17.
 //  Copyright © 2017 Yufang Lin. All rights reserved.
 //
 
-
 import UIKit
 
-class LoginViewController: UIViewController {
+class CreateRoomController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +21,6 @@ class LoginViewController: UIViewController {
     }
     
     
-    @IBOutlet weak var usernameTextField: UITextField!
 }
+
 

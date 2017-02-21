@@ -1,5 +1,5 @@
 //
-//  LoginViewController.swift
+//  MenuViewController.swift
 //  MafiaGame
 //
 //  Created by Yufang Lin on 2/17/17.
@@ -9,7 +9,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class MenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +22,5 @@ class LoginViewController: UIViewController {
     }
     
     
-    @IBOutlet weak var usernameTextField: UITextField!
 }
 
