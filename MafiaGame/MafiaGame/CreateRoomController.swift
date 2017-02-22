@@ -65,8 +65,17 @@ class CreateRoomController: UIViewController {
         
         if Int(numOfPeople_tf.text!) != nil && String(nameOfRoom_tf.text!) != nil {
             
+            thisRoomName = nameOfRoom_tf.text
+            maxPeopleForRoom = Int(numOfPeople_tf.text!)
+            
             if privateSwitch.isOn {
-                HostManager.initHostManager(player: thisPlayer, roomName: thisRoomName, maxPeople: maxPeopleForRoom, password: roomPassword!)
+                if let mypw = roomPassword {
+                    HostManager.initHostManager(player: thisPlayer, roomName: thisRoomName, maxPeople: maxPeopleForRoom, password: mypw)
+                }
+                else {
+                    HostManager.initHostManager(player: thisPlayer, roomName: thisRoomName, maxPeople: maxPeopleForRoom, password: "")
+                }
+                
             }
             else{
                 HostManager.initHostManager(player: thisPlayer, roomName: thisRoomName, maxPeople: maxPeopleForRoom, password: nil)
@@ -74,6 +83,13 @@ class CreateRoomController: UIViewController {
             
             HostManager.shared.advertiser.startAdvertisingPeer()
             
+            performSegue(withIdentifier: "GotoWaitingRoom", sender: nil)
+            
+        }
+        else {
+            let alertController = UIAlertController(title: "Invalid Inputs", message: "Please enter in valid room name and number of people.", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            present(alertController, animated: true, completion: nil)
         }
         
         

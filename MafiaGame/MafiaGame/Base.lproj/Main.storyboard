@@ -255,7 +255,6 @@
                                 <state key="normal" title="Create"/>
                                 <connections>
                                     <action selector="createRoom:" destination="Xqt-6T-Yje" eventType="touchUpInside" id="N2O-J5-gg2"/>
-                                    <segue destination="j3M-BO-uRS" kind="show" id="FtL-UU-zrK"/>
                                 </connections>
                             </button>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="UOL-h8-GVG">
@@ -313,6 +312,7 @@
                         <outlet property="nameOfRoom_tf" destination="GYI-xR-uPT" id="rtM-ya-L6J"/>
                         <outlet property="numOfPeople_tf" destination="ZZl-S4-haD" id="Ulb-oA-PUh"/>
                         <outlet property="privateSwitch" destination="JYx-hx-XEL" id="BMp-9O-KUM"/>
+                        <segue destination="j3M-BO-uRS" kind="show" identifier="GotoWaitingRoom" id="ktb-Mz-2rW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lXk-dr-tF2" userLabel="First Responder" sceneMemberID="firstResponder"/>
