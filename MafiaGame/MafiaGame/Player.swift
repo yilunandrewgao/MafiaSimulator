@@ -15,6 +15,7 @@ class Player {
     private var name: String
     private var peerID: MCPeerID
     private var hostOrNot: Bool = false
+    private var role: String?
     
     init(name: String) {
         self.name = name
@@ -50,6 +51,14 @@ class Player {
     
     func setHostOrNot(isHost: Bool) {
         self.hostOrNot = isHost
+    }
+    
+    func getRole() -> String? {
+        return self.role
+    }
+    
+    func setRole(role: String) {
+        self.role = role
     }
     
 }
