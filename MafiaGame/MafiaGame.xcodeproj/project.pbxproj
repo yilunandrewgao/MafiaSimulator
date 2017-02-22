@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		782E198E1E5B4BBB000B1945 /* MafiaNightController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E198D1E5B4BBB000B1945 /* MafiaNightController.swift */; };
+		78C8CCB51E5D0FD200B28265 /* JoinRoomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C8CCB41E5D0FD200B28265 /* JoinRoomController.swift */; };
 		78E3082D1E5767DE00CE7059 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3082C1E5767DE00CE7059 /* AppDelegate.swift */; };
 		78E308321E5767DE00CE7059 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78E308301E5767DE00CE7059 /* Main.storyboard */; };
 		78E308351E5767DE00CE7059 /* MafiaGame.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 78E308331E5767DE00CE7059 /* MafiaGame.xcdatamodeld */; };
@@ -43,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		782E198D1E5B4BBB000B1945 /* MafiaNightController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MafiaNightController.swift; sourceTree = "<group>"; };
+		78C8CCB41E5D0FD200B28265 /* JoinRoomController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinRoomController.swift; sourceTree = "<group>"; };
 		78E308291E5767DE00CE7059 /* MafiaGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MafiaGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78E3082C1E5767DE00CE7059 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78E308311E5767DE00CE7059 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 			children = (
 				78E3082C1E5767DE00CE7059 /* AppDelegate.swift */,
 				78E308661E57731000CE7059 /* LoginViewController.swift */,
+				78C8CCB41E5D0FD200B28265 /* JoinRoomController.swift */,
 				78E308681E577BCC00CE7059 /* MenuViewController.swift */,
 				78E4647F1E5A576F00758655 /* CreateRoomController.swift */,
 				78E464811E5A61B600758655 /* WaitingPlayerController.swift */,
@@ -358,6 +361,7 @@
 				782E198E1E5B4BBB000B1945 /* MafiaNightController.swift in Sources */,
 				78E464801E5A576F00758655 /* CreateRoomController.swift in Sources */,
 				78E308671E57731000CE7059 /* LoginViewController.swift in Sources */,
+				78C8CCB51E5D0FD200B28265 /* JoinRoomController.swift in Sources */,
 				9353860D1E5A500C00EB9871 /* HostManager.swift in Sources */,
 				78E3082D1E5767DE00CE7059 /* AppDelegate.swift in Sources */,
 				9353860F1E5A51CD00EB9871 /* Player.swift in Sources */,
