@@ -35,6 +35,11 @@ class WaitingPlayerController: UIViewController, UITableViewDataSource, UITableV
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func startGame(_ sender: Any) {
+        let mafiaNightController = storyboard?.instantiateViewController(withIdentifier: "MafiaNight") as? MafiaNightController
+        
+        self.present(mafiaNightController!, animated: true, completion: nil)
+    }
   
     @IBOutlet weak var playerTable: UITableView!
 }

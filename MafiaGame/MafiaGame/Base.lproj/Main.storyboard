@@ -379,7 +379,7 @@
         <!--Villager Night Controller-->
         <scene sceneID="n6p-1C-aWh">
             <objects>
-                <viewController title="Villager Night Controller" id="rwv-fl-CwI" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VillagerNight" title="Villager Night Controller" id="rwv-fl-CwI" customClass="VillagerNightController" customModule="MafiaGame" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0CW-31-DGf"/>
                         <viewControllerLayoutGuide type="bottom" id="HIY-oY-zyd"/>
@@ -397,7 +397,7 @@
         <!--Mafia Night Controller-->
         <scene sceneID="fFh-Lp-os9">
             <objects>
-                <viewController title="Mafia Night Controller" id="nGV-5l-2ks" customClass="MafiaNightController" customModule="MafiaGame" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MafiaNight" title="Mafia Night Controller" id="nGV-5l-2ks" customClass="MafiaNightController" customModule="MafiaGame" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="d8h-ql-Of9"/>
                         <viewControllerLayoutGuide type="bottom" id="MlR-dQ-oDJ"/>
@@ -405,12 +405,24 @@
                     <view key="view" contentMode="scaleToFill" id="vjS-to-YqE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Mafia Night" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jtn-dh-44D">
+                                <rect key="frame" x="148" y="306" width="88" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jtn-dh-44D" firstAttribute="centerY" secondItem="vjS-to-YqE" secondAttribute="centerY" id="Auz-rh-qok"/>
+                            <constraint firstItem="jtn-dh-44D" firstAttribute="centerX" secondItem="vjS-to-YqE" secondAttribute="centerX" id="m1H-vi-2K1"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l8p-cc-HxX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2990" y="1724"/>
+            <point key="canvasLocation" x="2989.5999999999999" y="1723.9880059970017"/>
         </scene>
         <!--Mafia Decision Controller-->
         <scene sceneID="gPi-42-n5p">
@@ -478,6 +490,9 @@
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5VX-sM-Uen">
                                 <rect key="frame" x="170" y="607" width="34" height="30"/>
                                 <state key="normal" title="Start"/>
+                                <connections>
+                                    <action selector="startGame:" destination="j3M-BO-uRS" eventType="touchUpInside" id="EQu-fN-Xqg"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
