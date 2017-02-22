@@ -19,7 +19,7 @@ protocol HostManagerDelegate {
 
 class HostManager: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegate {
     
-    var hostDelegate: HostManagerDelegate
+    var hostDelegate: HostManagerDelegate?
     
     var sessionsList: [MCSession]
     
@@ -33,13 +33,24 @@ class HostManager: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegat
     
     var invitationHandler: ((Bool, MCSession?)->Void)!
     
-    static let shared: HostManager!
+    static var shared: HostManager?
     
     private init(player: Player) {
         super.init()
         
+        
+        // initialize advertiser
+        
         advertiser = MCNearbyServiceAdvertiser(peer: player.getPeerID(), discoveryInfo: nil, serviceType: "mafia-game")
         advertiser.delegate = self
+        
+        //initialize other variables
+
+        sessionsList = []
+        playersInGame = []
+        foundPlayers = []
+        thisPlayer = player
+    
     }
     
     
