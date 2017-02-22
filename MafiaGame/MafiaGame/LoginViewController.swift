@@ -55,6 +55,7 @@ class LoginViewController: UIViewController {
         alertController.addAction(UIAlertAction(title: "Enter", style: .default, handler: { (action) in
             if let username = alertController.textFields?.first?.text, !username.isEmpty {
                 self.storeUsername(username)
+                self.username = username
             }
         }))
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
@@ -72,17 +73,13 @@ class LoginViewController: UIViewController {
         }
     }
     
-    // stop segue if user does not change default username
-    override func shouldPerformSegue(withIdentifier identifier: String?, sender: Any?) -> Bool {
-        if let ident = identifier {
-            if ident == "LoginToMenu" {
-                if self.username == "Username" {
-                    return false
-                }
-            }
+    // activate segue if default username is changed
+    @IBAction func gotoMenu(_ sender: Any) {
+        if self.username != "Username" {
+            performSegue(withIdentifier: "LoginToMenu", sender: nil)
         }
-        return true
     }
+    
     
 }
 

@@ -38,7 +38,7 @@
                                 <rect key="frame" x="170" y="587" width="34" height="30"/>
                                 <state key="normal" title="Start"/>
                                 <connections>
-                                    <segue destination="atE-xI-aRg" kind="show" identifier="LoginToMenu" id="nYi-jI-dRO"/>
+                                    <action selector="gotoMenu:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fqf-4I-9Qd"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cj3-7V-OsT">
@@ -63,11 +63,12 @@
                     <navigationItem key="navigationItem" id="CFf-cW-RKs"/>
                     <connections>
                         <outlet property="usernameOutput" destination="cj3-7V-OsT" id="nK0-bd-aZl"/>
+                        <segue destination="atE-xI-aRg" kind="show" identifier="LoginToMenu" id="7vS-mT-PgX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1076" y="137.18140929535232"/>
+            <point key="canvasLocation" x="1030" y="155"/>
         </scene>
         <!--Join Room Controller-->
         <scene sceneID="gOf-Ga-c2I">
