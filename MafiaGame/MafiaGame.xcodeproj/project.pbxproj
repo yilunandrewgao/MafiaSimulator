@@ -18,7 +18,6 @@
 		78E308501E5767DF00CE7059 /* MafiaGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3084F1E5767DF00CE7059 /* MafiaGameUITests.swift */; };
 		78E308671E57731000CE7059 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E308661E57731000CE7059 /* LoginViewController.swift */; };
 		78E308691E577BCC00CE7059 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E308681E577BCC00CE7059 /* MenuViewController.swift */; };
-		78E4647E1E5A544C00758655 /* JoinRoomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E4647D1E5A544C00758655 /* JoinRoomController.swift */; };
 		78E464801E5A576F00758655 /* CreateRoomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E4647F1E5A576F00758655 /* CreateRoomController.swift */; };
 		78E464821E5A61B600758655 /* WaitingPlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E464811E5A61B600758655 /* WaitingPlayerController.swift */; };
 		9353860D1E5A500C00EB9871 /* HostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9353860C1E5A500C00EB9871 /* HostManager.swift */; };
@@ -60,7 +59,6 @@
 		78E308511E5767DF00CE7059 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		78E308661E57731000CE7059 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		78E308681E577BCC00CE7059 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
-		78E4647D1E5A544C00758655 /* JoinRoomController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinRoomController.swift; sourceTree = "<group>"; };
 		78E4647F1E5A576F00758655 /* CreateRoomController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRoomController.swift; sourceTree = "<group>"; };
 		78E464811E5A61B600758655 /* WaitingPlayerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitingPlayerController.swift; sourceTree = "<group>"; };
 		9353860C1E5A500C00EB9871 /* HostManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostManager.swift; sourceTree = "<group>"; };
@@ -367,7 +365,6 @@
 				9353860F1E5A51CD00EB9871 /* Player.swift in Sources */,
 				78E308351E5767DE00CE7059 /* MafiaGame.xcdatamodeld in Sources */,
 				78E308691E577BCC00CE7059 /* MenuViewController.swift in Sources */,
-				78E4647E1E5A544C00758655 /* JoinRoomController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

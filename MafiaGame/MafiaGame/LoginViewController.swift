@@ -10,13 +10,14 @@
 import UIKit
 
 class LoginViewController: UIViewController {
+
     
     // MARK: Properties (IBOutlet) username output
     @IBOutlet weak var usernameOutput: UILabel!
     
     // MARK: Properties (Private Static Constant) username
-    private var username = Player.setName()
-        
+    private var username = "Username"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
