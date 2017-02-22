@@ -24,18 +24,19 @@ class CreateRoomController: UIViewController {
     // MARK: Properties (IBAction) set password for room
     @IBAction func setPassword(_ sender: Any) {
         if privateSwitch.isOn {
+            let alertController = UIAlertController(title: "Set Password", message: "Enter Room Password", preferredStyle: .alert)
+            alertController.addTextField { (textField) in
+                textField.placeholder = "password"
+                textField.autocapitalizationType = .none
+                textField.autocorrectionType = .no
+            }
+            
+            alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            present(alertController, animated: true, completion: nil)
             
         }
         
-        let alertController = UIAlertController(title: "Set Password", message: "Enter Room Password", preferredStyle: .alert)
-        alertController.addTextField { (textField) in
-            textField.placeholder = "password"
-            textField.autocapitalizationType = .none
-            textField.autocorrectionType = .no
-        }
         
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        present(alertController, animated: true, completion: nil)
     }
     
     // MARK: Properties (IBOutlet) private room: true/false
