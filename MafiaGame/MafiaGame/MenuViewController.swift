@@ -13,9 +13,11 @@ class MenuViewController: UIViewController {
     
     var thisPlayer:Player! = nil
     
+    @IBOutlet weak var playerNameLbl: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        playerNameLbl.text  = "Logged in as: \(thisPlayer.getName())"
     }
     
     override func didReceiveMemoryWarning() {
@@ -23,6 +25,15 @@ class MenuViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // send player data to MenuViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "GotoCreateRoom" {
+            
+            let createRoomVC = segue.destination as! CreateRoomController
+            createRoomVC.thisPlayer = thisPlayer
+            
+        }
+    }
     
 }
 

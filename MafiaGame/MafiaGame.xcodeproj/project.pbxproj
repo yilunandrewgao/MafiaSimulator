@@ -23,6 +23,7 @@
 		78E464801E5A576F00758655 /* CreateRoomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E4647F1E5A576F00758655 /* CreateRoomController.swift */; };
 		9353860D1E5A500C00EB9871 /* HostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9353860C1E5A500C00EB9871 /* HostManager.swift */; };
 		93EEF8661E5D111900868FCD /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9353860E1E5A51CD00EB9871 /* Player.swift */; };
+		93EEF8681E5D603600868FCD /* ClientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EEF8671E5D603600868FCD /* ClientManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		78E4647F1E5A576F00758655 /* CreateRoomController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRoomController.swift; sourceTree = "<group>"; };
 		9353860C1E5A500C00EB9871 /* HostManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostManager.swift; sourceTree = "<group>"; };
 		9353860E1E5A51CD00EB9871 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		93EEF8671E5D603600868FCD /* ClientManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				9353860C1E5A500C00EB9871 /* HostManager.swift */,
+				93EEF8671E5D603600868FCD /* ClientManager.swift */,
 				9353860E1E5A51CD00EB9871 /* Player.swift */,
 			);
 			name = Model;
@@ -366,6 +369,7 @@
 				78C8CCB51E5D0FD200B28265 /* JoinRoomController.swift in Sources */,
 				9353860D1E5A500C00EB9871 /* HostManager.swift in Sources */,
 				78C8CCE21E5D201800B28265 /* WaitingPlayerController.swift in Sources */,
+				93EEF8681E5D603600868FCD /* ClientManager.swift in Sources */,
 				78E3082D1E5767DE00CE7059 /* AppDelegate.swift in Sources */,
 				78E308351E5767DE00CE7059 /* MafiaGame.xcdatamodeld in Sources */,
 				78E308691E577BCC00CE7059 /* MenuViewController.swift in Sources */,

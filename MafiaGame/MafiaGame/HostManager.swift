@@ -33,9 +33,15 @@ class HostManager: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegat
     
     var invitationHandler: ((Bool, MCSession?)->Void)!
     
-    static private var shared: HostManager!
+    var roomName: String
     
-    private init(player: Player) {
+    var maxPeople: Int
+    
+    var password: String?
+    
+    static private(set) var shared: HostManager!
+    
+    private init(player: Player, roomName: String, maxPeople: Int, password: String) {
         
         //initialize other variables
         
@@ -43,6 +49,9 @@ class HostManager: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegat
         playersInGame = []
         foundPlayers = []
         thisPlayer = player
+        self.roomName = roomName
+        self.maxPeople = maxPeople
+        self.password = password
         
         
         super.init()
@@ -73,8 +82,8 @@ class HostManager: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegat
     
     
     // initialize hostManager
-    static func initHostManager(player:Player) {
-        shared = HostManager(player: player)
+    static func initHostManager(player: Player, roomName: String, maxPeople: Int, password: String?) {
+        shared = HostManager(player: player, roomName: roomName, maxPeople: maxPeople, password: password!)
     }
     
     

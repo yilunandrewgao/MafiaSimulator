@@ -73,7 +73,7 @@ class LoginViewController: UIViewController {
         }
     }
     
-    // activate segue if default username is changed
+    // activate segue only if default username is changed
     @IBAction func gotoMenu(_ sender: Any) {
         if self.username != "Username" {
             performSegue(withIdentifier: "LoginToMenu", sender: nil)
