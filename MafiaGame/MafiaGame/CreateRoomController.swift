@@ -83,6 +83,7 @@ class CreateRoomController: UIViewController {
                 HostManager.initHostManager(player: thisPlayer, roomName: thisRoomName, maxPeople: maxPeopleForRoom, password: nil)
             }
             
+            HostManager.shared.playersInGame.append(self.thisPlayer)
             HostManager.shared.advertiser.startAdvertisingPeer()
             
             

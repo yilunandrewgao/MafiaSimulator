@@ -18,13 +18,12 @@ class WaitingPlayerController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return HostManager.shared.playersInGame.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UsernameCell", for: indexPath)
         
-        cell.textLabel?.text = "Username"
-        
+        cell.textLabel?.text = HostManager.shared.playersInGame[indexPath.row].getName()
         return cell
     }
 
