@@ -56,6 +56,8 @@ class CreateRoomController: UIViewController {
         
     }
     
+    
+    
     // MARK: Properties (IBOutlet) private room: true/false
     @IBOutlet weak var privateSwitch: UISwitch!
     
@@ -82,6 +84,8 @@ class CreateRoomController: UIViewController {
             }
             
             HostManager.shared.advertiser.startAdvertisingPeer()
+            
+            
             
             performSegue(withIdentifier: "GotoWaitingRoom", sender: nil)
             

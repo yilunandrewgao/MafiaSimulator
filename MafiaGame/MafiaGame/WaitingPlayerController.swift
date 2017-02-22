@@ -6,9 +6,12 @@
 //  Copyright © 2017 Yufang Lin. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
 class WaitingPlayerController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    //public var maxPlayer : Int
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -34,6 +37,10 @@ class WaitingPlayerController: UIViewController, UITableViewDataSource, UITableV
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+//    func roleGenerator(){
+//        let random = sqrt(Float(HostManager.maxPeople))
+//    }
     
     @IBAction func startGame(_ sender: Any) {
         let mafiaNightController = storyboard?.instantiateViewController(withIdentifier: "MafiaNight") as? MafiaNightController

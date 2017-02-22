@@ -32,6 +32,7 @@ class LoginViewController: UIViewController {
         if let username = UserDefaults.standard.object(forKey: self.username) as? String
         {
             usernameOutput.text = username
+            self.username = username
         }
     }
     
