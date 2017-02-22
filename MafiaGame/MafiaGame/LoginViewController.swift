@@ -61,5 +61,28 @@ class LoginViewController: UIViewController {
         present(alertController, animated: true, completion: nil)
     }
     
+    
+    // send player data to MenuViewController
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "LoginToMenu" {
+            
+            let menuVC = segue.destination as! MenuViewController
+            menuVC.thisPlayer = Player(name: username)
+            
+        }
+    }
+    
+    // stop segue if user does not change default username
+    override func shouldPerformSegue(withIdentifier identifier: String?, sender: Any?) -> Bool {
+        if let ident = identifier {
+            if ident == "LoginToMenu" {
+                if self.username == "Username" {
+                    return false
+                }
+            }
+        }
+        return true
+    }
+    
 }
 

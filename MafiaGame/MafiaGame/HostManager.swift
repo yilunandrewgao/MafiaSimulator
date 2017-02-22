@@ -10,8 +10,6 @@ import UIKit
 import MultipeerConnectivity
 
 protocol HostManagerDelegate {
-    func foundPlayer()
-    func lostPlayer()
     func requestWasReceived(fromPlayer: Player)
     func connectedWithPlayer(withPlayer: Player)
     func disconnectedFromPlayer(fromPlayer: Player)
@@ -35,7 +33,7 @@ class HostManager: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegat
     
     var invitationHandler: ((Bool, MCSession?)->Void)!
     
-    static var shared: HostManager?
+    static private var shared: HostManager!
     
     private init(player: Player) {
         
