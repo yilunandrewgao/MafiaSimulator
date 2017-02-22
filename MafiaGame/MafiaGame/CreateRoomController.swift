@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreateRoomController: UIViewController {
+class CreateRoomController: UIViewController, HostManagerDelegate {
     
     var thisPlayer:Player! = nil
     var thisRoomName: String!
@@ -72,20 +72,18 @@ class CreateRoomController: UIViewController {
             
             if privateSwitch.isOn {
                 if let mypw = roomPassword {
-                    HostManager.initHostManager(player: thisPlayer, roomName: thisRoomName, maxPeople: maxPeopleForRoom, password: mypw)
+                    HostManager.shared.startRoom(player: thisPlayer, roomName: thisRoomName, maxPeople: maxPeopleForRoom, password: mypw)
                 }
                 else {
-                    HostManager.initHostManager(player: thisPlayer, roomName: thisRoomName, maxPeople: maxPeopleForRoom, password: "")
+                    HostManager.shared.startRoom(player: thisPlayer, roomName: thisRoomName, maxPeople: maxPeopleForRoom, password: "")
                 }
                 
             }
             else{
-                HostManager.initHostManager(player: thisPlayer, roomName: thisRoomName, maxPeople: maxPeopleForRoom, password: nil)
+                HostManager.shared.startRoom(player: thisPlayer, roomName: thisRoomName, maxPeople: maxPeopleForRoom, password: nil)
             }
             
-            HostManager.shared.playersInGame.append(self.thisPlayer)
-            HostManager.shared.advertiser.startAdvertisingPeer()
-            
+                        
             
             
             performSegue(withIdentifier: "GotoWaitingRoom", sender: nil)
@@ -99,7 +97,12 @@ class CreateRoomController: UIViewController {
         
         
     }
-    
+
+    func requestWasReceived(fromPlayer: Player, callback: (Bool) -> Void) {
+        // Present alert controller to ask player about invitation
+        // In alert action invoke the callback with true or false as appropriate
+        callback(true)
+    }
 }
 
 

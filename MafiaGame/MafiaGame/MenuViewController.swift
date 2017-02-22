@@ -17,7 +17,7 @@ class MenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        playerNameLbl.text  = "Logged in as: \(thisPlayer.getName())"
+        playerNameLbl.text  = "Logged in as: \(self.thisPlayer.getName())"
     }
     
     override func didReceiveMemoryWarning() {
@@ -30,10 +30,20 @@ class MenuViewController: UIViewController {
         if segue.identifier == "GotoCreateRoom" {
             
             let createRoomVC = segue.destination as! CreateRoomController
-            createRoomVC.thisPlayer = thisPlayer
+            createRoomVC.thisPlayer = self.thisPlayer
             
         }
+        
+        if segue.identifier == "GotoJoinRoom" {
+            
+            
+            
+            let joinRoomVC = segue.destination as! JoinRoomController
+            joinRoomVC.thisPlayer = self.thisPlayer
+        }
+            
     }
+    
     
 }
 

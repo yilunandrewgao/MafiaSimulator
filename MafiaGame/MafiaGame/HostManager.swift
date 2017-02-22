@@ -10,64 +10,80 @@ import UIKit
 import MultipeerConnectivity
 
 protocol HostManagerDelegate {
-    func requestWasReceived(fromPlayer: Player)
+    func requestWasReceived(fromPlayer: Player, callback: (Bool) -> Void)
     func connectedWithPlayer(withPlayer: Player)
     func disconnectedFromPlayer(fromPlayer: Player)
 }
 
-
+extension HostManagerDelegate {
+    func disconnectedFromPlayer(fromPlayer: Player) {
+        // Intentionally left blank
+    }
+}
 
 class HostManager: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegate {
     
     var hostDelegate: HostManagerDelegate?
     
-    var sessionsList: [MCSession]
+    var session: MCSession!
     
     var playersInGame: [Player]
     
     var foundPlayers: [Player]
     
-    var advertiser: MCNearbyServiceAdvertiser!
+    private var advertiser: MCNearbyServiceAdvertiser!
     
-    var thisPlayer: Player
+    var thisPlayer: Player!
     
-    var invitationHandler: ((Bool, MCSession?)->Void)!
+    var roomName: String!
     
-    var roomName: String
-    
-    var maxPeople: Int
+    var maxPeople: Int!
     
     var password: String? = nil
     
-    static private(set) var shared: HostManager!
+    static let shared: HostManager = HostManager()
     
-    private init(player: Player, roomName: String, maxPeople: Int, password: String?) {
+    func startRoom(player: Player, roomName: String, maxPeople: Int, password: String?) {
+        // Initialize values, setup advertiser, etc.
         
         //initialize other variables
         
-        sessionsList = []
+        self.session = MCSession(peer: player)
         playersInGame = []
         foundPlayers = []
         thisPlayer = player
         self.roomName = roomName
         self.maxPeople = maxPeople
         if let mypw = password {
-           self.password = mypw
+            self.password = mypw
         }
         
-        
-        
-        super.init()
-        
-        
-        
         // initialize advertiser
-        
+        var infoDict : [String: String] = ["roomName" : roomName, "owner": thisPlayer]
         advertiser = MCNearbyServiceAdvertiser(peer: player.getPeerID(), discoveryInfo: nil, serviceType: "mafia-game")
         advertiser.delegate = self
+
+        playersInGame.append(self.thisPlayer)
         
-        
+        advertiser.startAdvertisingPeer()
+
+    }
     
+    func endRoom() {
+        
+        // Cleanup state, disconnect, etc
+    }
+    
+    var isRoomAvailable: Bool {
+        get {
+            // Depending on state, return true or false
+            return false
+        }
+    }
+    
+    private init() {
+        // Implemented for access control
+        super.init()
     }
     
     // function to get player from peerID
@@ -148,9 +164,15 @@ class HostManager: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegat
     // Advertiser delegate methods
     
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping ((Bool, MCSession?) -> Void)) {
-        self.invitationHandler = invitationHandler
         if let player = getPlayerFromPeerID(peerID: peerID) {
-           hostDelegate?.requestWasReceived(fromPlayer: player)
+            hostDelegate?.requestWasReceived(fromPlayer: player, callback: { (shouldConnect: Bool) -> Void in
+                if shouldConnect {
+                    invitationHandler(true, session)
+                }
+                else {
+                    invitationHandler(false, nil)
+                }
+            })
         }
     }
     

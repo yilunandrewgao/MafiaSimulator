@@ -11,7 +11,6 @@ import UIKit
 
 class WaitingPlayerController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    //public var maxPlayer : Int
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -37,9 +36,17 @@ class WaitingPlayerController: UIViewController, UITableViewDataSource, UITableV
         // Dispose of any resources that can be recreated.
     }
     
-//    func roleGenerator(){
-//        let random = sqrt(Float(HostManager.maxPeople))
-//    }
+    func generateRoles(for numMafia: Int, in maxPeople: Int) -> [String] {
+        var roleList = []
+        
+    }
+    
+    var numMafia: Int {
+        get {
+            let random = sqrt(Float(HostManager.shared.maxPeople))
+            return Int(random)
+        }
+    }
     
     @IBAction func startGame(_ sender: Any) {
         let mafiaNightController = storyboard?.instantiateViewController(withIdentifier: "MafiaNight") as? MafiaNightController

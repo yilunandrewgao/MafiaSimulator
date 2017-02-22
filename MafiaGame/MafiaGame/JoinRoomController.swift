@@ -11,12 +11,14 @@ import UIKit
 
 class JoinRoomController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    var thisPlayer:Player! = nil
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return ClientManager.shared.foundHosts.count 
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RoomCell", for: indexPath)
@@ -29,6 +31,7 @@ class JoinRoomController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        ClientManager.initClientManager(player: thisPlayer)
     }
     
     override func didReceiveMemoryWarning() {
