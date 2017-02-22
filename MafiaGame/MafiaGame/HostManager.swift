@@ -17,17 +17,17 @@ protocol HostManagerDelegate {
     func disconnectedFromPlayer(fromPlayer: Player)
 }
 
-class HostManager: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegate {
-    
-    var hostDelegate: HostManagerDelegate
-    
-    var sessionsList: [MCSession]
-    
-    var playersInGame: [Player]
-    
-    var foundPlayers: [Player]
-    
-    var advertiser: MCNearbyServiceAdvertiser
-    
-    var thisPlayer: Player
-}
+//class HostManager: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegate {
+//    
+//    var hostDelegate: HostManagerDelegate
+//    
+//    var sessionsList: [MCSession]
+//    
+//    var playersInGame: [Player]
+//    
+//    var foundPlayers: [Player]
+//    
+//    var advertiser: MCNearbyServiceAdvertiser
+//    
+//    var thisPlayer: Player
+//}
