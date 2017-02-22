@@ -17,16 +17,11 @@ protocol HostManagerDelegate {
     func disconnectedFromPlayer(fromPlayer: Player)
 }
 
-<<<<<<< HEAD
-class HostManager: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegate {
-    
-    var hostDelegate: HostManagerDelegate
-=======
+
 
 class HostManager: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegate {
     
     var hostDelegate: HostManagerDelegate?
->>>>>>> f682f8e47f8d0ae1f587d9e0f12d8188f96192be
     
     var sessionsList: [MCSession]
     
@@ -40,19 +35,11 @@ class HostManager: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegat
     
     var invitationHandler: ((Bool, MCSession?)->Void)!
     
-<<<<<<< HEAD
-    static let shared: HostManager!
-=======
     static var shared: HostManager?
->>>>>>> f682f8e47f8d0ae1f587d9e0f12d8188f96192be
     
     private init(player: Player) {
         super.init()
-        
-<<<<<<< HEAD
-        advertiser = MCNearbyServiceAdvertiser(peer: player.getPeerID(), discoveryInfo: nil, serviceType: "mafia-game")
-        advertiser.delegate = self
-=======
+
         
         // initialize advertiser
         
@@ -66,7 +53,6 @@ class HostManager: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegat
         foundPlayers = []
         thisPlayer = player
     
->>>>>>> f682f8e47f8d0ae1f587d9e0f12d8188f96192be
     }
     
     
@@ -77,7 +63,3 @@ class HostManager: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegat
     
     
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> f682f8e47f8d0ae1f587d9e0f12d8188f96192be
