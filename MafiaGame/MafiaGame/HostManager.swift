@@ -17,6 +17,7 @@ protocol HostManagerDelegate {
     func disconnectedFromPlayer(fromPlayer: Player)
 }
 
+
 class HostManager: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegate {
     
     var hostDelegate: HostManagerDelegate?
@@ -61,3 +62,4 @@ class HostManager: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegat
     
     
 }
+
