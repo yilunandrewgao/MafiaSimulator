@@ -15,7 +15,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var usernameOutput: UILabel!
     
     // MARK: Properties (Private Static Constant) username
-    private var username = Player.setName()
+    private var username = "Username"
         
     override func viewDidLoad() {
         super.viewDidLoad()
