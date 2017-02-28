@@ -9,7 +9,7 @@
 
 import UIKit
 
-class JoinRoomController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class JoinRoomController: UIViewController, UITableViewDataSource, UITableViewDelegate, ClientManagerDelegate {
     
     var thisPlayer:Player! = nil
     
@@ -23,7 +23,7 @@ class JoinRoomController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RoomCell", for: indexPath)
         
-        cell.textLabel?.text = "Room Name and Owner"
+        cell.textLabel?.text = ClientManager.shared.foundHosts[indexPath.row]
         cell.detailTextLabel?.text = "Status"
         
         return cell
@@ -31,7 +31,7 @@ class JoinRoomController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        ClientManager.initClientManager(player: thisPlayer)
+        ClientManager.shared.startBrowsing(player: thisPlayer)
     }
     
     override func didReceiveMemoryWarning() {
@@ -39,7 +39,21 @@ class JoinRoomController: UIViewController, UITableViewDataSource, UITableViewDe
         // Dispose of any resources that can be recreated.
     }
     
+    // ClientManager delegate functions
+    
+    func foundPeer() {
+        
+        roomTable.reloadData()
+        
+    }
+    
+    func lostPeer() {
+        roomTable.reloadData()
+    }
+    
     // MARK: Properties (IBOutlet) table of lists of available rooms
     @IBOutlet weak var roomTable: UITableView!
+    
+    
     
 }

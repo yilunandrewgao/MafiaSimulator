@@ -27,9 +27,9 @@ class HostManager: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegat
     
     var session: MCSession!
     
-    var playersInGame: [Player]
+    var playersInGame: [Player]!
     
-    var foundPlayers: [Player]
+    var foundPlayers: [Player]!
     
     private var advertiser: MCNearbyServiceAdvertiser!
     
@@ -48,7 +48,7 @@ class HostManager: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegat
         
         //initialize other variables
         
-        self.session = MCSession(peer: player)
+        self.session = MCSession(peer: player.getPeerID())
         playersInGame = []
         foundPlayers = []
         thisPlayer = player
@@ -59,8 +59,8 @@ class HostManager: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegat
         }
         
         // initialize advertiser
-        var infoDict : [String: String] = ["roomName" : roomName, "owner": thisPlayer]
-        advertiser = MCNearbyServiceAdvertiser(peer: player.getPeerID(), discoveryInfo: nil, serviceType: "mafia-game")
+        let infoDict : [String: String] = ["roomName" : roomName, "owner": thisPlayer.getName()]
+        advertiser = MCNearbyServiceAdvertiser(peer: player.getPeerID(), discoveryInfo: infoDict, serviceType: "mafia-game")
         advertiser.delegate = self
 
         playersInGame.append(self.thisPlayer)
@@ -76,12 +76,17 @@ class HostManager: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegat
     
     var isRoomAvailable: Bool {
         get {
-            // Depending on state, return true or false
-            return false
+            if session.connectedPeers.count > 0 {
+                return true
+            }
+            else {
+                return false
+            }
+            
         }
     }
     
-    private init() {
+    private override init() {
         // Implemented for access control
         super.init()
     }
@@ -94,15 +99,6 @@ class HostManager: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegat
             }
         }
         return nil
-    }
-    
-    
-    
-    
-    
-    // initialize hostManager
-    static func initHostManager(player: Player, roomName: String, maxPeople: Int, password: String?) {
-        shared = HostManager(player: player, roomName: roomName, maxPeople: maxPeople, password: password)
     }
     
     

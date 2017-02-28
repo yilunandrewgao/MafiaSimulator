@@ -23,6 +23,7 @@
 		78E308691E577BCC00CE7059 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E308681E577BCC00CE7059 /* MenuViewController.swift */; };
 		78E464801E5A576F00758655 /* CreateRoomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E4647F1E5A576F00758655 /* CreateRoomController.swift */; };
 		9353860D1E5A500C00EB9871 /* HostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9353860C1E5A500C00EB9871 /* HostManager.swift */; };
+		93678D6F1E6543BB00E67B2B /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93678D6E1E6543BB00E67B2B /* Room.swift */; };
 		93EEF8661E5D111900868FCD /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9353860E1E5A51CD00EB9871 /* Player.swift */; };
 		93EEF8681E5D603600868FCD /* ClientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EEF8671E5D603600868FCD /* ClientManager.swift */; };
 /* End PBXBuildFile section */
@@ -68,6 +69,7 @@
 		78E4647F1E5A576F00758655 /* CreateRoomController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRoomController.swift; sourceTree = "<group>"; };
 		9353860C1E5A500C00EB9871 /* HostManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostManager.swift; sourceTree = "<group>"; };
 		9353860E1E5A51CD00EB9871 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		93678D6E1E6543BB00E67B2B /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		93EEF8671E5D603600868FCD /* ClientManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -202,6 +204,7 @@
 			children = (
 				9353860C1E5A500C00EB9871 /* HostManager.swift */,
 				93EEF8671E5D603600868FCD /* ClientManager.swift */,
+				93678D6E1E6543BB00E67B2B /* Room.swift */,
 				9353860E1E5A51CD00EB9871 /* Player.swift */,
 			);
 			name = Model;
@@ -366,6 +369,7 @@
 			files = (
 				93EEF8661E5D111900868FCD /* Player.swift in Sources */,
 				78C8CCE01E5D1ED600B28265 /* VillagerNightController.swift in Sources */,
+				93678D6F1E6543BB00E67B2B /* Room.swift in Sources */,
 				782E198E1E5B4BBB000B1945 /* MafiaNightController.swift in Sources */,
 				78E464801E5A576F00758655 /* CreateRoomController.swift in Sources */,
 				78E308671E57731000CE7059 /* LoginViewController.swift in Sources */,

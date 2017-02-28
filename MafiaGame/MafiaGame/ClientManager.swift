@@ -22,43 +22,38 @@ class ClientManager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate
     
     var session: MCSession!
     
-    var thisPlayer: Player
+    var thisPlayer: Player!
     
     var browser: MCNearbyServiceBrowser?
     
-    var foundHosts: [Player]
+    var foundHosts: [(Player, [String : String]?)]!
     
     // Singleton
-    static private(set) var shared: ClientManager!
+    static let shared: ClientManager = ClientManager()
     
-    static func initClientManager(player: Player) {
-        shared = ClientManager(player: player)
-    }
 
     //init
-    private init(player: Player) {
-        
-        //initialize other variables
-        
-        foundHosts = []
-        thisPlayer = player
-       
-        
+    private override init() {
+        // implemented for access control
         super.init()
+    }
+    
+    func startBrowsing(player: Player) {
+        // initialize variables
+        self.thisPlayer = player
+        self.foundHosts = []
+        self.session = MCSession(peer: player.getPeerID())
         
+        // initalize browser
+        self.browser = MCNearbyServiceBrowser(peer: player.getPeerID(), serviceType: "mafia-game")
+        browser?.delegate = self
         
-        // initialize browser
-        
-        browser = MCNearbyServiceBrowser(peer: peer, serviceType: "mafia-game")
-        browser!.delegate = self
-        
-        
-        
+        browser?.startBrowsingForPeers()
     }
     
     // function to get player from peerID
     func getPlayerFromPeerID(peerID: MCPeerID) -> Player? {
-        for player in foundPlayers {
+        for player in foundHosts.map({$0.0}) {
             if player.getPeerID() == peerID {
                 return player
             }
@@ -73,7 +68,7 @@ class ClientManager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate
     func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {
         
         if let foundPlayer = getPlayerFromPeerID(peerID: peerID) {
-            foundHosts.append(foundPlayer)
+            foundHosts.append((foundPlayer,info))
         }
         
         
@@ -83,7 +78,7 @@ class ClientManager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate
     func browser(_ browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
         
         
-        foundHosts = foundHosts.filter { $0.getPeerID() != peerID }
+        foundHosts = foundHosts.filter { $0.0.getPeerID() != peerID }
         
         clientDelegate?.lostHost()
     }
