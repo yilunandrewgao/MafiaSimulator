@@ -10,8 +10,8 @@ import UIKit
 import MultipeerConnectivity
 
 protocol HostManagerDelegate {
-    func requestWasReceived(fromPlayer: Player, callback: (Bool) -> Void)
-    func connectedWithPlayer(withPlayer: Player)
+    func requestWasReceived(fromPeerID: MCPeerID, callback: (Bool) -> Void)
+//    func connectedWithPlayer(withPlayer: Player)
     func disconnectedFromPlayer(fromPlayer: Player)
 }
 
@@ -117,9 +117,9 @@ class HostManager: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegat
         case MCSessionState.connected:
             print("Connected to session: \(session)")
             
-            if let player = getPlayerFromPeerID(peerID: peerID){
-                hostDelegate?.connectedWithPlayer(withPlayer: player)
-            }
+//            if let player = getPlayerFromPeerID(peerID: peerID){
+//                hostDelegate?.connectedWithPlayer(withPlayer: player)
+//            }
             
         case MCSessionState.connecting:
             print("Connecting to session: \(session)")
@@ -164,16 +164,16 @@ class HostManager: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegat
     // Advertiser delegate methods
     
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping ((Bool, MCSession?) -> Void)) {
-        if let player = getPlayerFromPeerID(peerID: peerID) {
-            hostDelegate?.requestWasReceived(fromPlayer: player, callback: { (shouldConnect: Bool) -> Void in
-                if shouldConnect {
-                    invitationHandler(true, session)
-                }
-                else {
-                    invitationHandler(false, nil)
-                }
-            })
-        }
+
+        hostDelegate?.requestWasReceived(fromPeerID:peerID, callback: { (shouldConnect: Bool) -> Void in
+            if shouldConnect {
+                invitationHandler(true, session)
+            }
+            else {
+                invitationHandler(false, nil)
+            }
+        })
+        
     }
     
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didNotStartAdvertisingPeer error: Error) {

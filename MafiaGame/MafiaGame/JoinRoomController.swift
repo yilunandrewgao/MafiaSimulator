@@ -18,12 +18,12 @@ class JoinRoomController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ClientManager.shared.foundHosts.count 
+        return ClientManager.shared.foundRooms.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RoomCell", for: indexPath)
         
-        cell.textLabel?.text = ClientManager.shared.foundHosts[indexPath.row]
+        cell.textLabel?.text = ClientManager.shared.foundRooms[indexPath.row]
         cell.detailTextLabel?.text = "Status"
         
         return cell

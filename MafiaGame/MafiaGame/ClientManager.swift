@@ -26,7 +26,7 @@ class ClientManager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate
     
     var browser: MCNearbyServiceBrowser?
     
-    var foundRooms : [Room]
+    var foundRooms : [Room]!
     
     // Singleton
     static let shared: ClientManager = ClientManager()
