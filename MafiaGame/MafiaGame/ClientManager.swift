@@ -42,8 +42,9 @@ class ClientManager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate
         // initialize variables
         self.thisPlayer = player
         self.foundRooms = []
+
         print("foundRoom")
-        self.session = MCSession(peer: player.getPeerID())
+
         
         // initalize browser
         self.browser = MCNearbyServiceBrowser(peer: player.getPeerID(), serviceType: "mafia-game")
