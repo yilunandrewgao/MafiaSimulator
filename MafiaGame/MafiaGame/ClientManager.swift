@@ -42,7 +42,6 @@ class ClientManager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate
         // initialize variables
         self.thisPlayer = player
         self.foundRooms = []
-        self.session = MCSession(peer: player.getPeerID())
         
         // initalize browser
         self.browser = MCNearbyServiceBrowser(peer: player.getPeerID(), serviceType: "mafia-game")
@@ -68,9 +67,8 @@ class ClientManager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate
         
         // add players to room
         let playerList = info!["currentPlayers"]!.characters.split {$0 == ","}.map(String.init)
-        let playerIDList = info!["currentPlayersID"]!.characters.split {$0 == ","}.map(String.init)
         for index in 0..<playerList.count {
-            let success = newRoom.addPlayer(player: Player(name: playerList[index], peerID: convertStringToPeerID(encodedString: playerIDList[index])))
+            let success = newRoom.addPlayer(player: Player(name: playerList[index]))
             if !success {
                 print("failed to add player")
             }

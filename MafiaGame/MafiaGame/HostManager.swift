@@ -29,7 +29,7 @@ class HostManager: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegat
     
     var foundPlayers: [Player]!
     
-    private var advertiser: MCNearbyServiceAdvertiser!
+    var advertiser: MCNearbyServiceAdvertiser!
     
     var thisPlayer: Player!
     
@@ -41,20 +41,18 @@ class HostManager: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegat
         let encodedData = NSKeyedArchiver.archivedData(withRootObject: peerID)
         let encodedString = encodedData.base64EncodedString()
         
-        return encodedString!
+        return encodedString
     }
     
     private func makeInfoDict(room: Room) -> [String: String]{
         var currentPlayerString = ""
-        var currentPlayerIDString = ""
         for player in room.currentPlayers {
             currentPlayerString += "\(player.getName()),"
-            currentPlayerIDString += "\(convertPeerIDToString(peerID: player.getPeerID())),"
         }
         currentPlayerString = currentPlayerString.substring(to: currentPlayerString.index(before: currentPlayerString.endIndex))
-        currentPlayerIDString = currentPlayerIDString.substring(to: currentPlayerIDString.index(before: currentPlayerIDString.endIndex))
         
-        let infoDict : [String: String] = ["roomName":room.roomName, "owner":room.owner.getName(), "maxPlayers":String(room.maxPlayers), "password": room.password, "currentPlayers": currentPlayerString, "currentPlayersID": currentPlayerIDString]
+        let infoDict : [String: String] = ["roomName":room.roomName, "owner":room.owner.getName(), "maxPlayers":String(room.maxPlayers), "password": room.password, "currentPlayers": currentPlayerString]
+
         
         return infoDict
     }
