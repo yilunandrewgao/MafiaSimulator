@@ -52,8 +52,8 @@ class ClientManager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate
     }
     
     private func convertStringToPeerID(encodedString : String) -> MCPeerID {
-        let encodedData = encodedString.data(using: .utf8)!
-        let peerID = NSKeyedUnarchiver.unarchiveObject(with: encodedData) as! MCPeerID
+        let encodedData = Data(base64Encoded: encodedString)
+        let peerID = NSKeyedUnarchiver.unarchiveObject(with: encodedData!) as! MCPeerID
         
         return peerID
     }

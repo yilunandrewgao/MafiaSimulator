@@ -39,7 +39,7 @@ class HostManager: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegat
     
     private func convertPeerIDToString(peerID: MCPeerID) -> String {
         let encodedData = NSKeyedArchiver.archivedData(withRootObject: peerID)
-        let encodedString = String(data: encodedData, encoding: .utf8)
+        let encodedString = encodedData.base64EncodedString()
         
         return encodedString!
     }
