@@ -144,11 +144,12 @@
                     <navigationItem key="navigationItem" title="Join a Room" id="JRu-v4-PLJ"/>
                     <connections>
                         <outlet property="roomTable" destination="eGh-Kb-yH0" id="qBv-0m-ghR"/>
+                        <segue destination="j3M-BO-uRS" kind="show" identifier="JoinRoomToWaitingRoom" id="81l-hx-7FU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B5i-uU-NyU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1829.5999999999999" y="135.38230884557723"/>
+            <point key="canvasLocation" x="1887" y="218"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2AH-1T-2Fu">
@@ -638,4 +639,7 @@
     <resources>
         <image name="Login_iphone6:7+" width="1080" height="1920"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="81l-hx-7FU"/>
+    </inferredMetricsTieBreakers>
 </document>

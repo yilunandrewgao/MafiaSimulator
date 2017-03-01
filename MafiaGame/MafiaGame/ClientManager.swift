@@ -80,6 +80,8 @@ class ClientManager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate
             }
         }
         
+        //set newRoom's host's peerID
+        newRoom.owner.setPeerID(peerID: peerID)
         
         foundRooms.append(newRoom)
         print(foundRooms.count)
