@@ -11,17 +11,19 @@ import MultipeerConnectivity
 
 class Room {
     
-    var roomName: String
-    var owner: Player
-    var maxPlayers : Int
+    let roomName: String
+    let owner: Player
+    let maxPlayers : Int
     var currentPlayers : [Player]
+    let password: String?
     
     
-    init (roomName: String, owner: Player, maxPlayers: Int) {
+    init (roomName: String, owner: Player, maxPlayers: Int, password: String?) {
         self.roomName = roomName
         self.owner = owner
         self.maxPlayers = maxPlayers
         self.currentPlayers = [owner]
+        self.password = password
     }
     
     func addPlayer(player: Player) -> Bool{
@@ -33,6 +35,12 @@ class Room {
             return true
         }
     }
+    
+    func dropPlayer(peerID: MCPeerID) {
+        currentPlayers = currentPlayers.filter {$0.getPeerID() != peerID}
+        
+    }
+    
     
     
 }

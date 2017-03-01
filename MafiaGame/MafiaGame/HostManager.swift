@@ -27,19 +27,13 @@ class HostManager: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegat
     
     var session: MCSession!
     
-    var playersInGame: [Player]!
-    
     var foundPlayers: [Player]!
     
     private var advertiser: MCNearbyServiceAdvertiser!
     
     var thisPlayer: Player!
     
-    var roomName: String!
-    
-    var maxPeople: Int!
-    
-    var password: String? = nil
+    var room: Room!
     
     static let shared: HostManager = HostManager()
     
@@ -49,23 +43,24 @@ class HostManager: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegat
         //initialize other variables
         
         self.session = MCSession(peer: player.getPeerID())
-        playersInGame = []
-        foundPlayers = []
-        thisPlayer = player
-        self.roomName = roomName
-        self.maxPeople = maxPeople
-        if let mypw = password {
-            self.password = mypw
-        }
+        self.room = Room(roomName: roomName, owner: player, maxPlayers: maxPeople, password: password)
         
         // initialize advertiser
-        let infoDict : [String: String] = ["roomName" : roomName, "owner": thisPlayer.getName()]
-        advertiser = MCNearbyServiceAdvertiser(peer: player.getPeerID(), discoveryInfo: infoDict, serviceType: "mafia-game")
-        advertiser.delegate = self
-
-        playersInGame.append(self.thisPlayer)
+        do {
+            let currentPlayerData = try JSONSerialization.data(withJSONObject: room.currentPlayers, options: [])
+            
+            let infoDict : [String: String] = ["roomName":room.roomName, "owner":room.owner.getName(), "maxPlayers":String(room.maxPlayers), "password": password, "currentPlayers": currentPlayerData]
+            advertiser = MCNearbyServiceAdvertiser(peer: player.getPeerID(), discoveryInfo: infoDict, serviceType: "mafia-game")
+            advertiser.delegate = self
+            
+            
+            advertiser.startAdvertisingPeer()
+        }
+        catch {
+            print("json error: \(error)")
+        }
         
-        advertiser.startAdvertisingPeer()
+        
 
     }
     
