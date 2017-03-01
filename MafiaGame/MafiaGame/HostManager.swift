@@ -11,7 +11,7 @@ import MultipeerConnectivity
 
 protocol HostManagerDelegate {
     func requestWasReceived(fromPeerID: MCPeerID, callback: (Bool) -> Void)
-//    func connectedWithPlayer(withPlayer: Player)
+    func connectedWithPlayer(withPlayer: Player)
     func disconnectedFromPlayer(fromPlayer: Player)
 }
 
@@ -37,22 +37,14 @@ class HostManager: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegat
     
     static let shared: HostManager = HostManager()
     
-    func convertPeerIDToString(peerID: MCPeerID) -> String {
+    private func convertPeerIDToString(peerID: MCPeerID) -> String {
         let encodedData = NSKeyedArchiver.archivedData(withRootObject: peerID)
         let encodedString = String(data: encodedData, encoding: .utf8)
         
         return encodedString!
     }
     
-    func startRoom(player: Player, roomName: String, maxPeople: Int, password: String) {
-        // Initialize values, setup advertiser, etc.
-        
-        //initialize other variables
-        
-        self.session = MCSession(peer: player.getPeerID())
-        self.room = Room(roomName: roomName, owner: player, maxPlayers: maxPeople, password: password)
-        
-        // initialize advertiser
+    private func makeInfoDict(room: Room) -> [String: String]{
         var currentPlayerString = ""
         var currentPlayerIDString = ""
         for player in room.currentPlayers {
@@ -62,15 +54,37 @@ class HostManager: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegat
         currentPlayerString = currentPlayerString.substring(to: currentPlayerString.index(before: currentPlayerString.endIndex))
         currentPlayerIDString = currentPlayerIDString.substring(to: currentPlayerIDString.index(before: currentPlayerIDString.endIndex))
         
-        let infoDict : [String: String] = ["roomName":room.roomName, "owner":room.owner.getName(), "maxPlayers":String(room.maxPlayers), "password": password, "currentPlayers": currentPlayerString, "currentPlayersID": currentPlayerIDString]
-        advertiser = MCNearbyServiceAdvertiser(peer: player.getPeerID(), discoveryInfo: infoDict, serviceType: "mafia-game")
+        let infoDict : [String: String] = ["roomName":room.roomName, "owner":room.owner.getName(), "maxPlayers":String(room.maxPlayers), "password": room.password, "currentPlayers": currentPlayerString, "currentPlayersID": currentPlayerIDString]
+        
+        return infoDict
+    }
+    
+    func readvertise() {
+        advertiser.stopAdvertisingPeer()
+        let infoDict = makeInfoDict(room: room)
+        
+        advertiser = MCNearbyServiceAdvertiser(peer: thisPlayer.getPeerID(), discoveryInfo: infoDict, serviceType: "mafia-game")
+        
+    }
+    
+    func startRoom(player: Player, roomName: String, maxPeople: Int, password: String) {
+        // Initialize values, setup advertiser, etc.
+        
+        thisPlayer = player
+        
+        self.session = MCSession(peer: thisPlayer.getPeerID())
+        self.room = Room(roomName: roomName, owner: thisPlayer, maxPlayers: maxPeople, password: password)
+        
+        // initialize advertiser
+        
+        let infoDict = makeInfoDict(room: room)
+        
+        advertiser = MCNearbyServiceAdvertiser(peer: thisPlayer.getPeerID(), discoveryInfo: infoDict, serviceType: "mafia-game")
         advertiser.delegate = self
         
         
         advertiser.startAdvertisingPeer()
         
-        
-
     }
     
     func endRoom() {
@@ -95,17 +109,6 @@ class HostManager: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegat
         super.init()
     }
     
-    // function to get player from peerID
-    func getPlayerFromPeerID(peerID: MCPeerID) -> Player? {
-        for player in foundPlayers {
-            if player.getPeerID() == peerID {
-                return player
-            }
-        }
-        return nil
-    }
-    
-    
     
     
     
@@ -117,9 +120,10 @@ class HostManager: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegat
         case MCSessionState.connected:
             print("Connected to session: \(session)")
             
-//            if let player = getPlayerFromPeerID(peerID: peerID){
-//                hostDelegate?.connectedWithPlayer(withPlayer: player)
-//            }
+            let player = Player(name: peerID.displayName, peerID: peerID)
+            
+            hostDelegate?.connectedWithPlayer(withPlayer: player)
+
             
         case MCSessionState.connecting:
             print("Connecting to session: \(session)")

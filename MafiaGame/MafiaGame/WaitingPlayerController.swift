@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class WaitingPlayerController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class WaitingPlayerController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
     
     func numberOfSections(in tableView: UITableView) -> Int {

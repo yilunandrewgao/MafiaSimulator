@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreateRoomController: UIViewController, HostManagerDelegate {
+class CreateRoomController: UIViewController{
     
     var thisPlayer:Player! = nil
     var thisRoomName: String!

@@ -23,7 +23,7 @@ class JoinRoomController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RoomCell", for: indexPath)
         
-        cell.textLabel?.text = ClientManager.shared.foundRooms[indexPath.row]
+        cell.textLabel?.text = ClientManager.shared.foundRooms[indexPath.row].roomName
         cell.detailTextLabel?.text = "Status"
         
         return cell
@@ -41,13 +41,13 @@ class JoinRoomController: UIViewController, UITableViewDataSource, UITableViewDe
     
     // ClientManager delegate functions
     
-    func foundPeer() {
+    func foundRoom() {
         
         roomTable.reloadData()
         
     }
     
-    func lostPeer() {
+    func lostRoom() {
         roomTable.reloadData()
     }
     
