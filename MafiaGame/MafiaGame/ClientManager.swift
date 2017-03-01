@@ -10,9 +10,9 @@ import UIKit
 import MultipeerConnectivity
 
 protocol ClientManagerDelegate {
-    func foundHost()
+    func foundRoom()
     
-    func lostHost()
+    func lostRoom()
 
 }
 
@@ -26,7 +26,7 @@ class ClientManager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate
     
     var browser: MCNearbyServiceBrowser?
     
-    var foundHosts: [(Player, [String : String]?)]!
+    var foundRooms : [Room]
     
     // Singleton
     static let shared: ClientManager = ClientManager()
@@ -41,7 +41,7 @@ class ClientManager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate
     func startBrowsing(player: Player) {
         // initialize variables
         self.thisPlayer = player
-        self.foundHosts = []
+        self.foundRooms = []
         self.session = MCSession(peer: player.getPeerID())
         
         // initalize browser
@@ -51,36 +51,43 @@ class ClientManager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate
         browser?.startBrowsingForPeers()
     }
     
-    // function to get player from peerID
-    func getPlayerFromPeerID(peerID: MCPeerID) -> Player? {
-        for player in foundHosts.map({$0.0}) {
-            if player.getPeerID() == peerID {
-                return player
-            }
-        }
-        return nil
+    func convertStringToPeerID(encodedString : String) -> MCPeerID {
+        let encodedData = encodedString.data(using: .utf8)!
+        let peerID = NSKeyedUnarchiver.unarchiveObject(with: encodedData) as! MCPeerID
+        
+        return peerID
     }
-    
 
     
     // MSNearbyServiceBrowserDelegate methods
     
     func browser(_ browser: MCNearbyServiceBrowser, foundPeer peerID: MCPeerID, withDiscoveryInfo info: [String : String]?) {
         
-        if let foundPlayer = getPlayerFromPeerID(peerID: peerID) {
-            foundHosts.append((foundPlayer,info))
+        let hostPlayer = Player(name: info!["owner"]!, peerID: peerID)
+        let newRoom = Room(roomName: info!["roomName"]!, owner: hostPlayer, maxPlayers: Int(info!["maxPlayers"]!)!, password: info!["password"]!)
+        
+        // add players to room
+        let playerList = info!["currentPlayers"]!.characters.split {$0 == ","}.map(String.init)
+        let playerIDList = info!["currentPlayersID"]!.characters.split {$0 == ","}.map(String.init)
+        for index in 0..<playerList.count {
+            let success = newRoom.addPlayer(player: Player(name: playerList[index], peerID: convertStringToPeerID(encodedString: playerIDList[index])))
+            if !success {
+                print("failed to add player")
+            }
         }
         
         
-        clientDelegate?.foundHost()
+        foundRooms.append(newRoom)
+        
+        clientDelegate?.foundRoom()
     }
     
     func browser(_ browser: MCNearbyServiceBrowser, lostPeer peerID: MCPeerID) {
         
         
-        foundHosts = foundHosts.filter { $0.0.getPeerID() != peerID }
+        foundRooms = foundRooms.filter { $0.owner.getPeerID() != peerID }
         
-        clientDelegate?.lostHost()
+        clientDelegate?.lostRoom()
     }
     
     func browser(_ browser: MCNearbyServiceBrowser, didNotStartBrowsingForPeers error: Error) {

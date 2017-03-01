@@ -37,7 +37,14 @@ class HostManager: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegat
     
     static let shared: HostManager = HostManager()
     
-    func startRoom(player: Player, roomName: String, maxPeople: Int, password: String?) {
+    func convertPeerIDToString(peerID: MCPeerID) -> String {
+        let encodedData = NSKeyedArchiver.archivedData(withRootObject: peerID)
+        let encodedString = String(data: encodedData, encoding: .utf8)
+        
+        return encodedString!
+    }
+    
+    func startRoom(player: Player, roomName: String, maxPeople: Int, password: String) {
         // Initialize values, setup advertiser, etc.
         
         //initialize other variables
@@ -46,19 +53,21 @@ class HostManager: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegat
         self.room = Room(roomName: roomName, owner: player, maxPlayers: maxPeople, password: password)
         
         // initialize advertiser
-        do {
-            let currentPlayerData = try JSONSerialization.data(withJSONObject: room.currentPlayers, options: [])
-            
-            let infoDict : [String: String] = ["roomName":room.roomName, "owner":room.owner.getName(), "maxPlayers":String(room.maxPlayers), "password": password, "currentPlayers": currentPlayerData]
-            advertiser = MCNearbyServiceAdvertiser(peer: player.getPeerID(), discoveryInfo: infoDict, serviceType: "mafia-game")
-            advertiser.delegate = self
-            
-            
-            advertiser.startAdvertisingPeer()
+        var currentPlayerString = ""
+        var currentPlayerIDString = ""
+        for player in room.currentPlayers {
+            currentPlayerString += "\(player.getName()),"
+            currentPlayerIDString += "\(convertPeerIDToString(peerID: player.getPeerID())),"
         }
-        catch {
-            print("json error: \(error)")
-        }
+        currentPlayerString = currentPlayerString.substring(to: currentPlayerString.index(before: currentPlayerString.endIndex))
+        currentPlayerIDString = currentPlayerIDString.substring(to: currentPlayerIDString.index(before: currentPlayerIDString.endIndex))
+        
+        let infoDict : [String: String] = ["roomName":room.roomName, "owner":room.owner.getName(), "maxPlayers":String(room.maxPlayers), "password": password, "currentPlayers": currentPlayerString, "currentPlayersID": currentPlayerIDString]
+        advertiser = MCNearbyServiceAdvertiser(peer: player.getPeerID(), discoveryInfo: infoDict, serviceType: "mafia-game")
+        advertiser.delegate = self
+        
+        
+        advertiser.startAdvertisingPeer()
         
         
 

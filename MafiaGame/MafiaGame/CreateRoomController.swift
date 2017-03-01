@@ -80,7 +80,7 @@ class CreateRoomController: UIViewController, HostManagerDelegate {
                 
             }
             else{
-                HostManager.shared.startRoom(player: thisPlayer, roomName: thisRoomName, maxPeople: maxPeopleForRoom, password: nil)
+                HostManager.shared.startRoom(player: thisPlayer, roomName: thisRoomName, maxPeople: maxPeopleForRoom, password: "")
             }
             
                         

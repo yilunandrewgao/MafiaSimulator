@@ -15,10 +15,10 @@ class Room {
     let owner: Player
     let maxPlayers : Int
     var currentPlayers : [Player]
-    let password: String?
+    let password: String
     
     
-    init (roomName: String, owner: Player, maxPlayers: Int, password: String?) {
+    init (roomName: String, owner: Player, maxPlayers: Int, password: String) {
         self.roomName = roomName
         self.owner = owner
         self.maxPlayers = maxPlayers
