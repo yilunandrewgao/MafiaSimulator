@@ -44,6 +44,8 @@ class MenuViewController: UIViewController {
             
     }
     
+    //MARK: Properties (IBOutlet) collection of avatars
+    @IBOutlet weak var avatarCollection: UICollectionView!
     
 }
 

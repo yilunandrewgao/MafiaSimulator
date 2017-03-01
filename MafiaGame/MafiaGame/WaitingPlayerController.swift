@@ -17,12 +17,12 @@ class WaitingPlayerController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return HostManager.shared.playersInGame.count
+        return HostManager.shared.room.currentPlayers.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UsernameCell", for: indexPath)
         
-        cell.textLabel?.text = HostManager.shared.playersInGame[indexPath.row].getName()
+        cell.textLabel?.text = HostManager.shared.room.currentPlayers[indexPath.row].getName()
         return cell
     }
 
@@ -42,6 +42,8 @@ class WaitingPlayerController: UIViewController, UITableViewDataSource, UITableV
         //because numMafia and maxPeople are constants
         var numM = numMafia
         var maxP = maxPeople
+        
+        //empty array for players
         var roleList : [String] = []
         while maxPeople > 0 {
             
