@@ -48,18 +48,11 @@ class HostManager: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegat
         var currentPlayerString = ""
         for player in room.currentPlayers {
             currentPlayerString += "\(player.getName()),"
-<<<<<<< HEAD
-            
-=======
->>>>>>> a3d3c0a8c62fcaa8f0649b9ede9378f6433843aa
+
         }
         currentPlayerString = currentPlayerString.substring(to: currentPlayerString.index(before: currentPlayerString.endIndex))
         
         let infoDict : [String: String] = ["roomName":room.roomName, "owner":room.owner.getName(), "maxPlayers":String(room.maxPlayers), "password": room.password, "currentPlayers": currentPlayerString]
-<<<<<<< HEAD
-=======
-
->>>>>>> a3d3c0a8c62fcaa8f0649b9ede9378f6433843aa
         
         return infoDict
     }
