@@ -71,6 +71,7 @@ class HostManager: NSObject, MCSessionDelegate, MCNearbyServiceAdvertiserDelegat
         thisPlayer = player
         
         self.session = MCSession(peer: thisPlayer.getPeerID())
+        session.delegate = self
         self.room = Room(roomName: roomName, owner: thisPlayer, maxPlayers: maxPeople, password: password)
         
         // initialize advertiser

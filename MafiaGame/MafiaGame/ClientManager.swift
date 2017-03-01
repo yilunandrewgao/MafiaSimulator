@@ -45,10 +45,12 @@ class ClientManager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate
 
         print("foundRoom")
 
+        self.session = MCSession(peer: thisPlayer.getPeerID())
+        session.delegate = self
         
         // initalize browser
         self.browser = MCNearbyServiceBrowser(peer: player.getPeerID(), serviceType: "mafia-game")
-        browser?.delegate = self
+        self.browser?.delegate = self
         
         browser?.startBrowsingForPeers()
     

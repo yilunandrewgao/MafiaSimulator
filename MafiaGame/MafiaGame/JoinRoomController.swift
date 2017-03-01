@@ -47,12 +47,18 @@ class JoinRoomController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func foundRoom() {
         
-        roomTable.reloadData()
+        DispatchQueue.main.async {
+            self.roomTable.reloadData()
+        }
+        
         
     }
     
     func lostRoom() {
-        roomTable.reloadData()
+        DispatchQueue.main.async{
+            self.roomTable.reloadData()
+        }
+        
     }
     
     // MARK: Properties (IBOutlet) table of lists of available rooms
