@@ -36,22 +36,34 @@ class WaitingPlayerController: UIViewController, UITableViewDataSource, UITableV
         // Dispose of any resources that can be recreated.
     }
     
-//    func generateRoles(for numMafia: Int, in maxPeople: Int) -> [String] {
-//        var roleList = []
-//        while numMafia > 0 {
-//            roleList.append("mafia")
-//            numMafia -= 1
-//        }
-//        
-//        
-//        
-//    }
     
-    var numMafia: Int {
-        get {
-            let mafia = sqrt(Float(HostManager.shared.maxPeople))
-            return Int(mafia)
+    //generate the roles that should be assigned to players in one particular session
+    func generateRoles(for numMafia: Int, in maxPeople: Int) -> [String] {
+        //because numMafia and maxPeople are constants
+        var numM = numMafia
+        var maxP = maxPeople
+        var roleList : [String] = []
+        while maxPeople > 0 {
+            
+            if numMafia > 0 {
+                roleList.append("mafia")
+                numM -= 1
+            }
+            
+            maxP -= 1
         }
+        
+        return roleList
+        
+        
+    }
+    
+    //number of mafia a particular session should contain
+    func numMafia() -> Int {
+        
+        let mafia = sqrt(Float(HostManager.shared.room.maxPlayers))
+        return Int(mafia)
+        
     }
     
     @IBAction func startGame(_ sender: Any) {

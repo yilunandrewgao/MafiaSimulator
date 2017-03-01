@@ -200,12 +200,36 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Pgf-3F-7zm">
+                                <rect key="frame" x="1" y="400" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Q3P-4r-dmZ">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="rlh-0a-0L5">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Pgf-3F-7zm" firstAttribute="top" secondItem="Z4e-zD-IS0" secondAttribute="bottom" id="6DT-zC-owC"/>
                             <constraint firstItem="xRE-hT-D4N" firstAttribute="centerX" secondItem="lii-Li-wb8" secondAttribute="centerX" id="FcN-6c-cOm"/>
                             <constraint firstItem="uYD-gG-A1j" firstAttribute="top" secondItem="qYC-ad-csw" secondAttribute="bottom" constant="20" id="JwX-7o-6m9"/>
+                            <constraint firstAttribute="trailing" secondItem="Pgf-3F-7zm" secondAttribute="trailing" id="MgI-rS-IPT"/>
+                            <constraint firstItem="dEr-4z-oyf" firstAttribute="top" secondItem="Pgf-3F-7zm" secondAttribute="bottom" id="Oel-B9-mOd"/>
                             <constraint firstItem="uYD-gG-A1j" firstAttribute="centerX" secondItem="lii-Li-wb8" secondAttribute="centerX" id="W0J-dv-OzS"/>
+                            <constraint firstItem="Pgf-3F-7zm" firstAttribute="leading" secondItem="lii-Li-wb8" secondAttribute="leading" id="YkG-E7-KrR"/>
                             <constraint firstItem="Z4e-zD-IS0" firstAttribute="top" secondItem="xRE-hT-D4N" secondAttribute="bottom" constant="40" id="fvk-LW-P6W"/>
                             <constraint firstItem="xRE-hT-D4N" firstAttribute="top" secondItem="qYC-ad-csw" secondAttribute="bottom" constant="200" id="n7T-y9-Ojw"/>
                             <constraint firstItem="Z4e-zD-IS0" firstAttribute="centerX" secondItem="lii-Li-wb8" secondAttribute="centerX" id="uSg-mi-hLc"/>
@@ -244,8 +268,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Turns:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ou3-c4-nbj">
-                                <rect key="frame" x="10" y="211" width="48" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Allow Turns:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ou3-c4-nbj">
+                                <rect key="frame" x="10" y="211" width="93" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -265,10 +289,10 @@
                                 </connections>
                             </button>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="UOL-h8-GVG">
-                                <rect key="frame" x="103" y="201" width="51" height="31"/>
+                                <rect key="frame" x="148" y="201" width="51" height="31"/>
                             </switch>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="JYx-hx-XEL">
-                                <rect key="frame" x="103" y="237" width="51" height="31"/>
+                                <rect key="frame" x="148" y="237" width="51" height="31"/>
                             </switch>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GYI-xR-uPT">
                                 <rect key="frame" x="159" y="84" width="201" height="30"/>
