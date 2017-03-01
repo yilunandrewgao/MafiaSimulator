@@ -18,11 +18,14 @@ class JoinRoomController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ClientManager.shared.foundRooms.count
+        let roomCount = ClientManager.shared.foundRooms.count
+        print(roomCount)
+        return roomCount
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RoomCell", for: indexPath)
-        
+        //print(ClientManager.shared.foundRooms.count)
         cell.textLabel?.text = ClientManager.shared.foundRooms[indexPath.row].roomName
         cell.detailTextLabel?.text = "Status"
         
@@ -32,6 +35,7 @@ class JoinRoomController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         ClientManager.shared.startBrowsing(player: thisPlayer)
+       
     }
     
     override func didReceiveMemoryWarning() {

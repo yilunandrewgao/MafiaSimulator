@@ -42,6 +42,7 @@ class ClientManager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate
         // initialize variables
         self.thisPlayer = player
         self.foundRooms = []
+        print("foundRoom")
         self.session = MCSession(peer: player.getPeerID())
         
         // initalize browser
@@ -49,6 +50,7 @@ class ClientManager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate
         browser?.delegate = self
         
         browser?.startBrowsingForPeers()
+    
     }
     
     private func convertStringToPeerID(encodedString : String) -> MCPeerID {
@@ -68,9 +70,8 @@ class ClientManager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate
         
         // add players to room
         let playerList = info!["currentPlayers"]!.characters.split {$0 == ","}.map(String.init)
-        let playerIDList = info!["currentPlayersID"]!.characters.split {$0 == ","}.map(String.init)
         for index in 0..<playerList.count {
-            let success = newRoom.addPlayer(player: Player(name: playerList[index], peerID: convertStringToPeerID(encodedString: playerIDList[index])))
+            let success = newRoom.addPlayer(player: Player(name: playerList[index]))
             if !success {
                 print("failed to add player")
             }
@@ -78,6 +79,7 @@ class ClientManager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate
         
         
         foundRooms.append(newRoom)
+        print(foundRooms.count)
         
         clientDelegate?.foundRoom()
     }
@@ -86,6 +88,7 @@ class ClientManager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate
         
         
         foundRooms = foundRooms.filter { $0.owner.getPeerID() != peerID }
+        print("lostPeer")
         
         clientDelegate?.lostRoom()
     }
