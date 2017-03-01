@@ -47,16 +47,23 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Login_iphone6:7+" translatesAutoresizingMaskIntoConstraints="NO" id="s2V-d8-iGm">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="cj3-7V-OsT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1mx-AB-LZu"/>
+                            <constraint firstItem="s2V-d8-iGm" firstAttribute="baseline" secondItem="8bC-Xf-vdC" secondAttribute="baseline" id="GXF-0F-Pn8"/>
                             <constraint firstItem="dbK-7g-jd0" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="15" id="Kx8-pg-epY"/>
                             <constraint firstItem="tbB-na-tnJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="N6z-9l-N6p"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="tbB-na-tnJ" secondAttribute="bottom" constant="50" id="QRk-Gz-Roo"/>
                             <constraint firstItem="cj3-7V-OsT" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Wwd-Cg-F4f"/>
+                            <constraint firstItem="s2V-d8-iGm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ZfC-2d-Ubv"/>
                             <constraint firstItem="txq-Dp-KyA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bwn-Bw-cNr"/>
+                            <constraint firstAttribute="trailing" secondItem="s2V-d8-iGm" secondAttribute="trailing" id="c4a-Av-TZ9"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="txq-Dp-KyA" secondAttribute="bottom" constant="75" id="i9m-fg-16d"/>
+                            <constraint firstItem="s2V-d8-iGm" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="kCY-4W-4XQ"/>
                             <constraint firstItem="dbK-7g-jd0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="y4G-ZX-SIU"/>
                         </constraints>
                     </view>
@@ -68,7 +75,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1030" y="155"/>
+            <point key="canvasLocation" x="1029.5999999999999" y="154.27286356821591"/>
         </scene>
         <!--Join Room Controller-->
         <scene sceneID="gOf-Ga-c2I">
@@ -510,11 +517,11 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6dc-cT-ySi" id="K52-BS-O61">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5cA-4v-PoW">
-                                                    <rect key="frame" x="15" y="0.0" width="345" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -594,4 +601,7 @@
             <point key="canvasLocation" x="2560.8000000000002" y="962.96851574212906"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Login_iphone6:7+" width="1080" height="1920"/>
+    </resources>
 </document>
