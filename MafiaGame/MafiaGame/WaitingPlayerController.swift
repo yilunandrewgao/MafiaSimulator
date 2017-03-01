@@ -36,15 +36,21 @@ class WaitingPlayerController: UIViewController, UITableViewDataSource, UITableV
         // Dispose of any resources that can be recreated.
     }
     
-    func generateRoles(for numMafia: Int, in maxPeople: Int) -> [String] {
-        var roleList = []
-        
-    }
+//    func generateRoles(for numMafia: Int, in maxPeople: Int) -> [String] {
+//        var roleList = []
+//        while numMafia > 0 {
+//            roleList.append("mafia")
+//            numMafia -= 1
+//        }
+//        
+//        
+//        
+//    }
     
     var numMafia: Int {
         get {
-            let random = sqrt(Float(HostManager.shared.maxPeople))
-            return Int(random)
+            let mafia = sqrt(Float(HostManager.shared.maxPeople))
+            return Int(mafia)
         }
     }
     
