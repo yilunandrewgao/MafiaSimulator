@@ -28,7 +28,7 @@ class JoinRoomController: UIViewController, UITableViewDataSource, UITableViewDe
 
         let room = ClientManager.shared.foundRooms[indexPath.row]
         cell.textLabel?.text = room.roomName
-        cell.detailTextLabel?.text = "\(room.owner): \(room.currentPlayers.count)/\(room.maxPlayers)"
+        cell.detailTextLabel?.text = "\(room.owner.getName()): \(room.currentPlayers.count)/\(room.maxPlayers)"
         
         return cell
     }
@@ -47,7 +47,9 @@ class JoinRoomController: UIViewController, UITableViewDataSource, UITableViewDe
             let enteredPassword = alertController.textFields?.first?.text ?? ""
             
             if enteredPassword == selectedRoom.password {
-                ClientManager.shared.browser?.invitePeer(HostManager.shared.room.owner.getPeerID(), to: ClientManager.shared.session, withContext: nil, timeout: 0)
+                ClientManager.shared.browser?.invitePeer(selectedRoom.owner.getPeerID(), to: ClientManager.shared.session, withContext: nil, timeout: 0)
+                
+                self.performSegue(withIdentifier: "JoinRoomToWaitingRoom", sender: nil)
             }
             
         }))

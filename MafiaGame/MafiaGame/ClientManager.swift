@@ -73,7 +73,7 @@ class ClientManager: NSObject, MCSessionDelegate, MCNearbyServiceBrowserDelegate
         
         // add players to room
         let playerList = info!["currentPlayers"]!.characters.split {$0 == ","}.map(String.init)
-        for index in 0..<playerList.count {
+        for index in 1..<playerList.count {
             let success = newRoom.addPlayer(player: Player(name: playerList[index]))
             if !success {
                 print("failed to add player")

@@ -58,6 +58,7 @@ class LoginViewController: UIViewController {
                 self.storeUsername(username)
                 self.username = username
             }
+            
         }))
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(alertController, animated: true, completion: nil)

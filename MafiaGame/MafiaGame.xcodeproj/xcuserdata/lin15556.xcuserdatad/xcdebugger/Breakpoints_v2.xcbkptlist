@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MafiaGame/ClientManager.swift"
-            timestampString = "510093524.964726"
+            timestampString = "510094324.725854"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
             landmarkName = "browser(_:foundPeer:withDiscoveryInfo:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MafiaGame/ClientManager.swift"
-            timestampString = "510093524.964726"
+            timestampString = "510094324.725854"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
             landmarkName = "browser(_:foundPeer:withDiscoveryInfo:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -95,7 +95,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "37"
             endingLineNumber = "37"
-            landmarkName = "viewDidLoad()"
+            landmarkName = "tableView(_:didSelectRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
