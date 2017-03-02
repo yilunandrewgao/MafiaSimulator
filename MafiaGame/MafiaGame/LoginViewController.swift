@@ -8,9 +8,12 @@
 
 
 import UIKit
+import Foundation
 
 class LoginViewController: UIViewController {
 
+    //MARK: Properties (private) which image 
+    var imageVersion = 1
     
     // MARK: Properties (IBOutlet) username output
     @IBOutlet weak var usernameOutput: UILabel!
@@ -21,6 +24,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        var timer = Timer.scheduledTimer(timeInterval: 2,target:self, selector: Selector("loadImage"), userInfo:nil, repeats: true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -82,6 +86,18 @@ class LoginViewController: UIViewController {
         }
     }
     
+    //MARK: Properties (IBOutlet) login screen image
+    @IBOutlet weak var loginScreen: UIImageView!
     
+    func loadImage(){
+        if imageVersion == 2 {
+            loginScreen.image = UIImage(named:"loginLightVersion6:7+")
+            imageVersion = 1
+        }
+        else {
+            loginScreen.image = UIImage(named:"loginDarkVersion6:7+")
+            imageVersion = 2
+        }
+    }
 }
 
