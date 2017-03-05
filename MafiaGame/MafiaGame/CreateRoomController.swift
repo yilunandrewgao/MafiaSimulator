@@ -83,7 +83,7 @@ class CreateRoomController: UIViewController{
                 HostManager.shared.startRoom(player: thisPlayer, roomName: thisRoomName, maxPeople: maxPeopleForRoom, password: "")
             }
             
-                        
+            
             
             
             performSegue(withIdentifier: "GotoWaitingRoom", sender: nil)
@@ -102,6 +102,21 @@ class CreateRoomController: UIViewController{
         // Present alert controller to ask player about invitation
         // In alert action invoke the callback with true or false as appropriate
         callback(true)
+    }
+    
+    // MARK: Properties (IBAction) help message for turns
+    @IBAction func turnHelp(_ sender: Any) {
+        let alertController = UIAlertController(title: "Help: Turns", message: "Each Villager has a minute to speak", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    // MARK: Properties (IBAction) help message for private
+    
+    @IBAction func privateHelp(_ sender: Any) {
+        let alertController = UIAlertController(title: "Help: Private", message: "Room is password protected", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+        present(alertController, animated: true, completion: nil)
     }
 }
 

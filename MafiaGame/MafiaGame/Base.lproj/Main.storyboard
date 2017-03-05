@@ -319,10 +319,24 @@
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RHo-ro-uQa">
-                                <rect key="frame" x="209" y="238" width="66" height="30"/>
+                                <rect key="frame" x="197" y="238" width="66" height="30"/>
                                 <state key="normal" title="password"/>
                                 <connections>
                                     <action selector="setPassword:" destination="Xqt-6T-Yje" eventType="touchUpInside" id="pfX-WY-GkA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bbp-0B-jQa">
+                                <rect key="frame" x="157" y="202" width="30" height="30"/>
+                                <state key="normal" title="?"/>
+                                <connections>
+                                    <action selector="turnHelp:" destination="Xqt-6T-Yje" eventType="touchUpInside" id="ggi-Ws-JuD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CgL-yV-Hdy">
+                                <rect key="frame" x="157" y="238" width="30" height="30"/>
+                                <state key="normal" title="?"/>
+                                <connections>
+                                    <action selector="privateHelp:" destination="Xqt-6T-Yje" eventType="touchUpInside" id="SMa-0D-WJc"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -335,18 +349,22 @@
                             <constraint firstItem="ZZl-S4-haD" firstAttribute="trailing" secondItem="GYI-xR-uPT" secondAttribute="trailing" id="7Y4-7h-fIe"/>
                             <constraint firstItem="BSp-Hc-Y6R" firstAttribute="leading" secondItem="0I3-ql-SmJ" secondAttribute="leading" constant="10" id="DEs-GB-I5X"/>
                             <constraint firstItem="UOL-h8-GVG" firstAttribute="leading" secondItem="Ou3-c4-nbj" secondAttribute="trailing" constant="45" id="Etx-rp-xId"/>
+                            <constraint firstItem="bbp-0B-jQa" firstAttribute="leading" secondItem="UOL-h8-GVG" secondAttribute="trailing" constant="5" id="FAj-lw-i2t"/>
                             <constraint firstItem="Ou3-c4-nbj" firstAttribute="leading" secondItem="0I3-ql-SmJ" secondAttribute="leading" constant="10" id="IG9-eb-HhY"/>
                             <constraint firstItem="JYx-hx-XEL" firstAttribute="top" secondItem="UOL-h8-GVG" secondAttribute="bottom" constant="5" id="Ika-z6-bZv"/>
+                            <constraint firstItem="RHo-ro-uQa" firstAttribute="leading" secondItem="CgL-yV-Hdy" secondAttribute="trailing" constant="10" id="Kwf-WN-QCE"/>
                             <constraint firstItem="UOL-h8-GVG" firstAttribute="top" secondItem="95B-Jw-0eY" secondAttribute="bottom" constant="40" id="N4v-V0-ZBr"/>
                             <constraint firstItem="apE-Xo-2l9" firstAttribute="top" secondItem="Ou3-c4-nbj" secondAttribute="bottom" constant="15" id="OkE-hG-6hD"/>
-                            <constraint firstAttribute="trailing" secondItem="RHo-ro-uQa" secondAttribute="trailing" constant="100" id="PfK-bF-tlS"/>
                             <constraint firstItem="95B-Jw-0eY" firstAttribute="leading" secondItem="0I3-ql-SmJ" secondAttribute="leading" constant="10" id="Pgq-be-fYq"/>
                             <constraint firstItem="JYx-hx-XEL" firstAttribute="leading" secondItem="UOL-h8-GVG" secondAttribute="leading" id="TnC-ot-hCb"/>
+                            <constraint firstItem="bbp-0B-jQa" firstAttribute="bottom" secondItem="UOL-h8-GVG" secondAttribute="bottom" id="UR8-9O-5sQ"/>
                             <constraint firstItem="apE-Xo-2l9" firstAttribute="leading" secondItem="0I3-ql-SmJ" secondAttribute="leading" constant="10" id="UwY-nt-ZUB"/>
                             <constraint firstItem="95B-Jw-0eY" firstAttribute="top" secondItem="BSp-Hc-Y6R" secondAttribute="bottom" constant="30" id="ggv-eN-yyU"/>
+                            <constraint firstItem="CgL-yV-Hdy" firstAttribute="leading" secondItem="JYx-hx-XEL" secondAttribute="trailing" constant="5" id="kQx-is-tze"/>
                             <constraint firstItem="RHo-ro-uQa" firstAttribute="bottom" secondItem="JYx-hx-XEL" secondAttribute="bottom" id="nKl-gf-7by"/>
                             <constraint firstItem="BSp-Hc-Y6R" firstAttribute="top" secondItem="aRB-Qx-ZJb" secondAttribute="bottom" constant="25" id="p9X-jQ-SRw"/>
                             <constraint firstAttribute="trailing" secondItem="GYI-xR-uPT" secondAttribute="trailing" constant="15" id="rAa-DZ-Z1A"/>
+                            <constraint firstItem="CgL-yV-Hdy" firstAttribute="bottom" secondItem="JYx-hx-XEL" secondAttribute="bottom" id="us6-ZA-JP7"/>
                             <constraint firstItem="GYI-xR-uPT" firstAttribute="top" secondItem="aRB-Qx-ZJb" secondAttribute="bottom" constant="20" id="weo-WR-utr"/>
                         </constraints>
                     </view>
@@ -665,6 +683,6 @@
         <image name="loginLightVersion6:7+" width="1080" height="1920"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="81l-hx-7FU"/>
+        <segue reference="ktb-Mz-2rW"/>
     </inferredMetricsTieBreakers>
 </document>
