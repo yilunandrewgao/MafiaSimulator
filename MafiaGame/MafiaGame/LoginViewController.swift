@@ -84,6 +84,11 @@ class LoginViewController: UIViewController {
         if self.username != "Username" {
             performSegue(withIdentifier: "LoginToMenu", sender: nil)
         }
+        else {
+            let alertController = UIAlertController(title: "Login", message: "Please login", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+            present(alertController, animated: true, completion: nil)
+        }
     }
     
     //MARK: Properties (IBOutlet) login screen image
