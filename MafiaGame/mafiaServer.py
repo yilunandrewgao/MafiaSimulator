@@ -26,6 +26,12 @@ def connect():
     def createRoom():
     	pass
 
+    @socketio.on('deleteRoom')
+    def deleteRoom():
+    	pass
+
+
+
     @socketio.on("connectUser")
 	def connectUser(clientNickname):
 		message = "User " + clientNickname + " has connected. "
