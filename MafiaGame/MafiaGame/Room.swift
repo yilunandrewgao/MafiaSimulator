@@ -11,11 +11,12 @@ import MultipeerConnectivity
 
 class Room {
     
+    let playerList: [Player]
     let roomName: String
-    let owner: Player
-    let maxPlayers : Int
-    var currentPlayers : [Player]
     let password: String
+    let maxPlayers : Int
+    let owner: Player
+    
     
     
     init (roomName: String, owner: Player, maxPlayers: Int, password: String) {
@@ -26,21 +27,21 @@ class Room {
         self.password = password
     }
     
-    func addPlayer(player: Player) -> Bool{
-        if currentPlayers.count >= maxPlayers {
-            return false
-        }
-        else {
-            currentPlayers.append(player)
-            return true
-        }
-    }
-    
-    func dropPlayer(peerID: MCPeerID) {
-        currentPlayers = currentPlayers.filter {$0.getPeerID() != peerID}
-        
-    }
-    
+//    func addPlayer(player: Player) -> Bool{
+//        if currentPlayers.count >= maxPlayers {
+//            return false
+//        }
+//        else {
+//            currentPlayers.append(player)
+//            return true
+//        }
+//    }
+//    
+//    func dropPlayer(peerID: MCPeerID) {
+//        currentPlayers = currentPlayers.filter {$0.getPeerID() != peerID}
+//        
+//    }
+//    
     
     
 }

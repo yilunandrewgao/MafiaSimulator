@@ -8,7 +8,7 @@
 
 import UIKit
 
-class JsonRoomParse{
+extension Room{
     var playerListParse = [[String:String]]()
     var roomNameParse: String
     var roomPasswordParse: String
