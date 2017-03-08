@@ -22,6 +22,7 @@ def connect():
         		user["isConnected"] = False;
         		playerUsername = user["username"]
         		break
+
     @socketio.on('createRoom')
     def createRoom():
     	pass
@@ -31,9 +32,10 @@ def connect():
     	pass
 
 
+    
 
     @socketio.on("connectUser")
-	def connectUser(clientNickname):
+	def connectUser(clientNickname, roomName):
 		message = "User " + clientNickname + " has connected. "
 		print(message)
 
