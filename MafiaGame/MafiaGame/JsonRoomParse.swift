@@ -9,26 +9,38 @@
 import UIKit
 
 extension Room{
-    var playerListParse = [[String:String]]()
-    var roomNameParse: String
-    var roomPasswordParse: String
-    var maxPlayersParse: Int
-    var ownerInfoParse = [String:String]()
+//    var playerListParse = [[String:String]]()
+//    var roomNameParse: String
+//    var roomPasswordParse: String
+//    var maxPlayersParse: Int
+//    var ownerInfoParse = [String:String]()
     
     var playerList : [Player]
     
-    func parse(json: JSON) throws{
+    func playerListParse(json: JSON){
         guard let players = json["playerList"] as? [[String:String]] else {
             throw JsonError.checkError(noPlayerList)
         }
+        
+        return players
+    }
+    
+    func roomNameParse(json: JSON){
         guard let roomName = json["roomName"] as? String else{
             throw JsonError.checkError(noRoomName)
             
         }
-        guard let roomPassword = json["password"] as? String else{
-            throw JsonError.checkError(noPasword)
+        
+        return roomName
+    }
+    
+    func parse(json: JSON) throws{
+        
+        guard let roomName = json["roomName"] as? String else{
+            throw JsonError.checkError(noRoomName)
             
         }
+                }
         guard let maxPlayers = json["maxPlayers"] as? Int else{
             throw JsonError.checkError(noMaxPlayer)
             
@@ -38,9 +50,8 @@ extension Room{
             
         }
         
-        self.playerListParse = players
+       
         self.roomNameParse = roomName
-        self.roomPasswordParse = roomPassword
         self.maxPlayersParse = maxPlayers
         self.ownerInfoParse = ownerInfo
         self.playerList = createPlayerList()
