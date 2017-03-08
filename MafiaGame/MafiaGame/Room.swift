@@ -6,8 +6,8 @@
 //  Copyright © 2017 Yufang Lin. All rights reserved.
 //
 
-import Foundation
-import MultipeerConnectivity
+import UIKit
+
 
 class Room {
     
@@ -19,7 +19,7 @@ class Room {
     
     
     
-    init (roomName: String, owner: Player, maxPlayers: Int, password: String) {
+    init() {
         self.roomName = roomName
         self.owner = owner
         self.maxPlayers = maxPlayers

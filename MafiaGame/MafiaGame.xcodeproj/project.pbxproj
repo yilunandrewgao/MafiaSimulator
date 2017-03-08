@@ -284,7 +284,6 @@
 		78E308621E57693B00CE7059 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				78935B291E6FC3DC0031D88F /* JsonRoomParse.swift */,
 				78935B2B1E7063410031D88F /* JsonError.swift */,
 			);
 			name = Service;
@@ -321,6 +320,7 @@
 		78E308651E57695700CE7059 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				78935B291E6FC3DC0031D88F /* JsonRoomParse.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";

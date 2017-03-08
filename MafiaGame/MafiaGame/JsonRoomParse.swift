@@ -17,7 +17,7 @@ extension Room{
     
     var playerList : [Player]
     
-    public init(json: JSON) throws{
+    func parse(json: JSON) throws{
         guard let players = json["playerList"] as? [[String:String]] else {
             throw JsonError.checkError(noPlayerList)
         }
