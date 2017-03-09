@@ -15,6 +15,6 @@ roomList = [room1,room2]
 
 print(json.dumps(room1,cls = MafiaEncoder.MafiaEncoder))
 
-# print(json.dumps(roomList, cls = MafiaEncoder.MafiaEncoder))
+print(json.dumps(roomList, cls = MafiaEncoder.MafiaEncoder))
 
-# print(json.dumps(roomList, cls = MafiaEncoder.SimpleMafiaEncoder))
+print(json.dumps(roomList, cls = MafiaEncoder.SimpleMafiaEncoder))
