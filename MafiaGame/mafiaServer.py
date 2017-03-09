@@ -2,27 +2,33 @@ from flask import Flask, render_template, request
 from flask_socketio import SocketIO, send, emit
 from Player import Player
 from Room import Room
+import MafiaEncoder
+import json
 
 app = Flask(__name__)
 socketio = SocketIO(app)
 
 
-roomDict = {}
-playerLookupDict = {}
+roomList = []
+playerList = []
+
+
 
 
 @socketio.on('connect')
 def on_connect():
-	print("a player connected")
+	name = request.args["name"]
+	sid = request.sid
+	isConnected = True
+
+	userInfo = {"name":name, "sid": sid, "isConnected": isConnected}
+	playerList.append(userInfo)
+
+	socketio.emit("roomListUpdate", json.dumps([room.toSimpleJSON for room in roomList], \
+		cls = MafiaEncoder.SimpleMafiaEncoder))
 
 @socketio.on('disconnect')
 def on_disconnect():
-    # check if player has already logged in
-    if request.sid in playerLookupDict:
-    	print(playerLookupDict[request.sid], " disconnected")
-
-    else:
-    	print("a un-logged-in player has disconnected")
 
 @socketio.on('createRoom')
 def on_create_room():
@@ -34,30 +40,6 @@ def on_delete_room():
 
 @socketio.on("connectUser")
 def on_connect_user(clientNickname):
-	# message = "User " + clientNickname + " has connected. "
-	# print(message)
-
-
-	# userInfo = {}
-	# foundUser = False
-	# for user in userList:
-	# 	if (user["nickname"] == clientNickname):
-	# 		user["isConnected"] = True
-	# 		user["id"] = request.sid
-	# 		userInfo = user
-	# 		foundUser = True
-	# 		break
-
-	# if (not foundUser):
-	# 	userInfo["id"] = request.sid
-	# 	userInfo["nickname"] = clientNickname
-	# 	userInfo["isConnected"] = True
-	# 	userList.append(userInfo)
-
-	# socketio.emit("userList", userList)
-	# socketio.emit("userConnectUpdate", userInfo)
-
-	# print("connectUser-userList: ",  userList)
 
 @socketio.on("exitUser")
 def on_exit_user:

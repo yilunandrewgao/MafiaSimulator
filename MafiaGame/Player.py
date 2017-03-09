@@ -17,7 +17,7 @@ class Player:
 	def joinRoom(Room):
 		self.inRoom = Room
 
-	def toJSON():
+	def toJSON(self):
 		infoDict = {"name": self.name, "sid": self.sid}
 
-		return json.dumps(infoDict)
+		return infoDict
