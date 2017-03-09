@@ -48,5 +48,3 @@ class Room:
 		"roomName": self.roomName, "maxPlayers": self.maxPlayers, "owner":self.owner}
 
 		return infoDict
-
-

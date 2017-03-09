@@ -30,16 +30,15 @@ def on_connect():
 @socketio.on('disconnect')
 def on_disconnect():
 
-@socketio.on('createRoom')
-def on_create_room():
-	pass
-
 @socketio.on('deleteRoom')
 def on_delete_room():
 	pass
 
 @socketio.on("connectUser")
 def on_connect_user(clientNickname):
+	# message = "User " + clientNickname + " has connected. "
+	# print(message)
+
 
 @socketio.on("exitUser")
 def on_exit_user:
