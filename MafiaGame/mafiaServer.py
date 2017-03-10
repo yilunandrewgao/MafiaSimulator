@@ -27,7 +27,7 @@ def on_connect():
 	playerList.append(newPlayer)
 
 	# send player info and roomList
-	socketio.emit("SetPlayer", (json.dumps(newPlayer, cls = MafiaEncoder.MafiaEncoder), \
+	socketio.emit("SetPlayer", data = (json.dumps(newPlayer, cls = MafiaEncoder.MafiaEncoder), \
 	json.dumps(roomList, cls = MafiaEncoder.SimpleMafiaEncoder)))
 
 
@@ -75,4 +75,4 @@ def on_user_join_room(roomName):
 
 
 if __name__ == '__main__':
-	socketio.run(app)
+	socketio.run(app, host = "10.111.193.140", port = 7777)

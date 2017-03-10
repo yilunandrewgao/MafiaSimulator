@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MafiaGame/SocketIOManager.swift"
-            timestampString = "510869005.915505"
+            timestampString = "510871657.925629"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "24"
             endingLineNumber = "24"
-            landmarkName = "establishConnection()"
+            landmarkName = "initHandlers()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MafiaGame/SocketIOManager.swift"
-            timestampString = "510869089.814297"
+            timestampString = "510871661.087847"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
-            landmarkName = "establishConnection()"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "initHandlers()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

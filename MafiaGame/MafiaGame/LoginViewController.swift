@@ -86,6 +86,8 @@ class LoginViewController: UIViewController {
             
             SocketIOManager.shared.establishConnection()
             
+            GameService.shared.loggedIn = true
+            
             performSegue(withIdentifier: "LoginToMenu", sender: nil)
         }
         else {

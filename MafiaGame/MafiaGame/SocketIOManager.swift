@@ -12,15 +12,16 @@ class SocketIOManager: NSObject {
     
     private override init(){
         super.init()
+        initHandlers()
     }
     
-    var socket: SocketIOClient = SocketIOClient(socketURL: URL(string: "http://10.111.193.140:7777")!, config: [.log(true), .forceWebsockets(true), .connectParams(["name": GameService.shared.thisPlayer.name])])
+    var socket: SocketIOClient = SocketIOClient(socketURL: URL(string: "http://10.111.193.140:7777")!, config: [.log(true), .forceWebsockets(true), .reconnects(false), .connectParams(["name": GameService.shared.thisPlayer.name])])
     
     
-    func establishConnection(){
-        
-        
-        socket.on("SetPlayer") {(dataArray,ack)->Void in
+    func initHandlers() {
+        socket.on("SetPlayer") { (dataArray, ack) in
+            
+            print ("hi")
             let playerData = dataArray[0] as! Data
             let json = try? JSONSerialization.jsonObject(with: playerData, options: []) as! [String:Any]
             let roomListData = dataArray[1] as! Data
@@ -30,9 +31,14 @@ class SocketIOManager: NSObject {
             for roomJSON in roomListJSON! {
                 try? simpleRoomList.append(SimpleRoom(json: roomJSON))
             }
-        
+            
             GameService.shared.startGameService(thisPlayer:  try! Player(playerInfo: json!), roomList: simpleRoomList)
         }
+
+    }
+    
+    
+    func establishConnection(){
         
         socket.connect()
         
