@@ -45,6 +45,6 @@ class Room:
 	def toSimpleJSON(self):
 
 		infoDict = {"_type":"SimpleRoom", "currentNumPlayers": len(self.playerList), "roomName": self.roomName,\
-		 "maxPlayers": self.maxPlayers, "owner":self.owner, "password": self.password}
+		 "maxPlayers": self.maxPlayers, "owner":self.owner.name, "password": self.password}
 
 		return infoDict

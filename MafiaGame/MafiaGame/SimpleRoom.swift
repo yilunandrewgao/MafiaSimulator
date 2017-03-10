@@ -23,4 +23,23 @@ class SimpleRoom {
         self.password = password
     }
     
+    private(set) var numPlayers: Int
+    private(set) var roomName: String
+    private(set) var password: String
+    private(set) var maxPlayers : Int
+    private(set) var owner: String
+    
+    public var description : String {
+        return "\(self.roomName) by \(self.owner): \(self.numPlayers)/\(self.maxPlayers)"
+    }
+    
+    init(numPlayers: Int, roomName: String, password: String, maxPlayers: Int, owner: String) {
+        self.numPlayers = numPlayers
+        self.roomName = roomName
+        self.password = password
+        self.maxPlayers = maxPlayers
+        self.owner = owner
+        
+    }
+    
 }

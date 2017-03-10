@@ -10,11 +10,14 @@
 import Foundation
 //import MultipeerConnectivity
 
-class Player {
+class Player: CustomStringConvertible {
     
     private(set) var name: String
     private(set) var sid: Int
     
+    public var description: String {
+        return "(\(self.name), \(self.sid))"
+    }
     
     init(name: String, sid: Int) {
         self.name = name

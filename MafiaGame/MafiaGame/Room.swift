@@ -9,13 +9,18 @@
 import UIKit
 
 
-class Room {
 
+class Room: CustomStringConvertible {
+    
     private(set) var playerList: [Player]
     private(set) var roomName: String
     private(set) var password: String
     private(set) var maxPlayers : Int
     private(set) var owner: Player
+    
+    public var description : String {
+        return "\(self.roomName) by \(String(describing: self.owner)): \(self.playerList.count)/\(self.maxPlayers)"
+    }
     
     init(playerList: [Player], roomName: String, password: String, maxPlayers: Int, owner: Player) {
         self.playerList = playerList
