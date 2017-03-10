@@ -11,38 +11,19 @@ import UIKit
 
 class Room {
     
-    let playerList: [Player]
-    let roomName: String
-    let password: String
-    let maxPlayers : Int
-    let owner: Player
+    private(set) var playerList: [Player]
+    private(set) var roomName: String
+    private(set) var password: String
+    private(set) var maxPlayers : Int
+    private(set) var owner: Player
     
-    
-    
-    
-    init() {
+    init(playerList: [Player], roomName: String, password: String, maxPlayers: Int, owner: Player) {
+        self.playerList = playerList
         self.roomName = roomName
-        self.owner = owner
-        self.maxPlayers = maxPlayers
-        self.currentPlayers = [owner]
         self.password = password
+        self.maxPlayers = maxPlayers
+        self.owner = owner
     }
-    
-//    func addPlayer(player: Player) -> Bool{
-//        if currentPlayers.count >= maxPlayers {
-//            return false
-//        }
-//        else {
-//            currentPlayers.append(player)
-//            return true
-//        }
-//    }
-//    
-//    func dropPlayer(peerID: MCPeerID) {
-//        currentPlayers = currentPlayers.filter {$0.getPeerID() != peerID}
-//        
-//    }
-//    
     
     
 }

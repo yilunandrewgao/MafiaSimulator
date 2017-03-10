@@ -38,13 +38,13 @@ class Room:
 	def toJSON(self):
 
 		infoDict = {"_type": "Room", "playerList": self.playerList, "roomName": self.roomName, \
-		"maxPlayers": self.maxPlayers, "owner": self.owner}
+		"maxPlayers": self.maxPlayers, "owner": self.owner, "password":self.password}
 
 		return infoDict
 
 	def toSimpleJSON(self):
 
-		infoDict = {"_type":"SimpleRoom", "currentNumPlayers": len(self.playerList), \
-		"roomName": self.roomName, "maxPlayers": self.maxPlayers, "owner":self.owner}
+		infoDict = {"_type":"SimpleRoom", "currentNumPlayers": len(self.playerList), "roomName": self.roomName,\
+		 "maxPlayers": self.maxPlayers, "owner":self.owner, "password": self.password}
 
 		return infoDict

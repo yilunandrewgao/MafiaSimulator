@@ -12,16 +12,13 @@ import Foundation
 
 class Player {
     
-    private var name: String
-    private var sid: String
+    private(set) var name: String
+    private(set) var sid: Int
     
     
-    
-    init(name: String, sid: String) {
+    init(name: String, sid: Int) {
         self.name = name
         self.sid = sid
     }
-    
-    
     
 }
