@@ -1,5 +1,6 @@
 import json
 from Player import Player
+import MafiaEncoder
 
 class Room:
 
@@ -18,7 +19,7 @@ class Room:
 
 	def addPlayer(self, newPlayer):
 
-		if len(playerList) < self.maxPlayers:
+		if len(self.playerList) < self.maxPlayers:
 			self.playerList.append(newPlayer)
 			return True
 
@@ -36,14 +37,14 @@ class Room:
 
 	def toJSON(self):
 
-		infoDict = {"playerList": self.playerList, "roomName": self.roomName, "password": self.password\
-		, "maxPlayers": self.maxPlayers, "owner": self.owner}
+		infoDict = {"_type": "Room", "playerList": self.playerList, "roomName": self.roomName, \
+		"maxPlayers": self.maxPlayers, "owner": self.owner, "password":self.password}
 
-		return json.dumps(infoDict, default = lambda o: o.__dict__)
+		return infoDict
 
+	def toSimpleJSON(self):
 
-room1 = Room("test","test", 5, Player("bob","1"))
-room2 = Room("room","password",6,Player("hello","2"))
+		infoDict = {"_type":"SimpleRoom", "currentNumPlayers": len(self.playerList), "roomName": self.roomName,\
+		 "maxPlayers": self.maxPlayers, "owner":self.owner, "password": self.password}
 
-print (room1.toJSON())
-print (room2.toJSON())
+		return infoDict

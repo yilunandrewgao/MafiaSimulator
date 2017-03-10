@@ -34,7 +34,7 @@
 		78935B251E6F61100031D88F /* SSLSecurity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78935B0D1E6F61100031D88F /* SSLSecurity.swift */; };
 		78935B261E6F61100031D88F /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78935B0E1E6F61100031D88F /* WebSocket.swift */; };
 		78935B281E6F61F30031D88F /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78935B271E6F61F30031D88F /* SocketIOManager.swift */; };
-		78935B2A1E6FC3DC0031D88F /* JsonRoomParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78935B291E6FC3DC0031D88F /* JsonRoomParse.swift */; };
+		78935B2A1E6FC3DC0031D88F /* JsonParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78935B291E6FC3DC0031D88F /* JsonParse.swift */; };
 		78935B2C1E7063410031D88F /* JsonError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78935B2B1E7063410031D88F /* JsonError.swift */; };
 		78935B2E1E70A7560031D88F /* GameService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78935B2D1E70A7560031D88F /* GameService.swift */; };
 		78A9FAD81E673FE100F47998 /* AvatarImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A9FAD71E673FE100F47998 /* AvatarImageCell.swift */; };
@@ -102,7 +102,7 @@
 		78935B0D1E6F61100031D88F /* SSLSecurity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSLSecurity.swift; sourceTree = "<group>"; };
 		78935B0E1E6F61100031D88F /* WebSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebSocket.swift; sourceTree = "<group>"; };
 		78935B271E6F61F30031D88F /* SocketIOManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
-		78935B291E6FC3DC0031D88F /* JsonRoomParse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonRoomParse.swift; sourceTree = "<group>"; };
+		78935B291E6FC3DC0031D88F /* JsonParse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonParse.swift; sourceTree = "<group>"; };
 		78935B2B1E7063410031D88F /* JsonError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonError.swift; sourceTree = "<group>"; };
 		78935B2D1E70A7560031D88F /* GameService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameService.swift; sourceTree = "<group>"; };
 		78A9FAD71E673FE100F47998 /* AvatarImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarImageCell.swift; sourceTree = "<group>"; };
@@ -323,7 +323,7 @@
 		78E308651E57695700CE7059 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				78935B291E6FC3DC0031D88F /* JsonRoomParse.swift */,
+				78935B291E6FC3DC0031D88F /* JsonParse.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -480,7 +480,7 @@
 				78E308671E57731000CE7059 /* LoginViewController.swift in Sources */,
 				78935B241E6F61100031D88F /* SocketTypes.swift in Sources */,
 				78C8CCB51E5D0FD200B28265 /* JoinRoomController.swift in Sources */,
-				78935B2A1E6FC3DC0031D88F /* JsonRoomParse.swift in Sources */,
+				78935B2A1E6FC3DC0031D88F /* JsonParse.swift in Sources */,
 				9353860D1E5A500C00EB9871 /* HostManager.swift in Sources */,
 				78935B161E6F61100031D88F /* SocketEnginePollable.swift in Sources */,
 				78C8CCE21E5D201800B28265 /* WaitingPlayerController.swift in Sources */,

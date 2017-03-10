@@ -8,16 +8,12 @@ class Player:
 	#future implementation
 	role = None
 	avatar = None
-	inRoom = None
 
 	def __init__(self, name, sid):
 		self.name = name
 		self.sid = sid
 
-	def joinRoom(Room):
-		self.inRoom = Room
+	def toJSON(self):
+		infoDict = {"_type": "Player","name": self.name, "sid": self.sid}
 
-	def toJSON():
-		infoDict = {"name": self.name, "sid": self.sid}
-
-		return json.dumps(infoDict)
+		return infoDict
