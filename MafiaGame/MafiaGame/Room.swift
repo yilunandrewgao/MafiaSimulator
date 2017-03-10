@@ -9,6 +9,7 @@
 import UIKit
 
 
+
 class Room: CustomStringConvertible {
     
     private(set) var playerList: [Player]
@@ -27,6 +28,7 @@ class Room: CustomStringConvertible {
         self.password = password
         self.maxPlayers = maxPlayers
         self.owner = owner
+
     }
     
     
