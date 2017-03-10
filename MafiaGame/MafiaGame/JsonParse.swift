@@ -9,6 +9,11 @@
 import UIKit
 
 
+enum SerializationError: Error {
+    case missing(String)
+    case invalid(String, Any)
+}
+
 extension Player {
     
     convenience init(json: [String:Any]) throws {
