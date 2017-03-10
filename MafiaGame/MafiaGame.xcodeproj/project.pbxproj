@@ -36,6 +36,7 @@
 		78935B281E6F61F30031D88F /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78935B271E6F61F30031D88F /* SocketIOManager.swift */; };
 		78935B2A1E6FC3DC0031D88F /* JsonRoomParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78935B291E6FC3DC0031D88F /* JsonRoomParse.swift */; };
 		78935B2C1E7063410031D88F /* JsonError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78935B2B1E7063410031D88F /* JsonError.swift */; };
+		78935B2E1E70A7560031D88F /* GameService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78935B2D1E70A7560031D88F /* GameService.swift */; };
 		78A9FAD81E673FE100F47998 /* AvatarImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A9FAD71E673FE100F47998 /* AvatarImageCell.swift */; };
 		78C8CCB51E5D0FD200B28265 /* JoinRoomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C8CCB41E5D0FD200B28265 /* JoinRoomController.swift */; };
 		78C8CCE01E5D1ED600B28265 /* VillagerNightController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C8CCDF1E5D1ED600B28265 /* VillagerNightController.swift */; };
@@ -103,6 +104,7 @@
 		78935B271E6F61F30031D88F /* SocketIOManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
 		78935B291E6FC3DC0031D88F /* JsonRoomParse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonRoomParse.swift; sourceTree = "<group>"; };
 		78935B2B1E7063410031D88F /* JsonError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonError.swift; sourceTree = "<group>"; };
+		78935B2D1E70A7560031D88F /* GameService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameService.swift; sourceTree = "<group>"; };
 		78A9FAD71E673FE100F47998 /* AvatarImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarImageCell.swift; sourceTree = "<group>"; };
 		78C8CCB41E5D0FD200B28265 /* JoinRoomController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinRoomController.swift; sourceTree = "<group>"; };
 		78C8CCDF1E5D1ED600B28265 /* VillagerNightController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VillagerNightController.swift; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				78935B2B1E7063410031D88F /* JsonError.swift */,
+				78935B2D1E70A7560031D88F /* GameService.swift */,
 			);
 			name = Service;
 			sourceTree = "<group>";
@@ -471,6 +474,7 @@
 				78935B0F1E6F61100031D88F /* SocketAckEmitter.swift in Sources */,
 				782E198E1E5B4BBB000B1945 /* MafiaNightController.swift in Sources */,
 				78E464801E5A576F00758655 /* CreateRoomController.swift in Sources */,
+				78935B2E1E70A7560031D88F /* GameService.swift in Sources */,
 				78935B141E6F61100031D88F /* SocketEngineClient.swift in Sources */,
 				78935B1B1E6F61100031D88F /* SocketIOClient.swift in Sources */,
 				78E308671E57731000CE7059 /* LoginViewController.swift in Sources */,

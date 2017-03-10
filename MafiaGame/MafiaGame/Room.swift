@@ -13,19 +13,22 @@ class Room {
     
     let playerList: [Player]
     let roomName: String
-    let password: String
     let maxPlayers : Int
     let owner: Player
     
+    //json object
     
     
     
     init() {
+        ///////fake json object
+        //fake dictionary
+        var infoDict = ["playerList": [["name":"bob", "sid":"1"], ["name":"mike", "sid":"1"]], "roomName":"test", "password":"testPassword", "maxPlayer": 5, "owner": ["name": "bob", "sid" : "1"]]
+        
+        self.playerList = createPlayerList()
         self.roomName = roomName
         self.owner = owner
         self.maxPlayers = maxPlayers
-        self.currentPlayers = [owner]
-        self.password = password
     }
     
 //    func addPlayer(player: Player) -> Bool{

@@ -15,7 +15,7 @@ extension Room{
 //    var maxPlayersParse: Int
 //    var ownerInfoParse = [String:String]()
     
-    var playerList : [Player]
+    //var playerList : [Player]
     
     func playerListParse(json: JSON){
         guard let players = json["playerList"] as? [[String:String]] else {
@@ -34,24 +34,33 @@ extension Room{
         return roomName
     }
     
-    func parse(json: JSON) throws{
-        
-        guard let roomName = json["roomName"] as? String else{
-            throw JsonError.checkError(noRoomName)
-            
-        }
-                }
+    func maxPlayersParse(json: JSON){
         guard let maxPlayers = json["maxPlayers"] as? Int else{
             throw JsonError.checkError(noMaxPlayer)
             
         }
+        return maxPlayers
+    }
+    
+    func ownerInfoParse(json: JSON){
+        guard let ownerInfo = json["owner"] as? [String:String] else{
+            throw JsonError.checkError(noOwner)
+            
+        }
+        
+        return ownerInfo
+    }
+    
+    func parse(json: JSON) throws{
+        
+        
+        
         guard let ownerInfo = json["owner"] as? [String:String] else{
             throw JsonError.checkError(noOwner)
             
         }
         
        
-        self.roomNameParse = roomName
         self.maxPlayersParse = maxPlayers
         self.ownerInfoParse = ownerInfo
         self.playerList = createPlayerList()
