@@ -73,8 +73,7 @@ class LoginViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "LoginToMenu" {
             
-            let menuVC = segue.destination as! MenuViewController
-            menuVC.thisPlayer = Player(name: username)
+            
             
         }
     }
@@ -82,6 +81,11 @@ class LoginViewController: UIViewController {
     // activate segue only if default username is changed
     @IBAction func gotoMenu(_ sender: Any) {
         if self.username != "Username" {
+            
+            GameService.shared.thisPlayer = Player(name: self.username, sid: 0)
+            
+            SocketIOManager.shared.establishConnection()
+            
             performSegue(withIdentifier: "LoginToMenu", sender: nil)
         }
         else {

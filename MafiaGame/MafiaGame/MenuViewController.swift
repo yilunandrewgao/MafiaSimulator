@@ -11,13 +11,13 @@ import UIKit
 
 class MenuViewController: UIViewController {
     
-    var thisPlayer:Player! = nil
+    var thisPlayer:Player! = GameService.shared.thisPlayer
     
     @IBOutlet weak var playerNameLbl: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        playerNameLbl.text  = "Logged in as: \(self.thisPlayer.getName())"
+        playerNameLbl.text  = "Logged in as: \(self.thisPlayer.name)"
     }
     
     override func didReceiveMemoryWarning() {

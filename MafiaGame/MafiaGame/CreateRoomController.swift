@@ -63,37 +63,37 @@ class CreateRoomController: UIViewController{
     
     @IBAction func createRoom(_ sender: Any) {
         
-        // if all conditions are met, initialize the HostManager and start advertising
-        
-        if Int(numOfPeople_tf.text!) != nil && String(nameOfRoom_tf.text!) != nil {
-            
-            thisRoomName = nameOfRoom_tf.text
-            maxPeopleForRoom = Int(numOfPeople_tf.text!)
-            
-            if privateSwitch.isOn {
-                if let mypw = roomPassword {
-                    HostManager.shared.startRoom(player: thisPlayer, roomName: thisRoomName, maxPeople: maxPeopleForRoom, password: mypw)
-                }
-                else {
-                    HostManager.shared.startRoom(player: thisPlayer, roomName: thisRoomName, maxPeople: maxPeopleForRoom, password: "")
-                }
-                
-            }
-            else{
-                HostManager.shared.startRoom(player: thisPlayer, roomName: thisRoomName, maxPeople: maxPeopleForRoom, password: "")
-            }
-            
-            
-            
-            
-            performSegue(withIdentifier: "GotoWaitingRoom", sender: nil)
-            
-        }
-        else {
-            let alertController = UIAlertController(title: "Invalid Inputs", message: "Please enter in valid room name and number of people.", preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-            present(alertController, animated: true, completion: nil)
-        }
+//        // if all conditions are met, initialize the HostManager and start advertising
+//        
+//        if Int(numOfPeople_tf.text!) != nil && String(nameOfRoom_tf.text!) != nil {
+//            
+//            thisRoomName = nameOfRoom_tf.text
+//            maxPeopleForRoom = Int(numOfPeople_tf.text!)
+//            
+//            if privateSwitch.isOn {
+//                if let mypw = roomPassword {
+//                    HostManager.shared.startRoom(player: thisPlayer, roomName: thisRoomName, maxPeople: maxPeopleForRoom, password: mypw)
+//                }
+//                else {
+//                    HostManager.shared.startRoom(player: thisPlayer, roomName: thisRoomName, maxPeople: maxPeopleForRoom, password: "")
+//                }
+//                
+//            }
+//            else{
+//                HostManager.shared.startRoom(player: thisPlayer, roomName: thisRoomName, maxPeople: maxPeopleForRoom, password: "")
+//            }
+//            
+//            
+//            
+//            
+//            performSegue(withIdentifier: "GotoWaitingRoom", sender: nil)
+//            
+//        }
+//        else {
+//            let alertController = UIAlertController(title: "Invalid Inputs", message: "Please enter in valid room name and number of people.", preferredStyle: .alert)
+//            alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+//            present(alertController, animated: true, completion: nil)
+//        }
         
         
     }

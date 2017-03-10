@@ -4,6 +4,7 @@ class Player:
 
 	name = None
 	sid = None
+	inRoom = None
 
 	#future implementation
 	role = None
@@ -17,3 +18,6 @@ class Player:
 		infoDict = {"_type": "Player","name": self.name, "sid": self.sid}
 
 		return infoDict
+
+	def joinRoom(room):
+		inRoom = room

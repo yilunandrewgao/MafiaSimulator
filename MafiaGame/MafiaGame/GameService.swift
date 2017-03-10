@@ -10,10 +10,11 @@ import UIKit
 
 class GameService {
     
-    private(set) var thisPlayer: Player!
+    public var thisPlayer: Player!
     private(set) var roomList: [SimpleRoom]!
     private(set) var inRoom: Room?
-    public var shared: GameService = GameService()
+    public static var shared: GameService! = GameService()
+    public var loggedIn: Bool = false
     
     private init() {
         //implemented for access control
