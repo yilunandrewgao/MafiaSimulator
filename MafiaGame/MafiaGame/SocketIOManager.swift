@@ -14,7 +14,8 @@ class SocketIOManager: NSObject {
         super.init()
     }
     
-    var socket: SocketIOClient = SocketIOClient(socketURL: URL(string: "http://10.111.194.65:7777")!)
+    var socket: SocketIOClient = SocketIOClient(socketURL: URL(string: "http://10.111.194.65:7777")!, config: [.log(true), forceWebsockets(true), .connectParams(["name": GameService.shared.thisPlayer.name])])
+    
     
     func establishConnection(){
         socket.connect()
