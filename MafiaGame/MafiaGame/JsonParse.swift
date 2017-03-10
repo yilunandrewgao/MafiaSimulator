@@ -46,7 +46,7 @@ extension Room{
         }
         var playerList: [Player] = []
         for playerJSON in playerListJSON {
-            let player = try Player(json: playerJSON)
+            let player = try Player(playerInfo: playerJSON)
             playerList.append(player)
         }
         
