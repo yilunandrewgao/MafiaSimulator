@@ -20,7 +20,10 @@ class GameOverController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+//    func winner(){
+//        //calculate points
+//        whoWon.text = ""
+//    }
     // MARK Properties (IBOutlet) label : winner
     @IBOutlet weak var whoWon: UILabel!
 }
