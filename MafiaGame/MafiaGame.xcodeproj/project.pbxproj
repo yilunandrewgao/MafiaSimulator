@@ -246,6 +246,7 @@
 		78E3085E1E57686700CE7059 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				78E3082C1E5767DE00CE7059 /* AppDelegate.swift */,
 				78E308301E5767DE00CE7059 /* Main.storyboard */,
 				78E308361E5767DE00CE7059 /* Assets.xcassets */,
 				78E308381E5767DE00CE7059 /* LaunchScreen.storyboard */,
@@ -302,7 +303,6 @@
 			isa = PBXGroup;
 			children = (
 				78C8CCE11E5D201800B28265 /* WaitingPlayerController.swift */,
-				78E3082C1E5767DE00CE7059 /* AppDelegate.swift */,
 				78E308661E57731000CE7059 /* LoginViewController.swift */,
 				78C8CCB41E5D0FD200B28265 /* JoinRoomController.swift */,
 				78E308681E577BCC00CE7059 /* MenuViewController.swift */,
