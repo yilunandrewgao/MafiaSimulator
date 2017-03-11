@@ -22,7 +22,7 @@ extension Player {
         guard let name = playerInfo["name"] as? String else {
             throw SerializationError.missing("name")
         }
-        guard let sid = playerInfo["sid"] as? Int else {
+        guard let sid = playerInfo["sid"] as? String else {
             throw SerializationError.missing("sid")
         }
         

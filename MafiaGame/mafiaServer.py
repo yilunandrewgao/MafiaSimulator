@@ -12,24 +12,42 @@ socketio = SocketIO(app)
 roomList = []
 playerList = []
 
+room1 = Room("room1","password1",5,Player("Alice",1))
+
+room2 = Room("room2","password2",5,Player("Bob",2))
+
+room1.addPlayer(Player("Carol",3))
+
+roomList = [room1,room2]
+
 
 
 
 @socketio.on('connect')
 def on_connect():
 	name = request.args["name"]
-	sid = request.sid
 
 	print(name + " connected")
 
+
+
+
+
+@socketio.on("SetPlayer")
+def on_set_player(name):
+
+	sid = request.sid
+	print (type(sid))
 	# create new player and add to list
 	newPlayer = Player(name, sid)
 	playerList.append(newPlayer)
 
-	# send player info and roomList
-	socketio.emit("SetPlayer", data = (json.dumps(newPlayer, cls = MafiaEncoder.MafiaEncoder), \
-	json.dumps(roomList, cls = MafiaEncoder.SimpleMafiaEncoder)))
+	newPlayerJSON = json.dumps(newPlayer, cls = MafiaEncoder.MafiaEncoder)
+	roomListJSON = json.dumps(roomList, cls = MafiaEncoder.SimpleMafiaEncoder)
 
+	# send player info and roomList
+	socketio.emit(event = 'SetPlayer', data = (json.loads(newPlayerJSON), \
+	json.loads(roomListJSON)))
 
 @socketio.on('disconnect')
 def on_disconnect():
@@ -46,6 +64,8 @@ def on_disconnect():
 				print (player.name + " disconnected")
 				playerList.remove(player)
 			break
+
+	socketio.emit("test", "hello")
 	
 
 @socketio.on('deleteRoom')
@@ -75,4 +95,4 @@ def on_user_join_room(roomName):
 
 
 if __name__ == '__main__':
-	socketio.run(app, host = "10.111.193.140", port = 7777)
+	socketio.run(app, host = "192.168.1.15", port = 7777)

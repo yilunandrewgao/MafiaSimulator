@@ -8,32 +8,48 @@
 
 import UIKit
 class SocketIOManager: NSObject {
-    static let shared = SocketIOManager()
+    static let shared : SocketIOManager = SocketIOManager()
+    
+    let socket: SocketIOClient = SocketIOClient(socketURL: URL(string: "http://192.168.1.15:7777")!, config: [.log(false), .forceWebsockets(true), .reconnects(false), .connectParams(["name": GameService.shared.thisPlayer.name])])
     
     private override init(){
         super.init()
         initHandlers()
     }
     
-    var socket: SocketIOClient = SocketIOClient(socketURL: URL(string: "http://10.111.193.140:7777")!, config: [.log(true), .forceWebsockets(true), .reconnects(false), .connectParams(["name": GameService.shared.thisPlayer.name])])
-    
     
     func initHandlers() {
         socket.on("SetPlayer") { (dataArray, ack) in
             
-            print ("hi")
-            let playerData = dataArray[0] as! Data
-            let json = try? JSONSerialization.jsonObject(with: playerData, options: []) as! [String:Any]
-            let roomListData = dataArray[1] as! Data
-            let roomListJSON = try? JSONSerialization.jsonObject(with: roomListData, options: []) as! [[String:String]]
+//            let playerData = dataArray[0] as! Data
+//            let json = try? JSONSerialization.jsonObject(with: playerData, options: []) as! [String:Any]
+//            let roomListData = dataArray[1] as! Data
+//            let roomListJSON = try? JSONSerialization.jsonObject(with: roomListData, options: []) as! [[String:String]]
+//            
+//            var simpleRoomList:[SimpleRoom] = []
+//            for roomJSON in roomListJSON! {
+//                try? simpleRoomList.append(SimpleRoom(json: roomJSON))
+//            }
+//            
+//            GameService.shared.startGameService(thisPlayer:  try! Player(playerInfo: json!), roomList: simpleRoomList)
+            let playerJSON = dataArray[0] as! [String:Any]
+            print (playerJSON)
+            print (type(of: playerJSON["sid"]))
+            let roomListJSON = dataArray[1] as! [[String:Any]]
             
             var simpleRoomList:[SimpleRoom] = []
-            for roomJSON in roomListJSON! {
+            for roomJSON in roomListJSON {
                 try? simpleRoomList.append(SimpleRoom(json: roomJSON))
             }
             
-            GameService.shared.startGameService(thisPlayer:  try! Player(playerInfo: json!), roomList: simpleRoomList)
+            GameService.shared.startGameService(thisPlayer: try! Player(playerInfo: playerJSON), roomList: simpleRoomList)
+
         }
+        
+        socket.on("connect") { [weak self] data, ack in
+            self?.socket.emit("SetPlayer", GameService.shared.thisPlayer.name)
+        }
+        
 
     }
     

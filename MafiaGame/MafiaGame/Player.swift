@@ -13,13 +13,13 @@ import Foundation
 class Player: CustomStringConvertible {
     
     private(set) var name: String
-    private(set) var sid: Int
+    private(set) var sid: String
     
     public var description: String {
         return "(\(self.name), \(self.sid))"
     }
     
-    init(name: String, sid: Int) {
+    init(name: String, sid: String) {
         self.name = name
         self.sid = sid
     }
