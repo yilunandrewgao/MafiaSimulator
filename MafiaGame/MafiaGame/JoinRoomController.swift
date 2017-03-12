@@ -33,29 +33,37 @@ class JoinRoomController: UIViewController, UITableViewDataSource, UITableViewDe
         return cell
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let selectedRoom = ClientManager.shared.foundRooms[indexPath.row]
-//        let alertController = UIAlertController(title: "Password", message: "Enter Password", preferredStyle: .alert)
-//        alertController.addTextField { (textField) in
-//            textField.placeholder = "password"
-//            textField.autocorrectionType = .no
-//            textField.autocapitalizationType = .none
-//        }
-//        
-//        alertController.view.setNeedsLayout()
-//        alertController.addAction(UIAlertAction(title: "Enter", style: .default, handler: { (action) in
-//            let enteredPassword = alertController.textFields?.first?.text ?? ""
-//            
-//            if enteredPassword == selectedRoom.password {
-//                ClientManager.shared.browser?.invitePeer(selectedRoom.owner.getPeerID(), to: ClientManager.shared.session, withContext: nil, timeout: 0)
-//                
-//                self.performSegue(withIdentifier: "JoinRoomToWaitingRoom", sender: nil)
-//            }
-//            
-//        }))
-//        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-//        present(alertController, animated: true, completion: nil)
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedRoom = GameService.shared.roomList[indexPath.row]
+        let alertController = UIAlertController(title: "Password", message: "Enter Password", preferredStyle: .alert)
+        alertController.addTextField { (textField) in
+            textField.placeholder = "password"
+            textField.autocorrectionType = .no
+            textField.autocapitalizationType = .none
+        }
+        
+        alertController.view.setNeedsLayout()
+        alertController.addAction(UIAlertAction(title: "Enter", style: .default, handler: { (action) in
+            let enteredPassword = alertController.textFields?.first?.text ?? ""
+            
+            print(enteredPassword)
+            print(selectedRoom.password)
+            
+            if enteredPassword == selectedRoom.password {
+                
+                SocketIOManager.shared.sendJoinRoomEvent(roomToJoin: selectedRoom, completionHandler: { (roomJSON) -> Void in
+                    DispatchQueue.main.async { () -> Void in
+                        GameService.shared.inRoom = try! Room(json: roomJSON)
+                        self.performSegue(withIdentifier: "JoinRoomToWaitingRoom", sender: nil)
+                    }
+                    
+                })
+            }
+            
+        }))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(alertController, animated: true, completion: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +75,6 @@ class JoinRoomController: UIViewController, UITableViewDataSource, UITableViewDe
         // Dispose of any resources that can be recreated.
     }
     
-    // ClientManager delegate functions
     
     func foundRoom() {
         

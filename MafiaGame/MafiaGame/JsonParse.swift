@@ -89,8 +89,12 @@ extension SimpleRoom{
             guard let password = json["password"] as? String else{
                 throw SerializationError.missing("password")
             }
-            
-            self.init(numPlayers: currentNumPlayers, roomName: roomName, password: password, maxPlayers: maxPlayers, owner: ownerName)
+        
+            guard let roomTag = json["roomTag"] as? String else {
+                throw SerializationError.missing("roomTag")
+            }
+        
+        self.init(numPlayers: currentNumPlayers, roomName: roomName, password: password, maxPlayers: maxPlayers, owner: ownerName, roomTag: roomTag)
         }
 }
   

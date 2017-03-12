@@ -390,6 +390,7 @@
 				TargetAttributes = {
 					78E308281E5767DE00CE7059 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 9Q6NHY9LT3;
 						ProvisioningStyle = Automatic;
 					};
 					78E3083F1E5767DF00CE7059 = {
@@ -648,9 +649,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 9Q6NHY9LT3;
 				INFOPLIST_FILE = MafiaGame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = cis399.MafiaGame;
+				PRODUCT_BUNDLE_IDENTIFIER = iOSClass.MafiaGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -660,9 +663,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 9Q6NHY9LT3;
 				INFOPLIST_FILE = MafiaGame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = cis399.MafiaGame;
+				PRODUCT_BUNDLE_IDENTIFIER = iOSClass.MafiaGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

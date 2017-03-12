@@ -13,13 +13,13 @@ roomList = []
 playerList = []
 playerToRoomMap = {}
 
-room1 = Room("room1","password1",5,Player("Alice",1))
+# room1 = Room("room1","password1",5,Player("Alice",1))
 
-room2 = Room("room2","password2",5,Player("Bob",2))
+# room2 = Room("room2","password2",5,Player("Bob",2))
 
-room1.addPlayer(Player("Carol",3))
+# room1.addPlayer(Player("Carol",3))
 
-roomList = [room1,room2]
+# roomList = [room1,room2]
 
 
 
@@ -61,7 +61,7 @@ def on_disconnect():
 				del playerToRoomMap[player]
 
 				#emit new info
-				socketio.emit("roomUpdate", selectedRoom.toJSON(),selectedRoom.roomTag)
+				socketio.emit("roomUpdate", selectedRoom.toJSON(),room = selectedRoom.roomTag)
 				socketio.emit("roomListUpdate", [room.toSimpleJSON() for room in roomList])
 				
 			else:
@@ -110,7 +110,7 @@ def on_user_exit_room():
 				del playerToRoomMap[player]
 
 				#emit new info
-				socketio.emit("roomUpdate", selectedRoom.toJSON(),selectedRoom.roomTag)
+				socketio.emit("roomUpdate", selectedRoom.toJSON(),room = selectedRoom.roomTag)
 				socketio.emit("roomListUpdate", [room.toSimpleJSON() for room in roomList])
 				
 			else:
@@ -128,12 +128,14 @@ def on_user_join_room(roomOwnerSid):
 	for player in playerList:
 		if player.sid == request.sid:
 			thisPlayer = player
+			print (thisPlayer)
 			break
 
 	if thisPlayer:
 		#find room object
 		for room in roomList:
-			if room.roomTag = roomOwnerSid:
+			if room.roomTag == roomOwnerSid:
+				print (room)
 				# add player to the room
 				room.addPlayer(thisPlayer)
 				join_room(roomOwnerSid)
@@ -142,7 +144,7 @@ def on_user_join_room(roomOwnerSid):
 
 				#emit updates
 
-				socketio.emit("roomUpdate", room.toJSON(),roomOwnerSid)
+				socketio.emit("roomUpdate", room.toJSON(), room = roomOwnerSid)
 				socketio.emit("roomListUpdate", [room.toSimpleJSON() for room in roomList])
 
 				break
@@ -153,4 +155,4 @@ def on_user_join_room(roomOwnerSid):
 
 
 if __name__ == '__main__':
-	socketio.run(app, host = "10.110.192.239", port = 7777)
+	socketio.run(app, host = "10.111.193.47", port = 7777)
