@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -662,7 +663,19 @@
                     <view key="view" contentMode="scaleToFill" id="5OE-Si-TsV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="d2u-IX-Lg0">
+                                <rect key="frame" x="67" y="248" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="adT-P3-3R1" firstAttribute="top" secondItem="d2u-IX-Lg0" secondAttribute="bottom" id="YhA-et-b3W"/>
+                            <constraint firstAttribute="trailing" secondItem="d2u-IX-Lg0" secondAttribute="trailing" id="e0C-Nc-IrN"/>
+                            <constraint firstItem="d2u-IX-Lg0" firstAttribute="leading" secondItem="5OE-Si-TsV" secondAttribute="leadingMargin" id="vS6-8d-mb0"/>
+                            <constraint firstItem="d2u-IX-Lg0" firstAttribute="top" secondItem="OIu-0g-bzJ" secondAttribute="bottom" id="wxe-WQ-4LK"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZLd-CI-ub1" userLabel="First Responder" sceneMemberID="firstResponder"/>
