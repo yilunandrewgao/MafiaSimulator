@@ -10,7 +10,7 @@ import UIKit
 class SocketIOManager: NSObject {
     static let shared : SocketIOManager = SocketIOManager()
     
-    let socket: SocketIOClient = SocketIOClient(socketURL: URL(string: "http://192.168.1.15:7777")!, config: [.log(false), .forceWebsockets(true), .reconnects(false), .connectParams(["name": GameService.shared.thisPlayer.name])])
+    let socket: SocketIOClient = SocketIOClient(socketURL: URL(string: "http://192.168.0.24:7777")!, config: [.log(false), .forceWebsockets(true), .reconnects(false), .connectParams(["name": GameService.shared.thisPlayer.name])])
     
     private override init(){
         super.init()
