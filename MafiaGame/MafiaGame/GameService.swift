@@ -11,8 +11,8 @@ import UIKit
 class GameService {
     
     public var thisPlayer: Player!
-    private(set) var roomList: [SimpleRoom]!
-    private(set) var inRoom: Room?
+    public var roomList: [SimpleRoom]!
+    public var inRoom: Room?
     public static var shared: GameService! = GameService()
     public var loggedIn: Bool = false
     

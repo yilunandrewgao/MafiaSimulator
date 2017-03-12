@@ -4,7 +4,6 @@ class Player:
 
 	name = None
 	sid = None
-	inRoom = None
 
 	#future implementation
 	role = None

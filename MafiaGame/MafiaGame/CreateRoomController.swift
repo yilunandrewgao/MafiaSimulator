@@ -83,9 +83,15 @@ class CreateRoomController: UIViewController{
             let newRoom = Room(playerList: [owner], roomName: thisRoomName, password: roomPassword!, maxPlayers: maxPeopleForRoom, owner: owner)
             
             
-            SocketIOManager.shared.sendCreateRoomEvent(newRoom: newRoom)
+            SocketIOManager.shared.sendCreateRoomEvent(newRoom: newRoom, completionHandler: { (roomJSON) -> Void in
+                DispatchQueue.main.async { () -> Void in
+                    GameService.shared.inRoom = try! Room(json: roomJSON)
+                    self.performSegue(withIdentifier: "GotoWaitingRoom", sender: nil)
+                }
+                
+            })
             
-            performSegue(withIdentifier: "GotoWaitingRoom", sender: nil)
+            
             
         }
         else {

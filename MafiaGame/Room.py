@@ -10,6 +10,8 @@ class Room:
 	maxPlayers = 0
 	owner = None
 
+	roomTag = None
+
 	def __init__(self, roomName, password, maxPlayers, owner):
 		self.roomName = roomName
 		self.password = password

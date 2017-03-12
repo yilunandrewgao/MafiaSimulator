@@ -10,7 +10,7 @@ import UIKit
 class SocketIOManager: NSObject {
     static let shared : SocketIOManager = SocketIOManager()
     
-    let socket: SocketIOClient = SocketIOClient(socketURL: URL(string: "http://192.168.1.15:7777")!, config: [.log(false), .forceWebsockets(true), .reconnects(false)])
+    let socket: SocketIOClient = SocketIOClient(socketURL: URL(string: "http://10.110.192.239:7777")!, config: [.log(false), .forceWebsockets(true), .reconnects(false)])
 
 
     private override init(){
@@ -38,6 +38,25 @@ class SocketIOManager: NSObject {
             self.socket.emit("setPlayer", GameService.shared.thisPlayer.name)
         }
         
+//        socket.on("roomUpdate") { data, ack in
+//            let roomJSON = data[0] as! [String:Any]
+//            
+//            GameService.shared.inRoom = try! Room(json: roomJSON)
+//        }
+//        
+        
+        socket.on("roomListUpdate") { data, ack in
+            let roomListJSON = data[0] as! [[String:Any]]
+            
+            var simpleRoomList:[SimpleRoom] = []
+            for roomJSON in roomListJSON {
+                try? simpleRoomList.append(SimpleRoom(json: roomJSON))
+            }
+            
+            GameService.shared.roomList = simpleRoomList
+            
+        }
+        
 
     }
     
@@ -53,9 +72,15 @@ class SocketIOManager: NSObject {
     }
     
     
-    func sendCreateRoomEvent(newRoom: Room) {
+    func sendCreateRoomEvent(newRoom: Room, completionHandler: @escaping (_ roomJSON: [String: Any]) -> Void) {
         socket.emit("createRoom", newRoom.toDict())
+        
+        socket.on("roomUpdate") { (data, ack) -> Void in
+            completionHandler(data[0] as! [String:Any])
+        }
     }
+    
+    
     
 //    func userExitRoom(completionHandler: @escaping (_ userList: [[String: AnyObject]]?) -> Void) {
 //        socket.emit("UserExitRoom")
