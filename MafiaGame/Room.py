@@ -17,6 +17,20 @@ class Room:
 		self.owner = owner
 		self.playerList = [owner]
 
+	#alternative init from dictionary
+	@classmethod
+	def fromDict(cls, roomDict):
+		roomName = roomDict["roomName"]
+		password = roomDict["password"]
+		maxPlayers = roomDict["maxPlayers"]
+		owner = Player.fromDict(roomDict["owner"])
+		return cls(roomName, password, maxPlayers,owner)
+
+	def __str__(self):
+		returnString = self.roomName+" by "+str(self.owner)+": "+str(len(self.playerList))+"/"+str(self.maxPlayers)
+		return returnString
+	
+
 	def addPlayer(self, newPlayer):
 
 		if len(self.playerList) < self.maxPlayers:
@@ -37,8 +51,9 @@ class Room:
 
 	def toJSON(self):
 
-		infoDict = {"_type": "Room", "playerList": self.playerList, "roomName": self.roomName, \
-		"maxPlayers": self.maxPlayers, "owner": self.owner, "password":self.password}
+		infoDict = {"_type": "Room", "playerList": [player.toJSON() for player in self.playerList], \
+		"roomName": self.roomName, "maxPlayers": self.maxPlayers, "owner": self.owner.toJSON(), \
+		"password":self.password}
 
 		return infoDict
 

@@ -14,6 +14,18 @@ class Player:
 		self.name = name
 		self.sid = sid
 
+	#alternative init from dictionary
+	@classmethod
+	def fromDict(cls, playerDict):
+		name = playerDict["name"]
+		sid = playerDict["sid"]
+
+		return cls(name, sid)
+	
+	def __str__(self):
+		returnString = "("+self.name+", "+self.sid+")"
+		return returnString
+
 	def toJSON(self):
 		infoDict = {"_type": "Player","name": self.name, "sid": self.sid}
 

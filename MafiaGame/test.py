@@ -13,9 +13,11 @@ room1.addPlayer(Player("Carol",3))
 
 roomList = [room1,room2]
 
-print(json.dumps(room1,cls = MafiaEncoder.MafiaEncoder))
+# print(json.dumps(room1,cls = MafiaEncoder.MafiaEncoder))
 
-print(json.dumps(roomList, cls = MafiaEncoder.MafiaEncoder))
+# print(json.dumps(roomList, cls = MafiaEncoder.MafiaEncoder))
 
-print(json.loads(json.dumps(roomList, cls = MafiaEncoder.MafiaEncoder))[0])
+# print(json.loads(json.dumps(roomList, cls = MafiaEncoder.MafiaEncoder))[0])
+
+print([room.toJSON() for room in roomList])
 
