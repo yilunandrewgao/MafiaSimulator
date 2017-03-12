@@ -22,6 +22,11 @@ class Room: CustomStringConvertible {
         return "\(self.roomName) by \(String(describing: self.owner)): \(self.playerList.count)/\(self.maxPlayers)"
     }
     
+    public func toDict() -> [String:Any] {
+        let roomDict = ["roomName": self.roomName, "password": self.password, "maxPlayers": self.maxPlayers, "owner": self.owner.toDict()] as [String : Any]
+        return roomDict
+    }
+    
     init(playerList: [Player], roomName: String, password: String, maxPlayers: Int, owner: Player) {
         self.playerList = playerList
         self.roomName = roomName

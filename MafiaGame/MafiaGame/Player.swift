@@ -19,6 +19,12 @@ class Player: CustomStringConvertible {
         return "(\(self.name), \(self.sid))"
     }
     
+    public func toDict() -> [String:Any] {
+        let playerDict = ["name": self.name, "sid": self.sid]
+        
+        return playerDict
+    }
+    
     init(name: String, sid: String) {
         self.name = name
         self.sid = sid

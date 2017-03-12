@@ -12,19 +12,19 @@ import UIKit
 class WaitingPlayerController: UIViewController {
     
     
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return 1
-//    }
-//    
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return HostManager.shared.room.currentPlayers.count
-//    }
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "UsernameCell", for: indexPath)
-//        
-//        cell.textLabel?.text = HostManager.shared.room.currentPlayers[indexPath.row].getName()
-//        return cell
-//    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return (GameService.shared.inRoom?.playerList.count)!
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UsernameCell", for: indexPath)
+        
+        cell.textLabel?.text = GameService.shared.inRoom?.playerList[indexPath.row].name
+        return cell
+    }
 
     
     override func viewDidLoad() {
