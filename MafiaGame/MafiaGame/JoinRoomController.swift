@@ -67,6 +67,8 @@ class JoinRoomController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateRoomsTable), name: NSNotification.Name(rawValue: "updateRoomsTableNotification"), object: nil)
        
     }
     
@@ -76,7 +78,7 @@ class JoinRoomController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     
-    func foundRoom() {
+    func updateRoomsTable() {
         
         DispatchQueue.main.async {
             self.roomTable.reloadData()
@@ -85,12 +87,7 @@ class JoinRoomController: UIViewController, UITableViewDataSource, UITableViewDe
         
     }
     
-    func lostRoom() {
-        DispatchQueue.main.async{
-            self.roomTable.reloadData()
-        }
-        
-    }
+
     
     // MARK: Properties (IBOutlet) table of lists of available rooms
     @IBOutlet weak var roomTable: UITableView!

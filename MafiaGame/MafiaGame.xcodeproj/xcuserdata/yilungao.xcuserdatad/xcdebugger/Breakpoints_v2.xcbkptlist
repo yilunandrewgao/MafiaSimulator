@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MafiaGame/JoinRoomController.swift"
-            timestampString = "511042246.139604"
+            timestampString = "511044827.34021"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
-            landmarkName = "tableView(_:didSelectRowAt:)"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "updateRoomsTable()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

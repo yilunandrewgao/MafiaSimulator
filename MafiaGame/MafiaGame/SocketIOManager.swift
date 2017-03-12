@@ -48,6 +48,7 @@ class SocketIOManager: NSObject {
             }
             
             GameService.shared.roomList = simpleRoomList
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateRoomsTableNotification"), object: nil)
             
         }
         
