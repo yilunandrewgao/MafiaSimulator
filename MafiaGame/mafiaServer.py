@@ -62,7 +62,6 @@ def on_disconnect():
 
 				#emit new info to everyone except disconnecting user
 				socketio.emit("roomUpdate", selectedRoom.toJSON(),room = selectedRoom.roomTag, skip_sid = request.sid)
-				#socketio.emit("roomUpdate", selectedRoom.toJSON(), room = selectedRoom.roomTag)
 
 				socketio.emit("roomListUpdate", [room.toSimpleJSON() for room in roomList])
 
@@ -97,8 +96,8 @@ def on_create_room(roomDict):
 	#Update player to room map
 	playerToRoomMap[newRoom.owner] = newRoom
 
-	# join room with owner's sid
-	newRoom.roomTag = newRoom.owner.sid
+	# join socketio room with room name as tag
+	newRoom.roomTag = newRoom.name
 	join_room(newRoom.roomTag)
 
 	#emit roomUpdate and roomListUpdate
