@@ -21,7 +21,7 @@ class Player:
 
 		return cls(name, sid)
 	
-	def __str__(self):
+	def __repr__(self):
 		returnString = "("+self.name+", "+self.sid+")"
 		return returnString
 

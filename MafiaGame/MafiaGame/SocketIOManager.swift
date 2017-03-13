@@ -48,10 +48,21 @@ class SocketIOManager: NSObject {
             }
             
             GameService.shared.roomList = simpleRoomList
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateRoomsTableNotification"), object: nil)
+            NotificationCenter.default.post(name: .updateRoomsTableNotification, object: nil)
             
         }
         
+        socket.on("roomUpdate") { data, ack in
+            let roomJSON = data[0] as! [String:Any]
+            GameService.shared.inRoom = try! Room(json: roomJSON)
+            NotificationCenter.default.post(name: .updateRoomNotification, object: nil)
+            
+        }
+        
+        socket.on("quitRoomUpdate") { data, ack in
+            GameService.shared.inRoom = nil
+            NotificationCenter.default.post(name: .quitRoomNotification, object: nil)
+        }
         
         
 
@@ -69,24 +80,27 @@ class SocketIOManager: NSObject {
     }
     
     
-    func sendCreateRoomEvent(newRoom: Room, completionHandler: @escaping (_ roomJSON: [String: Any]) -> Void) {
+    func sendCreateRoomEvent(newRoom: Room) {
         socket.emit("createRoom", newRoom.toDict())
-        
-        socket.on("roomUpdate") { (data, ack) -> Void in
-            completionHandler(data[0] as! [String:Any])
-        }
+
     }
     
     
-    func sendJoinRoomEvent(roomToJoin: SimpleRoom, completionHandler: @escaping (_ roomJSON: [String: Any]) -> Void) {
+    func sendJoinRoomEvent(roomToJoin: SimpleRoom) {
         socket.emit("userJoinRoom", roomToJoin.roomTag)
-        
-        socket.on("roomUpdate") { (data, ack) -> Void in
-            completionHandler(data[0] as! [String:Any])
-        }
     }
     
+    func sendUserExitRoomEvent() {
+        socket.emit("userExitRoom")
+    }
     
-    
-    
+}
+
+
+
+
+extension Notification.Name {
+    static let updateRoomsTableNotification = Notification.Name(rawValue: "updateRoomsTableNotification")
+    static let updateRoomNotification = Notification.Name(rawValue: "updateRoomNotification")
+    static let quitRoomNotification = Notification.Name(rawValue: "quitRoomNotification")
 }

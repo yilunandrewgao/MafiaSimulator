@@ -21,12 +21,16 @@ class CreateRoomController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        NotificationCenter.default.addObserver(self, selector: #selector(performSegueToWaitingRoom), name: .updateRoomNotification, object: nil)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func performSegueToWaitingRoom() {
+        performSegue(withIdentifier: "GotoWaitingRoom", sender: nil)
     }
     
    
@@ -83,13 +87,7 @@ class CreateRoomController: UIViewController{
             let newRoom = Room(playerList: [owner], roomName: thisRoomName, password: roomPassword!, maxPlayers: maxPeopleForRoom, owner: owner)
             
             
-            SocketIOManager.shared.sendCreateRoomEvent(newRoom: newRoom, completionHandler: { (roomJSON) -> Void in
-                DispatchQueue.main.async { () -> Void in
-                    GameService.shared.inRoom = try! Room(json: roomJSON)
-                    self.performSegue(withIdentifier: "GotoWaitingRoom", sender: nil)
-                }
-                
-            })
+            SocketIOManager.shared.sendCreateRoomEvent(newRoom: newRoom)
             
             
             
@@ -102,12 +100,8 @@ class CreateRoomController: UIViewController{
         
         
     }
+    
 
-    func requestWasReceived(fromPlayer: Player, callback: (Bool) -> Void) {
-        // Present alert controller to ask player about invitation
-        // In alert action invoke the callback with true or false as appropriate
-        callback(true)
-    }
     
     // MARK: Properties (IBAction) help message for turns
     @IBAction func turnHelp(_ sender: Any) {

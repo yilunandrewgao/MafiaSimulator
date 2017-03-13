@@ -83,6 +83,14 @@ def on_delete_room():
 @socketio.on("createRoom")
 def on_create_room(roomDict):
 	newRoom = Room.fromDict(roomDict)
+
+	# reset the owner so it's the same object as the player in playerList
+	for player in playerList:
+		if player.sid == newRoom.owner.sid:
+			newRoom.owner = player
+			newRoom.playerList = [player]
+			break
+
 	print(newRoom)
 	roomList.append(newRoom)
 
@@ -106,6 +114,7 @@ def on_user_exit_room():
 	for player in playerList:
 		if player.sid == request.sid:
 			# check if player is in a room
+			print (playerToRoomMap)
 			if player in playerToRoomMap:
 				selectedRoom = playerToRoomMap[player]
 				#remove player from room

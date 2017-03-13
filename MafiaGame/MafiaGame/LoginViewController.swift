@@ -69,14 +69,6 @@ class LoginViewController: UIViewController {
     }
     
     
-    // send player data to MenuViewController
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "LoginToMenu" {
-            
-            
-            
-        }
-    }
     
     // activate segue only if default username is changed
     @IBAction func gotoMenu(_ sender: Any) {

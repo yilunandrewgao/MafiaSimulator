@@ -28,8 +28,8 @@ class Room:
 		owner = Player.fromDict(roomDict["owner"])
 		return cls(roomName, password, maxPlayers,owner)
 
-	def __str__(self):
-		returnString = self.roomName+" by "+str(self.owner)+": "+str(len(self.playerList))+"/"+str(self.maxPlayers)
+	def __repr__(self):
+		returnString = self.roomName+" by "+repr(self.owner)+": "+repr(len(self.playerList))+"/"+repr(self.maxPlayers)
 		return returnString
 	
 
@@ -44,8 +44,8 @@ class Room:
 
 	def removePlayer(self, playerToBeRemoved):
 
-		if playerToBeRemoved in playerList:
-			playerList.remove(playerToBeRemoved)
+		if playerToBeRemoved in self.playerList:
+			self.playerList.remove(playerToBeRemoved)
 			return True
 
 		else: 
