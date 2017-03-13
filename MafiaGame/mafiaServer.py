@@ -80,6 +80,7 @@ def on_disconnect():
 def on_delete_room():
 	pass
 
+
 @socketio.on("createRoom")
 def on_create_room(roomDict):
 	newRoom = Room.fromDict(roomDict)
