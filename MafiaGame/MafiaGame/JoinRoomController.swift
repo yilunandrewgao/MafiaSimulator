@@ -68,7 +68,7 @@ class JoinRoomController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(updateRoomsTable), name: NSNotification.Name(rawValue: "updateRoomsTableNotification"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateRoomsTable), name: .updateRoomsTableNotification, object: nil)
        
     }
     
@@ -94,4 +94,8 @@ class JoinRoomController: UIViewController, UITableViewDataSource, UITableViewDe
     
     
     
+}
+
+extension Notification.Name {
+    static let updateRoomsTableNotification = Notification.Name(rawValue: "updateRoomsTableNotification")
 }

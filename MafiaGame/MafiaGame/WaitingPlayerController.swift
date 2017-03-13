@@ -26,6 +26,10 @@ class WaitingPlayerController: UIViewController, UITableViewDelegate, UITableVie
         return cell
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.hidesBackButton = true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,9 +73,9 @@ class WaitingPlayerController: UIViewController, UITableViewDelegate, UITableVie
 //    }
     
     @IBAction func startGame(_ sender: Any) {
-//        let mafiaNightController = storyboard?.instantiateViewController(withIdentifier: "MafiaNight") as? MafiaNightController
-//        
-//        self.present(mafiaNightController!, animated: true, completion: nil)
+        let mafiaNightController = storyboard?.instantiateViewController(withIdentifier: "MafiaNight") as? MafiaNightController
+        
+        self.present(mafiaNightController!, animated: true, completion: nil)
     }
   
     @IBOutlet weak var playerTable: UITableView!

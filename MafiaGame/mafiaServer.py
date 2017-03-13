@@ -60,14 +60,14 @@ def on_disconnect():
 				#remove player from mapping
 				del playerToRoomMap[player]
 
-				#emit new info
-				#exlude self version:
-				socketio.emit("roomUpdate", selectedRoom.toJSON(),room = selectedRoom.roomTag, include_self = False)
+				#emit new info to everyone except disconnecting user
+				socketio.emit("roomUpdate", selectedRoom.toJSON(),room = selectedRoom.roomTag, skip_sid = request.sid)
 				#socketio.emit("roomUpdate", selectedRoom.toJSON(), room = selectedRoom.roomTag)
 
-				#only to sender
-				socektio.emit("quitRoomUpdate", selectedRoom.toJSON(), room = null)
 				socketio.emit("roomListUpdate", [room.toSimpleJSON() for room in roomList])
+
+				#only to sender
+				socketio.emit("quitRoomUpdate", room = request.sid)
 				
 			else:
 				# remove player from playerList
@@ -114,9 +114,12 @@ def on_user_exit_room():
 				#remove player from mapping
 				del playerToRoomMap[player]
 
-				#emit new info
-				socketio.emit("roomUpdate", selectedRoom.toJSON(),room = selectedRoom.roomTag)
+				#emit new info to everyone except exiting user
+				socketio.emit("roomUpdate", selectedRoom.toJSON(),room = selectedRoom.roomTag, skip_sid = request.sid)
 				socketio.emit("roomListUpdate", [room.toSimpleJSON() for room in roomList])
+
+				#emit quitRoomUpdate to exiting user
+				socketio.emit("quitRoomUpdate", room = request.sid)
 				
 			else:
 				# if player is not in room, it's an error
@@ -160,4 +163,4 @@ def on_user_join_room(roomOwnerSid):
 
 
 if __name__ == '__main__':
-	socketio.run(app, host = "10.111.193.47", port = 7777)
+	socketio.run(app, host = "10.111.193.129", port = 7777)
