@@ -61,7 +61,12 @@ def on_disconnect():
 				del playerToRoomMap[player]
 
 				#emit new info
-				socketio.emit("roomUpdate", selectedRoom.toJSON(),room = selectedRoom.roomTag)
+				#exlude self version:
+				socketio.emit("roomUpdate", selectedRoom.toJSON(),room = selectedRoom.roomTag, include_self = False)
+				#socketio.emit("roomUpdate", selectedRoom.toJSON(), room = selectedRoom.roomTag)
+
+				#only to sender
+				socektio.emit("quitRoomUpdate", selectedRoom.toJSON(), room = null)
 				socketio.emit("roomListUpdate", [room.toSimpleJSON() for room in roomList])
 				
 			else:
