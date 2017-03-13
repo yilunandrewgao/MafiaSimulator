@@ -33,6 +33,9 @@ class WaitingPlayerController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updatePlayerTable), name: .updateRoomNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(quitRoomCompletion), name: .quitRoomNotification, object: nil)
     }
     
     override func didReceiveMemoryWarning() {
@@ -41,41 +44,27 @@ class WaitingPlayerController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     
-    //generate the roles that should be assigned to players in one particular session
-    func generateRoles(for numMafia: Int, in maxPeople: Int) -> [String] {
-        //because numMafia and maxPeople are constants
-        var numM = numMafia
-        var maxP = maxPeople
-        
-        //empty array for players
-        var roleList : [String] = []
-        while maxPeople > 0 {
-            
-            if numMafia > 0 {
-                roleList.append("mafia")
-                numM -= 1
-            }
-            
-            maxP -= 1
+    func updatePlayerTable() {
+        DispatchQueue.main.async {
+            self.playerTable.reloadData()
         }
-        
-        return roleList
-        
-        
     }
     
-//    //number of mafia a particular session should contain
-//    func numMafia() -> Int {
-//        
-//        let mafia = sqrt(Float(HostManager.shared.room.maxPlayers))
-//        return Int(mafia)
-//        
-//    }
+    func quitRoomCompletion() {
+        DispatchQueue.main.async {
+            let MenuVC = self.storyboard?.instantiateViewController(withIdentifier: "JoinOrCreateRoomMenu") as? MenuViewController
+            self.present(MenuVC!, animated: true, completion: nil)
+        }
+    }
     
     @IBAction func startGame(_ sender: Any) {
         let mafiaNightController = storyboard?.instantiateViewController(withIdentifier: "MafiaNight") as? MafiaNightController
         
         self.present(mafiaNightController!, animated: true, completion: nil)
+    }
+    
+    @IBAction func quitRoom(_ sender: Any) {
+        SocketIOManager.shared.sendUserExitRoomEvent()
     }
   
     @IBOutlet weak var playerTable: UITableView!

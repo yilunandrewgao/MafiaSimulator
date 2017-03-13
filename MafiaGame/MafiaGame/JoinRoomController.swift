@@ -51,13 +51,7 @@ class JoinRoomController: UIViewController, UITableViewDataSource, UITableViewDe
             
             if enteredPassword == selectedRoom.password {
                 
-                SocketIOManager.shared.sendJoinRoomEvent(roomToJoin: selectedRoom, completionHandler: { (roomJSON) -> Void in
-                    DispatchQueue.main.async { () -> Void in
-                        GameService.shared.inRoom = try! Room(json: roomJSON)
-                        self.performSegue(withIdentifier: "JoinRoomToWaitingRoom", sender: nil)
-                    }
-                    
-                })
+                SocketIOManager.shared.sendJoinRoomEvent(roomToJoin: selectedRoom)
             }
             
         }))
@@ -69,6 +63,7 @@ class JoinRoomController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateRoomsTable), name: .updateRoomsTableNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(performSegueToWaitingRoom), name: .updateRoomNotification, object: nil)
        
     }
     
@@ -83,8 +78,10 @@ class JoinRoomController: UIViewController, UITableViewDataSource, UITableViewDe
         DispatchQueue.main.async {
             self.roomTable.reloadData()
         }
-        
-        
+    }
+    
+    func performSegueToWaitingRoom() {
+        performSegue(withIdentifier: "JoinRoomToWaitingRoom", sender: nil)
     }
     
 
@@ -96,6 +93,4 @@ class JoinRoomController: UIViewController, UITableViewDataSource, UITableViewDe
     
 }
 
-extension Notification.Name {
-    static let updateRoomsTableNotification = Notification.Name(rawValue: "updateRoomsTableNotification")
-}
+

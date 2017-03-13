@@ -174,7 +174,7 @@
         <!--Menu Controller-->
         <scene sceneID="PZ4-JM-tHj">
             <objects>
-                <viewController title="Menu Controller" id="atE-xI-aRg" customClass="MenuViewController" customModule="MafiaGame" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="JoinOrCreateRoomMenu" title="Menu Controller" id="atE-xI-aRg" customClass="MenuViewController" customModule="MafiaGame" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qYC-ad-csw"/>
                         <viewControllerLayoutGuide type="bottom" id="dEr-4z-oyf"/>
@@ -749,6 +749,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="haZ-4k-JVG">
                                 <rect key="frame" x="229.5" y="612" width="48" height="30"/>
                                 <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="quitRoom:" destination="j3M-BO-uRS" eventType="touchUpInside" id="cZk-J2-zgd"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -790,6 +793,6 @@
         <image name="loginLightVersion6:7+" width="1080" height="1920"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ktb-Mz-2rW"/>
+        <segue reference="81l-hx-7FU"/>
     </inferredMetricsTieBreakers>
 </document>
