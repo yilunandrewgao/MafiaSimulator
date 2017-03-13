@@ -65,10 +65,24 @@ class CreateRoomController: UIViewController{
     @IBOutlet weak var privateSwitch: UISwitch!
     
     @IBAction func createRoom(_ sender: Any) {
+        var sameRoomName = false
+       
+        let roomList = GameService.shared.roomList ?? []
         
-        // if all conditions are met, initialize the HostManager and start advertising
+        for room in roomList{
+            if room.roomName == nameOfRoom_tf.text!{
+                sameRoomName = true
+                
+                let alertController = UIAlertController(title: "Room Name", message: "Same room name, please change the name.", preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+                present(alertController, animated: true, completion: nil)
+                
+            }
+        }
         
-        if Int(numOfPeople_tf.text!) != nil && String(nameOfRoom_tf.text!) != nil {
+        if Int(numOfPeople_tf.text!) != nil && String(nameOfRoom_tf.text!) != nil && sameRoomName == false{
+            
+            
             
             thisRoomName = nameOfRoom_tf.text
             maxPeopleForRoom = Int(numOfPeople_tf.text!)
