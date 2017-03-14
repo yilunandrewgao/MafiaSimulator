@@ -413,7 +413,7 @@
         <!--Day Controller-->
         <scene sceneID="yh6-oz-fCB">
             <objects>
-                <viewController title="Day Controller" id="9JG-MN-t0P" sceneMemberID="viewController">
+                <viewController title="Day Controller" id="9JG-MN-t0P" customClass="VillagerDayController" customModule="MafiaGame" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mc3-3G-gSQ"/>
                         <viewControllerLayoutGuide type="bottom" id="9ar-sZ-UEc"/>
@@ -474,6 +474,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UsJ-CI-RCP">
                                         <rect key="frame" x="238.5" y="10" width="32" height="30"/>
                                         <state key="normal" title="Vote"/>
+                                        <connections>
+                                            <segue destination="ddZ-Ln-sa2" kind="show" id="UID-1D-SjA"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -521,7 +524,7 @@
         <!--Villager Decision Controller-->
         <scene sceneID="1aw-by-hFC">
             <objects>
-                <viewController title="Villager Decision Controller" id="ddZ-Ln-sa2" sceneMemberID="viewController">
+                <viewController title="Villager Decision Controller" id="ddZ-Ln-sa2" customClass="VillagerVoteController" customModule="MafiaGame" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="d9w-Vj-Wg6"/>
                         <viewControllerLayoutGuide type="bottom" id="JrD-9t-wMH"/>
@@ -529,12 +532,54 @@
                     <view key="view" contentMode="scaleToFill" id="LXy-04-lUP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I5J-pS-8us">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a player below:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eHx-jM-sKb">
+                                        <rect key="frame" x="98.5" y="35" width="178" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="eHx-jM-sKb" firstAttribute="centerX" secondItem="I5J-pS-8us" secondAttribute="centerX" id="gIG-BF-SQ3"/>
+                                    <constraint firstAttribute="height" constant="90" id="l5p-Yj-hfq"/>
+                                    <constraint firstItem="eHx-jM-sKb" firstAttribute="centerY" secondItem="I5J-pS-8us" secondAttribute="centerY" id="sxn-I1-K61"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OgZ-1f-GkL">
+                                <rect key="frame" x="0.0" y="90" width="375" height="577"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="FSF-OU-pgf">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FSF-OU-pgf" id="byu-eG-Log">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="I5J-pS-8us" firstAttribute="leading" secondItem="LXy-04-lUP" secondAttribute="leading" id="1wf-Yp-rwO"/>
+                            <constraint firstAttribute="trailing" secondItem="I5J-pS-8us" secondAttribute="trailing" id="2Mu-NB-YmP"/>
+                            <constraint firstItem="OgZ-1f-GkL" firstAttribute="top" secondItem="I5J-pS-8us" secondAttribute="bottom" id="AQ7-oH-khA"/>
+                            <constraint firstItem="OgZ-1f-GkL" firstAttribute="leading" secondItem="LXy-04-lUP" secondAttribute="leading" id="Gb3-Um-46j"/>
+                            <constraint firstItem="I5J-pS-8us" firstAttribute="top" secondItem="LXy-04-lUP" secondAttribute="top" id="PUP-85-tNj"/>
+                            <constraint firstAttribute="trailing" secondItem="OgZ-1f-GkL" secondAttribute="trailing" id="Rtk-Qs-tgJ"/>
+                            <constraint firstItem="JrD-9t-wMH" firstAttribute="top" secondItem="OgZ-1f-GkL" secondAttribute="bottom" id="i2g-nk-kij"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j5Q-rU-mKh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1983" y="3170"/>
+            <point key="canvasLocation" x="1981.5999999999999" y="3169.5652173913045"/>
         </scene>
         <!--Burned Controller-->
         <scene sceneID="gVV-m4-w39">
@@ -676,7 +721,7 @@
                                         <rect key="frame" x="238.5" y="10" width="32" height="30"/>
                                         <state key="normal" title="Vote"/>
                                         <connections>
-                                            <segue destination="ghx-mx-rRK" kind="show" id="nsG-MT-80R"/>
+                                            <segue destination="ghx-mx-rRK" kind="show" id="FEn-kn-zlp"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -755,7 +800,7 @@
         <!--Mafia Decision Controller-->
         <scene sceneID="gPi-42-n5p">
             <objects>
-                <viewController title="Mafia Decision Controller" id="ghx-mx-rRK" sceneMemberID="viewController">
+                <viewController title="Mafia Decision Controller" id="ghx-mx-rRK" customClass="MafiaVoteController" customModule="MafiaGame" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="OIu-0g-bzJ"/>
                         <viewControllerLayoutGuide type="bottom" id="adT-P3-3R1"/>
@@ -763,7 +808,49 @@
                     <view key="view" contentMode="scaleToFill" id="5OE-Si-TsV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NVH-Tw-tco">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a player below:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D34-Ez-whk">
+                                        <rect key="frame" x="98.5" y="35" width="178" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="D34-Ez-whk" firstAttribute="centerX" secondItem="NVH-Tw-tco" secondAttribute="centerX" id="1Qw-6x-8LG"/>
+                                    <constraint firstAttribute="height" constant="90" id="g9C-Uv-TOB"/>
+                                    <constraint firstItem="D34-Ez-whk" firstAttribute="centerY" secondItem="NVH-Tw-tco" secondAttribute="centerY" id="uOJ-JF-RI8"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Sg8-kV-tMf">
+                                <rect key="frame" x="0.0" y="90" width="375" height="577"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="F15-aK-Vev">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="F15-aK-Vev" id="ejr-J6-3br">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="NVH-Tw-tco" secondAttribute="trailing" id="42s-43-gGL"/>
+                            <constraint firstItem="NVH-Tw-tco" firstAttribute="leading" secondItem="5OE-Si-TsV" secondAttribute="leading" id="5lN-Hx-Gnp"/>
+                            <constraint firstItem="adT-P3-3R1" firstAttribute="top" secondItem="Sg8-kV-tMf" secondAttribute="bottom" id="Bgk-MV-2aw"/>
+                            <constraint firstItem="Sg8-kV-tMf" firstAttribute="top" secondItem="NVH-Tw-tco" secondAttribute="bottom" id="Hln-g5-eOp"/>
+                            <constraint firstItem="Sg8-kV-tMf" firstAttribute="leading" secondItem="5OE-Si-TsV" secondAttribute="leading" id="aIZ-C3-hxR"/>
+                            <constraint firstItem="NVH-Tw-tco" firstAttribute="top" secondItem="5OE-Si-TsV" secondAttribute="top" id="oOf-hO-CGe"/>
+                            <constraint firstAttribute="trailing" secondItem="Sg8-kV-tMf" secondAttribute="trailing" id="uCj-Hj-nLZ"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZLd-CI-ub1" userLabel="First Responder" sceneMemberID="firstResponder"/>
