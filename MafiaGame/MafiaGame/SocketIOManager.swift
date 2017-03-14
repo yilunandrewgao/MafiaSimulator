@@ -96,28 +96,7 @@ class SocketIOManager: NSObject {
     
     func deleteRoomEvent(){
         socket.emit("deleteRoom")
-        
-//        let inRoomName = GameService.shared.inRoom?.roomName
-//        let roomlist = GameService.shared.roomList ?? []
-//        
-//        for room in roomlist{
-//            if room.roomName == inRoomName{
-//      
-//                socket.on("roomListUpdate") { data, ack in
-//                    let roomListJSON = data[0] as! [[String:Any]]
-//                    
-//                    var simpleRoomList:[SimpleRoom] = []
-//                    for roomJSON in roomListJSON {
-//                        try? simpleRoomList.append(SimpleRoom(json: roomJSON))
-//                    }
-//                    
-//                    GameService.shared.roomList = simpleRoomList
-//                }
-//                
-//                GameService.shared.inRoom = nil
-//                
-//            }
-//        }
+    
         
     }
     
