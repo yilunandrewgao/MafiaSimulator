@@ -841,12 +841,20 @@
                                     <action selector="quitRoom:" destination="j3M-BO-uRS" eventType="touchUpInside" id="cZk-J2-zgd"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WRv-iT-dro">
+                                <rect key="frame" x="155" y="609" width="45" height="30"/>
+                                <state key="normal" title="Delete"/>
+                                <connections>
+                                    <action selector="ownerDeleteRoom:" destination="j3M-BO-uRS" eventType="touchUpInside" id="zpt-ps-STh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="0lu-ci-f6x" firstAttribute="top" secondItem="20r-UL-o1Y" secondAttribute="bottom" id="4FP-SA-6NU"/>
                             <constraint firstItem="20r-UL-o1Y" firstAttribute="top" secondItem="jgR-IR-CFh" secondAttribute="bottom" id="5zx-pM-RbK"/>
                             <constraint firstItem="haZ-4k-JVG" firstAttribute="baseline" secondItem="5VX-sM-Uen" secondAttribute="baseline" id="6We-EQ-aU0"/>
+                            <constraint firstItem="haZ-4k-JVG" firstAttribute="bottom" secondItem="WRv-iT-dro" secondAttribute="bottom" id="9XP-hP-5st"/>
                             <constraint firstItem="ZX7-DU-uiS" firstAttribute="top" secondItem="Kml-c5-6SA" secondAttribute="bottom" constant="25" id="9gs-UL-aST"/>
                             <constraint firstAttribute="trailing" secondItem="20r-UL-o1Y" secondAttribute="trailing" id="AG1-RB-qJR"/>
                             <constraint firstItem="jgR-IR-CFh" firstAttribute="leading" secondItem="kwm-bq-t0e" secondAttribute="leading" id="D16-yV-shM"/>
@@ -854,6 +862,7 @@
                             <constraint firstItem="ZX7-DU-uiS" firstAttribute="centerX" secondItem="kwm-bq-t0e" secondAttribute="centerX" id="F2U-h6-peX"/>
                             <constraint firstItem="20r-UL-o1Y" firstAttribute="width" secondItem="yqc-YE-I13" secondAttribute="width" id="Mvy-VO-NGe"/>
                             <constraint firstItem="jgR-IR-CFh" firstAttribute="top" secondItem="Kml-c5-6SA" secondAttribute="bottom" constant="75" id="Q9C-rM-pHI"/>
+                            <constraint firstItem="WRv-iT-dro" firstAttribute="centerX" secondItem="AFS-9D-pwL" secondAttribute="centerX" id="Qgx-xs-KiP"/>
                             <constraint firstAttribute="trailing" secondItem="jgR-IR-CFh" secondAttribute="trailing" id="RLZ-sJ-ZnI"/>
                             <constraint firstItem="yqc-YE-I13" firstAttribute="top" secondItem="jgR-IR-CFh" secondAttribute="bottom" id="S65-Ia-g86"/>
                             <constraint firstItem="0lu-ci-f6x" firstAttribute="top" secondItem="jgR-IR-CFh" secondAttribute="bottom" constant="100" id="aLW-ww-Qhh"/>
@@ -869,6 +878,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="ownerDeleteButton" destination="WRv-iT-dro" id="ca7-Nt-eoW"/>
                         <outlet property="playerTable" destination="jgR-IR-CFh" id="qr1-JN-kMS"/>
                     </connections>
                 </viewController>

@@ -11,6 +11,8 @@ import UIKit
 
 class WaitingPlayerController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    let thisPlayer = GameService.shared.thisPlayer.sid
+    let roomOwnerSid = GameService.shared.inRoom?.owner.sid
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -34,8 +36,15 @@ class WaitingPlayerController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        if thisPlayer == roomOwnerSid{
+            ownerDeleteButton.isEnabled = true
+            
+        }
+        
         NotificationCenter.default.addObserver(self, selector: #selector(updatePlayerTable), name: .updateRoomNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(quitRoomCompletion), name: .quitRoomNotification, object: nil)
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -57,6 +66,13 @@ class WaitingPlayerController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
+//    func deleteRoomCompletion(){
+//        DispatchQueue.main.async {
+//            let MenuVC = self.storyboard?.instantiateViewController(withIdentifier: "JoinOrCreateRoomMenu") as? MenuViewController
+//            self.present(MenuVC!, animated: true, completion: nil)
+//        }
+//    }
+    
     @IBAction func startGame(_ sender: Any) {
         let mafiaNightController = storyboard?.instantiateViewController(withIdentifier: "MafiaNight") as? MafiaNightController
         
@@ -67,5 +83,18 @@ class WaitingPlayerController: UIViewController, UITableViewDelegate, UITableVie
         SocketIOManager.shared.sendUserExitRoomEvent()
     }
   
+    @IBAction func ownerDeleteRoom(_ sender: Any) {
+        DispatchQueue.main.async {
+            SocketIOManager.shared.deleteRoomEvent()
+            
+            
+            
+            let MenuVC = self.storyboard?.instantiateViewController(withIdentifier: "JoinOrCreateRoomMenu") as? MenuViewController
+            self.present(MenuVC!, animated: true, completion: nil)
+        }
+
+    }
+   
     @IBOutlet weak var playerTable: UITableView!
+    @IBOutlet weak var ownerDeleteButton: UIButton!
 }

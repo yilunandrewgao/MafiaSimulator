@@ -10,7 +10,7 @@ import UIKit
 class SocketIOManager: NSObject {
     static let shared : SocketIOManager = SocketIOManager()
     
-    let socket: SocketIOClient = SocketIOClient(socketURL: URL(string: "http://10.111.193.129:7777")!, config: [.log(false), .forceWebsockets(true), .reconnects(false)])
+    let socket: SocketIOClient = SocketIOClient(socketURL: URL(string: "http://192.168.0.24:7777")!, config: [.log(false), .forceWebsockets(true), .reconnects(false)])
 
 
     private override init(){
@@ -92,6 +92,33 @@ class SocketIOManager: NSObject {
     
     func sendUserExitRoomEvent() {
         socket.emit("userExitRoom")
+    }
+    
+    func deleteRoomEvent(){
+        socket.emit("deleteRoom")
+        
+//        let inRoomName = GameService.shared.inRoom?.roomName
+//        let roomlist = GameService.shared.roomList ?? []
+//        
+//        for room in roomlist{
+//            if room.roomName == inRoomName{
+//      
+//                socket.on("roomListUpdate") { data, ack in
+//                    let roomListJSON = data[0] as! [[String:Any]]
+//                    
+//                    var simpleRoomList:[SimpleRoom] = []
+//                    for roomJSON in roomListJSON {
+//                        try? simpleRoomList.append(SimpleRoom(json: roomJSON))
+//                    }
+//                    
+//                    GameService.shared.roomList = simpleRoomList
+//                }
+//                
+//                GameService.shared.inRoom = nil
+//                
+//            }
+//        }
+        
     }
     
 }

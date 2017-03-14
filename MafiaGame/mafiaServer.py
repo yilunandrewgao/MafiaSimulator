@@ -78,6 +78,27 @@ def on_disconnect():
 @socketio.on('deleteRoom')
 def on_delete_room():
 	pass
+	#get the player object 
+	for player in playerList:
+		if player.sid == request.sid:
+			#find the room the player is in
+			if player in playerToRoomMap:
+				roomToDelete = playerToRoomMap[player]
+				#remove all players in room
+				for player in roomToDelete.playerList:
+					roomToDelete.removePlayer(player)
+				#remove room
+				roomList.remove(roomToDelete)
+				#remove player from the mapping
+				del playerToRoomMap[player]
+
+				print("roomList: ", roomList)
+
+				socketio.emit("roomListUpdate", [room.toSimpleJSON() for room in roomList])
+				socketio.emit("quitRoomUpdate", room = request.sid)
+
+				break
+
 
 
 @socketio.on("createRoom")
@@ -98,7 +119,7 @@ def on_create_room(roomDict):
 	playerToRoomMap[newRoom.owner] = newRoom
 
 	# join socketio room with room name as tag
-	newRoom.roomTag = newRoom.name
+	newRoom.roomTag = newRoom.roomName
 	join_room(newRoom.roomTag)
 
 	#emit roomUpdate and roomListUpdate
@@ -138,7 +159,7 @@ def on_user_exit_room():
 
 
 @socketio.on("userJoinRoom")
-def on_user_join_room(roomOwnerSid):
+def on_user_join_room(roomTag):
 	
 	thisPlayer = None
 	# find player object
@@ -151,17 +172,17 @@ def on_user_join_room(roomOwnerSid):
 	if thisPlayer:
 		#find room object
 		for room in roomList:
-			if room.roomTag == roomOwnerSid:
+			if room.roomTag == roomTag:
 				print (room)
 				# add player to the room
 				room.addPlayer(thisPlayer)
-				join_room(roomOwnerSid)
+				join_room(roomTag)
 				playerToRoomMap[thisPlayer] = room
 				
 
 				#emit updates
 
-				socketio.emit("roomUpdate", room.toJSON(), room = roomOwnerSid)
+				socketio.emit("roomUpdate", room.toJSON(), room = roomTag)
 				socketio.emit("roomListUpdate", [room.toSimpleJSON() for room in roomList])
 
 				break
@@ -172,4 +193,4 @@ def on_user_join_room(roomOwnerSid):
 
 
 if __name__ == '__main__':
-	socketio.run(app, host = "10.111.193.129", port = 7777)
+	socketio.run(app, host = "192.168.0.24", port = 7777)
