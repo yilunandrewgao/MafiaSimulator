@@ -87,15 +87,15 @@ def on_delete_room():
 				#remove all players in room
 				for player in roomToDelete.playerList:
 					roomToDelete.removePlayer(player)
+					#remove player from the mapping
+					del playerToRoomMap[player]
 				#remove room
 				roomList.remove(roomToDelete)
-				#remove player from the mapping
-				del playerToRoomMap[player]
 
 				print("roomList: ", roomList)
 
 				socketio.emit("roomListUpdate", [room.toSimpleJSON() for room in roomList])
-				socketio.emit("quitRoomUpdate", room = request.sid)
+				socketio.emit("quitRoomUpdate", room = roomToDelete.roomTag)
 
 				break
 
