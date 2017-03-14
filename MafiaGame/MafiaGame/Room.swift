@@ -13,7 +13,7 @@ import UIKit
 class Room: CustomStringConvertible {
     
     private(set) var playerList: [Player]
-    private(set) var alivePlayerList: [Player]
+    private(set) var alivePlayerList: [Player]?
     private(set) var roomName: String
     private(set) var password: String
     private(set) var maxPlayers : Int
@@ -28,9 +28,8 @@ class Room: CustomStringConvertible {
         return roomDict
     }
     
-    init(playerList: [Player], alivePlayerList: [Player], roomName: String, password: String, maxPlayers: Int, owner: Player) {
+    init(playerList: [Player], roomName: String, password: String, maxPlayers: Int, owner: Player) {
         self.playerList = playerList
-        self.alivePlayerList = alivePlayerList
         self.roomName = roomName
         self.password = password
         self.maxPlayers = maxPlayers

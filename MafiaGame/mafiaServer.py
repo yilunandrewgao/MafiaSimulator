@@ -37,9 +37,9 @@ def on_set_player(name):
 	print(name + " connected")
 
 	sid = request.sid
-	isAlive = True
+	
 	# create new player and add to list
-	newPlayer = Player(name, sid, isAlive)
+	newPlayer = Player(name, sid)
 	playerList.append(newPlayer)
 
 	# send player info and roomList
@@ -203,5 +203,5 @@ def on_user_join_room(roomTag):
 
 
 if __name__ == '__main__':
-	socketio.run(app, host = "10.111.193.95", port = 7777)
+	socketio.run(app, host = "10.111.194.143", port = 7777)
 

@@ -15,7 +15,7 @@ class MafiaVoteController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let playerCount = GameService.shared.inRoom?.alivePlayerList.count ?? 0
+        let playerCount = GameService.shared.inRoom?.alivePlayerList?.count ?? 0
         print(playerCount)
         return playerCount
     }
@@ -23,14 +23,14 @@ class MafiaVoteController: UIViewController, UITableViewDataSource, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AlivePlayerCell", for: indexPath)
         
-        let alivePlayer = GameService.shared.inRoom?.alivePlayerList[indexPath.row]
+        let alivePlayer = GameService.shared.inRoom?.alivePlayerList?[indexPath.row]
         cell.textLabel?.text = alivePlayer?.name
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedPlayer = GameService.shared.inRoom?.alivePlayerList[indexPath.row]
+        let selectedPlayer = GameService.shared.inRoom?.alivePlayerList?[indexPath.row]
         
 //        let alertController = UIAlertController(title: "Help: Private", message: "Room is password protected", preferredStyle: .alert)
 //        alertController.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
