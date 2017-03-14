@@ -66,13 +66,6 @@ class WaitingPlayerController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
-//    func deleteRoomCompletion(){
-//        DispatchQueue.main.async {
-//            let MenuVC = self.storyboard?.instantiateViewController(withIdentifier: "JoinOrCreateRoomMenu") as? MenuViewController
-//            self.present(MenuVC!, animated: true, completion: nil)
-//        }
-//    }
-    
     @IBAction func startGame(_ sender: Any) {
         let mafiaNightController = storyboard?.instantiateViewController(withIdentifier: "MafiaNight") as? MafiaNightController
         
@@ -84,14 +77,10 @@ class WaitingPlayerController: UIViewController, UITableViewDelegate, UITableVie
     }
   
     @IBAction func ownerDeleteRoom(_ sender: Any) {
-        DispatchQueue.main.async {
-            SocketIOManager.shared.deleteRoomEvent()
+        
+        SocketIOManager.shared.deleteRoomEvent()
             
-            
-            
-            let MenuVC = self.storyboard?.instantiateViewController(withIdentifier: "JoinOrCreateRoomMenu") as? MenuViewController
-            self.present(MenuVC!, animated: true, completion: nil)
-        }
+        
 
     }
    
