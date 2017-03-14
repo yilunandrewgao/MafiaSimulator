@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from flask_socketio import SocketIO, send, emit, join_room, leave_room
+from flask_socketio import SocketIO, send, emit, join_room, leave_room, close_room
 from Player import Player
 from Room import Room
 import MafiaEncoder
@@ -58,7 +58,7 @@ def on_disconnect():
 				#remove player from room
 				selectedRoom.removePlayer(player)
 				#remove player from playerList
-				playerList.remove(Player)
+				playerList.remove(player)
 				#remove player from mapping
 				del playerToRoomMap[player]
 
@@ -93,11 +93,15 @@ def on_delete_room():
 					del playerToRoomMap[player]
 				#remove room
 				roomList.remove(roomToDelete)
+				
 
 				print("roomList: ", roomList)
 
 				socketio.emit("roomListUpdate", [room.toSimpleJSON() for room in roomList])
 				socketio.emit("quitRoomUpdate", room = roomToDelete.roomTag)
+
+				#remove socketio room
+				close_room(roomToDelete.roomTag)
 
 				break
 
@@ -146,12 +150,16 @@ def on_user_exit_room():
 				#remove player from mapping
 				del playerToRoomMap[player]
 
+
 				#emit new info to everyone except exiting user
 				socketio.emit("roomUpdate", selectedRoom.toJSON(),room = selectedRoom.roomTag, skip_sid = request.sid)
 				socketio.emit("roomListUpdate", [room.toSimpleJSON() for room in roomList])
 
 				#emit quitRoomUpdate to exiting user
 				socketio.emit("quitRoomUpdate", room = request.sid)
+
+				#remove player from socketio room
+				leave_room(selectedRoom.roomTag)
 				
 			else:
 				# if player is not in room, it's an error
@@ -195,4 +203,5 @@ def on_user_join_room(roomTag):
 
 
 if __name__ == '__main__':
-	socketio.run(app, host = "10.111.194.143", port = 7777)
+	socketio.run(app, host = "10.111.193.95", port = 7777)
+
