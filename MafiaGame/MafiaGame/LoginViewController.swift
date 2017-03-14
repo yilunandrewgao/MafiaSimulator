@@ -74,7 +74,7 @@ class LoginViewController: UIViewController {
     @IBAction func gotoMenu(_ sender: Any) {
         if self.username != "Username" {
             
-            GameService.shared.thisPlayer = Player(name: self.username, sid: "0", isAlive: true)
+            GameService.shared.thisPlayer = Player(name: self.username, sid: "0")
             
             SocketIOManager.shared.establishConnection()
             
