@@ -12,6 +12,7 @@ socketio = SocketIO(app)
 roomList = []
 playerList = []
 playerToRoomMap = {}
+voteCount = 0
 
 # room1 = Room("room1","password1",5,Player("Alice",1))
 
@@ -36,8 +37,9 @@ def on_set_player(name):
 	print(name + " connected")
 
 	sid = request.sid
+	isAlive = True
 	# create new player and add to list
-	newPlayer = Player(name, sid)
+	newPlayer = Player(name, sid, isAlive)
 	playerList.append(newPlayer)
 
 	# send player info and roomList
@@ -193,4 +195,4 @@ def on_user_join_room(roomTag):
 
 
 if __name__ == '__main__':
-	socketio.run(app, host = "192.168.0.24", port = 7777)
+	socketio.run(app, host = "10.111.194.143", port = 7777)

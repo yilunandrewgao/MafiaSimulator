@@ -26,7 +26,11 @@ extension Player {
             throw SerializationError.missing("sid")
         }
         
-        self.init(name:name, sid:sid)
+        guard let isAlive = playerInfo["isAlive"] as? Bool else {
+            throw SerializationError.missing("alive status")
+        }
+        
+        self.init(name:name, sid:sid, isAlive:isAlive)
     }
 }
 
@@ -46,6 +50,15 @@ extension Room{
             playerList.append(player)
         }
         
+        guard let alivePlayerListJSON = json["alivePlayerList"] as? [[String:Any]] else{
+            throw SerializationError.missing("alivePlayerList")
+        }
+        
+        var alivePlayerList: [Player] = []
+        for alivePlayerJSON in alivePlayerListJSON {
+            let alivePlayer = try Player(playerInfo: alivePlayerJSON)
+            alivePlayerList.append(alivePlayer)
+        }
         
         guard let roomName = json["roomName"] as? String else{
             throw SerializationError.missing("roomName")
@@ -62,7 +75,7 @@ extension Room{
         
         let owner = try Player(playerInfo: ownerJSON)
         
-        self.init(playerList: playerList, roomName: roomName, password: password, maxPlayers: maxPlayers, owner:owner)
+        self.init(playerList: playerList, alivePlayerList: alivePlayerList, roomName: roomName, password: password, maxPlayers: maxPlayers, owner:owner)
     }
 }
     

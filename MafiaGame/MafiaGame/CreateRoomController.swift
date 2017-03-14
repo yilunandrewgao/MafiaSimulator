@@ -98,7 +98,7 @@ class CreateRoomController: UIViewController{
             
             let owner = GameService.shared.thisPlayer!
             
-            let newRoom = Room(playerList: [owner], roomName: thisRoomName, password: roomPassword!, maxPlayers: maxPeopleForRoom, owner: owner)
+            let newRoom = Room(playerList: [owner], alivePlayerList: [owner], roomName: thisRoomName, password: roomPassword!, maxPlayers: maxPeopleForRoom, owner: owner)
             
             
             SocketIOManager.shared.sendCreateRoomEvent(newRoom: newRoom)

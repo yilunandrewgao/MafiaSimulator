@@ -830,7 +830,7 @@
                                 <rect key="frame" x="0.0" y="90" width="375" height="577"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="F15-aK-Vev">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AlivePlayerCell" id="F15-aK-Vev">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="F15-aK-Vev" id="ejr-J6-3br">
@@ -852,6 +852,9 @@
                             <constraint firstAttribute="trailing" secondItem="Sg8-kV-tMf" secondAttribute="trailing" id="uCj-Hj-nLZ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="playerTable" destination="Sg8-kV-tMf" id="JMu-Co-NiF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZLd-CI-ub1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

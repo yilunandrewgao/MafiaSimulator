@@ -5,6 +5,7 @@ import MafiaEncoder
 class Room:
 
 	playerList = []
+	alivePlayerList = []
 	roomName = None
 	password = None
 	maxPlayers = 0
@@ -18,6 +19,7 @@ class Room:
 		self.maxPlayers = maxPlayers
 		self.owner = owner
 		self.playerList = [owner]
+		self.alivePlayerList = [owner]
 
 	#alternative init from dictionary
 	@classmethod
@@ -26,7 +28,7 @@ class Room:
 		password = roomDict["password"]
 		maxPlayers = roomDict["maxPlayers"]
 		owner = Player.fromDict(roomDict["owner"])
-		return cls(roomName, password, maxPlayers,owner)
+		return cls(roomName, password, maxPlayers, owner)
 
 	def __repr__(self):
 		returnString = self.roomName+" by "+repr(self.owner)+": "+repr(len(self.playerList))+"/"+repr(self.maxPlayers)
@@ -37,6 +39,7 @@ class Room:
 
 		if len(self.playerList) < self.maxPlayers:
 			self.playerList.append(newPlayer)
+			self.alivePlayerList.append(newPlayer)
 			return True
 
 		else:
@@ -49,6 +52,16 @@ class Room:
 			return True
 
 		else: 
+			return False
+
+	def killPlayer(self, playerToKill):
+		if playerToKill in self.playerList:
+			if playerToKill in self.alivePlayerList:
+				self.alivePlayerList.remove(playerToKill)
+				return True
+			else:
+				return False
+		else:
 			return False
 
 	def toJSON(self):
