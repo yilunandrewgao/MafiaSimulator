@@ -18,9 +18,20 @@ class CreateRoomController: UIViewController{
     
     @IBOutlet weak var numOfPeople_tf: UITextField!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Looks for single or multiple taps.
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(CreateRoomController.dismissKeyboard))
+        
+        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
+        //tap.cancelsTouchesInView = false
+        
+        view.addGestureRecognizer(tap)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         NotificationCenter.default.addObserver(self, selector: #selector(performSegueToWaitingRoom), name: .updateRoomNotification, object: nil)
     }
     
@@ -63,6 +74,13 @@ class CreateRoomController: UIViewController{
         }
         
         
+    }
+    
+    
+    
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     
     

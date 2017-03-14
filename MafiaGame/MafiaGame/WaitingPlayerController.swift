@@ -33,8 +33,8 @@ class WaitingPlayerController: UIViewController, UITableViewDelegate, UITableVie
         navigationItem.hidesBackButton = true
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
         
         if thisPlayer == roomOwnerSid{
@@ -68,12 +68,13 @@ class WaitingPlayerController: UIViewController, UITableViewDelegate, UITableVie
     
     func quitRoomCompletion() {
         DispatchQueue.main.async {
-            let MenuVC = self.storyboard?.instantiateViewController(withIdentifier: "JoinOrCreateRoomMenu") as? MenuViewController
-            self.present(MenuVC!, animated: true, completion: nil)
+            let _ = self.navigationController?.popViewController(animated: true)
         }
     }
     
     @IBAction func startGame(_ sender: Any) {
+        
+        SocketIOManager.shared.startGame()
         let mafiaNightController = storyboard?.instantiateViewController(withIdentifier: "MafiaNight") as? MafiaNightController
         
         self.present(mafiaNightController!, animated: true, completion: nil)

@@ -69,32 +69,36 @@ extension Room{
 extension SimpleRoom{
     convenience init(json: [String:Any]) throws {
             
-            guard let currentNumPlayers = json["currentNumPlayers"] as? Int else{
-                throw SerializationError.missing("currentNumPlayers")
-            }
-            
-            guard let roomName = json["roomName"] as? String else{
-                throw SerializationError.missing("roomName")
-            }
-            
-            guard let maxPlayers = json["maxPlayers"] as? Int else {
-                throw SerializationError.missing("maxPlayers")
-            }
-            
-            //owner
-            guard let ownerName = json["owner"] as? String else{
-                throw SerializationError.missing("owner")
-            }
-            
-            guard let password = json["password"] as? String else{
-                throw SerializationError.missing("password")
-            }
+        guard let currentNumPlayers = json["currentNumPlayers"] as? Int else{
+            throw SerializationError.missing("currentNumPlayers")
+        }
         
-            guard let roomTag = json["roomTag"] as? String else {
-                throw SerializationError.missing("roomTag")
-            }
+        guard let roomName = json["roomName"] as? String else{
+            throw SerializationError.missing("roomName")
+        }
         
-        self.init(numPlayers: currentNumPlayers, roomName: roomName, password: password, maxPlayers: maxPlayers, owner: ownerName, roomTag: roomTag)
+        guard let maxPlayers = json["maxPlayers"] as? Int else {
+            throw SerializationError.missing("maxPlayers")
+        }
+        
+        //owner
+        guard let ownerName = json["owner"] as? String else{
+            throw SerializationError.missing("owner")
+        }
+        
+        guard let password = json["password"] as? String else{
+            throw SerializationError.missing("password")
+        }
+    
+        guard let roomTag = json["roomTag"] as? String else {
+            throw SerializationError.missing("roomTag")
+        }
+        
+        guard let gameStarted = json["gameStarted"] as? Bool else {
+            throw SerializationError.missing("gameStarted")
+        }
+        
+        self.init(numPlayers: currentNumPlayers, roomName: roomName, password: password, maxPlayers: maxPlayers, owner: ownerName, roomTag: roomTag, gameStarted: gameStarted)
         }
 }
   

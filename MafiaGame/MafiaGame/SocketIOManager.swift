@@ -10,7 +10,7 @@ import UIKit
 class SocketIOManager: NSObject {
     static let shared : SocketIOManager = SocketIOManager()
     
-    let socket: SocketIOClient = SocketIOClient(socketURL: URL(string: "http://10.111.194.143:7777")!, config: [.log(false), .forceWebsockets(true), .reconnects(false)])
+    let socket: SocketIOClient = SocketIOClient(socketURL: URL(string: "http://10.111.192.239:7777")!, config: [.log(false), .forceWebsockets(true), .reconnects(false)])
 
 
     private override init(){
@@ -96,8 +96,10 @@ class SocketIOManager: NSObject {
     
     func deleteRoomEvent(){
         socket.emit("deleteRoom")
+    }
     
-        
+    func startGame() {
+        socket.emit("startGame")
     }
     
 }

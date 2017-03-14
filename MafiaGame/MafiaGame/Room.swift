@@ -18,6 +18,7 @@ class Room: CustomStringConvertible {
     private(set) var password: String
     private(set) var maxPlayers : Int
     private(set) var owner: Player
+    private(set) var gameStarted: Bool
     
     public var description : String {
         return "\(self.roomName) by \(String(describing: self.owner)): \(self.playerList.count)/\(self.maxPlayers)"
@@ -34,6 +35,7 @@ class Room: CustomStringConvertible {
         self.password = password
         self.maxPlayers = maxPlayers
         self.owner = owner
+        self.gameStarted = false
 
     }
     

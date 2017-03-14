@@ -10,6 +10,7 @@ class Room:
 	password = None
 	maxPlayers = 0
 	owner = None
+	gameStarted = False
 
 	roomTag = None
 
@@ -31,13 +32,15 @@ class Room:
 		return cls(roomName, password, maxPlayers, owner)
 
 	def __repr__(self):
-		returnString = self.roomName+" by "+repr(self.owner)+": "+repr(len(self.playerList))+"/"+repr(self.maxPlayers)
+		returnString = self.roomName+" by "+repr(self.owner)+": "+repr(len(self.playerList))+"/"+\
+		repr(self.maxPlayers)+" Status: "+str(self.gameStarted)
 		return returnString
 	
 
 	def addPlayer(self, newPlayer):
 
 		if len(self.playerList) < self.maxPlayers:
+
 			self.playerList.append(newPlayer)
 	
 			return True
@@ -61,13 +64,14 @@ class Room:
 
 		infoDict = {"_type": "Room", "playerList": [player.toJSON() for player in self.playerList], \
 		"roomName": self.roomName, "maxPlayers": self.maxPlayers, "owner": self.owner.toJSON(), \
-		"password":self.password}
+		"password":self.password, "gameStarted": self.gameStarted}
 
 		return infoDict
 
 	def toSimpleJSON(self):
 
 		infoDict = {"_type":"SimpleRoom", "currentNumPlayers": len(self.playerList), "roomName": self.roomName,\
-		 "maxPlayers": self.maxPlayers, "owner":self.owner.name, "password": self.password, "roomTag": self.roomTag}
+		 "maxPlayers": self.maxPlayers, "owner":self.owner.name, "password": self.password, "roomTag": self.roomTag,\
+		 "gameStarted": self.gameStarted}
 
 		return infoDict

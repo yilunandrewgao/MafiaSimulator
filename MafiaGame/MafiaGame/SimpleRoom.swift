@@ -16,18 +16,20 @@ class SimpleRoom {
     private(set) var maxPlayers : Int
     private(set) var owner: String
     let roomTag: String
+    private(set) var gameStarted: Bool
     
     public var description : String {
         return "\(self.roomName) by \(self.owner): \(self.numPlayers)/\(self.maxPlayers)"
     }
     
-    init(numPlayers: Int, roomName: String, password: String, maxPlayers: Int, owner: String, roomTag: String) {
+    init(numPlayers: Int, roomName: String, password: String, maxPlayers: Int, owner: String, roomTag: String, gameStarted: Bool) {
         self.numPlayers = numPlayers
         self.roomName = roomName
         self.password = password
         self.maxPlayers = maxPlayers
         self.owner = owner
         self.roomTag = roomTag
+        self.gameStarted = gameStarted
     }
     
 }

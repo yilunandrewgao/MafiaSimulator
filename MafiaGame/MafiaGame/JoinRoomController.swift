@@ -28,42 +28,55 @@ class JoinRoomController: UIViewController, UITableViewDataSource, UITableViewDe
 
         let simpleRoom = GameService.shared.roomList[indexPath.row]
         cell.textLabel?.text = simpleRoom.roomName
-        cell.detailTextLabel?.text = "\(simpleRoom.owner): \(simpleRoom.numPlayers)/\(simpleRoom.maxPlayers)"
+        cell.detailTextLabel?.text = "\(simpleRoom.owner): \(simpleRoom.numPlayers)/\(simpleRoom.maxPlayers) Status: \(simpleRoom.gameStarted ? "Locked" : "Unlocked")"
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedRoom = GameService.shared.roomList[indexPath.row]
-        let alertController = UIAlertController(title: "Password", message: "Enter Password", preferredStyle: .alert)
-        alertController.addTextField { (textField) in
-            textField.placeholder = "password"
-            textField.autocorrectionType = .no
-            textField.autocapitalizationType = .none
-        }
         
-        alertController.view.setNeedsLayout()
-        alertController.addAction(UIAlertAction(title: "Enter", style: .default, handler: { (action) in
-            let enteredPassword = alertController.textFields?.first?.text ?? ""
-            
-            print(enteredPassword)
-            print(selectedRoom.password)
-            
-            if enteredPassword == selectedRoom.password {
-                
-                SocketIOManager.shared.sendJoinRoomEvent(roomToJoin: selectedRoom)
+        if selectedRoom.maxPlayers <= selectedRoom.numPlayers {
+            let alertController = UIAlertController(title: "Room Full", message: "Please choose another room", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            present(alertController, animated: true, completion: nil)
+        }
+        else{
+            let alertController = UIAlertController(title: "Password", message: "Enter Password", preferredStyle: .alert)
+            alertController.addTextField { (textField) in
+                textField.placeholder = "password"
+                textField.autocorrectionType = .no
+                textField.autocapitalizationType = .none
             }
             
-        }))
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        present(alertController, animated: true, completion: nil)
+            alertController.view.setNeedsLayout()
+            alertController.addAction(UIAlertAction(title: "Enter", style: .default, handler: { (action) in
+                let enteredPassword = alertController.textFields?.first?.text ?? ""
+                
+                print(enteredPassword)
+                print(selectedRoom.password)
+                
+                if enteredPassword == selectedRoom.password {
+                    
+                    SocketIOManager.shared.sendJoinRoomEvent(roomToJoin: selectedRoom)
+                }
+                
+            }))
+            alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            present(alertController, animated: true, completion: nil)
+        }
+        
+        
+        
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateRoomsTable), name: .updateRoomsTableNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(performSegueToWaitingRoom), name: .updateRoomNotification, object: nil)
+        
+        self.updateRoomsTable()
        
     }
     

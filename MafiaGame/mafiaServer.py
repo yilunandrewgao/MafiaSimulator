@@ -69,6 +69,11 @@ def on_disconnect():
 
 				#only to sender
 				socketio.emit("quitRoomUpdate", room = request.sid)
+
+				#remove player from socketio room
+				leave_room(selectedRoom.roomTag)
+
+				print (player.name + " disconnected")
 				
 			else:
 				# remove player from playerList
@@ -197,11 +202,18 @@ def on_user_join_room(roomTag):
 
 				break
 
+		
+@socketio.on("startGame")
+def on_start_game():
 
+	for player in playerList:
+		if player.sid == request.sid:
+			roomToStart = playerToRoomMap[player]
+			roomToStart.gameStarted = True
 	
-
+			break
 
 
 if __name__ == '__main__':
-	socketio.run(app, host = "10.111.194.143", port = 7777)
+	socketio.run(app, host = "10.111.192.239", port = 7777)
 
