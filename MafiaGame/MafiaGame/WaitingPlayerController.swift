@@ -75,9 +75,14 @@ class WaitingPlayerController: UIViewController, UITableViewDelegate, UITableVie
     @IBAction func startGame(_ sender: Any) {
         
         SocketIOManager.shared.startGame()
-        let mafiaNightController = storyboard?.instantiateViewController(withIdentifier: "MafiaNight") as? MafiaNightController
-        
-        self.present(mafiaNightController!, animated: true, completion: nil)
+
+        let isVillager = true
+        if isVillager {
+            performSegue(withIdentifier: "MafiaNightSegue", sender: self)
+        }
+        else {
+            performSegue(withIdentifier: "VillagerNightSegue", sender: self)
+        }
     }
     
     @IBAction func quitRoom(_ sender: Any) {
