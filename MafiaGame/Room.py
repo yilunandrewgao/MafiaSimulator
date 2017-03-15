@@ -1,6 +1,8 @@
 import json
 from Player import Player
 import MafiaEncoder
+import math
+from random import shuffle
 
 class Room:
 
@@ -13,6 +15,9 @@ class Room:
 	gameStarted = False
 
 	roomTag = None
+
+	nightChat = None
+	dayChat = None
 
 	def __init__(self, roomName, password, maxPlayers, owner):
 		self.roomName = roomName
@@ -58,7 +63,44 @@ class Room:
 			return False
 
 	def killPlayer(self, playerToKill):
-		pass
+		if playerToKill.isAlive:
+			playerToKill.isAlive = False
+			return True
+		else:
+			return False
+
+	def assignRole(self):
+		playerCount = len(self.playerList)
+		numMafia = int(round(math.sqrt(playerCount)))
+		villagerCount = playerCount-numMafia
+
+		roleList = []
+
+		#append "mafia" role into roleList
+		for i in numMafia:
+			roleList.append("mafia")
+
+		#append "villager" role into roleList
+		for i in villagerCount:
+			roleList.append("villager")
+
+		#shuffle roleList
+		shuffle(roleList)
+
+		#assign list
+		for i in range(playerCount):
+			self.playerList[i].role = roleList[i]
+
+	def alivePlayers(self):
+		alivePlayersList = []
+
+		#find alive players
+		for player in self.playerList:
+			if player.isAlive == True:
+				alivePlayersList.append(player)
+
+		return alivePlayersList
+
 
 	def toJSON(self):
 

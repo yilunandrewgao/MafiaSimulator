@@ -202,6 +202,9 @@ def on_user_join_room(roomTag):
 
 				break
 
+@socketio.on("vote")
+def on_vote():
+	pass
 		
 @socketio.on("startGame")
 def on_start_game():

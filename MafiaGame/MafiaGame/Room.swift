@@ -20,6 +20,9 @@ class Room: CustomStringConvertible {
     private(set) var owner: Player
     private(set) var gameStarted: Bool
     
+    private(set) var nightChat: String?
+    private(set) var dayChat: String?
+    
     public var description : String {
         return "\(self.roomName) by \(String(describing: self.owner)): \(self.playerList.count)/\(self.maxPlayers)"
     }

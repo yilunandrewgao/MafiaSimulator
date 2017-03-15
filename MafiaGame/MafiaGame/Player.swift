@@ -14,7 +14,10 @@ class Player: CustomStringConvertible {
     
     private(set) var name: String
     private(set) var sid: String
-    var isAlive: Bool?
+    private(set) var isAlive: Bool?
+    
+    private(set) var vote: Int?
+    private(set) var role: String?
     
     public var description: String {
         return "(\(self.name), \(self.sid))"
