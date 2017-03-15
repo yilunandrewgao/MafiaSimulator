@@ -69,7 +69,7 @@ class Room:
 		else:
 			return False
 
-	def assignRole(self):
+	def assignRoles(self):
 		playerCount = len(self.playerList)
 		numMafia = int(round(math.sqrt(playerCount)))
 		villagerCount = playerCount-numMafia
@@ -97,9 +97,11 @@ class Room:
 		#find alive players
 		for player in self.playerList:
 			if player.isAlive == True:
+				#append into list
 				alivePlayersList.append(player)
 
 		return alivePlayersList
+
 
 
 	def toJSON(self):

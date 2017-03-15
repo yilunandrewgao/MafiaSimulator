@@ -201,9 +201,43 @@ def on_user_join_room(roomTag):
 				socketio.emit("roomListUpdate", [room.toSimpleJSON() for room in roomList])
 
 				break
-				
-def on_vote():
-	pass
+
+@socketio.on("votedFor")			
+def on_voted_for(chosenPlayerSid, time):
+	#check if night or day
+	if time == "night":
+		for player in playerList:
+			#find player
+			if player.sid == request.sid:
+				#find room player is in
+				if player in playerToRoomMap:
+					inRoom = playerToRoomMap[player]
+					#get chosen player object
+					chosenPlayer = inRoom.playerList[inRoom.playerList.index(player, key = lambda x: x.sid)]
+					player.votedFor = chosenPlayer
+
+					#keep track if all mafiaVoted
+					allMafiaVoted = True
+					#check to see if all mafia members voted:
+					for player in inRoom.playerList:
+						if player.role == "mafia":
+							if player.votedFor == None:
+								allMafiaVoted = False
+								break
+
+					#emit to client
+					if allMafiaVoted:
+						#emit something
+						break
+
+				else:
+					#player not in any room
+					print(player.name, " is not in ", inRoom.roomName)
+					break
+
+	if time == "day":
+		pass
+
 		
 @socketio.on("startGame")
 def on_start_game():
