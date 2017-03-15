@@ -4,8 +4,10 @@ class Player:
 
 	name = None
 	sid = None
+
+	
 	isAlive = True
-	vote = 0
+	voteFor = None 
 
 	#future implementation
 	role = None

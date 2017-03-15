@@ -201,8 +201,7 @@ def on_user_join_room(roomTag):
 				socketio.emit("roomListUpdate", [room.toSimpleJSON() for room in roomList])
 
 				break
-
-@socketio.on("vote")
+				
 def on_vote():
 	pass
 		
