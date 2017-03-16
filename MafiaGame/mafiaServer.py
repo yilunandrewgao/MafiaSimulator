@@ -206,11 +206,14 @@ def on_user_join_room(roomTag):
 		
 @socketio.on("startGame")
 def on_start_game():
-
+	#find player in playerList
 	for player in playerList:
 		if player.sid == request.sid:
+			#find room player is mapped to
 			roomToStart = playerToRoomMap[player]
+			#lock room player is in
 			roomToStart.gameStarted = True
+			#assign roles to players in room
 			roomToStart.assignRoles()
 
 			#emit updates
