@@ -131,7 +131,29 @@ class Room:
 
 		return alivePlayersList
 
+	def whoWon(self):
+		#find alive players
+		alivePlayersList = self.alivePlayersList()
+		#variable to keep track of alive mafia
+		mafiaCount = 0
+		#variable to keep track of alive villagers
+		villagerCount = 0
 
+		for player in alivePlayersList:
+			if player.role = "mafia":
+				mafiaCount += 1
+			else:
+				villagerCount += 1
+
+		#if mafiaCount is the same as villager, mafia wins
+		if mafiaCount == villagerCount:
+			return "mafia"
+		#if no mafia are left
+		elif mafiaCount == 0:
+			return "villagers"
+		#else game still continues, return None for no winners	
+		else:
+			return None
 
 	def toJSON(self):
 
