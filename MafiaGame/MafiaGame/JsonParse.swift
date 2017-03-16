@@ -32,7 +32,6 @@ extension Player {
             throw SerializationError.missing("role")
         }
         
-        
         self.init(name:name, sid:sid)
     }
 }

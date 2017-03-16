@@ -235,6 +235,7 @@ def on_start_round():
 				alivePlayersList = inRoom.alivePlayers()
 				#emit update: AliveList
 				socketio.emit("startRoundUpdate", alivePlayersList)
+				break
 
 			else:
 				#emit end game update and the side that won
@@ -258,12 +259,13 @@ def on_voted_for(chosenPlayerSid, time):
 					#set the player's votedFor to chosen layer
 					player.voteFor = chosenPlayerSid
 
-					#update current vote count
+					#update current vote count (this is a dictionary {"sid":1})
 					currentVotes = inRoom.countVotes()
 
 					#emit table update for chosen Player has been votedFor
 					#socketio.emit("alivePlayerListUpdate", ???) 
 					#write code here
+					socketio.emit("votedForUpdate", room = roomTag)
 
 					#keep track if all mafiaVoted
 					allMafiaVoted = True
@@ -280,7 +282,10 @@ def on_voted_for(chosenPlayerSid, time):
 						playerToKillSid = max(currentVotes, key=lambda key: currentVotes[key])
 						#set chosenPlayer status (isAlive) as dead (false)
 						inRoom.playerToKill(playerToKillSid)
+
 						#emit who died
+						socketio.emit("killedUpdate", playerToKillSid, room = roomTag)
+						
 						#emit something
 						break
 
@@ -307,6 +312,7 @@ def on_voted_for(chosenPlayerSid, time):
 					#emit table update for chosen Player has been votedFor
 					#socketio.emit("alivePlayerListUpdate", ???)  
 					#write code here
+					socketio.emit("votedForUpdate", room = roomTag)
 
 					#keep track if all player voted
 					allPlayersVoted = True
@@ -323,6 +329,7 @@ def on_voted_for(chosenPlayerSid, time):
 						#set chosenPlayer status (isAlive) as dead (false)
 						inRoom.playerToKill(playerToKillSid)
 						#emit who died
+						socketio.emit("killedUpdate", playerToKillSid, room = roomTag)
 						#emit something
 						break
 				else:
