@@ -38,6 +38,7 @@ class LoginViewController: UIViewController {
             usernameOutput.text = username
             self.username = username
         }
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginToMenu), name: .connectedToServerNotification, object: nil)
     }
     
     func storeUsername(_ username: String) {
@@ -68,7 +69,17 @@ class LoginViewController: UIViewController {
         present(alertController, animated: true, completion: nil)
     }
     
+    func timeoutHandler() {
+        let alertController = UIAlertController(title: "Cannot Connect", message: "Please check your network settings", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+        present(alertController, animated: true, completion: nil)
+    }
     
+    func LoginToMenu(){
+        GameService.shared.loggedIn = true
+        
+        performSegue(withIdentifier: "LoginToMenu", sender: nil)
+    }
     
     // activate segue only if default username is changed
     @IBAction func gotoMenu(_ sender: Any) {
@@ -76,16 +87,11 @@ class LoginViewController: UIViewController {
             
             GameService.shared.thisPlayer = Player(name: self.username, sid: "0")
             
-            SocketIOManager.shared.establishConnection()
+            SocketIOManager.shared.establishConnection(timeOutHandler: timeoutHandler)
             
-            GameService.shared.loggedIn = true
-            
-            performSegue(withIdentifier: "LoginToMenu", sender: nil)
         }
         else {
-            let alertController = UIAlertController(title: "Login", message: "Please login", preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
-            present(alertController, animated: true, completion: nil)
+            
         }
     }
     

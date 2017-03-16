@@ -10,7 +10,7 @@ import UIKit
 class SocketIOManager: NSObject {
     static let shared : SocketIOManager = SocketIOManager()
     
-    let socket: SocketIOClient = SocketIOClient(socketURL: URL(string: "http://10.111.192.239:7777")!, config: [.log(false), .forceWebsockets(true), .reconnects(false)])
+    let socket: SocketIOClient = SocketIOClient(socketURL: URL(string: "http://10.111.192.234:7777")!, config: [.log(false), .forceWebsockets(true), .reconnects(false)])
 
 
     private override init(){
@@ -35,6 +35,7 @@ class SocketIOManager: NSObject {
         }
         
         socket.on("connect") { data, ack in
+            NotificationCenter.default.post(name: .connectedToServerNotification, object: nil)
             self.socket.emit("setPlayer", GameService.shared.thisPlayer.name)
         }
         
@@ -69,10 +70,8 @@ class SocketIOManager: NSObject {
     }
     
     
-    func establishConnection(){
-        
-        socket.connect()
-        
+    func establishConnection(timeOutHandler: @escaping ()->Void){
+        socket.connect(timeoutAfter: 2, withHandler: timeOutHandler)
     }
     
     func closeConnection(){
@@ -108,6 +107,7 @@ class SocketIOManager: NSObject {
 
 
 extension Notification.Name {
+    static let connectedToServerNotification = Notification.Name(rawValue: "connectedToServerNotification")
     static let updateRoomsTableNotification = Notification.Name(rawValue: "updateRoomsTableNotification")
     static let updateRoomNotification = Notification.Name(rawValue: "updateRoomNotification")
     static let quitRoomNotification = Notification.Name(rawValue: "quitRoomNotification")
