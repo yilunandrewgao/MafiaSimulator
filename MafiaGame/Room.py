@@ -62,12 +62,41 @@ class Room:
 		else: 
 			return False
 
-	def killPlayer(self, playerToKill):
-		if playerToKill.isAlive:
-			playerToKill.isAlive = False
-			return True
-		else:
-			return False
+	def countVotes(self):
+		#function finds the player with most votes
+		#returns sid
+
+		#create an empty dictionary {"sid":votes}
+		votes = {}
+		#fill votes dictionary
+		for player in self.playerList:
+			votes[player.sid] = 0
+
+		#count votes
+		for player in self.playerList:
+			votes[player.sid] = 0
+			#check if player voted or not
+			if player.voteFor != None:
+				#increment the votedFor player's votes
+				votes[player.voteFor.sid] += 1
+		#find player with most votes
+		playerToKillSid = max(votes, key=lambda key: votes[key])
+
+		return playerToKillSid
+	
+
+	def killPlayer(self, playerToKillSid):
+		for player in self.playerList:
+			if player.sid == playerToKill:
+				if player.isAlive:
+					player.isAlive = False
+					print("player chosen to be killed ", player.name)
+					return True
+				else:
+					return False
+			else:
+				print("playerToKill is not in room")
+				return False
 
 	def assignRoles(self):
 		playerCount = len(self.playerList)

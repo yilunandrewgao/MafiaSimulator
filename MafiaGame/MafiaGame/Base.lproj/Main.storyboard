@@ -380,10 +380,10 @@
             </objects>
             <point key="canvasLocation" x="1829.5999999999999" y="962.96851574212906"/>
         </scene>
-        <!--Who Died Controller-->
+        <!--Who Was Murdered-->
         <scene sceneID="cOQ-bU-atm">
             <objects>
-                <viewController title="Who Died Controller" id="2rW-Sr-37M" sceneMemberID="viewController">
+                <viewController title="Who Was Murdered" id="2rW-Sr-37M" customClass="MurderedController" customModule="MafiaGame" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="byC-BJ-dH3"/>
                         <viewControllerLayoutGuide type="bottom" id="6r1-Qz-GBI"/>
@@ -405,10 +405,13 @@
                             <constraint firstItem="SCN-m6-nMu" firstAttribute="centerY" secondItem="4YG-xZ-RIq" secondAttribute="centerY" id="txV-LX-yjg"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="murderedPlayer" destination="SCN-m6-nMu" id="3WO-ce-UHD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HPt-5b-EXB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1206" y="2388"/>
+            <point key="canvasLocation" x="1030" y="2392"/>
         </scene>
         <!--Day Controller-->
         <scene sceneID="yh6-oz-fCB">
@@ -584,7 +587,7 @@
         <!--Burned Controller-->
         <scene sceneID="gVV-m4-w39">
             <objects>
-                <viewController title="Burned Controller" id="w5I-8d-z5E" sceneMemberID="viewController">
+                <viewController title="Burned Controller" id="w5I-8d-z5E" customClass="BurnedController" customModule="MafiaGame" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="arM-Gd-R8w"/>
                         <viewControllerLayoutGuide type="bottom" id="OZb-bc-tT5"/>
@@ -606,6 +609,9 @@
                             <constraint firstItem="rLI-Mz-cbK" firstAttribute="centerY" secondItem="rl1-5h-Tmw" secondAttribute="centerY" id="mXF-mc-mBV"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="burnedPlayer" destination="rLI-Mz-cbK" id="ybr-gr-jxl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SdT-dD-mL2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -986,6 +992,8 @@
                     <connections>
                         <outlet property="ownerDeleteButton" destination="WRv-iT-dro" id="ca7-Nt-eoW"/>
                         <outlet property="playerTable" destination="jgR-IR-CFh" id="qr1-JN-kMS"/>
+                        <segue destination="nGV-5l-2ks" kind="show" identifier="MafiaNightSegue" id="nHB-Z8-72r"/>
+                        <segue destination="rwv-fl-CwI" kind="show" identifier="VillagerNightSegue" id="lTG-ku-bPY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="klY-95-Xk5" userLabel="First Responder" sceneMemberID="firstResponder"/>

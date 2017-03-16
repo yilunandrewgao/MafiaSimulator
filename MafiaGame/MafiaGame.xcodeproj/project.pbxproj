@@ -39,6 +39,8 @@
 		78A7D1A51E7882C900D2EDA9 /* MafiaVoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A7D1A41E7882C900D2EDA9 /* MafiaVoteController.swift */; };
 		78A7D1A71E7882F700D2EDA9 /* VillagerDayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A7D1A61E7882F700D2EDA9 /* VillagerDayController.swift */; };
 		78A7D1A91E78833400D2EDA9 /* VillagerVoteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A7D1A81E78833400D2EDA9 /* VillagerVoteController.swift */; };
+		78A7D1AB1E79B44400D2EDA9 /* MurderedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A7D1AA1E79B44400D2EDA9 /* MurderedController.swift */; };
+		78A7D1AD1E79B45A00D2EDA9 /* BurnedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A7D1AC1E79B45A00D2EDA9 /* BurnedController.swift */; };
 		78A9FAD81E673FE100F47998 /* AvatarImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A9FAD71E673FE100F47998 /* AvatarImageCell.swift */; };
 		78C458A31E7312DE00D24244 /* SimpleRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C458A21E7312DE00D24244 /* SimpleRoom.swift */; };
 		78C8CCB51E5D0FD200B28265 /* JoinRoomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C8CCB41E5D0FD200B28265 /* JoinRoomController.swift */; };
@@ -108,6 +110,8 @@
 		78A7D1A41E7882C900D2EDA9 /* MafiaVoteController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MafiaVoteController.swift; sourceTree = "<group>"; };
 		78A7D1A61E7882F700D2EDA9 /* VillagerDayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VillagerDayController.swift; sourceTree = "<group>"; };
 		78A7D1A81E78833400D2EDA9 /* VillagerVoteController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VillagerVoteController.swift; sourceTree = "<group>"; };
+		78A7D1AA1E79B44400D2EDA9 /* MurderedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MurderedController.swift; sourceTree = "<group>"; };
+		78A7D1AC1E79B45A00D2EDA9 /* BurnedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BurnedController.swift; sourceTree = "<group>"; };
 		78A9FAD71E673FE100F47998 /* AvatarImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarImageCell.swift; sourceTree = "<group>"; };
 		78C458A21E7312DE00D24244 /* SimpleRoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleRoom.swift; sourceTree = "<group>"; };
 		78C8CCB41E5D0FD200B28265 /* JoinRoomController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinRoomController.swift; sourceTree = "<group>"; };
@@ -315,9 +319,11 @@
 				78C8CCE11E5D201800B28265 /* WaitingPlayerController.swift */,
 				782E198D1E5B4BBB000B1945 /* MafiaNightController.swift */,
 				78A7D1A41E7882C900D2EDA9 /* MafiaVoteController.swift */,
+				78A7D1AA1E79B44400D2EDA9 /* MurderedController.swift */,
 				78C8CCDF1E5D1ED600B28265 /* VillagerNightController.swift */,
 				78A7D1A61E7882F700D2EDA9 /* VillagerDayController.swift */,
 				78A7D1A81E78833400D2EDA9 /* VillagerVoteController.swift */,
+				78A7D1AC1E79B45A00D2EDA9 /* BurnedController.swift */,
 				78429B1F1E5DF22400859F50 /* GameOverController.swift */,
 			);
 			name = Controller;
@@ -487,6 +493,7 @@
 				78935B241E6F61100031D88F /* SocketTypes.swift in Sources */,
 				78C8CCB51E5D0FD200B28265 /* JoinRoomController.swift in Sources */,
 				78935B2A1E6FC3DC0031D88F /* JsonParse.swift in Sources */,
+				78A7D1AB1E79B44400D2EDA9 /* MurderedController.swift in Sources */,
 				78935B161E6F61100031D88F /* SocketEnginePollable.swift in Sources */,
 				78C8CCE21E5D201800B28265 /* WaitingPlayerController.swift in Sources */,
 				78935B121E6F61100031D88F /* SocketClientManager.swift in Sources */,
@@ -510,6 +517,7 @@
 				78935B101E6F61100031D88F /* SocketAckManager.swift in Sources */,
 				78935B211E6F61100031D88F /* SocketPacket.swift in Sources */,
 				78935B181E6F61100031D88F /* SocketEngineWebsocket.swift in Sources */,
+				78A7D1AD1E79B45A00D2EDA9 /* BurnedController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

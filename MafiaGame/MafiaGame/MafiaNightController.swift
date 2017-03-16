@@ -9,6 +9,15 @@
 import UIKit
 
 class MafiaNightController: UIViewController {
+    func transitionToMorning() {
+        var viewControllers = navigationController?.viewControllers
+        
+        let dayViewController = VillagerDayController()
+        viewControllers?.removeLast()
+        viewControllers?.append(dayViewController)
+        
+        navigationController?.setViewControllers(viewControllers!, animated: false)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

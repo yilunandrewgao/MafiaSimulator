@@ -12,7 +12,7 @@ socketio = SocketIO(app)
 roomList = []
 playerList = []
 playerToRoomMap = {}
-voteCount = 0
+
 
 # room1 = Room("room1","password1",5,Player("Alice",1))
 
@@ -214,29 +214,73 @@ def on_voted_for(chosenPlayerSid, time):
 					inRoom = playerToRoomMap[player]
 					#get chosen player object
 					chosenPlayer = inRoom.playerList[inRoom.playerList.index(player, key = lambda x: x.sid)]
-					player.votedFor = chosenPlayer
+					#set the player's votedFor to chosenPlayer
+					player.voteFor = chosenPlayer
+
+					#emit table update for chosen Player has been votedFor 
+					#write code here
 
 					#keep track if all mafiaVoted
 					allMafiaVoted = True
 					#check to see if all mafia members voted:
 					for player in inRoom.playerList:
 						if player.role == "mafia":
-							if player.votedFor == None:
+							if player.voteFor == None:
 								allMafiaVoted = False
 								break
 
 					#emit to client
 					if allMafiaVoted:
+						#find who got the most votes:
+						playerToKillSid = inRoom.countVotes()
+						#set chosenPlayer status (isAlive) as dead (false)
+						inRoom.playerToKill(playerToKillSid)
+						#emit who died
 						#emit something
 						break
 
 				else:
 					#player not in any room
-					print(player.name, " is not in ", inRoom.roomName)
+					print(player.name, " is not in any room")
 					break
 
-	if time == "day":
-		pass
+	#if time is day
+	else:
+		for player in playerList:
+			#find player
+			if player.sid == request.sid:
+				#find room player is in
+				if player in playerToRoomMap:
+					inRoom = playerToRoomMap[player]
+					#get chosen player object
+					chosenPlayer = inRoom.playerList[inRoom.playerList.index(player, key = lambda x: x.sid)]
+					#set the player's votedFor to chosenPlayer
+					player.voteFor = chosenPlayer
+
+					#emit table update for chosen Player has been votedFor 
+					#write code here
+
+					#keep track if all player voted
+					allPlayersVoted = True
+					#keep track to see if all players voted
+					for player in inRoom.playerList:
+						if player.voteFor == None:
+							allPlayersVoted = False
+							break
+
+					#emit to client
+					if allPlayersVoted:
+						#find who got the most votes:
+						playerToKillSid = inRoom.countVotes()
+						#set chosenPlayer status (isAlive) as dead (false)
+						inRoom.playerToKill(playerToKillSid)
+						#emit who died
+						#emit something
+						break
+				else:
+					print(player.name, " is not in any room")
+					break
+
 
 		
 @socketio.on("startGame")

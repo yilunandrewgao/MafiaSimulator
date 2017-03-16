@@ -13,6 +13,7 @@ class GameOverController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //call winner method
         
     }
     
