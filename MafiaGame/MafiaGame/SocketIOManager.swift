@@ -64,7 +64,11 @@ class SocketIOManager: NSObject {
             NotificationCenter.default.post(name: .quitRoomNotification, object: nil)
         }
         
-        
+//        socket.on("startRoundUpdate") { data, ack in
+//            let alivePlayerListJSON = data[0] as! [Player]
+//            GameService.shared.inRoom?.alivePlayerList = alivePlayerListJSON
+//            NotificationCenter.default.post(name: .updateAlivePlayersNotification, object: nil)
+//        }
 
     }
     
@@ -102,6 +106,15 @@ class SocketIOManager: NSObject {
         socket.emit("startGame")
     }
     
+    func startRound() {
+        socket.emit("startRound")
+    }
+    
+    func votedFor(chosenPlayerSid: String, time: String) {
+        //let thisPlayerVoteFor = GameService.shared.thisPlayer.voteFor
+        socket.emit("votedFor", chosenPlayerSid, time)
+    }
+    
 }
 
 
@@ -111,4 +124,5 @@ extension Notification.Name {
     static let updateRoomsTableNotification = Notification.Name(rawValue: "updateRoomsTableNotification")
     static let updateRoomNotification = Notification.Name(rawValue: "updateRoomNotification")
     static let quitRoomNotification = Notification.Name(rawValue: "quitRoomNotification")
+    static let updateAlivePlayersNotification = Notification.Name(rawValue: "updateAlivePlayersNotification")
 }

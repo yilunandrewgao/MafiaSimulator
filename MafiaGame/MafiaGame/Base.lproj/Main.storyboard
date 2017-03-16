@@ -443,10 +443,13 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="aNp-h9-Qvb" kind="show" id="zD7-ix-gwN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m95-NX-3gZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2990" y="2470"/>
+            <point key="canvasLocation" x="2631" y="2570"/>
         </scene>
         <!--Villager Decision Controller-->
         <scene sceneID="1aw-by-hFC">
@@ -500,43 +503,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Choose A Player Below:" id="7VE-aW-22n"/>
+                    <connections>
+                        <segue destination="aNp-h9-Qvb" kind="show" id="ser-eq-0F2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j5Q-rU-mKh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2020" y="3060"/>
-        </scene>
-        <!--Burned Controller-->
-        <scene sceneID="gVV-m4-w39">
-            <objects>
-                <viewController title="Burned Controller" id="w5I-8d-z5E" customClass="BurnedController" customModule="MafiaGame" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="arM-Gd-R8w"/>
-                        <viewControllerLayoutGuide type="bottom" id="OZb-bc-tT5"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="rl1-5h-Tmw">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Who burned" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rLI-Mz-cbK">
-                                <rect key="frame" x="140" y="323" width="95" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="rLI-Mz-cbK" firstAttribute="centerX" secondItem="rl1-5h-Tmw" secondAttribute="centerX" id="ZKV-aD-QFB"/>
-                            <constraint firstItem="rLI-Mz-cbK" firstAttribute="centerY" secondItem="rl1-5h-Tmw" secondAttribute="centerY" id="mXF-mc-mBV"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="burnedPlayer" destination="rLI-Mz-cbK" id="ybr-gr-jxl"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SdT-dD-mL2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3161" y="3332"/>
+            <point key="canvasLocation" x="3524" y="3259"/>
         </scene>
         <!--End Controller-->
         <scene sceneID="D4F-Yn-J1Z">
@@ -569,7 +542,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NWj-wd-LU0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4311" y="3176"/>
+            <point key="canvasLocation" x="4175" y="2535"/>
         </scene>
         <!--Villager Night Controller-->
         <scene sceneID="n6p-1C-aWh">
@@ -584,10 +557,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rzr-Vr-DpJ">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Night" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Hr-Q1-5P2">
-                                        <rect key="frame" x="166" y="313" width="42" height="21"/>
+                                        <rect key="frame" x="166" y="291" width="42" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -610,6 +583,7 @@
                     </view>
                     <connections>
                         <segue destination="9JG-MN-t0P" kind="show" id="5ns-Pb-Sfs"/>
+                        <segue destination="aNp-h9-Qvb" kind="show" id="jg0-Gj-KVJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8mW-n5-mUp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -682,6 +656,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="9JG-MN-t0P" kind="show" id="WrX-FJ-7sx"/>
+                        <segue destination="aNp-h9-Qvb" kind="show" id="958-PM-yhk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l8p-cc-HxX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -743,6 +718,7 @@
                     <connections>
                         <outlet property="playerTable" destination="Sg8-kV-tMf" id="JMu-Co-NiF"/>
                         <segue destination="9JG-MN-t0P" kind="show" id="bDc-dX-1ij"/>
+                        <segue destination="aNp-h9-Qvb" kind="show" id="zTj-Eo-MfH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZLd-CI-ub1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -874,5 +850,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="81l-hx-7FU"/>
         <segue reference="bDc-dX-1ij"/>
+        <segue reference="ser-eq-0F2"/>
     </inferredMetricsTieBreakers>
 </document>

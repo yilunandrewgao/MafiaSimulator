@@ -63,8 +63,7 @@ class Room:
 			return False
 
 	def countVotes(self):
-		#function finds the player with most votes
-		#returns sid
+		#count all current votes
 
 		#create an empty dictionary {"sid":votes}
 		votes = {}
@@ -78,11 +77,11 @@ class Room:
 			#check if player voted or not
 			if player.voteFor != None:
 				#increment the votedFor player's votes
-				votes[player.voteFor.sid] += 1
-		#find player with most votes
-		playerToKillSid = max(votes, key=lambda key: votes[key])
+				votes[player.voteFor] += 1
 
-		return playerToKillSid
+		#return the current vote dictionary
+		return votes 
+
 	
 
 	def killPlayer(self, playerToKillSid):

@@ -211,6 +211,7 @@ def on_start_game():
 		if player.sid == request.sid:
 			roomToStart = playerToRoomMap[player]
 			roomToStart.gameStarted = True
+			roomToStart.assignRoles()
 
 			#emit updates
 			socketio.emit("roomUpdate", room.toJSON(), room = roomTag)
@@ -253,10 +254,12 @@ def on_voted_for(chosenPlayerSid, time):
 				#find room player is in
 				if player in playerToRoomMap:
 					inRoom = playerToRoomMap[player]
-					#get chosen player object
-					chosenPlayer = inRoom.playerList[inRoom.playerList.index(player, key = lambda x: x.sid)]
-					#set the player's votedFor to chosenPlayer
-					player.voteFor = chosenPlayer
+					
+					#set the player's votedFor to chosen layer
+					player.voteFor = chosenPlayerSid
+
+					#update current vote count
+					currentVotes = inRoom.countVotes()
 
 					#emit table update for chosen Player has been votedFor
 					#socketio.emit("alivePlayerListUpdate", ???) 
@@ -274,7 +277,7 @@ def on_voted_for(chosenPlayerSid, time):
 					#emit to client
 					if allMafiaVoted:
 						#find who got the most votes:
-						playerToKillSid = inRoom.countVotes()
+						playerToKillSid = max(currentVotes, key=lambda key: currentVotes[key])
 						#set chosenPlayer status (isAlive) as dead (false)
 						inRoom.playerToKill(playerToKillSid)
 						#emit who died
@@ -294,10 +297,12 @@ def on_voted_for(chosenPlayerSid, time):
 				#find room player is in
 				if player in playerToRoomMap:
 					inRoom = playerToRoomMap[player]
-					#get chosen player object
-					chosenPlayer = inRoom.playerList[inRoom.playerList.index(player, key = lambda x: x.sid)]
-					#set the player's votedFor to chosenPlayer
-					player.voteFor = chosenPlayer
+					
+					#set the player's votedFor to chosen player sid
+					player.voteFor = chosenPlayerSid
+
+					#update current vote count
+					currentVotes = inRoom.countVotes()
 
 					#emit table update for chosen Player has been votedFor
 					#socketio.emit("alivePlayerListUpdate", ???)  
@@ -314,7 +319,7 @@ def on_voted_for(chosenPlayerSid, time):
 					#emit to client
 					if allPlayersVoted:
 						#find who got the most votes:
-						playerToKillSid = inRoom.countVotes()
+						playerToKillSid = max(currentVotes, key=lambda key: currentVotes[key])
 						#set chosenPlayer status (isAlive) as dead (false)
 						inRoom.playerToKill(playerToKillSid)
 						#emit who died

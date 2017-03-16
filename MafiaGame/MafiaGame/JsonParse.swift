@@ -25,6 +25,13 @@ extension Player {
         guard let sid = playerInfo["sid"] as? String else {
             throw SerializationError.missing("sid")
         }
+        guard let isAlive = playerInfo["isAlive"] as? Bool else {
+            throw SerializationError.missing("isAlive")
+        }
+        guard let role = playerInfo["role"] as? String else{
+            throw SerializationError.missing("role")
+        }
+        
         
         self.init(name:name, sid:sid)
     }
