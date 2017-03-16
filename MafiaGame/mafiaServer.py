@@ -202,6 +202,47 @@ def on_user_join_room(roomTag):
 
 				break
 
+
+		
+@socketio.on("startGame")
+def on_start_game():
+
+	for player in playerList:
+		if player.sid == request.sid:
+			roomToStart = playerToRoomMap[player]
+			roomToStart.gameStarted = True
+
+			#emit updates
+			socketio.emit("roomUpdate", room.toJSON(), room = roomTag)
+			socketio.emit("roomListUpdate", [room.toSimpleJSON() for room in roomList])
+	
+			break
+
+
+@socketio.on("startRound")
+def on_start_round():
+	#find player in playerList
+	for player in playerList:
+		if player.sid == request.sid:
+			#find room player is mapped to
+			inRoom = playerToRoomMap[player]
+			#check to see if anyone side won
+			whoWon = inRoom.whoWon()
+			#if no one has yet to win
+			if whoWon == None:
+				#get alive players list
+				alivePlayersList = inRoom.alivePlayers()
+				#emit update: AliveList
+				socketio.emit("startRoundUpdate", alivePlayersList)
+
+			else:
+				#emit end game update and the side that won
+				socketio.emit("endGameUpdate", whoWon)
+				#emit room/roomlist update?
+
+
+
+
 @socketio.on("votedFor")			
 def on_voted_for(chosenPlayerSid, time):
 	#check if night or day
@@ -217,7 +258,8 @@ def on_voted_for(chosenPlayerSid, time):
 					#set the player's votedFor to chosenPlayer
 					player.voteFor = chosenPlayer
 
-					#emit table update for chosen Player has been votedFor 
+					#emit table update for chosen Player has been votedFor
+					#socketio.emit("alivePlayerListUpdate", ???) 
 					#write code here
 
 					#keep track if all mafiaVoted
@@ -257,7 +299,8 @@ def on_voted_for(chosenPlayerSid, time):
 					#set the player's votedFor to chosenPlayer
 					player.voteFor = chosenPlayer
 
-					#emit table update for chosen Player has been votedFor 
+					#emit table update for chosen Player has been votedFor
+					#socketio.emit("alivePlayerListUpdate", ???)  
 					#write code here
 
 					#keep track if all player voted
@@ -282,16 +325,6 @@ def on_voted_for(chosenPlayerSid, time):
 					break
 
 
-		
-@socketio.on("startGame")
-def on_start_game():
-
-	for player in playerList:
-		if player.sid == request.sid:
-			roomToStart = playerToRoomMap[player]
-			roomToStart.gameStarted = True
-	
-			break
 
 
 if __name__ == '__main__':
