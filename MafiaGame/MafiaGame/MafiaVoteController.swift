@@ -50,6 +50,8 @@ class MafiaVoteController: UIViewController, UITableViewDataSource, UITableViewD
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         playerTable.reloadData()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(quitRoomCompletion), name: .quitRoomNotification, object: nil)
     }
     
     override func didReceiveMemoryWarning() {
@@ -57,6 +59,12 @@ class MafiaVoteController: UIViewController, UITableViewDataSource, UITableViewD
         // Dispose of any resources that can be recreated.
     }
     
+    
+    func quitRoomCompletion() {
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "unwindToMenu", sender: nil)
+        }
+    }
     
     // MARK: Properties (IBOutlet) table of lists of available rooms
     @IBOutlet weak var playerTable: UITableView!

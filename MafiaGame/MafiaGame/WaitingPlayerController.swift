@@ -71,7 +71,7 @@ class WaitingPlayerController: UIViewController, UITableViewDelegate, UITableVie
     
     func quitRoomCompletion() {
         DispatchQueue.main.async {
-            let _ = self.navigationController?.popViewController(animated: true)
+            self.performSegue(withIdentifier: "unwindToMenu", sender: nil)
         }
     }
     

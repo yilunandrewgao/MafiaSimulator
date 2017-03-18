@@ -657,9 +657,11 @@
                     <connections>
                         <segue destination="9JG-MN-t0P" kind="show" id="WrX-FJ-7sx"/>
                         <segue destination="aNp-h9-Qvb" kind="show" id="958-PM-yhk"/>
+                        <segue destination="4rx-2d-r8h" kind="unwind" identifier="unwindToMenu" unwindAction="unwindToMenuWithUnwindSegue:" id="1BP-qV-U0q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l8p-cc-HxX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="4rx-2d-r8h" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2989.5999999999999" y="1723.9880059970017"/>
         </scene>
@@ -723,9 +725,11 @@
                         <outlet property="playerTable" destination="Sg8-kV-tMf" id="JMu-Co-NiF"/>
                         <segue destination="9JG-MN-t0P" kind="show" id="bDc-dX-1ij"/>
                         <segue destination="aNp-h9-Qvb" kind="show" id="zTj-Eo-MfH"/>
+                        <segue destination="81l-fH-bke" kind="unwind" identifier="unwindToMenu" unwindAction="unwindToMenuWithUnwindSegue:" id="yqN-fR-4nn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZLd-CI-ub1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="81l-fH-bke" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3693.5999999999999" y="1723.9880059970017"/>
         </scene>
@@ -800,8 +804,8 @@
                                     <action selector="quitRoom:" destination="j3M-BO-uRS" eventType="touchUpInside" id="cZk-J2-zgd"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WRv-iT-dro">
-                                <rect key="frame" x="155" y="609" width="45" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WRv-iT-dro">
+                                <rect key="frame" x="158" y="612" width="45" height="30"/>
                                 <state key="normal" title="Delete"/>
                                 <connections>
                                     <action selector="ownerDeleteRoom:" destination="j3M-BO-uRS" eventType="touchUpInside" id="zpt-ps-STh"/>
@@ -842,9 +846,11 @@
                         <outlet property="playerTable" destination="jgR-IR-CFh" id="qr1-JN-kMS"/>
                         <segue destination="nGV-5l-2ks" kind="show" identifier="MafiaNightSegue" id="nHB-Z8-72r"/>
                         <segue destination="rwv-fl-CwI" kind="show" identifier="VillagerNightSegue" id="lTG-ku-bPY"/>
+                        <segue destination="otF-YQ-Obi" kind="unwind" identifier="unwindToMenu" unwindAction="unwindToMenuWithUnwindSegue:" id="fRr-en-Rdx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="klY-95-Xk5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="otF-YQ-Obi" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2546" y="963"/>
         </scene>
@@ -853,8 +859,8 @@
         <image name="loginLightVersion6:7+" width="1080" height="1920"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bDc-dX-1ij"/>
         <segue reference="ktb-Mz-2rW"/>
         <segue reference="zTj-Eo-MfH"/>
+        <segue reference="bDc-dX-1ij"/>
     </inferredMetricsTieBreakers>
 </document>
