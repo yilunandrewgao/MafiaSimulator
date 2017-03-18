@@ -69,11 +69,11 @@ class Room:
 		votes = {}
 		#fill votes dictionary
 		for player in self.playerList:
-			votes[player.sid] = 0
+			if player.isAlive:
+				votes[player.sid] = 0
 
 		#count votes
 		for player in self.playerList:
-			votes[player.sid] = 0
 			#check if player voted or not
 			if player.voteFor != None:
 				#increment the votedFor player's votes

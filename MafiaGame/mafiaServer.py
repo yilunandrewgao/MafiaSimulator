@@ -65,7 +65,7 @@ def delete_room_of(player):
 
 
 def reset_vote_count(player):
-	#return sid dictionary
+	#return dictionary of alive players and reset votes to 0
 
 	#get room player is mappend to
 	inRoom = playerToRoomMap[player]
@@ -75,7 +75,8 @@ def reset_vote_count(player):
 	for player in inRoom.playerList:
 		#set player's voteFor to None
 		player.voteFor = None
-		votes[player.sid] = 0
+		if player.isAlive:
+			votes[player.sid] = 0
 
 	return votes
 
