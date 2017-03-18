@@ -65,7 +65,7 @@ class SocketIOManager: NSObject {
             NotificationCenter.default.post(name: .quitRoomNotification, object: nil)
         }
         
-        socket.on("startGame") { data, ack in
+        socket.on("startGameUpdate") { data, ack in
             let roleJSON = data[0] as! String
             GameService.shared.startGame(role: roleJSON)
             NotificationCenter.default.post(name: .gameStartedNotification, object: nil)

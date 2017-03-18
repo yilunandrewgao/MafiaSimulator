@@ -135,7 +135,7 @@ def on_create_room(roomDict):
 
 	#emit roomUpdate and roomListUpdate
 
-	emit("startGameUpdate", )
+	socketio.emit("roomUpdate", newRoom.toJSON(), room = newRoom.roomTag)
 	socketio.emit("roomListUpdate", [room.toSimpleJSON() for room in roomList])
 
 

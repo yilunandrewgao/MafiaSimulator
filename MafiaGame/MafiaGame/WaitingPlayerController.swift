@@ -39,11 +39,14 @@ class WaitingPlayerController: UIViewController, UITableViewDelegate, UITableVie
         
         if thisPlayer == roomOwnerSid{
             ownerDeleteButton.isEnabled = true
+            ownerStartButton.isEnabled = true
             
         }
         
+        
         NotificationCenter.default.addObserver(self, selector: #selector(updatePlayerTable), name: .updateRoomNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(quitRoomCompletion), name: .quitRoomNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(startGameCompletion), name: .gameStartedNotification, object: nil)
         
     }
     
@@ -100,6 +103,10 @@ class WaitingPlayerController: UIViewController, UITableViewDelegate, UITableVie
             
     }
    
+    // MARK: Properties (IBOutlet) joined player list
     @IBOutlet weak var playerTable: UITableView!
+    // MARK: Properties (IBOutlet) delete room
     @IBOutlet weak var ownerDeleteButton: UIButton!
+    // MARK: Properties (IBOutlet) start game
+    @IBOutlet weak var ownerStartButton: UIButton!
 }
