@@ -16,6 +16,7 @@ class GameService {
     public static var shared: GameService! = GameService()
     public var loggedIn: Bool = false
     
+    
     private init() {
         //implemented for access control
     }

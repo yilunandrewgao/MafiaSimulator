@@ -23,12 +23,52 @@ playerToRoomMap = {}
 # roomList = [room1,room2]
 
 
+def user_exit_room(player):
+	selectedRoom = playerToRoomMap[player]
+	#remove player from room
+	selectedRoom.removePlayer(player)
+
+	#remove player from mapping
+	del playerToRoomMap[player]
+
+
+	#emit new info to everyone except exiting user
+	socketio.emit("roomUpdate", selectedRoom.toJSON(),room = selectedRoom.roomTag, skip_sid = request.sid)
+	socketio.emit("roomListUpdate", [room.toSimpleJSON() for room in roomList])
+
+	#emit quitRoomUpdate to exiting user
+	socketio.emit("quitRoomUpdate", room = request.sid)
+
+	#remove player from socketio room
+	leave_room(selectedRoom.roomTag)
+
+def delete_room_of(player):
+	roomToDelete = playerToRoomMap[player]
+	#remove all players in room
+	for player in roomToDelete.playerList:
+		roomToDelete.removePlayer(player)
+		#remove player from the mapping
+		del playerToRoomMap[player]
+	#remove room
+	roomList.remove(roomToDelete)
+	
+
+	print("roomList: ", roomList)
+
+	socketio.emit("roomListUpdate", [room.toSimpleJSON() for room in roomList])
+	socketio.emit("quitRoomUpdate", room = roomToDelete.roomTag)
+
+	#remove socketio room
+	close_room(roomToDelete.roomTag)
+
+
+
+
+
 
 @socketio.on('connect')
 def on_connect():
 	pass
-
-
 
 
 @socketio.on("setPlayer")
@@ -54,26 +94,15 @@ def on_disconnect():
 		if player.sid == request.sid:
 			# check if player is in a room
 			if player in playerToRoomMap:
-				selectedRoom = playerToRoomMap[player]
-				#remove player from room
-				selectedRoom.removePlayer(player)
-				#remove player from playerList
-				playerList.remove(player)
-				#remove player from mapping
-				del playerToRoomMap[player]
 
-				#emit new info to everyone except disconnecting user
-				socketio.emit("roomUpdate", selectedRoom.toJSON(),room = selectedRoom.roomTag, skip_sid = request.sid)
-
-				socketio.emit("roomListUpdate", [room.toSimpleJSON() for room in roomList])
-
-				#only to sender
-				socketio.emit("quitRoomUpdate", room = request.sid)
-
-				#remove player from socketio room
-				leave_room(selectedRoom.roomTag)
+				if player == playerToRoomMap[player].owner:
+					delete_room_of(player)
+				else:
+					user_exit_room(player)
 
 				print (player.name + " disconnected")
+				#remove player from playerList
+				playerList.remove(player)
 				
 			else:
 				# remove player from playerList
@@ -84,29 +113,13 @@ def on_disconnect():
 
 @socketio.on('deleteRoom')
 def on_delete_room():
-	pass
 	#get the player object 
 	for player in playerList:
 		if player.sid == request.sid:
 			#find the room the player is in
 			if player in playerToRoomMap:
-				roomToDelete = playerToRoomMap[player]
-				#remove all players in room
-				for player in roomToDelete.playerList:
-					roomToDelete.removePlayer(player)
-					#remove player from the mapping
-					del playerToRoomMap[player]
-				#remove room
-				roomList.remove(roomToDelete)
 				
-
-				print("roomList: ", roomList)
-
-				socketio.emit("roomListUpdate", [room.toSimpleJSON() for room in roomList])
-				socketio.emit("quitRoomUpdate", room = roomToDelete.roomTag)
-
-				#remove socketio room
-				close_room(roomToDelete.roomTag)
+				delete_room_of(player)
 
 				break
 
@@ -148,23 +161,10 @@ def on_user_exit_room():
 			# check if player is in a room
 			print (playerToRoomMap)
 			if player in playerToRoomMap:
-				selectedRoom = playerToRoomMap[player]
-				#remove player from room
-				selectedRoom.removePlayer(player)
-
-				#remove player from mapping
-				del playerToRoomMap[player]
-
-
-				#emit new info to everyone except exiting user
-				socketio.emit("roomUpdate", selectedRoom.toJSON(),room = selectedRoom.roomTag, skip_sid = request.sid)
-				socketio.emit("roomListUpdate", [room.toSimpleJSON() for room in roomList])
-
-				#emit quitRoomUpdate to exiting user
-				socketio.emit("quitRoomUpdate", room = request.sid)
-
-				#remove player from socketio room
-				leave_room(selectedRoom.roomTag)
+				if player == playerToRoomMap[player].owner:
+					delete_room_of(player)
+				else:
+					user_exit_room(player)
 				
 			else:
 				# if player is not in room, it's an error
@@ -347,5 +347,5 @@ def on_voted_for(chosenPlayerSid, time):
 
 
 if __name__ == '__main__':
-	socketio.run(app, host = "192.168.0.34", port = 7777)
+	socketio.run(app, host = "10.110.193.141", port = 7777)
 
