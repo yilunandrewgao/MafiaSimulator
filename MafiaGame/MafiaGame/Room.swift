@@ -13,12 +13,12 @@ import UIKit
 class Room: CustomStringConvertible {
     
     private(set) var playerList: [Player]
-    private(set) var alivePlayerList: [Player]?
+    public var alivePlayerList: [Player]?
     private(set) var roomName: String
     private(set) var password: String
     private(set) var maxPlayers : Int
     private(set) var owner: Player
-    private(set) var gameStarted: Bool
+    public var gameStarted: Bool
     
     private(set) var nightChat: String?
     private(set) var dayChat: String?
@@ -41,6 +41,7 @@ class Room: CustomStringConvertible {
         self.gameStarted = false
 
     }
+    
     
     
 }

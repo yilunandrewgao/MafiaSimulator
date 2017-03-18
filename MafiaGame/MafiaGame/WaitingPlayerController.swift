@@ -72,17 +72,22 @@ class WaitingPlayerController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
+    func startGameCompletion(){
+        DispatchQueue.main.async {
+            let playerRole = GameService.shared.thisPlayer.role
+            if playerRole == "mafia" {
+                self.performSegue(withIdentifier: "MafiaNightSegue", sender: self)
+            }
+            else {
+                self.performSegue(withIdentifier: "VillagerNightSegue", sender: self)
+            }
+        }
+    }
+    
     @IBAction func startGame(_ sender: Any) {
         
         SocketIOManager.shared.startGame()
 
-        let isVillager = true
-        if isVillager {
-            performSegue(withIdentifier: "MafiaNightSegue", sender: self)
-        }
-        else {
-            performSegue(withIdentifier: "VillagerNightSegue", sender: self)
-        }
     }
     
     @IBAction func quitRoom(_ sender: Any) {

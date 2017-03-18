@@ -118,6 +118,7 @@ class Room:
 		#assign list
 		for i in range(playerCount):
 			self.playerList[i].role = roleList[i]
+			self.playerList[i].isAlive = True
 
 	def alivePlayers(self):
 		alivePlayersList = []
@@ -139,7 +140,7 @@ class Room:
 		villagerCount = 0
 
 		for player in alivePlayersList:
-			if player.role = "mafia":
+			if player.role == "mafia":
 				mafiaCount += 1
 			else:
 				villagerCount += 1

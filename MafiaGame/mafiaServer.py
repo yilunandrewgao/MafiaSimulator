@@ -135,7 +135,7 @@ def on_create_room(roomDict):
 
 	#emit roomUpdate and roomListUpdate
 
-	socketio.emit("roomUpdate", newRoom.toJSON(), room = newRoom.roomTag)
+	emit("startGameUpdate", )
 	socketio.emit("roomListUpdate", [room.toSimpleJSON() for room in roomList])
 
 
@@ -216,10 +216,14 @@ def on_start_game():
 			#assign roles to players in room
 			roomToStart.assignRoles()
 
-			#emit updates
-			socketio.emit("roomUpdate", room.toJSON(), room = roomTag)
+			#emit roomList update to everyone
 			socketio.emit("roomListUpdate", [room.toSimpleJSON() for room in roomList])
-	
+			#emit startGame update to each player
+			for player in roomToStart.playerList:
+				socketio.emit("startGameUpdate", player.role, room = player.sid)
+				print("player: ", str(player), "role: ", player.role)
+			
+
 			break
 
 
@@ -343,5 +347,5 @@ def on_voted_for(chosenPlayerSid, time):
 
 
 if __name__ == '__main__':
-	socketio.run(app, host = "10.111.192.239", port = 7777)
+	socketio.run(app, host = "192.168.0.24", port = 7777)
 

@@ -10,7 +10,7 @@ import UIKit
 class SocketIOManager: NSObject {
     static let shared : SocketIOManager = SocketIOManager()
     
-    let socket: SocketIOClient = SocketIOClient(socketURL: URL(string: "http://10.111.192.234:7777")!, config: [.log(false), .forceWebsockets(true), .reconnects(false)])
+    let socket: SocketIOClient = SocketIOClient(socketURL: URL(string: "http://192.168.0.24:7777")!, config: [.log(false), .forceWebsockets(true), .reconnects(false)])
 
 
     private override init(){
@@ -65,11 +65,21 @@ class SocketIOManager: NSObject {
             NotificationCenter.default.post(name: .quitRoomNotification, object: nil)
         }
         
-//        socket.on("startRoundUpdate") { data, ack in
-//            let alivePlayerListJSON = data[0] as! [Player]
-//            GameService.shared.inRoom?.alivePlayerList = alivePlayerListJSON
-//            NotificationCenter.default.post(name: .updateAlivePlayersNotification, object: nil)
-//        }
+        socket.on("startGame") { data, ack in
+            let roleJSON = data[0] as! String
+            GameService.shared.startGame(role: roleJSON)
+            NotificationCenter.default.post(name: .gameStartedNotification, object: nil)
+        }
+        
+        socket.on("startRoundUpdate") { data, ack in
+            let alivePlayerListJSON = data[0] as! [[String: Any]]
+            var alivePlayerList: [Player] = []
+            for player in alivePlayerListJSON {
+                alivePlayerList.append(try! Player(playerInfo: player))
+            }
+            GameService.shared.inRoom?.alivePlayerList = alivePlayerList
+            NotificationCenter.default.post(name: .updateAlivePlayersNotification, object: nil)
+        }
 
     }
     
@@ -125,4 +135,5 @@ extension Notification.Name {
     static let updateRoomNotification = Notification.Name(rawValue: "updateRoomNotification")
     static let quitRoomNotification = Notification.Name(rawValue: "quitRoomNotification")
     static let updateAlivePlayersNotification = Notification.Name(rawValue: "updateAlivePlayersNotification")
+    static let gameStartedNotification = Notification.Name(rawValue: "gameStartedNotification")
 }
