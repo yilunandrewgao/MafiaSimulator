@@ -133,7 +133,7 @@ class Room:
 
 	def whoWon(self):
 		#find alive players
-		alivePlayersList = self.alivePlayersList()
+		alivePlayersList = self.alivePlayers()
 		#variable to keep track of alive mafia
 		mafiaCount = 0
 		#variable to keep track of alive villagers
@@ -146,7 +146,7 @@ class Room:
 				villagerCount += 1
 
 		#if mafiaCount is the same as villager, mafia wins
-		if mafiaCount == villagerCount:
+		if mafiaCount > villagerCount:
 			return "mafia"
 		#if no mafia are left
 		elif mafiaCount == 0:

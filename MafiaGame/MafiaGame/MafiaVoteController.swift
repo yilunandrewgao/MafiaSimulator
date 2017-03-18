@@ -15,7 +15,7 @@ class MafiaVoteController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let playerCount = GameService.shared.inRoom?.alivePlayerList?.count ?? 0
+        let playerCount = GameService.shared.inRoom!.alivePlayerList?.count ?? 0
         return playerCount
     }
     
@@ -45,6 +45,11 @@ class MafiaVoteController: UIViewController, UITableViewDataSource, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        playerTable.reloadData()
     }
     
     override func didReceiveMemoryWarning() {

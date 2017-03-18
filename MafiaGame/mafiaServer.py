@@ -241,7 +241,7 @@ def on_start_round():
 				#get alive players list
 				alivePlayersList = inRoom.alivePlayers()
 				#emit update: AliveList
-				socketio.emit("startRoundUpdate", alivePlayersList, room = inRoom.roomTag)
+				socketio.emit("startRoundUpdate", [player.toJSON() for player in alivePlayersList], room = inRoom.roomTag)
 				break
 
 			else:

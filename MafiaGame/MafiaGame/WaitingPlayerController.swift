@@ -90,6 +90,7 @@ class WaitingPlayerController: UIViewController, UITableViewDelegate, UITableVie
     @IBAction func startGame(_ sender: Any) {
         
         SocketIOManager.shared.startGame()
+        SocketIOManager.shared.startRound()
 
     }
     

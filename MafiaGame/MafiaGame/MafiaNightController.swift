@@ -26,7 +26,7 @@ class MafiaNightController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        SocketIOManager.shared.startRound()
+        navigationItem.hidesBackButton = true
     }
     
     override func didReceiveMemoryWarning() {
