@@ -20,6 +20,11 @@ class MenuViewController: UIViewController {
         playerNameLbl.text  = "Logged in as: \(self.thisPlayer.name)"
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationItem.hidesBackButton = true
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -30,5 +35,8 @@ class MenuViewController: UIViewController {
     //MARK: Properties (IBOutlet) collection of avatars
     @IBOutlet weak var avatarCollection: UICollectionView!
     
+    @IBAction func unwindToMenu(unwindSegue: UIStoryboardSegue) {
+        
+    }
 }
 

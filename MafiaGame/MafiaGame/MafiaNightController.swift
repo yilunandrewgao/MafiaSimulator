@@ -27,11 +27,20 @@ class MafiaNightController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.hidesBackButton = true
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(quitRoomCompletion), name: .quitRoomNotification, object: nil)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    func quitRoomCompletion() {
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "unwindToMenu", sender: nil)
+        }
     }
     
     
