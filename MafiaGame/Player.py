@@ -32,7 +32,7 @@ class Player:
 		return returnString
 
 	def toJSON(self):
-		infoDict = {"_type": "Player","name": self.name, "sid": self.sid}
+		infoDict = {"_type": "Player","name": self.name, "sid": self.sid, "isAlive": self.isAlive, role": self.role}
 
 		return infoDict
 

@@ -17,13 +17,14 @@ class Player: CustomStringConvertible {
     
     private(set) var isAlive: Bool?
     private(set) var role: String?
+    //private(set) var voteFor: String?
     
     public var description: String {
-        return "(\(self.name), \(self.sid))"
+        return "(\(self.name), \(self.sid), \(self.role))"
     }
     
     public func toDict() -> [String:Any] {
-        let playerDict = ["name": self.name, "sid": self.sid] 
+        let playerDict = ["name": self.name, "sid": self.sid, "role": self.role]
         
         return playerDict
     }

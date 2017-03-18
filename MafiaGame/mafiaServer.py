@@ -202,6 +202,52 @@ def on_user_join_room(roomTag):
 
 				break
 
+
+		
+@socketio.on("startGame")
+def on_start_game():
+	#find player in playerList
+	for player in playerList:
+		if player.sid == request.sid:
+			#find room player is mapped to
+			roomToStart = playerToRoomMap[player]
+			#lock room player is in
+			roomToStart.gameStarted = True
+			#assign roles to players in room
+			roomToStart.assignRoles()
+
+			#emit updates
+			socketio.emit("roomUpdate", room.toJSON(), room = roomTag)
+			socketio.emit("roomListUpdate", [room.toSimpleJSON() for room in roomList])
+	
+			break
+
+
+@socketio.on("startRound")
+def on_start_round():
+	#find player in playerList
+	for player in playerList:
+		if player.sid == request.sid:
+			#find room player is mapped to
+			inRoom = playerToRoomMap[player]
+			#check to see if anyone side won
+			whoWon = inRoom.whoWon()
+			#if no one has yet to win
+			if whoWon == None:
+				#get alive players list
+				alivePlayersList = inRoom.alivePlayers()
+				#emit update: AliveList
+				socketio.emit("startRoundUpdate", alivePlayersList)
+				break
+
+			else:
+				#emit end game update and the side that won
+				socketio.emit("endGameUpdate", whoWon)
+				#emit room/roomlist update?
+
+
+
+
 @socketio.on("votedFor")			
 def on_voted_for(chosenPlayerSid, time):
 	#check if night or day
@@ -212,13 +258,17 @@ def on_voted_for(chosenPlayerSid, time):
 				#find room player is in
 				if player in playerToRoomMap:
 					inRoom = playerToRoomMap[player]
-					#get chosen player object
-					chosenPlayer = inRoom.playerList[inRoom.playerList.index(player, key = lambda x: x.sid)]
-					#set the player's votedFor to chosenPlayer
-					player.voteFor = chosenPlayer
+					
+					#set the player's votedFor to chosen layer
+					player.voteFor = chosenPlayerSid
 
-					#emit table update for chosen Player has been votedFor 
+					#update current vote count (this is a dictionary {"sid":1})
+					currentVotes = inRoom.countVotes()
+
+					#emit table update for chosen Player has been votedFor
+					#socketio.emit("alivePlayerListUpdate", ???) 
 					#write code here
+					socketio.emit("votedForUpdate", room = roomTag)
 
 					#keep track if all mafiaVoted
 					allMafiaVoted = True
@@ -232,10 +282,13 @@ def on_voted_for(chosenPlayerSid, time):
 					#emit to client
 					if allMafiaVoted:
 						#find who got the most votes:
-						playerToKillSid = inRoom.countVotes()
+						playerToKillSid = max(currentVotes, key=lambda key: currentVotes[key])
 						#set chosenPlayer status (isAlive) as dead (false)
 						inRoom.playerToKill(playerToKillSid)
+
 						#emit who died
+						socketio.emit("killedUpdate", playerToKillSid, room = roomTag)
+						
 						#emit something
 						break
 
@@ -252,13 +305,17 @@ def on_voted_for(chosenPlayerSid, time):
 				#find room player is in
 				if player in playerToRoomMap:
 					inRoom = playerToRoomMap[player]
-					#get chosen player object
-					chosenPlayer = inRoom.playerList[inRoom.playerList.index(player, key = lambda x: x.sid)]
-					#set the player's votedFor to chosenPlayer
-					player.voteFor = chosenPlayer
+					
+					#set the player's votedFor to chosen player sid
+					player.voteFor = chosenPlayerSid
 
-					#emit table update for chosen Player has been votedFor 
+					#update current vote count
+					currentVotes = inRoom.countVotes()
+
+					#emit table update for chosen Player has been votedFor
+					#socketio.emit("alivePlayerListUpdate", ???)  
 					#write code here
+					socketio.emit("votedForUpdate", room = roomTag)
 
 					#keep track if all player voted
 					allPlayersVoted = True
@@ -271,10 +328,11 @@ def on_voted_for(chosenPlayerSid, time):
 					#emit to client
 					if allPlayersVoted:
 						#find who got the most votes:
-						playerToKillSid = inRoom.countVotes()
+						playerToKillSid = max(currentVotes, key=lambda key: currentVotes[key])
 						#set chosenPlayer status (isAlive) as dead (false)
 						inRoom.playerToKill(playerToKillSid)
 						#emit who died
+						socketio.emit("killedUpdate", playerToKillSid, room = roomTag)
 						#emit something
 						break
 				else:
@@ -282,16 +340,6 @@ def on_voted_for(chosenPlayerSid, time):
 					break
 
 
-		
-@socketio.on("startGame")
-def on_start_game():
-
-	for player in playerList:
-		if player.sid == request.sid:
-			roomToStart = playerToRoomMap[player]
-			roomToStart.gameStarted = True
-	
-			break
 
 
 if __name__ == '__main__':

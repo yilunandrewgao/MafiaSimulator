@@ -63,8 +63,7 @@ class Room:
 			return False
 
 	def countVotes(self):
-		#function finds the player with most votes
-		#returns sid
+		#count all current votes
 
 		#create an empty dictionary {"sid":votes}
 		votes = {}
@@ -78,11 +77,11 @@ class Room:
 			#check if player voted or not
 			if player.voteFor != None:
 				#increment the votedFor player's votes
-				votes[player.voteFor.sid] += 1
-		#find player with most votes
-		playerToKillSid = max(votes, key=lambda key: votes[key])
+				votes[player.voteFor] += 1
 
-		return playerToKillSid
+		#return the current vote dictionary
+		return votes 
+
 	
 
 	def killPlayer(self, playerToKillSid):
@@ -131,7 +130,29 @@ class Room:
 
 		return alivePlayersList
 
+	def whoWon(self):
+		#find alive players
+		alivePlayersList = self.alivePlayersList()
+		#variable to keep track of alive mafia
+		mafiaCount = 0
+		#variable to keep track of alive villagers
+		villagerCount = 0
 
+		for player in alivePlayersList:
+			if player.role = "mafia":
+				mafiaCount += 1
+			else:
+				villagerCount += 1
+
+		#if mafiaCount is the same as villager, mafia wins
+		if mafiaCount == villagerCount:
+			return "mafia"
+		#if no mafia are left
+		elif mafiaCount == 0:
+			return "villagers"
+		#else game still continues, return None for no winners	
+		else:
+			return None
 
 	def toJSON(self):
 
