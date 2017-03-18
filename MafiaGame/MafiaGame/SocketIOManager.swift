@@ -10,7 +10,7 @@ import UIKit
 class SocketIOManager: NSObject {
     static let shared : SocketIOManager = SocketIOManager()
     
-    let socket: SocketIOClient = SocketIOClient(socketURL: URL(string: "http://10.111.192.234:7777")!, config: [.log(false), .forceWebsockets(true), .reconnects(false)])
+    let socket: SocketIOClient = SocketIOClient(socketURL: URL(string: "http://192.168.0.24:7777")!, config: [.log(false), .forceWebsockets(true), .reconnects(false)])
 
 
     private override init(){
@@ -62,6 +62,12 @@ class SocketIOManager: NSObject {
         socket.on("quitRoomUpdate") { data, ack in
             GameService.shared.inRoom = nil
             NotificationCenter.default.post(name: .quitRoomNotification, object: nil)
+        }
+        
+        socket.on("startGame") { data, ack in
+            let roleJSON = data[0] as! String
+            GameService.shared.startGame(role: roleJSON)
+            NotificationCenter.default.post(name: .gameStartedNotification, object: nil)
         }
         
         socket.on("startRoundUpdate") { data, ack in
@@ -129,4 +135,5 @@ extension Notification.Name {
     static let updateRoomNotification = Notification.Name(rawValue: "updateRoomNotification")
     static let quitRoomNotification = Notification.Name(rawValue: "quitRoomNotification")
     static let updateAlivePlayersNotification = Notification.Name(rawValue: "updateAlivePlayersNotification")
+    static let gameStartedNotification = Notification.Name(rawValue: "gameStartedNotification")
 }

@@ -29,4 +29,12 @@ class GameService {
     func joinRoom(room:Room){
         self.inRoom = room
     }
+    
+    func startGame(role: String){
+        //Start individual game
+        self.inRoom?.gameStarted = true
+        self.thisPlayer.role = role
+        self.thisPlayer.isAlive = true
+    }
+    
 }
