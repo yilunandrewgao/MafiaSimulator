@@ -105,11 +105,11 @@ class Room:
 		roleList = []
 
 		#append "mafia" role into roleList
-		for i in numMafia:
+		for i in range(numMafia):
 			roleList.append("mafia")
 
 		#append "villager" role into roleList
-		for i in villagerCount:
+		for i in range(villagerCount):
 			roleList.append("villager")
 
 		#shuffle roleList

@@ -41,6 +41,12 @@ class JoinRoomController: UIViewController, UITableViewDataSource, UITableViewDe
             alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
             present(alertController, animated: true, completion: nil)
         }
+        else if selectedRoom.gameStarted {
+            let alertController = UIAlertController(title: "Room Locked", message: "Game already started", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            present(alertController, animated: true, completion: nil)
+
+        }
         else{
             let alertController = UIAlertController(title: "Password", message: "Enter Password", preferredStyle: .alert)
             alertController.addTextField { (textField) in
