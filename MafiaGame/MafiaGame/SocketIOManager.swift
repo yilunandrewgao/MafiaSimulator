@@ -10,7 +10,7 @@ import UIKit
 class SocketIOManager: NSObject {
     static let shared : SocketIOManager = SocketIOManager()
     
-    let socket: SocketIOClient = SocketIOClient(socketURL: URL(string: "http://10.110.193.141:7777")!, config: [.log(false), .forceWebsockets(true), .reconnects(false)])
+    let socket: SocketIOClient = SocketIOClient(socketURL: URL(string: "http://10.110.195.237:7777")!, config: [.log(false), .forceWebsockets(true), .reconnects(false)])
 
 
     private override init(){
@@ -80,6 +80,13 @@ class SocketIOManager: NSObject {
             GameService.shared.inRoom?.alivePlayerList = alivePlayerList
             NotificationCenter.default.post(name: .updateAlivePlayersNotification, object: nil)
         }
+        
+        socket.on("votedForUpdate") { data, ack in
+            let voteCountDicJSON = data[0] as! [String: Int]
+            GameService.shared.inRoom?.voteCountDic = voteCountDicJSON
+            NotificationCenter.default.post(name: .updateVoteCountNotification, object: nil)
+            
+        }
 
     }
     
@@ -136,4 +143,5 @@ extension Notification.Name {
     static let quitRoomNotification = Notification.Name(rawValue: "quitRoomNotification")
     static let updateAlivePlayersNotification = Notification.Name(rawValue: "updateAlivePlayersNotification")
     static let gameStartedNotification = Notification.Name(rawValue: "gameStartedNotification")
+    static let updateVoteCountNotification = Notification.Name(rawValue: "updateVoteCountNotification")
 }

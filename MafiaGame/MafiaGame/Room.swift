@@ -14,6 +14,7 @@ class Room: CustomStringConvertible {
     
     private(set) var playerList: [Player]
     public var alivePlayerList: [Player]?
+    public var voteCountDic: [String:Int]?
     private(set) var roomName: String
     private(set) var password: String
     private(set) var maxPlayers : Int

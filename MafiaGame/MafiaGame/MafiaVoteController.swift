@@ -24,6 +24,12 @@ class MafiaVoteController: UIViewController, UITableViewDataSource, UITableViewD
         
         let alivePlayer = GameService.shared.inRoom?.alivePlayerList?[indexPath.row]
         cell.textLabel?.text = alivePlayer?.name
+        let voteCountDic = GameService.shared.inRoom?.voteCountDic
+        for playerVote in voteCountDic! {
+            if alivePlayer?.sid == playerVote.key {
+                cell.detailTextLabel?.text = String(playerVote.value)
+            }
+        }
         
         return cell
     }

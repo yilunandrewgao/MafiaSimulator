@@ -64,6 +64,21 @@ def delete_room_of(player):
 
 
 
+def reset_vote_count(player):
+	#return sid dictionary
+
+	#get room player is mappend to
+	inRoom = playerToRoomMap[player]
+	#create an empty dictionary {"sid":votes}
+	votes = {}
+	#fill votes dictionary
+	for player in inRoom.playerList:
+		#set player's voteFor to None
+		player.voteFor = None
+		votes[player.sid] = 0
+
+	return votes
+
 
 
 @socketio.on('connect')
@@ -240,8 +255,12 @@ def on_start_round():
 			if whoWon == None:
 				#get alive players list
 				alivePlayersList = inRoom.alivePlayers()
+				#get vote count set to 0
+				voteCountReset = reset_vote_count(player)
 				#emit update: AliveList
 				socketio.emit("startRoundUpdate", [player.toJSON() for player in alivePlayersList], room = inRoom.roomTag)
+				#emit update: voteCount reset
+				socketio.emit("votedForUpdate", voteCountReset, room = inRoom.roomTag)
 				break
 
 			else:
@@ -272,7 +291,7 @@ def on_voted_for(chosenPlayerSid, time):
 					#emit table update for chosen Player has been votedFor
 					#socketio.emit("alivePlayerListUpdate", ???) 
 					#write code here
-					socketio.emit("votedForUpdate", room = roomTag)
+					socketio.emit("votedForUpdate", currentVotes, room = player.sid)
 
 					#keep track if all mafiaVoted
 					allMafiaVoted = True
@@ -319,7 +338,7 @@ def on_voted_for(chosenPlayerSid, time):
 					#emit table update for chosen Player has been votedFor
 					#socketio.emit("alivePlayerListUpdate", ???)  
 					#write code here
-					socketio.emit("votedForUpdate", room = roomTag)
+					socketio.emit("votedForUpdate", currentVotes, room = player.sid)
 
 					#keep track if all player voted
 					allPlayersVoted = True
@@ -347,5 +366,5 @@ def on_voted_for(chosenPlayerSid, time):
 
 
 if __name__ == '__main__':
-	socketio.run(app, host = "10.110.193.141", port = 7777)
+	socketio.run(app, host = "10.110.195.237", port = 7777)
 
