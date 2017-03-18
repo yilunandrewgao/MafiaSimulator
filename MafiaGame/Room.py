@@ -99,7 +99,7 @@ class Room:
 
 	def assignRoles(self):
 		playerCount = len(self.playerList)
-		numMafia = int(round(math.sqrt(playerCount)))
+		numMafia = int(math.floor(math.sqrt(playerCount)))
 		villagerCount = playerCount-numMafia
 
 		roleList = []

@@ -241,12 +241,12 @@ def on_start_round():
 				#get alive players list
 				alivePlayersList = inRoom.alivePlayers()
 				#emit update: AliveList
-				socketio.emit("startRoundUpdate", alivePlayersList)
+				socketio.emit("startRoundUpdate", alivePlayersList, room = inRoom.roomTag)
 				break
 
 			else:
 				#emit end game update and the side that won
-				socketio.emit("endGameUpdate", whoWon)
+				socketio.emit("endGameUpdate", whoWon, room = inRoom.roomTag)
 				#emit room/roomlist update?
 
 
@@ -347,5 +347,5 @@ def on_voted_for(chosenPlayerSid, time):
 
 
 if __name__ == '__main__':
-	socketio.run(app, host = "192.168.0.24", port = 7777)
+	socketio.run(app, host = "192.168.0.34", port = 7777)
 
