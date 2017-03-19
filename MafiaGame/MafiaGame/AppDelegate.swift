@@ -37,6 +37,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        
+        if let navigationController = window?.rootViewController as? UINavigationController {
+            var viewControllers = navigationController.viewControllers
+            if viewControllers.count > 2 {
+                let subViewControllers = Array(viewControllers[0..<2])
+                navigationController.setViewControllers(subViewControllers, animated: false)
+                
+                // TODO: Cleanup any game state that is still around
+            }
+        }
+        else {
+            fatalError("Root view controller was not a navigation controller")
+        }
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
