@@ -9,6 +9,8 @@ class Player:
 	isAlive = True
 	voteFor = None 
 
+	isOnline = True
+
 	#future implementation
 	role = None
 	avatar = None

@@ -25,6 +25,7 @@ playerToRoomMap = {}
 
 def user_exit_room(player):
 	selectedRoom = playerToRoomMap[player]
+
 	#remove player from room
 	selectedRoom.removePlayer(player)
 
@@ -114,6 +115,8 @@ def on_disconnect():
 				if player == playerToRoomMap[player].owner:
 					delete_room_of(player)
 				else:
+					#not owner: set player status to offline
+					player.isOnline = False
 					user_exit_room(player)
 
 				print (player.name + " disconnected")
@@ -265,6 +268,7 @@ def on_start_round():
 				break
 
 			else:
+
 				#emit end game update and the side that won
 				socketio.emit("endGameUpdate", whoWon, room = inRoom.roomTag)
 				#emit room/roomlist update?
@@ -298,7 +302,8 @@ def on_voted_for(chosenPlayerSid, time):
 					allMafiaVoted = True
 					#check to see if all mafia members voted:
 					for player in inRoom.playerList:
-						if player.role == "mafia":
+						#check to see if player is mafia and is online
+						if (player.role == "mafia") and (player.isOnline):
 							if player.voteFor == None:
 								allMafiaVoted = False
 								break
@@ -308,10 +313,10 @@ def on_voted_for(chosenPlayerSid, time):
 						#find who got the most votes:
 						playerToKillSid = max(currentVotes, key=lambda key: currentVotes[key])
 						#set chosenPlayer status (isAlive) as dead (false)
-						inRoom.playerToKill(playerToKillSid)
+						inRoom.killPlayer(playerToKillSid)
 
 						#emit who died
-						socketio.emit("killedUpdate", playerToKillSid, room = roomTag)
+						socketio.emit("killedUpdate", playerToKillSid, room = inRoom.roomTag)
 						
 						#emit something
 						break
@@ -345,18 +350,19 @@ def on_voted_for(chosenPlayerSid, time):
 					allPlayersVoted = True
 					#keep track to see if all players voted
 					for player in inRoom.playerList:
-						if player.voteFor == None:
-							allPlayersVoted = False
-							break
+						if player.isOnline:
+							if player.voteFor == None:
+								allPlayersVoted = False
+								break
 
 					#emit to client
 					if allPlayersVoted:
 						#find who got the most votes:
 						playerToKillSid = max(currentVotes, key=lambda key: currentVotes[key])
 						#set chosenPlayer status (isAlive) as dead (false)
-						inRoom.playerToKill(playerToKillSid)
+						inRoom.killPlayer(playerToKillSid)
 						#emit who died
-						socketio.emit("killedUpdate", playerToKillSid, room = roomTag)
+						socketio.emit("killedUpdate", playerToKillSid, room = inRoom.roomTag)
 						#emit something
 						break
 				else:
@@ -367,5 +373,5 @@ def on_voted_for(chosenPlayerSid, time):
 
 
 if __name__ == '__main__':
-	socketio.run(app, host = "10.110.195.237", port = 7777)
+	socketio.run(app, host = "10.111.194.58", port = 7777)
 

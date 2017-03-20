@@ -69,15 +69,14 @@ class Room:
 		votes = {}
 		#fill votes dictionary
 		for player in self.playerList:
-			if player.isAlive:
-				votes[player.sid] = 0
-
-		#count votes
-		for player in self.playerList:
-			#check if player voted or not
+			#check if player voted of not
 			if player.voteFor != None:
-				#increment the votedFor player's votes
-				votes[player.voteFor] += 1
+				#check if voteFor player is already in dictionary
+				if player.voteFor in votes:
+					#if yes, increment.
+					votes[player.voteFor] += 1
+				else:
+					votes[player.voteFor] = 1
 
 		#return the current vote dictionary
 		return votes 
@@ -86,7 +85,7 @@ class Room:
 
 	def killPlayer(self, playerToKillSid):
 		for player in self.playerList:
-			if player.sid == playerToKill:
+			if player.sid == playerToKillSid:
 				if player.isAlive:
 					player.isAlive = False
 					print("player chosen to be killed ", player.name)

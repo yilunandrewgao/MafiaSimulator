@@ -21,6 +21,9 @@ class Room: CustomStringConvertible {
     private(set) var owner: Player
     public var gameStarted: Bool
     
+    //killed player's sid
+    public var killedPlayerSid: String?
+    
     private(set) var nightChat: String?
     private(set) var dayChat: String?
     

@@ -78,10 +78,10 @@
             </objects>
             <point key="canvasLocation" x="1029.5999999999999" y="154.27286356821591"/>
         </scene>
-        <!--Join Room Controller-->
+        <!--Join Room -->
         <scene sceneID="gOf-Ga-c2I">
             <objects>
-                <viewController title="Join Room Controller" id="k8I-0O-CMK" customClass="JoinRoomController" customModule="MafiaGame" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Join Room " id="k8I-0O-CMK" customClass="JoinRoomController" customModule="MafiaGame" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qUY-Qi-SC2"/>
                         <viewControllerLayoutGuide type="bottom" id="cBT-mG-xmi"/>
@@ -98,18 +98,18 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0M4-sZ-n4G" id="lwe-Hq-swP">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="77a-CA-4QW">
-                                                    <rect key="frame" x="15" y="11" width="34" height="21"/>
+                                                    <rect key="frame" x="15" y="12" width="33.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="G9e-yb-j9P">
-                                                    <rect key="frame" x="301" y="11" width="59" height="21"/>
+                                                    <rect key="frame" x="301" y="12" width="59" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -380,10 +380,10 @@
             </objects>
             <point key="canvasLocation" x="1829.5999999999999" y="962.96851574212906"/>
         </scene>
-        <!--Day Controller-->
+        <!--Day Chat-->
         <scene sceneID="yh6-oz-fCB">
             <objects>
-                <viewController title="Day Controller" id="9JG-MN-t0P" customClass="VillagerDayController" customModule="MafiaGame" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Day Chat" id="9JG-MN-t0P" customClass="VillagerDayController" customModule="MafiaGame" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mc3-3G-gSQ"/>
                         <viewControllerLayoutGuide type="bottom" id="9ar-sZ-UEc"/>
@@ -451,10 +451,10 @@
             </objects>
             <point key="canvasLocation" x="2631" y="2570"/>
         </scene>
-        <!--Villager Decision Controller-->
+        <!--Villager Decision-->
         <scene sceneID="1aw-by-hFC">
             <objects>
-                <viewController title="Villager Decision Controller" id="ddZ-Ln-sa2" customClass="VillagerVoteController" customModule="MafiaGame" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Villager Decision" id="ddZ-Ln-sa2" customClass="VillagerVoteController" customModule="MafiaGame" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="d9w-Vj-Wg6"/>
                         <viewControllerLayoutGuide type="bottom" id="JrD-9t-wMH"/>
@@ -471,18 +471,18 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FSF-OU-pgf" id="byu-eG-Log">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SQ5-dJ-TmN">
-                                                    <rect key="frame" x="15" y="11" width="34" height="21"/>
+                                                    <rect key="frame" x="15" y="12" width="33.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0k7-DS-4dK">
-                                                    <rect key="frame" x="301" y="11" width="59" height="21"/>
+                                                    <rect key="frame" x="301" y="12" width="59" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -511,10 +511,10 @@
             </objects>
             <point key="canvasLocation" x="3524" y="3259"/>
         </scene>
-        <!--End Controller-->
+        <!--Game Over-->
         <scene sceneID="D4F-Yn-J1Z">
             <objects>
-                <viewController storyboardIdentifier="GameOver" title="End Controller" id="aNp-h9-Qvb" customClass="GameOverController" customModule="MafiaGame" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameOver" title="Game Over" id="aNp-h9-Qvb" customClass="GameOverController" customModule="MafiaGame" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WvQ-mO-GSp"/>
                         <viewControllerLayoutGuide type="bottom" id="jMw-UU-04r"/>
@@ -544,10 +544,10 @@
             </objects>
             <point key="canvasLocation" x="4175" y="2535"/>
         </scene>
-        <!--Villager Night Controller-->
+        <!--Villager Night -->
         <scene sceneID="n6p-1C-aWh">
             <objects>
-                <viewController storyboardIdentifier="VillagerNight" title="Villager Night Controller" id="rwv-fl-CwI" customClass="VillagerNightController" customModule="MafiaGame" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VillagerNight" title="Villager Night " id="rwv-fl-CwI" customClass="VillagerNightController" customModule="MafiaGame" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0CW-31-DGf"/>
                         <viewControllerLayoutGuide type="bottom" id="HIY-oY-zyd"/>
@@ -590,10 +590,10 @@
             </objects>
             <point key="canvasLocation" x="2020" y="1725.7871064467768"/>
         </scene>
-        <!--Mafia Night Controller-->
+        <!--Night Chat-->
         <scene sceneID="fFh-Lp-os9">
             <objects>
-                <viewController storyboardIdentifier="MafiaNight" title="Mafia Night Controller" id="nGV-5l-2ks" customClass="MafiaNightController" customModule="MafiaGame" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MafiaNight" title="Night Chat" id="nGV-5l-2ks" customClass="MafiaNightController" customModule="MafiaGame" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="d8h-ql-Of9"/>
                         <viewControllerLayoutGuide type="bottom" id="MlR-dQ-oDJ"/>
@@ -663,12 +663,12 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l8p-cc-HxX" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="4rx-2d-r8h" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2989.5999999999999" y="1723.9880059970017"/>
+            <point key="canvasLocation" x="2914" y="1724"/>
         </scene>
-        <!--Mafia Decision Controller-->
+        <!--Mafia Decision-->
         <scene sceneID="gPi-42-n5p">
             <objects>
-                <viewController title="Mafia Decision Controller" id="ghx-mx-rRK" customClass="MafiaVoteController" customModule="MafiaGame" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Mafia Decision" id="ghx-mx-rRK" customClass="MafiaVoteController" customModule="MafiaGame" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="OIu-0g-bzJ"/>
                         <viewControllerLayoutGuide type="bottom" id="adT-P3-3R1"/>
@@ -685,18 +685,18 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="F15-aK-Vev" id="ejr-J6-3br">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="F5W-Nr-lGI">
-                                                    <rect key="frame" x="15" y="11" width="34" height="21"/>
+                                                    <rect key="frame" x="15" y="12" width="33.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ekz-yb-eSs">
-                                                    <rect key="frame" x="301" y="11" width="59" height="21"/>
+                                                    <rect key="frame" x="301" y="12" width="59" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -723,7 +723,7 @@
                     <navigationItem key="navigationItem" title="Choose A Player Below:" id="sJN-fa-ThC"/>
                     <connections>
                         <outlet property="playerTable" destination="Sg8-kV-tMf" id="JMu-Co-NiF"/>
-                        <segue destination="9JG-MN-t0P" kind="show" id="bDc-dX-1ij"/>
+                        <segue destination="9JG-MN-t0P" kind="show" identifier="VoteToDaySegue" id="bDc-dX-1ij"/>
                         <segue destination="aNp-h9-Qvb" kind="show" id="zTj-Eo-MfH"/>
                         <segue destination="81l-fH-bke" kind="unwind" identifier="unwindToMenu" unwindAction="unwindToMenuWithUnwindSegue:" id="yqN-fR-4nn"/>
                     </connections>
@@ -733,10 +733,10 @@
             </objects>
             <point key="canvasLocation" x="3693.5999999999999" y="1723.9880059970017"/>
         </scene>
-        <!--Waiting Player Controller-->
+        <!--Waiting For Players-->
         <scene sceneID="OMG-Dp-eii">
             <objects>
-                <viewController title="Waiting Player Controller" id="j3M-BO-uRS" customClass="WaitingPlayerController" customModule="MafiaGame" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Waiting For Players" id="j3M-BO-uRS" customClass="WaitingPlayerController" customModule="MafiaGame" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Kml-c5-6SA"/>
                         <viewControllerLayoutGuide type="bottom" id="0lu-ci-f6x"/>
@@ -753,11 +753,11 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6dc-cT-ySi" id="K52-BS-O61">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5cA-4v-PoW">
-                                                    <rect key="frame" x="15" y="0.0" width="345" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -859,8 +859,8 @@
         <image name="loginLightVersion6:7+" width="1080" height="1920"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ktb-Mz-2rW"/>
-        <segue reference="zTj-Eo-MfH"/>
+        <segue reference="81l-hx-7FU"/>
         <segue reference="bDc-dX-1ij"/>
+        <segue reference="ser-eq-0F2"/>
     </inferredMetricsTieBreakers>
 </document>
