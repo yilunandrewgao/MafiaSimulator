@@ -296,7 +296,7 @@ def on_voted_for(chosenPlayerSid, time):
 					#emit table update for chosen Player has been votedFor
 					#socketio.emit("alivePlayerListUpdate", ???) 
 					#write code here
-					socketio.emit("votedForUpdate", currentVotes, room = player.sid)
+					socketio.emit("votedForUpdate", currentVotes, room = inRoom.roomTag)
 
 					#keep track if all mafiaVoted
 					allMafiaVoted = True
@@ -344,7 +344,7 @@ def on_voted_for(chosenPlayerSid, time):
 					#emit table update for chosen Player has been votedFor
 					#socketio.emit("alivePlayerListUpdate", ???)  
 					#write code here
-					socketio.emit("votedForUpdate", currentVotes, room = player.sid)
+					socketio.emit("votedForUpdate", currentVotes, room = inRoom.roomTag)
 
 					#keep track if all player voted
 					allPlayersVoted = True

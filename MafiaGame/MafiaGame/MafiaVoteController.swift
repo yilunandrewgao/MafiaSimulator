@@ -10,6 +10,18 @@ import UIKit
 
 class MafiaVoteController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     
+    func transitionToMorning() {
+        var viewControllers = navigationController?.viewControllers
+        
+        let dayViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DayChat") as! VillagerDayController
+        // remove last view controller twice
+        viewControllers?.removeLast()
+        viewControllers?.removeLast()
+        viewControllers?.append(dayViewController)
+        
+        navigationController?.setViewControllers(viewControllers!, animated: false)
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -99,7 +111,8 @@ class MafiaVoteController: UIViewController, UITableViewDataSource, UITableViewD
             }
             let alertController = UIAlertController(title: "Killed", message: "\(killedPlayerName) was found dead.", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "Continue", style: .default, handler: { (action) in
-                self.performSegue(withIdentifier: "VoteToDaySegue", sender: nil)
+//                self.performSegue(withIdentifier: "VoteToDaySegue", sender: nil)
+                self.transitionToMorning()
             }))
             self.present(alertController, animated: true, completion: nil)
         }
