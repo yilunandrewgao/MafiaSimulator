@@ -11,6 +11,7 @@ import UIKit
 class MafiaVoteController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     
     func transitionToMorning() {
+        GameService.shared.inRoom?.killedPlayerSid = nil
         var viewControllers = navigationController?.viewControllers
         
         let dayViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DayChat") as! VillagerDayController
@@ -32,7 +33,7 @@ class MafiaVoteController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AlivePlayerCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AlivePlayerNightCell", for: indexPath)
         
         let alivePlayer = GameService.shared.inRoom?.alivePlayerList?[indexPath.row]
         cell.textLabel?.text = alivePlayer?.name
@@ -111,7 +112,6 @@ class MafiaVoteController: UIViewController, UITableViewDataSource, UITableViewD
             }
             let alertController = UIAlertController(title: "Killed", message: "\(killedPlayerName) was found dead.", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "Continue", style: .default, handler: { (action) in
-//                self.performSegue(withIdentifier: "VoteToDaySegue", sender: nil)
                 self.transitionToMorning()
             }))
             self.present(alertController, animated: true, completion: nil)

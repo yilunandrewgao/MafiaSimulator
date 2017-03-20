@@ -265,6 +265,7 @@ def on_start_round():
 				socketio.emit("startRoundUpdate", [player.toJSON() for player in alivePlayersList], room = inRoom.roomTag)
 				#emit update: voteCount reset
 				socketio.emit("votedForUpdate", voteCountReset, room = inRoom.roomTag)
+				
 				break
 
 			else:

@@ -38,4 +38,8 @@ class GameService {
         self.thisPlayer.isAlive = true
     }
     
+    func resetData(){
+        self.inRoom = nil
+        
+    }
 }

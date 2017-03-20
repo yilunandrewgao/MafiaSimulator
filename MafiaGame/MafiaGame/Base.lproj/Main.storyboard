@@ -393,11 +393,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mqP-og-mDV">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="573"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rkz-Nu-ef0">
-                                <rect key="frame" x="0.0" y="573" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="...type a message" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="rfB-8A-duW">
                                         <rect key="frame" x="5" y="5" width="368" height="40"/>
@@ -464,10 +464,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OgZ-1f-GkL">
-                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="SQ5-dJ-TmN" detailTextLabel="0k7-DS-4dK" style="IBUITableViewCellStyleValue1" id="FSF-OU-pgf">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AlivePlayerDayCell" textLabel="SQ5-dJ-TmN" detailTextLabel="0k7-DS-4dK" style="IBUITableViewCellStyleValue1" id="FSF-OU-pgf">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FSF-OU-pgf" id="byu-eG-Log">
@@ -492,6 +492,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="ddZ-Ln-sa2" id="cKo-NR-5De"/>
+                                    <outlet property="delegate" destination="ddZ-Ln-sa2" id="mec-ZX-9pm"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -504,12 +508,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="Choose A Player Below:" id="7VE-aW-22n"/>
                     <connections>
+                        <outlet property="playerTable" destination="OgZ-1f-GkL" id="ZLo-tc-N2d"/>
                         <segue destination="aNp-h9-Qvb" kind="show" id="ser-eq-0F2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j5Q-rU-mKh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3524" y="3259"/>
+            <point key="canvasLocation" x="3399" y="3266"/>
         </scene>
         <!--Game Over-->
         <scene sceneID="D4F-Yn-J1Z">
@@ -681,7 +686,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AlivePlayerCell" textLabel="F5W-Nr-lGI" detailTextLabel="ekz-yb-eSs" style="IBUITableViewCellStyleValue1" id="F15-aK-Vev">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AlivePlayerNightCell" textLabel="F5W-Nr-lGI" detailTextLabel="ekz-yb-eSs" style="IBUITableViewCellStyleValue1" id="F15-aK-Vev">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="F15-aK-Vev" id="ejr-J6-3br">
@@ -860,7 +865,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="81l-hx-7FU"/>
-        <segue reference="bDc-dX-1ij"/>
-        <segue reference="zD7-ix-gwN"/>
+        <segue reference="5ns-Pb-Sfs"/>
+        <segue reference="jg0-Gj-KVJ"/>
     </inferredMetricsTieBreakers>
 </document>

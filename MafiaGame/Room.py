@@ -67,6 +67,8 @@ class Room:
 
 		#create an empty dictionary {"sid":votes}
 		votes = {}
+		for player in self.alivePlayers():
+			votes[player.sid] = 0
 		#fill votes dictionary
 		for player in self.playerList:
 			#check if player voted of not
