@@ -11,6 +11,9 @@ import UIKit
 class MafiaVoteController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     
     func transitionToMorning() {
+        if GameService.shared.thisPlayer.sid == GameService.shared.inRoom?.owner.sid {
+            SocketIOManager.shared.startRound()
+        }
         GameService.shared.inRoom?.killedPlayerSid = nil
         var viewControllers = navigationController?.viewControllers
         
@@ -74,6 +77,7 @@ class MafiaVoteController: UIViewController, UITableViewDataSource, UITableViewD
         NotificationCenter.default.addObserver(self, selector: #selector(quitRoomCompletion), name: .quitRoomNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(voteCompletion), name: .updateVoteCountNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(killedCompletion), name: .updateKilledNotification, object: nil)
+        
     }
     
     override func didReceiveMemoryWarning() {

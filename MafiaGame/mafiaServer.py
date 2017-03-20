@@ -259,13 +259,15 @@ def on_start_round():
 			if whoWon == None:
 				#get alive players list
 				alivePlayersList = inRoom.alivePlayers()
+				print("alive players: ", [str(player) for player in alivePlayersList])
 				#get vote count set to 0
 				voteCountReset = reset_vote_count(player)
+				print("vote reset: ", voteCountReset)
 				#emit update: AliveList
 				socketio.emit("startRoundUpdate", [player.toJSON() for player in alivePlayersList], room = inRoom.roomTag)
 				#emit update: voteCount reset
 				socketio.emit("votedForUpdate", voteCountReset, room = inRoom.roomTag)
-				
+
 				break
 
 			else:

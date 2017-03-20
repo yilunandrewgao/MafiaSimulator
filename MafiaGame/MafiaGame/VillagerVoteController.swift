@@ -8,7 +8,7 @@
 
 import UIKit
 
-class VillagerVoteController: UIViewController {
+class VillagerVoteController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     func transitionToNight() {
         GameService.shared.inRoom?.killedPlayerSid = nil
@@ -62,7 +62,7 @@ class VillagerVoteController: UIViewController {
         
         let alertController = UIAlertController(title: "Confirm Vote", message: "You sure you want to choose this player?", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) in
-            SocketIOManager.shared.votedFor(chosenPlayerSid: (selectedPlayer?.sid)!, time: "night")
+            SocketIOManager.shared.votedFor(chosenPlayerSid: (selectedPlayer?.sid)!, time: "day")
         }))
         alertController.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
         present(alertController, animated: true, completion: nil)

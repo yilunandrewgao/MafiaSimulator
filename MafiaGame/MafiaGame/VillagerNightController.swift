@@ -12,6 +12,10 @@ import UIKit
 class VillagerNightController: UIViewController {
     
     func transitionToMorning() {
+        if GameService.shared.thisPlayer.sid == GameService.shared.inRoom?.owner.sid {
+            SocketIOManager.shared.startRound()
+        }
+        
         GameService.shared.inRoom?.killedPlayerSid = nil
         var viewControllers = navigationController?.viewControllers
         
@@ -40,7 +44,9 @@ class VillagerNightController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(quitRoomCompletion), name: .quitRoomNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(pass), name: .updateVoteCountNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(pass), name: .updateKilledNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(killedCompletion), name: .updateKilledNotification, object: nil)
+        
+         NotificationCenter.default.addObserver(self, selector: #selector(pass), name: .updateAlivePlayersNotification, object: nil)
     }
     
     func pass() {

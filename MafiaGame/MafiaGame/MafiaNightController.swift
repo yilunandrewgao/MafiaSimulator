@@ -10,6 +10,10 @@ import UIKit
 
 class MafiaNightController: UIViewController {
     func transitionToMorning() {
+        if GameService.shared.thisPlayer.sid == GameService.shared.inRoom?.owner.sid {
+            SocketIOManager.shared.startRound()
+        }
+        GameService.shared.inRoom?.killedPlayerSid = nil
         var viewControllers = navigationController?.viewControllers
         
         let dayViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DayChat") as! VillagerDayController
@@ -31,6 +35,7 @@ class MafiaNightController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(quitRoomCompletion), name: .quitRoomNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(pass), name: .updateVoteCountNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(pass), name: .updateKilledNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(pass), name: .updateAlivePlayersNotification, object: nil)
     }
     
     override func didReceiveMemoryWarning() {

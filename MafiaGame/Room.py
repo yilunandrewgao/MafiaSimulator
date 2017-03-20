@@ -86,17 +86,26 @@ class Room:
 	
 
 	def killPlayer(self, playerToKillSid):
+		killedPlayer = False
 		for player in self.playerList:
 			if player.sid == playerToKillSid:
 				if player.isAlive:
 					player.isAlive = False
 					print("player chosen to be killed ", player.name)
+					print("player.isAlive: ", player.isAlive)
+					killedPlayer = True
 					return True
 				else:
+					print("playerToKill: ", playerToKillSid, " is already dead")
 					return False
-			else:
-				print("playerToKill is not in room")
-				return False
+				
+				break
+
+		if killedPlayer == False:
+			print("playerToKill: ", playerToKillSid," is not in room")
+			return False
+		
+		
 
 	def assignRoles(self):
 		playerCount = len(self.playerList)

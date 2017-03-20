@@ -40,7 +40,8 @@ class VillagerDayController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(quitRoomCompletion), name: .quitRoomNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(pass), name: .updateVoteCountNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(pass), name: .updateKilledNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(killedCompletion), name: .updateKilledNotification, object: nil)
+         NotificationCenter.default.addObserver(self, selector: #selector(pass), name: .updateAlivePlayersNotification, object: nil)
     }
     
     override func didReceiveMemoryWarning() {
@@ -58,7 +59,7 @@ class VillagerDayController: UIViewController {
     func pass() {
         
     }
-    
+
     func killedCompletion() {
         DispatchQueue.main.async {
             //create variable for killed player
