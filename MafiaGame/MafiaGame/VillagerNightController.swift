@@ -40,9 +40,7 @@ class VillagerNightController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if GameService.shared.inRoom?.whoWon != nil {
-            self.whoWonCompletion()
-        }
+        
         navigationItem.hidesBackButton = true
         
         
@@ -68,7 +66,9 @@ class VillagerNightController: UIViewController {
     func killedCompletion() {
         DispatchQueue.main.async {
             //send start round message
-            SocketIOManager.shared.startRound()
+            if GameService.shared.thisPlayer.sid == GameService.shared.inRoom?.owner.sid {
+                SocketIOManager.shared.startRound()
+            }
             
             //create variable for killed player
             var killedPlayerName : String = "player name"
