@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AudioToolbox
 
 class VillagerVoteController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -136,6 +137,9 @@ class VillagerVoteController: UIViewController, UITableViewDataSource, UITableVi
                     break
                 }
             }
+            
+            //make phone vibrate to alert players in case they aren't paying attention
+            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
             
             let alertController = UIAlertController(title: "Killed", message: "\(killedPlayerName) was found dead.", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "Continue", style: .default, handler: { (action) in

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AudioToolbox
 
 class MafiaNightController: UIViewController {
     func transitionToMorning() {
@@ -78,7 +79,10 @@ class MafiaNightController: UIViewController {
                     break
                 }
             }
-    
+            
+            //make phone vibrate to alert players in case they aren't paying attention
+            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+            
             let alertController = UIAlertController(title: "Killed", message: "\(killedPlayerName) was found dead.", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "Continue", style: .default, handler: { (action) in
                 if GameService.shared.inRoom?.whoWon != nil {
