@@ -55,13 +55,21 @@ class MafiaVoteController: UIViewController, UITableViewDataSource, UITableViewD
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedPlayer = GameService.shared.inRoom?.alivePlayerList?[indexPath.row]
         
+        if (GameService.shared.thisPlayer.isAlive)!{
+            let alertController = UIAlertController(title: "Confirm Vote", message: "You sure you want to choose this player?", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) in
+                SocketIOManager.shared.votedFor(chosenPlayerSid: (selectedPlayer?.sid)!, time: "night")
+            }))
+            alertController.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+            present(alertController, animated: true, completion: nil)
+        }
+        else {
+            let alertController = UIAlertController(title: "Dead", message: "Sorry, you are currently dead", preferredStyle: .alert)
+            
+            alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            present(alertController, animated: true, completion: nil)
+        }
         
-        let alertController = UIAlertController(title: "Confirm Vote", message: "You sure you want to choose this player?", preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action) in
-            SocketIOManager.shared.votedFor(chosenPlayerSid: (selectedPlayer?.sid)!, time: "night")
-        }))
-        alertController.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
-        present(alertController, animated: true, completion: nil)
     }
 
     
