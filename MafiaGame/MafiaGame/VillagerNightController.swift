@@ -68,7 +68,7 @@ class VillagerNightController: UIViewController {
     func killedCompletion() {
         DispatchQueue.main.async {
             //send start round message
-            SocketIOManager.shared.startRound()
+            
             
             //create variable for killed player
             var killedPlayerName : String = "player name"
@@ -83,6 +83,9 @@ class VillagerNightController: UIViewController {
                     //get out of for loop
                     break
                 }
+            }
+            if GameService.shared.thisPlayer.sid == GameService.shared.inRoom?.owner.sid {
+                SocketIOManager.shared.startRound()
             }
 
             //make phone vibrate to alert players in case they aren't paying attention

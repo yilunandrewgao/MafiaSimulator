@@ -63,7 +63,8 @@ class MafiaNightController: UIViewController {
     
     func killedCompletion() {
         DispatchQueue.main.async {
-            //send start round update 
+            //send start round update
+            
             
             //create variable for killed player
             var killedPlayerName : String = "player name"
@@ -78,6 +79,9 @@ class MafiaNightController: UIViewController {
                     //get out of for loop
                     break
                 }
+            }
+            if GameService.shared.thisPlayer.sid == GameService.shared.inRoom?.owner.sid {
+                SocketIOManager.shared.startRound()
             }
             
             //make phone vibrate to alert players in case they aren't paying attention

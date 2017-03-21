@@ -13,6 +13,7 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -52,6 +53,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         else {
             fatalError("Root view controller was not a navigation controller")
         }
+        
+        // Reconnect to server
+        SocketIOManager.shared.establishConnection(timeOutHandler: {_ in})
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
