@@ -12,9 +12,6 @@ class VillagerVoteController: UIViewController, UITableViewDataSource, UITableVi
     
     func transitionToNight() {
         GameService.shared.inRoom?.killedPlayerSid = nil
-        if GameService.shared.thisPlayer.sid == GameService.shared.inRoom?.owner.sid {
-            SocketIOManager.shared.startRound()
-        }
         var viewControllers = navigationController?.viewControllers
         
         var nightViewController : UIViewController!
@@ -83,15 +80,24 @@ class VillagerVoteController: UIViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        if GameService.shared.inRoom?.whoWon != nil {
+            self.whoWonCompletion()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        if GameService.shared.inRoom?.whoWon != nil {
+            self.whoWonCompletion()
+        }
+        
         playerTable.reloadData()
         
         NotificationCenter.default.addObserver(self, selector: #selector(quitRoomCompletion), name: .quitRoomNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(voteCompletion), name: .updateVoteCountNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(killedCompletion), name: .updateKilledNotification, object: nil)
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -114,6 +120,8 @@ class VillagerVoteController: UIViewController, UITableViewDataSource, UITableVi
     
     func killedCompletion() {
         DispatchQueue.main.async {
+            //send start round message
+            SocketIOManager.shared.startRound()
             //create variable for killed player
             var killedPlayerName : String = "player name"
             //get killed player sid (which was sent from the server)
@@ -128,13 +136,31 @@ class VillagerVoteController: UIViewController, UITableViewDataSource, UITableVi
                     break
                 }
             }
+            
             let alertController = UIAlertController(title: "Killed", message: "\(killedPlayerName) was found dead.", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "Continue", style: .default, handler: { (action) in
-                
-                self.transitionToNight()
+                if GameService.shared.inRoom?.whoWon != nil {
+                    self.whoWonCompletion()
+                }
+                else{
+                    self.transitionToNight()
+                }
             }))
             self.present(alertController, animated: true, completion: nil)
         }
+    }
+    
+    func whoWonCompletion(){
+        
+        var viewControllers = self.navigationController?.viewControllers
+        let endGameViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GameOver") as! GameOverController
+        
+        viewControllers?.removeLast()
+        viewControllers?.removeLast()
+        viewControllers?.append(endGameViewController)
+        
+        self.navigationController?.setViewControllers(viewControllers!, animated: false)
+        
     }
     
     

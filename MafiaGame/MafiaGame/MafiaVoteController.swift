@@ -11,9 +11,7 @@ import UIKit
 class MafiaVoteController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     
     func transitionToMorning() {
-        if GameService.shared.thisPlayer.sid == GameService.shared.inRoom?.owner.sid {
-            SocketIOManager.shared.startRound()
-        }
+       
         GameService.shared.inRoom?.killedPlayerSid = nil
         var viewControllers = navigationController?.viewControllers
         
@@ -75,16 +73,26 @@ class MafiaVoteController: UIViewController, UITableViewDataSource, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
+       
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         playerTable.reloadData()
         
+        if GameService.shared.inRoom?.whoWon != nil {
+            self.whoWonCompletion()
+        }
+        
         NotificationCenter.default.addObserver(self, selector: #selector(quitRoomCompletion), name: .quitRoomNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(voteCompletion), name: .updateVoteCountNotification, object: nil)
+        
+        
         NotificationCenter.default.addObserver(self, selector: #selector(killedCompletion), name: .updateKilledNotification, object: nil)
+       
         
     }
     
@@ -108,6 +116,9 @@ class MafiaVoteController: UIViewController, UITableViewDataSource, UITableViewD
     
     func killedCompletion() {
         DispatchQueue.main.async {
+            //send start round update
+            SocketIOManager.shared.startRound()
+            
             //create variable for killed player
             var killedPlayerName : String = "player name"
             //get killed player sid (which was sent from the server)
@@ -124,12 +135,33 @@ class MafiaVoteController: UIViewController, UITableViewDataSource, UITableViewD
             }
             let alertController = UIAlertController(title: "Killed", message: "\(killedPlayerName) was found dead.", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "Continue", style: .default, handler: { (action) in
-                self.transitionToMorning()
+                if GameService.shared.inRoom?.whoWon != nil {
+                    self.whoWonCompletion()
+                }
+                else {
+                    self.transitionToMorning()
+                }
+                
             }))
+            
             self.present(alertController, animated: true, completion: nil)
         }
     }
     
+    func whoWonCompletion(){
+       
+        var viewControllers = self.navigationController?.viewControllers
+        
+        let endGameViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GameOver") as! GameOverController
+        
+        viewControllers?.removeLast()
+        viewControllers?.removeLast()
+        viewControllers?.append(endGameViewController)
+        
+        self.navigationController?.setViewControllers(viewControllers!, animated: false)
+        
+    }
+
     // MARK: Properties (IBOutlet) table of lists of available rooms
     @IBOutlet weak var playerTable: UITableView!
 }

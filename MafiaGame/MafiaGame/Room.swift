@@ -24,6 +24,9 @@ class Room: CustomStringConvertible {
     //killed player's sid
     public var killedPlayerSid: String?
     
+    //which side won
+    public var whoWon: String?
+    
     private(set) var nightChat: String?
     private(set) var dayChat: String?
     

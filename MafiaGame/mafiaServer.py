@@ -115,9 +115,12 @@ def on_disconnect():
 				if player == playerToRoomMap[player].owner:
 					delete_room_of(player)
 				else:
-					#not owner: set player status to offline
-					player.isOnline = False
-					user_exit_room(player)
+					#check if game started
+					if playerToRoomMap[player].gameStarted:
+						#not owner: set player status to offline
+						player.isOnline = False
+					else:
+						user_exit_room(player)
 
 				print (player.name + " disconnected")
 				#remove player from playerList
@@ -246,6 +249,7 @@ def on_start_game():
 			break
 
 
+
 @socketio.on("startRound")
 def on_start_round():
 	#find player in playerList
@@ -273,10 +277,13 @@ def on_start_round():
 			else:
 
 				#emit end game update and the side that won
+				print("game over")
+				print(whoWon, " won")
 				socketio.emit("endGameUpdate", whoWon, room = inRoom.roomTag)
-				#emit room/roomlist update?
+				break
 
 
+				
 
 
 @socketio.on("votedFor")			
@@ -376,5 +383,5 @@ def on_voted_for(chosenPlayerSid, time):
 
 
 if __name__ == '__main__':
-	socketio.run(app, host = "10.111.194.58", port = 7777)
+	socketio.run(app, host = "192.168.0.24", port = 7777)
 
