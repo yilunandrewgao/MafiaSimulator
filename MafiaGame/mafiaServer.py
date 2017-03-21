@@ -306,7 +306,7 @@ def on_voted_for(chosenPlayerSid, time):
 					#check to see if all mafia members voted:
 					for player in inRoom.playerList:
 						#check to see if player is mafia and is online
-						if (player.role == "mafia") and (player.isOnline):
+						if (player.role == "mafia") and (player.isOnline) and (player.isAlive):
 							if player.voteFor == None:
 								allMafiaVoted = False
 								break
@@ -353,7 +353,7 @@ def on_voted_for(chosenPlayerSid, time):
 					allPlayersVoted = True
 					#keep track to see if all players voted
 					for player in inRoom.playerList:
-						if player.isOnline:
+						if player.isOnline and player.isAlive:
 							if player.voteFor == None:
 								allPlayersVoted = False
 								break

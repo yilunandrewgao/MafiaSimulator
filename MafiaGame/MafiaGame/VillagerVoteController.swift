@@ -12,6 +12,9 @@ class VillagerVoteController: UIViewController, UITableViewDataSource, UITableVi
     
     func transitionToNight() {
         GameService.shared.inRoom?.killedPlayerSid = nil
+        if GameService.shared.thisPlayer.sid == GameService.shared.inRoom?.owner.sid {
+            SocketIOManager.shared.startRound()
+        }
         var viewControllers = navigationController?.viewControllers
         
         var nightViewController : UIViewController!
