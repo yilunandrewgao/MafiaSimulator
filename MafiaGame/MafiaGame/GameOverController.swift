@@ -41,7 +41,7 @@ class GameOverController: UIViewController {
     func winner(){
         //calculate points
         if let won = GameService.shared.inRoom?.whoWon {
-            whoWon.text = "\(won) won"
+            whoWon.text = "\(won) won!!"
         }
         else {
             whoWon.text = "no one won yet"
