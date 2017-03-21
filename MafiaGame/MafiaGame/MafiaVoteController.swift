@@ -84,9 +84,7 @@ class MafiaVoteController: UIViewController, UITableViewDataSource, UITableViewD
         super.viewWillAppear(animated)
         playerTable.reloadData()
         
-        if GameService.shared.inRoom?.whoWon != nil {
-            self.whoWonCompletion()
-        }
+        
         
         NotificationCenter.default.addObserver(self, selector: #selector(quitRoomCompletion), name: .quitRoomNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(voteCompletion), name: .updateVoteCountNotification, object: nil)
@@ -117,8 +115,6 @@ class MafiaVoteController: UIViewController, UITableViewDataSource, UITableViewD
     
     func killedCompletion() {
         DispatchQueue.main.async {
-            //send start round update
-            
             
             //create variable for killed player
             var killedPlayerName : String = "player name"

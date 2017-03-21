@@ -25,8 +25,6 @@ class MafiaNightController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-       
-
         
     }
     
@@ -63,9 +61,7 @@ class MafiaNightController: UIViewController {
     
     func killedCompletion() {
         DispatchQueue.main.async {
-            //send start round update
-            
-            
+
             //create variable for killed player
             var killedPlayerName : String = "player name"
             //get killed player sid (which was sent from the server)

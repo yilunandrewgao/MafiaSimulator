@@ -81,18 +81,13 @@ class VillagerVoteController: UIViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        if GameService.shared.inRoom?.whoWon != nil {
-            self.whoWonCompletion()
-        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if GameService.shared.inRoom?.whoWon != nil {
-            self.whoWonCompletion()
-        }
-        
+               
         playerTable.reloadData()
         
         NotificationCenter.default.addObserver(self, selector: #selector(quitRoomCompletion), name: .quitRoomNotification, object: nil)
@@ -121,7 +116,7 @@ class VillagerVoteController: UIViewController, UITableViewDataSource, UITableVi
     
     func killedCompletion() {
         DispatchQueue.main.async {
-            //send start round message
+
             
             //create variable for killed player
             var killedPlayerName : String = "player name"
@@ -140,6 +135,8 @@ class VillagerVoteController: UIViewController, UITableViewDataSource, UITableVi
             if GameService.shared.thisPlayer.sid == GameService.shared.inRoom?.owner.sid {
                 SocketIOManager.shared.startRound()
             }
+            
+            
             
             //make phone vibrate to alert players in case they aren't paying attention
             AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))

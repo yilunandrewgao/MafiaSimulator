@@ -34,18 +34,14 @@ class VillagerDayController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        if GameService.shared.inRoom?.whoWon != nil {
-            self.whoWonCompletion()
-        }
+       
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.hidesBackButton = true
         
-        if GameService.shared.inRoom?.whoWon != nil {
-            self.whoWonCompletion()
-        }
+       
         
         NotificationCenter.default.addObserver(self, selector: #selector(quitRoomCompletion), name: .quitRoomNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(pass), name: .updateVoteCountNotification, object: nil)
@@ -72,8 +68,7 @@ class VillagerDayController: UIViewController {
 
     func killedCompletion() {
         DispatchQueue.main.async {
-            //send start round message
-            
+
             
             //create variable for killed player
             var killedPlayerName : String = "player name"
