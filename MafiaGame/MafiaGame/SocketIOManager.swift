@@ -78,6 +78,12 @@ class SocketIOManager: NSObject {
                 alivePlayerList.append(try! Player(playerInfo: player))
             }
             GameService.shared.inRoom?.alivePlayerList = alivePlayerList
+            GameService.shared.thisPlayer.isAlive = false
+            for player in alivePlayerList {
+                if GameService.shared.thisPlayer.sid == player.sid {
+                    GameService.shared.thisPlayer.isAlive = true
+                }
+            }
             NotificationCenter.default.post(name: .updateAlivePlayersNotification, object: nil)
         }
         
