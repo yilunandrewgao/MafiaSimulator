@@ -64,7 +64,7 @@ class MafiaNightController: UIViewController {
     func killedCompletion() {
         DispatchQueue.main.async {
             //send start round update 
-            
+            SocketIOManager.shared.startRound()
             //create variable for killed player
             var killedPlayerName : String = "player name"
             //get killed player sid (which was sent from the server)
