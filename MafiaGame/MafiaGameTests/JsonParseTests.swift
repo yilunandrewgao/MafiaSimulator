@@ -117,13 +117,14 @@ class JsonParseTests: XCTestCase {
     
     //test JSON parse extension for simple room
     func testSimpleRoomParse() throws {
-        let testSimpleRoomJSON : [String:Any] = ["currentNumPlayers": 3, "roomName": "MeMeMe", "maxPlayers": 4, "owner": ["name": "Anne", "sid": "234562"], "password": "42", "roomTag": "MeMeMe", "gameStarted": true]
+        let testSimpleRoomJSON : [String:Any] = ["currentNumPlayers": 3, "roomName": "MeMeMe", "maxPlayers": 4, "owner": "Anne", "password": "42", "roomTag": "MeMeMe", "gameStarted": true]
         let testSimpleRoomObject = try SimpleRoom(json: testSimpleRoomJSON)
         
         //get dictionary keys
         let currNumPlayersDic = testSimpleRoomJSON["currentNumPlayers"]
         let roomNameDic = testSimpleRoomJSON["roomName"]
         let roomMaxPlayersDic = testSimpleRoomJSON["maxPlayers"]
+        let roomOwnerDic = testSimpleRoomJSON["owner"]
         let roomPasswordDic = testSimpleRoomJSON["password"]
         let roomTagDic = testSimpleRoomJSON["roomTag"]
         let roomGameStartedDic = testSimpleRoomJSON["gameStarted"]
@@ -154,6 +155,12 @@ class JsonParseTests: XCTestCase {
         }
         else{
             XCTFail()
+        }
+        
+        
+        //test SimpleRoom.owner is equal to dictionary owner
+        if let owner = roomOwnerDic {
+            XCTAssertEqual(String(describing: owner), testSimpleRoomObject.owner)
         }
         
         
