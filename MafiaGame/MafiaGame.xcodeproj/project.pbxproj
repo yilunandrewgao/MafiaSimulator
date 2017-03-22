@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		78075D7F1E8311F200E61F38 /* PlayerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78075D7E1E8311F200E61F38 /* PlayerInfo.swift */; };
+		78075D811E83120500E61F38 /* Rooms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78075D801E83120500E61F38 /* Rooms.swift */; };
+		78075D831E83123F00E61F38 /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78075D821E83123F00E61F38 /* GameData.swift */; };
+		78075D851E8315D900E61F38 /* PlayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78075D841E8315D900E61F38 /* PlayerService.swift */; };
 		782E198E1E5B4BBB000B1945 /* MafiaNightController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782E198D1E5B4BBB000B1945 /* MafiaNightController.swift */; };
 		78429B201E5DF22400859F50 /* GameOverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78429B1F1E5DF22400859F50 /* GameOverController.swift */; };
 		78935B0F1E6F61100031D88F /* SocketAckEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78935AF71E6F61100031D88F /* SocketAckEmitter.swift */; };
@@ -76,6 +80,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		78075D7E1E8311F200E61F38 /* PlayerInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerInfo.swift; sourceTree = "<group>"; };
+		78075D801E83120500E61F38 /* Rooms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rooms.swift; sourceTree = "<group>"; };
+		78075D821E83123F00E61F38 /* GameData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
+		78075D841E8315D900E61F38 /* PlayerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerService.swift; sourceTree = "<group>"; };
 		782E198D1E5B4BBB000B1945 /* MafiaNightController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MafiaNightController.swift; sourceTree = "<group>"; };
 		78429B1F1E5DF22400859F50 /* GameOverController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverController.swift; sourceTree = "<group>"; };
 		78935AF71E6F61100031D88F /* SocketAckEmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAckEmitter.swift; sourceTree = "<group>"; };
@@ -158,6 +166,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		78075D7D1E8311D200E61F38 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				78075D7E1E8311F200E61F38 /* PlayerInfo.swift */,
+				78075D801E83120500E61F38 /* Rooms.swift */,
+				78075D821E83123F00E61F38 /* GameData.swift */,
+			);
+			name = "Core Data";
+			sourceTree = "<group>";
+		};
 		78935AF61E6F61100031D88F /* SocketSource */ = {
 			isa = PBXGroup;
 			children = (
@@ -290,6 +308,7 @@
 			isa = PBXGroup;
 			children = (
 				78935B2D1E70A7560031D88F /* GameService.swift */,
+				78075D841E8315D900E61F38 /* PlayerService.swift */,
 			);
 			name = Service;
 			sourceTree = "<group>";
@@ -297,6 +316,7 @@
 		78E308631E57694500CE7059 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				78075D7D1E8311D200E61F38 /* Core Data */,
 				93678D6E1E6543BB00E67B2B /* Room.swift */,
 				9353860E1E5A51CD00EB9871 /* Player.swift */,
 				78935B271E6F61F30031D88F /* SocketIOManager.swift */,
@@ -471,17 +491,20 @@
 				78935B191E6F61100031D88F /* SocketEventHandler.swift in Sources */,
 				78C8CCE01E5D1ED600B28265 /* VillagerNightController.swift in Sources */,
 				78935B1E1E6F61100031D88F /* SocketIOClientSpec.swift in Sources */,
+				78075D7F1E8311F200E61F38 /* PlayerInfo.swift in Sources */,
 				78935B171E6F61100031D88F /* SocketEngineSpec.swift in Sources */,
 				78A7D1A51E7882C900D2EDA9 /* MafiaVoteController.swift in Sources */,
 				78935B231E6F61100031D88F /* SocketStringReader.swift in Sources */,
 				78A7D1A71E7882F700D2EDA9 /* VillagerDayController.swift in Sources */,
 				78935B111E6F61100031D88F /* SocketAnyEvent.swift in Sources */,
 				93678D6F1E6543BB00E67B2B /* Room.swift in Sources */,
+				78075D851E8315D900E61F38 /* PlayerService.swift in Sources */,
 				78935B0F1E6F61100031D88F /* SocketAckEmitter.swift in Sources */,
 				782E198E1E5B4BBB000B1945 /* MafiaNightController.swift in Sources */,
 				78E464801E5A576F00758655 /* CreateRoomController.swift in Sources */,
 				78935B2E1E70A7560031D88F /* GameService.swift in Sources */,
 				78935B141E6F61100031D88F /* SocketEngineClient.swift in Sources */,
+				78075D831E83123F00E61F38 /* GameData.swift in Sources */,
 				78935B1B1E6F61100031D88F /* SocketIOClient.swift in Sources */,
 				78E308671E57731000CE7059 /* LoginViewController.swift in Sources */,
 				78935B241E6F61100031D88F /* SocketTypes.swift in Sources */,
@@ -509,6 +532,7 @@
 				78935B281E6F61F30031D88F /* SocketIOManager.swift in Sources */,
 				78935B101E6F61100031D88F /* SocketAckManager.swift in Sources */,
 				78935B211E6F61100031D88F /* SocketPacket.swift in Sources */,
+				78075D811E83120500E61F38 /* Rooms.swift in Sources */,
 				78935B181E6F61100031D88F /* SocketEngineWebsocket.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -6,4 +6,8 @@
 //  Copyright © 2017 Yufang Lin. All rights reserved.
 //
 
-import Foundation
+import CoreData
+
+class PlayerService{
+    
+}
