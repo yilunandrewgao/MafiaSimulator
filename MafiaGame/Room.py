@@ -16,8 +16,7 @@ class Room:
 
 	roomTag = None
 
-	nightChat = None
-	dayChat = None
+	chat = None
 
 	def __init__(self, roomName, password, maxPlayers, owner):
 		self.roomName = roomName
@@ -165,6 +164,10 @@ class Room:
 		else:
 			return None
 
+	def updateChat(message):
+
+		chat.append(message)
+	
 	def toJSON(self):
 
 		infoDict = {"_type": "Room", "playerList": [player.toJSON() for player in self.playerList], \

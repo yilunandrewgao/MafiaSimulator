@@ -47,6 +47,7 @@ class WaitingPlayerController: UIViewController, UITableViewDelegate, UITableVie
         NotificationCenter.default.addObserver(self, selector: #selector(updatePlayerTable), name: .updateRoomNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(quitRoomCompletion), name: .quitRoomNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(startGameCompletion), name: .gameStartedNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(startRoundCompletion), name: .updateAlivePlayersNotification, object: nil)
         
     }
     
@@ -76,6 +77,12 @@ class WaitingPlayerController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func startGameCompletion(){
+        if GameService.shared.thisPlayer.sid == GameService.shared.inRoom?.owner.sid {
+            SocketIOManager.shared.startRound()
+        }
+    }
+    
+    func startRoundCompletion() {
         DispatchQueue.main.async {
             let playerRole = GameService.shared.thisPlayer.role
             if playerRole == "mafia" {
@@ -90,7 +97,7 @@ class WaitingPlayerController: UIViewController, UITableViewDelegate, UITableVie
     @IBAction func startGame(_ sender: Any) {
         
         SocketIOManager.shared.startGame()
-        SocketIOManager.shared.startRound()
+        
 
     }
     
