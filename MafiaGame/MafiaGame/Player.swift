@@ -19,6 +19,9 @@ class Player: CustomStringConvertible {
     public var role: String?
     //private(set) var voteFor: String?
     
+    public var won: Int?
+    public var lost: Int?
+    
     public var description: String {
         return "(\(self.name), \(self.sid), \(self.role))"
     }

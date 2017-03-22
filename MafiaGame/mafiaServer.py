@@ -287,6 +287,20 @@ def on_start_round():
 				print("game over")
 				print(whoWon, " won")
 				socketio.emit("endGameUpdate", whoWon, room = inRoom.roomTag)
+
+				#emit player's win or lost
+				#if winner is villagers
+				if whoWon == "villagers":
+					if player.role == "villager":
+						socketio.emit("wonUpdate", room = player.sid)
+					else:
+						socketio.emit("lostUpdate", room = player.sid)
+				#if mafia 
+				else:
+					if player.role == whoWon:
+						socketio.emit("wonUpdate", room = player.sid)
+					else:
+						socketio.emit("lostUpdate", room = player.sid)
 				break
 
 

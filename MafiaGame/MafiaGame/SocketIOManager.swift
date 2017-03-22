@@ -114,6 +114,26 @@ class SocketIOManager: NSObject {
             GameService.shared.inRoom?.chatHistory?.append(newChatMessage)
             NotificationCenter.default.post(name: .updateChatNotification, object: nil)
         }
+        
+        socket.on("wonUpdate") { data, ack in
+            if let winCount = GameService.shared.thisPlayer.won {
+                let count = winCount + 1
+                GameService.shared.thisPlayer.won = count
+            }
+            else {
+                GameService.shared.thisPlayer.won = 1
+            }
+        }
+        
+        socket.on("lostUpdate") { data, ack in
+            if let lostCount = GameService.shared.thisPlayer.lost {
+                let count = lostCount + 1
+                GameService.shared.thisPlayer.lost = count
+            }
+            else {
+                GameService.shared.thisPlayer.lost = 1
+            }
+        }
 
     }
     
