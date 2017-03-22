@@ -21,6 +21,7 @@ class Player: CustomStringConvertible {
     
     public var won: Int?
     public var lost: Int?
+    public var hostedRoom: Int?
     
     public var description: String {
         return "(\(self.name), \(self.sid), \(self.role))"

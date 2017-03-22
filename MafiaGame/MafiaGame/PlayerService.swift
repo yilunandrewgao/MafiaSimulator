@@ -41,10 +41,20 @@ class PlayerService{
         return fetchedResultsController
     }
     
+    
     // MARK: Private init
     private init() {
         persistentContainer = NSPersistentContainer(name: "MafiaGame")
+        persistentContainer.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            let context = self.persistentContainer.viewContext
+            
+            context.perform {
+                //get username
+                
+            }
+        })
     }
+    
     
     // MARK: Private
     private let persistentContainer: NSPersistentContainer

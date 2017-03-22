@@ -173,6 +173,9 @@ def on_create_room(roomDict):
 	socketio.emit("roomUpdate", newRoom.toJSON(), room = newRoom.roomTag)
 	socketio.emit("roomListUpdate", [room.toSimpleJSON() for room in roomList])
 
+	#emit hostRoomUpdate to increment hosted room data 
+	socketio.emit("hostedRoomUpdate", room = request.sid)
+
 
 
 @socketio.on("userExitRoom")
