@@ -88,10 +88,17 @@ class MafiaVoteController: UIViewController, UITableViewDataSource, UITableViewD
         
         NotificationCenter.default.addObserver(self, selector: #selector(quitRoomCompletion), name: .quitRoomNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(voteCompletion), name: .updateVoteCountNotification, object: nil)
-        
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(startRoundCompletion), name: .updateAlivePlayersNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(killedCompletion), name: .updateKilledNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(startRoundCompletion), name: .whoWonNotification, object: nil)
        
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NotificationCenter.default.removeObserver(self)
         
     }
     
@@ -114,30 +121,34 @@ class MafiaVoteController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func killedCompletion() {
+            
+        //create variable for killed player
+        var killedPlayerName : String = "player name"
+        //get killed player sid (which was sent from the server)
+        let killedPlayerSid = GameService.shared.inRoom?.killedPlayerSid
+        //get inRoom playerList
+        let playerList = GameService.shared.inRoom?.playerList ?? []
+        for player in playerList {
+            //match killed player and player in playerList sid
+            if player.sid == killedPlayerSid {
+                killedPlayerName = player.name
+                GameService.shared.inRoom?.killedPlayer = killedPlayerName
+                //get out of for loop
+                break
+            }
+        }
+        if GameService.shared.thisPlayer.sid == GameService.shared.inRoom?.owner.sid {
+            SocketIOManager.shared.startRound()
+        }
+        
+    }
+    
+    func startRoundCompletion() {
         DispatchQueue.main.async {
-            
-            //create variable for killed player
-            var killedPlayerName : String = "player name"
-            //get killed player sid (which was sent from the server)
-            let killedPlayerSid = GameService.shared.inRoom?.killedPlayerSid
-            //get inRoom playerList
-            let playerList = GameService.shared.inRoom?.playerList ?? []
-            for player in playerList {
-                //match killed player and player in playerList sid
-                if player.sid == killedPlayerSid {
-                    killedPlayerName = player.name
-                    //get out of for loop
-                    break
-                }
-            }
-            if GameService.shared.thisPlayer.sid == GameService.shared.inRoom?.owner.sid {
-                SocketIOManager.shared.startRound()
-            }
-            
-            //make phone vibrate to alert players in case they aren't paying attention 
+            //make phone vibrate to alert players in case they aren't paying attention
             AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
             
-            let alertController = UIAlertController(title: "Killed", message: "\(killedPlayerName) was found dead.", preferredStyle: .alert)
+            let alertController = UIAlertController(title: "Killed", message: "\(GameService.shared.inRoom?.killedPlayer) was found dead.", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "Continue", style: .default, handler: { (action) in
                 if GameService.shared.inRoom?.whoWon != nil {
                     self.whoWonCompletion()
@@ -150,6 +161,7 @@ class MafiaVoteController: UIViewController, UITableViewDataSource, UITableViewD
             
             self.present(alertController, animated: true, completion: nil)
         }
+        
     }
     
     func whoWonCompletion(){
@@ -168,4 +180,7 @@ class MafiaVoteController: UIViewController, UITableViewDataSource, UITableViewD
 
     // MARK: Properties (IBOutlet) table of lists of available rooms
     @IBOutlet weak var playerTable: UITableView!
+    
+    
+    
 }

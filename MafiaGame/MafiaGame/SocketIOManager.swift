@@ -84,6 +84,9 @@ class SocketIOManager: NSObject {
                     GameService.shared.thisPlayer.isAlive = true
                 }
             }
+            
+            // reset chat
+            GameService.shared.inRoom?.resetChat()
             NotificationCenter.default.post(name: .updateAlivePlayersNotification, object: nil)
         }
         
@@ -104,6 +107,12 @@ class SocketIOManager: NSObject {
             let whoWonJSON = data[0] as! String
             GameService.shared.inRoom?.whoWon = whoWonJSON
             NotificationCenter.default.post(name: .whoWonNotification, object: nil)
+        }
+        
+        socket.on("postMessageUpdate") { data, ack in
+            let newChatMessage = data[0] as! [String:String]
+            GameService.shared.inRoom?.chatHistory?.append(newChatMessage)
+            NotificationCenter.default.post(name: .updateChatNotification, object: nil)
         }
 
     }
@@ -149,6 +158,10 @@ class SocketIOManager: NSObject {
         socket.emit("votedFor", chosenPlayerSid, time)
     }
     
+    func chatUpdate(message:String) {
+        socket.emit("postMessage", message)
+    }
+    
     //when game is over, players exit
     func gameOverExit() {
         socket.emit("gameOverExit")
@@ -173,4 +186,6 @@ extension Notification.Name {
     
     //update whoWon
     static let whoWonNotification = Notification.Name(rawValue: "whoWonNotification")
+    
+    static let updateChatNotification = Notification.Name(rawValue: "updateChatNotification")
 }

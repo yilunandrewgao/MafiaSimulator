@@ -224,6 +224,13 @@ def on_user_join_room(roomTag):
 
 				break
 
+@socketio.on("postMessage")
+def on_post_message(message):
+
+	for player in playerList:
+		if player.sid == request.sid:
+			socketio.emit("postMessageUpdate", {"player": player.name, "message": message})
+			break
 
 		
 @socketio.on("startGame")
@@ -378,6 +385,9 @@ def on_voted_for(chosenPlayerSid, time):
 				else:
 					print(player.name, " is not in any room")
 					break
+
+
+
 
 
 

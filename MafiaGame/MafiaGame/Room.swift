@@ -20,15 +20,15 @@ class Room: CustomStringConvertible {
     private(set) var maxPlayers : Int
     private(set) var owner: Player
     public var gameStarted: Bool
+    public var chatHistory: [[String:String]]?
     
     //killed player's sid
     public var killedPlayerSid: String?
+    public var killedPlayer: String?
     
     //which side won
     public var whoWon: String?
     
-    private(set) var nightChat: String?
-    private(set) var dayChat: String?
     
     public var description : String {
         return "\(self.roomName) by \(String(describing: self.owner)): \(self.playerList.count)/\(self.maxPlayers)"
@@ -47,6 +47,10 @@ class Room: CustomStringConvertible {
         self.owner = owner
         self.gameStarted = false
 
+    }
+    
+    public func resetChat() {
+        chatHistory = []
     }
     
     
