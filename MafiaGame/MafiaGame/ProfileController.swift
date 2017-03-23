@@ -16,12 +16,17 @@ class ProfileController: UIViewController, NSFetchedResultsControllerDelegate {
         //fetched results
         playerInfoFetchedResultsController = PlayerService.shared.playerCategory()
         playerInfoFetchedResultsController.delegate = self
+        
         roomsFetchedResultsController = PlayerService.shared.rooms()
         roomsFetchedResultsController.delegate = self
+        
         gameDataFetchedResultsController = PlayerService.shared.gameData()
         gameDataFetchedResultsController.delegate = self
         
-        
+        nameGet()
+        hostedGet()
+        wonGet()
+        lostGet()
         
     }
     

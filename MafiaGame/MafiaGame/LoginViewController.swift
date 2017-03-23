@@ -45,7 +45,7 @@ class LoginViewController: UIViewController {
         UserDefaults.standard.set(username, forKey: self.username)
         UserDefaults.standard.synchronize()
         
-        PlayerService.shared.nameSet(for: username)
+        //PlayerService.shared.nameSet(for: username)
         
         usernameOutput.text = username
     }

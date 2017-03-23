@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16D32" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="GameData" representedClassName="GameData" syncable="YES" codeGenerationType="class">
-        <attribute name="lost" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+    <entity name="GameData" representedClassName=".GameData" syncable="YES" codeGenerationType="category">
+        <attribute name="lost" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="won" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="playerInfo" maxCount="1" deletionRule="Nullify" destinationEntity="PlayerInfo" inverseName="gameData" inverseEntity="PlayerInfo" syncable="YES"/>
     </entity>
-    <entity name="PlayerInfo" representedClassName="PlayerInfo" syncable="YES" codeGenerationType="class">
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+    <entity name="PlayerInfo" representedClassName=".PlayerInfo" syncable="YES" codeGenerationType="category">
+        <attribute name="name" attributeType="String" syncable="YES"/>
         <relationship name="gameData" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="GameData" inverseName="playerInfo" inverseEntity="GameData" syncable="YES"/>
         <relationship name="rooms" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Rooms" inverseName="owner" inverseEntity="Rooms" syncable="YES"/>
     </entity>
-    <entity name="Rooms" representedClassName="Rooms" syncable="YES" codeGenerationType="class">
-        <attribute name="hosted" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+    <entity name="Rooms" representedClassName=".Rooms" syncable="YES" codeGenerationType="category">
+        <attribute name="hosted" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="owner" maxCount="1" deletionRule="Nullify" destinationEntity="PlayerInfo" inverseName="rooms" inverseEntity="PlayerInfo" syncable="YES"/>
     </entity>
     <elements>
+        <element name="GameData" positionX="9" positionY="54" width="128" height="90"/>
         <element name="PlayerInfo" positionX="-45" positionY="0" width="128" height="90"/>
         <element name="Rooms" positionX="-18" positionY="27" width="128" height="75"/>
-        <element name="GameData" positionX="9" positionY="54" width="128" height="90"/>
     </elements>
 </model>

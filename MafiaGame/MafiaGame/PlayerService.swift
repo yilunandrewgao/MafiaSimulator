@@ -111,12 +111,12 @@ class PlayerService{
                 
                 //Rooms NSManagedObject
                 let rooms = Rooms(context: context)
-                rooms.hosted = 0
+                rooms.hosted = Int32(0)
                 
                 //GameData NSManagedObject
                 let gameData = GameData(context: context)
-                gameData.won = 0
-                gameData.lost = 0
+                gameData.won = Int32(0)
+                gameData.lost = Int32(0)
                 
                 do {
                     try context.save()
