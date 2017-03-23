@@ -44,12 +44,20 @@ class VillagerDayController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var messageTxt: UITextView!
     
     @IBAction func sendMessage(_ sender: Any) {
-        // send the message
-        SocketIOManager.shared.chatUpdate(message: messageTxt.text)
-        // clear the text
-        messageTxt.text = ""
-        //get rid of keyboard
-        messageTxt.resignFirstResponder()
+        if GameService.shared.thisPlayer.isAlive! {
+            // send the message
+            SocketIOManager.shared.chatUpdate(message: messageTxt.text)
+            // clear the text
+            messageTxt.text = ""
+            //get rid of keyboard
+            messageTxt.resignFirstResponder()
+        }
+        else {
+            let alertController = UIAlertController(title: "Dead", message: "Sorry, you are currently dead", preferredStyle: .alert)
+            
+            alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            present(alertController, animated: true, completion: nil)
+        }
     }
     
     func transitionToNight() {
@@ -95,6 +103,10 @@ class VillagerDayController: UIViewController, UITableViewDelegate, UITableViewD
         NotificationCenter.default.addObserver(self, selector: #selector(startRoundCompletion), name: .updateAlivePlayersNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTable), name: .updateChatNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(startRoundCompletion), name: .whoWonNotification, object: nil)
+        
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
         
         // reset default chat text
         messageTxt.text = "...type a message"

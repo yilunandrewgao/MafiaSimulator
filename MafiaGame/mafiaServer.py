@@ -232,7 +232,7 @@ def on_post_message(message):
 
 	for player in playerList:
 		if player.sid == request.sid:
-			socketio.emit("postMessageUpdate", {"player": player.name, "sid":player.sid, message": message})
+			socketio.emit("postMessageUpdate", {"player": player.name, "sid":player.sid, "message": message})
 			break
 
 		

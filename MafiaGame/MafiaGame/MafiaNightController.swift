@@ -44,12 +44,22 @@ class MafiaNightController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var messageTxt: UITextView!
     
     @IBAction func sendMessage(_ sender: Any) {
-        // send the message
-        SocketIOManager.shared.chatUpdate(message: messageTxt.text)
-        // clear the text
-        messageTxt.text = ""
-        //get rid of keyboard
-        messageTxt.resignFirstResponder()
+        
+        if GameService.shared.thisPlayer.isAlive! {
+            // send the message
+            SocketIOManager.shared.chatUpdate(message: messageTxt.text)
+            // clear the text
+            messageTxt.text = ""
+            //get rid of keyboard
+            messageTxt.resignFirstResponder()
+        }
+        else {
+            let alertController = UIAlertController(title: "Dead", message: "Sorry, you are currently dead", preferredStyle: .alert)
+            
+            alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            present(alertController, animated: true, completion: nil)
+        }
+        
     }
     
     func transitionToMorning() {
