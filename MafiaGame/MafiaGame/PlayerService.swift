@@ -12,19 +12,19 @@ class PlayerService{
     
     func playerCategory() -> NSFetchedResultsController<PlayerInfo> {
         let fetchRequest: NSFetchRequest<PlayerInfo> = PlayerInfo.fetchRequest()
-        
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: false)]
         return createFetchedResultsController(for: fetchRequest)
     }
     
     func rooms() -> NSFetchedResultsController<Rooms> {
         let fetchRequest: NSFetchRequest<Rooms> = Rooms.fetchRequest()
-        
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "hosted", ascending: false)]
         return createFetchedResultsController(for: fetchRequest)
     }
     
     func gameData() -> NSFetchedResultsController<GameData> {
         let fetchRequest: NSFetchRequest<GameData> = GameData.fetchRequest()
-        
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "won", ascending: false)]
         return createFetchedResultsController(for: fetchRequest)
     }
 
@@ -43,29 +43,47 @@ class PlayerService{
     }
     
     
-    // Mark: Private set PlayerInfo name
-    private func nameSet(for username: String) {
+    // Mark: set PlayerInfo name
+    func nameSet(for username: String) {
         let playerInfo = self.playerCategory().object(at: IndexPath(row: 0, section: 0))
         playerInfo.setValue(username, forKey: "name")
         
     }
     
-    // Mark: Private set Room hosted
-    private func hostedSet(for hostedCount: Int) {
+    // Mark: set Room hosted
+    func hostedSet() {
         let rooms = self.rooms().object(at: IndexPath(row: 0, section: 0))
-        rooms.setValue(hostedCount, forKey: "hosted")
+        let originalCount = rooms.value(forKey: "hosted")
+        if let roomCount = originalCount {
+            let count = roomCount as! Int
+            let newCount = count + 1
+            rooms.setValue(newCount, forKey: "hosted")
+        }
+        
         
     }
-    // Mark: Private set GameData won
-    private func wonSet(for wonCount: Int) {
+    // Mark: set GameData won
+    func wonSet() {
         let gameData = self.gameData().object(at: IndexPath(row: 0, section: 0))
-        gameData.setValue(wonCount, forKey: "won")
+        let originalCount = gameData.value(forKey: "won")
+        if let wonCount = originalCount {
+            let count = wonCount as! Int
+            let newCount = count + 1
+            gameData.setValue(newCount, forKey: "won")
+        }
+        
     }
     
-    // Mark: Private set GameData lost
-    private func lostSet(for lostCount: Int) {
+    // Mark: set GameData lost
+    func lostSet() {
         let gameData = self.gameData().object(at: IndexPath(row: 0, section: 0))
-        gameData.setValue(lostCount, forKey: "lost")
+        let originalCount = gameData.value(forKey: "lost")
+        if let lostCount = originalCount {
+            let count = lostCount as! Int
+            let newCount = count + 1
+            gameData.setValue(newCount, forKey: "lost")
+        }
+        
     }
     
     

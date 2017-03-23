@@ -45,6 +45,8 @@ class LoginViewController: UIViewController {
         UserDefaults.standard.set(username, forKey: self.username)
         UserDefaults.standard.synchronize()
         
+        PlayerService.shared.nameSet(for: username)
+        
         usernameOutput.text = username
     }
     
@@ -62,6 +64,7 @@ class LoginViewController: UIViewController {
             if let username = alertController.textFields?.first?.text, !username.isEmpty {
                 self.storeUsername(username)
                 self.username = username
+                
             }
             
         }))

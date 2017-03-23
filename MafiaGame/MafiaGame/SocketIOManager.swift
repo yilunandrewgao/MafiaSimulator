@@ -10,7 +10,7 @@ import UIKit
 class SocketIOManager: NSObject {
     static let shared : SocketIOManager = SocketIOManager()
     
-    let socket: SocketIOClient = SocketIOClient(socketURL: URL(string: "http://10.111.64.243:7777")!, config: [.log(false), .forceWebsockets(true), .reconnects(false)])
+    let socket: SocketIOClient = SocketIOClient(socketURL: URL(string: "http://10.111.67.244:7777")!, config: [.log(false), .forceWebsockets(true), .reconnects(false)])
 
 
     private override init(){
@@ -18,25 +18,7 @@ class SocketIOManager: NSObject {
         initHandlers()
     }
     
-    func winPoints() {
-        if let winCount = GameService.shared.thisPlayer.won {
-            let count = winCount + 1
-            GameService.shared.thisPlayer.won = count
-        }
-        else {
-            GameService.shared.thisPlayer.won = 1
-        }
-    }
     
-    func lostPoints() {
-        if let lostCount = GameService.shared.thisPlayer.lost {
-            let count = lostCount + 1
-            GameService.shared.thisPlayer.lost = count
-        }
-        else {
-            GameService.shared.thisPlayer.lost = 1
-        }
-    }
     
     func initHandlers() {
         socket.on("SetPlayer") { (dataArray, ack) in
@@ -131,18 +113,18 @@ class SocketIOManager: NSObject {
                 //if player is a winner/villager
                 if GameService.shared.thisPlayer.role == "villager" {
                     //check to see if thisPlayer already won some games or not
-                    self.winPoints()
+                    PlayerService.shared.wonSet()
                 }
                 else {
-                    self.lostPoints()
+                    PlayerService.shared.lostSet()
                 }
             }
             else {
                 if GameService.shared.thisPlayer.role == "mafia" {
-                    self.winPoints()
+                    PlayerService.shared.wonSet()
                 }
                 else {
-                    self.lostPoints()
+                    PlayerService.shared.lostSet()
                 }
             }
             NotificationCenter.default.post(name: .whoWonNotification, object: nil)
@@ -155,14 +137,7 @@ class SocketIOManager: NSObject {
         }
         
         socket.on("hostedRoomUpdate") { data, ack in
-            
-            if let roomCount = GameService.shared.thisPlayer.hostedRoom {
-                let count = roomCount + 1
-                GameService.shared.thisPlayer.hostedRoom = count
-            }
-            else {
-                GameService.shared.thisPlayer.hostedRoom = 1
-            }
+            PlayerService.shared.hostedSet()
         }
 
         
