@@ -396,7 +396,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="573"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatCell" textLabel="2lv-ev-qbj" style="IBUITableViewCellStyleDefault" id="HHO-w4-Q4v" customClass="customChatCell" customModule="MafiaGame" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DayChatCell" textLabel="2lv-ev-qbj" style="IBUITableViewCellStyleDefault" id="HHO-w4-Q4v" customClass="customChatCell" customModule="MafiaGame" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HHO-w4-Q4v" id="DGP-f0-L6I">
