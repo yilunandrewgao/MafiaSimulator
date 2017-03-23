@@ -18,14 +18,21 @@ class MafiaNightController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (GameService.shared.inRoom?.chatHistory?.count)!
+        return GameService.shared.inRoom?.chatHistory?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell", for: indexPath) as! customChatCell
         
-        cell.textLabel?.text = GameService.shared.inRoom?.chatHistory?[indexPath.row]["player"]
-        cell.detailTextLabel?.text = GameService.shared.inRoom?.chatHistory?[indexPath.row]["message"]
+        cell.nameLbl.text = GameService.shared.inRoom?.chatHistory?[indexPath.row]["player"]
+        cell.messageLbl.text = GameService.shared.inRoom?.chatHistory?[indexPath.row]["message"]
+        
+        
+        //right align if it's you
+        if GameService.shared.inRoom?.chatHistory?[indexPath.row]["sid"] == GameService.shared.thisPlayer.sid{
+            cell.nameLbl.textAlignment = .right
+            cell.messageLbl.textAlignment = .right
+        }
         
         return cell
     }
@@ -41,6 +48,8 @@ class MafiaNightController: UIViewController, UITableViewDelegate, UITableViewDa
         SocketIOManager.shared.chatUpdate(message: messageTxt.text)
         // clear the text
         messageTxt.text = ""
+        //get rid of keyboard
+        messageTxt.resignFirstResponder()
     }
     
     func transitionToMorning() {
@@ -59,6 +68,10 @@ class MafiaNightController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        messageTxt.delegate = self
+        
+        chatTable.estimatedRowHeight = 100.0
+        chatTable.rowHeight = UITableViewAutomaticDimension
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,6 +89,10 @@ class MafiaNightController: UIViewController, UITableViewDelegate, UITableViewDa
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTable), name: .updateChatNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(startRoundCompletion), name: .whoWonNotification, object: nil)
         
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
+        
         // reset default chat text
         messageTxt.text = "...type a message"
         messageTxt.textColor = UIColor.lightGray
@@ -86,6 +103,13 @@ class MafiaNightController: UIViewController, UITableViewDelegate, UITableViewDa
         
         NotificationCenter.default.removeObserver(self)
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // activate self-sizing
+        chatTable.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -160,10 +184,31 @@ class MafiaNightController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     // MARK: Text Field delegate methods
+    
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.textColor == UIColor.lightGray {
             textView.text = ""
             textView.textColor = UIColor.black
+        }
+    }
+    
+    
+    // MARK: Keyboard methods
+    func keyboardWillShow(notification: NSNotification) {
+        
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0{
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+        
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0{
+                self.view.frame.origin.y += keyboardSize.height
+            }
         }
     }
     

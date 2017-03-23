@@ -650,33 +650,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EkP-nZ-Iyq">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="97" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EkP-nZ-Iyq">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="573"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatCell" textLabel="Yow-Uj-MBb" detailTextLabel="ZaY-i4-eby" style="IBUITableViewCellStyleSubtitle" id="Rg2-5z-kZE">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatCell" rowHeight="97" id="Rg2-5z-kZE" customClass="customChatCell" customModule="MafiaGame" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="97"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rg2-5z-kZE" id="Chr-bW-wDo">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Yow-Uj-MBb">
-                                                    <rect key="frame" x="15" y="4" width="34" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Message" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p9C-ll-DVX">
+                                                    <rect key="frame" x="8" y="28.5" width="359" height="60"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZaY-i4-eby">
-                                                    <rect key="frame" x="15" y="25" width="44" height="15"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tGH-CH-ehc">
+                                                    <rect key="frame" x="8" y="8" width="359" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="p9C-ll-DVX" secondAttribute="bottom" constant="8" id="DNU-AZ-bgU"/>
+                                                <constraint firstItem="tGH-CH-ehc" firstAttribute="leading" secondItem="Chr-bW-wDo" secondAttribute="leading" constant="8" id="LvE-2P-uRC"/>
+                                                <constraint firstAttribute="trailing" secondItem="tGH-CH-ehc" secondAttribute="trailing" constant="8" id="PUW-Dp-gHc"/>
+                                                <constraint firstItem="p9C-ll-DVX" firstAttribute="top" secondItem="tGH-CH-ehc" secondAttribute="bottom" id="RKY-WB-La9"/>
+                                                <constraint firstAttribute="trailing" secondItem="p9C-ll-DVX" secondAttribute="trailing" constant="8" id="T28-tG-Ojs"/>
+                                                <constraint firstItem="tGH-CH-ehc" firstAttribute="top" secondItem="Chr-bW-wDo" secondAttribute="top" constant="8" id="sV5-0o-Lm3"/>
+                                                <constraint firstItem="p9C-ll-DVX" firstAttribute="leading" secondItem="Chr-bW-wDo" secondAttribute="leading" constant="8" id="z0R-h6-Kzr"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="messageLbl" destination="p9C-ll-DVX" id="Kv7-3i-SBr"/>
+                                            <outlet property="nameLbl" destination="tGH-CH-ehc" id="VMf-89-w7q"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -746,7 +757,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l8p-cc-HxX" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="4rx-2d-r8h" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2914" y="1724"/>
+            <point key="canvasLocation" x="2912.8000000000002" y="1723.9880059970017"/>
         </scene>
         <!--Mafia Decision-->
         <scene sceneID="gPi-42-n5p">
@@ -942,8 +953,8 @@
         <image name="loginLightVersion6:7+" width="1080" height="1920"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ktb-Mz-2rW"/>
         <segue reference="WrX-FJ-7sx"/>
-        <segue reference="zD7-ix-gwN"/>
+        <segue reference="ktb-Mz-2rW"/>
+        <segue reference="958-PM-yhk"/>
     </inferredMetricsTieBreakers>
 </document>

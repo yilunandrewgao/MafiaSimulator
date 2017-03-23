@@ -56,6 +56,8 @@
 		78E308691E577BCC00CE7059 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E308681E577BCC00CE7059 /* MenuViewController.swift */; };
 		78E464801E5A576F00758655 /* CreateRoomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E4647F1E5A576F00758655 /* CreateRoomController.swift */; };
 		93678D6F1E6543BB00E67B2B /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93678D6E1E6543BB00E67B2B /* Room.swift */; };
+		9377D00A1E832A55008B2212 /* UITableViewKeyboardBotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9377D0091E832A55008B2212 /* UITableViewKeyboardBotification.swift */; };
+		9377D00C1E835102008B2212 /* customChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9377D00B1E835102008B2212 /* customChatCell.swift */; };
 		93EEF8661E5D111900868FCD /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9353860E1E5A51CD00EB9871 /* Player.swift */; };
 /* End PBXBuildFile section */
 
@@ -133,6 +135,8 @@
 		78E4647F1E5A576F00758655 /* CreateRoomController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateRoomController.swift; sourceTree = "<group>"; };
 		9353860E1E5A51CD00EB9871 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		93678D6E1E6543BB00E67B2B /* Room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
+		9377D0091E832A55008B2212 /* UITableViewKeyboardBotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewKeyboardBotification.swift; sourceTree = "<group>"; };
+		9377D00B1E835102008B2212 /* customChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = customChatCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -291,6 +295,7 @@
 			isa = PBXGroup;
 			children = (
 				78A9FAD71E673FE100F47998 /* AvatarImageCell.swift */,
+				9377D00B1E835102008B2212 /* customChatCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -338,6 +343,7 @@
 			isa = PBXGroup;
 			children = (
 				78935B291E6FC3DC0031D88F /* JsonParse.swift */,
+				9377D0091E832A55008B2212 /* UITableViewKeyboardBotification.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -507,6 +513,7 @@
 				78935B201E6F61100031D88F /* SocketLogger.swift in Sources */,
 				78E3082D1E5767DE00CE7059 /* AppDelegate.swift in Sources */,
 				78A9FAD81E673FE100F47998 /* AvatarImageCell.swift in Sources */,
+				9377D00C1E835102008B2212 /* customChatCell.swift in Sources */,
 				78935B251E6F61100031D88F /* SSLSecurity.swift in Sources */,
 				78429B201E5DF22400859F50 /* GameOverController.swift in Sources */,
 				78935B131E6F61100031D88F /* SocketEngine.swift in Sources */,
@@ -516,6 +523,7 @@
 				78E308351E5767DE00CE7059 /* MafiaGame.xcdatamodeld in Sources */,
 				78935B1A1E6F61100031D88F /* SocketExtensions.swift in Sources */,
 				78E308691E577BCC00CE7059 /* MenuViewController.swift in Sources */,
+				9377D00A1E832A55008B2212 /* UITableViewKeyboardBotification.swift in Sources */,
 				78C458A31E7312DE00D24244 /* SimpleRoom.swift in Sources */,
 				78A7D1A91E78833400D2EDA9 /* VillagerVoteController.swift in Sources */,
 				78935B281E6F61F30031D88F /* SocketIOManager.swift in Sources */,
