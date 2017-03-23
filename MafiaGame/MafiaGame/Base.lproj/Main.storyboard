@@ -396,22 +396,40 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="573"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DayChatCell" textLabel="2lv-ev-qbj" style="IBUITableViewCellStyleDefault" id="HHO-w4-Q4v" customClass="customChatCell" customModule="MafiaGame" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatCell" rowHeight="97" id="fgu-Iq-67E" customClass="customChatCell" customModule="MafiaGame" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="97"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HHO-w4-Q4v" id="DGP-f0-L6I">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fgu-Iq-67E" id="Bgt-Wp-VaK">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2lv-ev-qbj">
-                                                    <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Message" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IW9-cc-p5t">
+                                                    <rect key="frame" x="8" y="28.5" width="359" height="60"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dtq-Oy-pTN">
+                                                    <rect key="frame" x="8" y="8" width="359" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="IW9-cc-p5t" firstAttribute="top" secondItem="Dtq-Oy-pTN" secondAttribute="bottom" id="CLp-W7-mR0"/>
+                                                <constraint firstAttribute="bottom" secondItem="IW9-cc-p5t" secondAttribute="bottom" constant="8" id="DUh-HE-nXG"/>
+                                                <constraint firstAttribute="trailing" secondItem="IW9-cc-p5t" secondAttribute="trailing" constant="8" id="P24-kq-pXT"/>
+                                                <constraint firstItem="Dtq-Oy-pTN" firstAttribute="top" secondItem="Bgt-Wp-VaK" secondAttribute="top" constant="8" id="Rso-mm-UiY"/>
+                                                <constraint firstItem="IW9-cc-p5t" firstAttribute="leading" secondItem="Bgt-Wp-VaK" secondAttribute="leading" constant="8" id="e3h-BD-MHF"/>
+                                                <constraint firstAttribute="trailing" secondItem="Dtq-Oy-pTN" secondAttribute="trailing" constant="8" id="pN4-IB-N8I"/>
+                                                <constraint firstItem="Dtq-Oy-pTN" firstAttribute="leading" secondItem="Bgt-Wp-VaK" secondAttribute="leading" constant="8" id="wIk-gb-sy2"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="messageLbl" destination="IW9-cc-p5t" id="Mba-m2-LSP"/>
+                                            <outlet property="nameLbl" destination="Dtq-Oy-pTN" id="lJy-Zm-tce"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

@@ -22,7 +22,7 @@ class VillagerDayController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DayChatCell", for: indexPath) as! customChatCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ChatCell", for: indexPath) as! customChatCell
         
         cell.nameLbl.text = GameService.shared.inRoom?.chatHistory?[indexPath.row]["player"]
         cell.messageLbl.text = GameService.shared.inRoom?.chatHistory?[indexPath.row]["message"]
