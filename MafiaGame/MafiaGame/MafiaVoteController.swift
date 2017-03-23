@@ -148,7 +148,7 @@ class MafiaVoteController: UIViewController, UITableViewDataSource, UITableViewD
             //make phone vibrate to alert players in case they aren't paying attention
             AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
             
-            let alertController = UIAlertController(title: "Killed", message: "\(GameService.shared.inRoom?.killedPlayer) was found dead.", preferredStyle: .alert)
+            let alertController = UIAlertController(title: "Killed", message: "\(GameService.shared.inRoom?.killedPlayer!) was found dead.", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "Continue", style: .default, handler: { (action) in
                 if GameService.shared.inRoom?.whoWon != nil {
                     self.whoWonCompletion()
