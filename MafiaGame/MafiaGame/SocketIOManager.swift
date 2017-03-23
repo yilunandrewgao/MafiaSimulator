@@ -18,6 +18,25 @@ class SocketIOManager: NSObject {
         initHandlers()
     }
     
+    func winPoints() {
+        if let winCount = GameService.shared.thisPlayer.won {
+            let count = winCount + 1
+            GameService.shared.thisPlayer.won = count
+        }
+        else {
+            GameService.shared.thisPlayer.won = 1
+        }
+    }
+    
+    func lostPoints() {
+        if let lostCount = GameService.shared.thisPlayer.lost {
+            let count = lostCount + 1
+            GameService.shared.thisPlayer.lost = count
+        }
+        else {
+            GameService.shared.thisPlayer.lost = 1
+        }
+    }
     
     func initHandlers() {
         socket.on("SetPlayer") { (dataArray, ack) in
@@ -106,6 +125,26 @@ class SocketIOManager: NSObject {
         socket.on("endGameUpdate") { data, ack in
             let whoWonJSON = data[0] as! String
             GameService.shared.inRoom?.whoWon = whoWonJSON
+            
+            //get rather this player won or lost
+            if whoWonJSON == "villagers" {
+                //if player is a winner/villager
+                if GameService.shared.thisPlayer.role == "villager" {
+                    //check to see if thisPlayer already won some games or not
+                    self.winPoints()
+                }
+                else {
+                    self.lostPoints()
+                }
+            }
+            else {
+                if GameService.shared.thisPlayer.role == "mafia" {
+                    self.winPoints()
+                }
+                else {
+                    self.lostPoints()
+                }
+            }
             NotificationCenter.default.post(name: .whoWonNotification, object: nil)
         }
         
@@ -115,26 +154,19 @@ class SocketIOManager: NSObject {
             NotificationCenter.default.post(name: .updateChatNotification, object: nil)
         }
         
-        socket.on("wonUpdate") { data, ack in
-            if let winCount = GameService.shared.thisPlayer.won {
-                let count = winCount + 1
-                GameService.shared.thisPlayer.won = count
+        socket.on("hostedRoomUpdate") { data, ack in
+            
+            if let roomCount = GameService.shared.thisPlayer.hostedRoom {
+                let count = roomCount + 1
+                GameService.shared.thisPlayer.hostedRoom = count
             }
             else {
-                GameService.shared.thisPlayer.won = 1
-            }
-        }
-        
-        socket.on("lostUpdate") { data, ack in
-            if let lostCount = GameService.shared.thisPlayer.lost {
-                let count = lostCount + 1
-                GameService.shared.thisPlayer.lost = count
-            }
-            else {
-                GameService.shared.thisPlayer.lost = 1
+                GameService.shared.thisPlayer.hostedRoom = 1
             }
         }
 
+        
+        
     }
     
     

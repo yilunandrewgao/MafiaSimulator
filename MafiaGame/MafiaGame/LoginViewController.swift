@@ -18,8 +18,8 @@ class LoginViewController: UIViewController {
     // MARK: Properties (IBOutlet) username output
     @IBOutlet weak var usernameOutput: UILabel!
     
-    // MARK: Properties (Private Static Constant) username
-    private var username = "Username"
+    // MARK: Properties (Private) username
+    private(set) var username = "Username"
 
     override func viewDidLoad() {
         super.viewDidLoad()
