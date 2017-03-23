@@ -3,7 +3,7 @@
     <entity name="GameData" representedClassName=".GameData" syncable="YES" codeGenerationType="category">
         <attribute name="lost" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="won" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="playerInfo" maxCount="1" deletionRule="Nullify" destinationEntity="PlayerInfo" inverseName="gameData" inverseEntity="PlayerInfo" syncable="YES"/>
+        <relationship name="playerInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PlayerInfo" inverseName="gameData" inverseEntity="PlayerInfo" syncable="YES"/>
     </entity>
     <entity name="PlayerInfo" representedClassName=".PlayerInfo" syncable="YES" codeGenerationType="category">
         <attribute name="name" attributeType="String" syncable="YES"/>
@@ -12,7 +12,7 @@
     </entity>
     <entity name="Rooms" representedClassName=".Rooms" syncable="YES" codeGenerationType="category">
         <attribute name="hosted" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="owner" maxCount="1" deletionRule="Nullify" destinationEntity="PlayerInfo" inverseName="rooms" inverseEntity="PlayerInfo" syncable="YES"/>
+        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PlayerInfo" inverseName="rooms" inverseEntity="PlayerInfo" syncable="YES"/>
     </entity>
     <elements>
         <element name="GameData" positionX="9" positionY="54" width="128" height="90"/>

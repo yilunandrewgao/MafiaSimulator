@@ -395,5 +395,5 @@ def on_voted_for(chosenPlayerSid, time):
 
 
 if __name__ == '__main__':
-	socketio.run(app, host = "10.111.67.244", port = 7777)
+	socketio.run(app, host = "192.168.1.15", port = 7777)
 

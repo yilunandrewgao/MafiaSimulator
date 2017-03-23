@@ -148,24 +148,26 @@ class VillagerVoteController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func startRoundCompletion() {
+        
         DispatchQueue.main.async {
             //make phone vibrate to alert players in case they aren't paying attention
             AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
             
-            let alertController = UIAlertController(title: "Killed", message: "\(GameService.shared.inRoom?.killedPlayer!) was found dead.", preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "Continue", style: .default, handler: { (action) in
-                if GameService.shared.inRoom?.whoWon != nil {
-                    self.whoWonCompletion()
-                }
-                else {
-                    self.transitionToNight()
-                }
+            if let killedplayer:String = (GameService.shared.inRoom?.killedPlayer) {
+                let alertController = UIAlertController(title: "Killed", message: "\(killedplayer) was found dead.", preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "Continue", style: .default, handler: { (action) in
+                    if GameService.shared.inRoom?.whoWon != nil {
+                        self.whoWonCompletion()
+                    }
+                    else {
+                        self.transitionToNight()
+                    }
+                    
+                }))
                 
-            }))
-            
-            self.present(alertController, animated: true, completion: nil)
+                self.present(alertController, animated: true, completion: nil)
+            }
         }
-        
     }
 
     
