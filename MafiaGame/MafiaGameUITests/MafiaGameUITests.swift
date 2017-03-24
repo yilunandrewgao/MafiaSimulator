@@ -33,4 +33,17 @@ class MafiaGameUITests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
     
+    func testLogin() {
+        
+        
+        let app = XCUIApplication()
+        app.buttons["Login"].tap()
+        let loginAlert = app.alerts["Login"]
+        loginAlert.collectionViews.textFields["username"].typeText("yourName")
+        loginAlert.buttons["Enter"].tap()
+    
+        
+        
+    }
+    
 }
