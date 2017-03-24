@@ -49,6 +49,8 @@
 		78C8CCB51E5D0FD200B28265 /* JoinRoomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C8CCB41E5D0FD200B28265 /* JoinRoomController.swift */; };
 		78C8CCE01E5D1ED600B28265 /* VillagerNightController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C8CCDF1E5D1ED600B28265 /* VillagerNightController.swift */; };
 		78C8CCE21E5D201800B28265 /* WaitingPlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78C8CCE11E5D201800B28265 /* WaitingPlayerController.swift */; };
+		78E2618E1E84B1D500ED8831 /* JsonParseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E2618B1E84B1D500ED8831 /* JsonParseTests.swift */; };
+		78E261901E84B1D500ED8831 /* PlayerServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E2618D1E84B1D500ED8831 /* PlayerServiceTests.swift */; };
 		78E3082D1E5767DE00CE7059 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E3082C1E5767DE00CE7059 /* AppDelegate.swift */; };
 		78E308321E5767DE00CE7059 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78E308301E5767DE00CE7059 /* Main.storyboard */; };
 		78E308351E5767DE00CE7059 /* MafiaGame.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 78E308331E5767DE00CE7059 /* MafiaGame.xcdatamodeld */; };
@@ -125,6 +127,8 @@
 		78C8CCB41E5D0FD200B28265 /* JoinRoomController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinRoomController.swift; sourceTree = "<group>"; };
 		78C8CCDF1E5D1ED600B28265 /* VillagerNightController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VillagerNightController.swift; sourceTree = "<group>"; };
 		78C8CCE11E5D201800B28265 /* WaitingPlayerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitingPlayerController.swift; sourceTree = "<group>"; };
+		78E2618B1E84B1D500ED8831 /* JsonParseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonParseTests.swift; sourceTree = "<group>"; };
+		78E2618D1E84B1D500ED8831 /* PlayerServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerServiceTests.swift; sourceTree = "<group>"; };
 		78E308291E5767DE00CE7059 /* MafiaGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MafiaGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78E3082C1E5767DE00CE7059 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78E308311E5767DE00CE7059 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -289,6 +293,8 @@
 		78E3085F1E57687900CE7059 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				78E2618B1E84B1D500ED8831 /* JsonParseTests.swift */,
+				78E2618D1E84B1D500ED8831 /* PlayerServiceTests.swift */,
 				78E308441E5767DF00CE7059 /* MafiaGameTests.swift */,
 			);
 			name = Source;
@@ -428,7 +434,7 @@
 				TargetAttributes = {
 					78E308281E5767DE00CE7059 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 9Q6NHY9LT3;
+						DevelopmentTeam = L4Q7HWKTD2;
 						ProvisioningStyle = Automatic;
 					};
 					78E3083F1E5767DF00CE7059 = {
@@ -553,7 +559,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78E261901E84B1D500ED8831 /* PlayerServiceTests.swift in Sources */,
 				78E308451E5767DF00CE7059 /* MafiaGameTests.swift in Sources */,
+				78E2618E1E84B1D500ED8831 /* JsonParseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -698,10 +706,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 9Q6NHY9LT3;
+				DEVELOPMENT_TEAM = L4Q7HWKTD2;
 				INFOPLIST_FILE = MafiaGame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = none.MafiaGame;
+				PRODUCT_BUNDLE_IDENTIFIER = class.MafiaGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -712,10 +720,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 9Q6NHY9LT3;
+				DEVELOPMENT_TEAM = L4Q7HWKTD2;
 				INFOPLIST_FILE = MafiaGame/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = none.MafiaGame;
+				PRODUCT_BUNDLE_IDENTIFIER = class.MafiaGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
