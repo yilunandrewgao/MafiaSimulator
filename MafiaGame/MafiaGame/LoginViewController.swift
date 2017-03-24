@@ -9,6 +9,7 @@
 
 import UIKit
 import Foundation
+import CoreData
 
 class LoginViewController: UIViewController {
 
@@ -25,6 +26,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         var timer = Timer.scheduledTimer(timeInterval: 1,target:self, selector: Selector("loadImage"), userInfo:nil, repeats: true)
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -34,6 +36,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
         if let username = PlayerService.shared.nameGet()
         {
             usernameOutput.text = username
