@@ -33,7 +33,8 @@ class LoginViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if let username = UserDefaults.standard.object(forKey: self.username) as? String
+        super.viewDidAppear(animated)
+        if let username = PlayerService.shared.nameGet()
         {
             usernameOutput.text = username
             self.username = username
@@ -41,11 +42,15 @@ class LoginViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(LoginToMenu), name: .connectedToServerNotification, object: nil)
     }
     
-    func storeUsername(_ username: String) {
-        UserDefaults.standard.set(username, forKey: self.username)
-        UserDefaults.standard.synchronize()
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         
-        //PlayerService.shared.nameSet(for: username)
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    func storeUsername(_ username: String) {
+        
+        PlayerService.shared.nameSet(for: username)
         
         usernameOutput.text = username
     }
@@ -110,6 +115,10 @@ class LoginViewController: UIViewController {
             loginScreen.image = UIImage(named:"loginDarkVersion6:7+")
             imageVersion = 2
         }
+    }
+    
+    @IBAction func unwindToLogin(unwindSegue: UIStoryboardSegue) {
+        
     }
 }
 

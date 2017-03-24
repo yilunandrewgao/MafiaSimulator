@@ -23,10 +23,10 @@ class ProfileController: UIViewController, NSFetchedResultsControllerDelegate {
         gameDataFetchedResultsController = PlayerService.shared.gameData()
         gameDataFetchedResultsController.delegate = self
         
-        nameGet()
-        hostedGet()
-        wonGet()
-        lostGet()
+        nameLabel.text = PlayerService.shared.nameGet()
+        roomCountLabel.text = String(PlayerService.shared.hostedGet())
+        wonCountLabel.text = String(PlayerService.shared.wonGet())
+        lostCountLabel.text = String(PlayerService.shared.lostGet())
         
     }
     
@@ -40,26 +40,6 @@ class ProfileController: UIViewController, NSFetchedResultsControllerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    private func nameGet(){
-        let playerInfo = playerInfoFetchedResultsController.object(at: IndexPath(row: 0, section: 0))
-        nameLabel.text = playerInfo.name!
-        
-    }
-    
-    private func hostedGet() {
-        let rooms = roomsFetchedResultsController.object(at: IndexPath(row: 0, section: 0))
-        roomCountLabel.text = String(rooms.hosted)
-    }
-    
-    private func wonGet() {
-        let gameData = gameDataFetchedResultsController.object(at: IndexPath(row: 0, section: 0))
-        wonCountLabel.text = String(gameData.won)
-    }
-    
-    private func lostGet() {
-        let gameData = gameDataFetchedResultsController.object(at: IndexPath(row: 0, section: 0))
-        lostCountLabel.text = String(gameData.lost)
-    }
     
     // MARK: Properties (Private)
     private var playerInfoFetchedResultsController: NSFetchedResultsController<PlayerInfo>!

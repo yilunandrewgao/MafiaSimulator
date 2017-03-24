@@ -48,6 +48,7 @@ class WaitingPlayerController: UIViewController, UITableViewDelegate, UITableVie
         NotificationCenter.default.addObserver(self, selector: #selector(quitRoomCompletion), name: .quitRoomNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(startGameCompletion), name: .gameStartedNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(startRoundCompletion), name: .updateAlivePlayersNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(startRoundCompletion), name: .whoWonNotification, object: nil)
         
     }
     
@@ -82,14 +83,30 @@ class WaitingPlayerController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
+    func whoWonCompletion(){
+        
+        var viewControllers = self.navigationController?.viewControllers
+        let endGameViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GameOver") as! GameOverController
+        
+        viewControllers?.append(endGameViewController)
+        
+        self.navigationController?.setViewControllers(viewControllers!, animated: false)
+        
+    }
+    
     func startRoundCompletion() {
         DispatchQueue.main.async {
-            let playerRole = GameService.shared.thisPlayer.role
-            if playerRole == "mafia" {
-                self.performSegue(withIdentifier: "MafiaNightSegue", sender: self)
+            if GameService.shared.inRoom?.whoWon != nil {
+                self.whoWonCompletion()
             }
-            else {
-                self.performSegue(withIdentifier: "VillagerNightSegue", sender: self)
+            else{
+                let playerRole = GameService.shared.thisPlayer.role
+                if playerRole == "mafia" {
+                    self.performSegue(withIdentifier: "MafiaNightSegue", sender: self)
+                }
+                else {
+                    self.performSegue(withIdentifier: "VillagerNightSegue", sender: self)
+                }
             }
         }
     }

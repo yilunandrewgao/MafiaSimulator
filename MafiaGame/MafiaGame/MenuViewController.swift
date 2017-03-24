@@ -38,5 +38,12 @@ class MenuViewController: UIViewController {
     @IBAction func unwindToMenu(unwindSegue: UIStoryboardSegue) {
         
     }
+    
+    @IBAction func logout(_ sender: Any) {
+        SocketIOManager.shared.closeConnection()
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "unwindToLogin", sender: nil)
+        }
+    }
 }
 

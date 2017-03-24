@@ -47,6 +47,12 @@ class PlayerService{
     func nameSet(for username: String) {
         let playerInfo = self.playerCategory().object(at: IndexPath(row: 0, section: 0))
         playerInfo.setValue(username, forKey: "name")
+        do {
+            try persistentContainer.viewContext.save()
+        }
+        catch _ {
+            fatalError("Failed to save context")
+        }
         
     }
     
@@ -56,8 +62,14 @@ class PlayerService{
         let originalCount = rooms.value(forKey: "hosted")
         if let roomCount = originalCount {
             let count = roomCount as! Int
-            let newCount = count + 1
+            let newCount = Int32(count + 1)
             rooms.setValue(newCount, forKey: "hosted")
+            do {
+                try persistentContainer.viewContext.save()
+            }
+            catch _ {
+                fatalError("Failed to save context")
+            }
         }
         
         
@@ -68,8 +80,14 @@ class PlayerService{
         let originalCount = gameData.value(forKey: "won")
         if let wonCount = originalCount {
             let count = wonCount as! Int
-            let newCount = count + 1
+            let newCount = Int32(count + 1)
             gameData.setValue(newCount, forKey: "won")
+            do {
+                try persistentContainer.viewContext.save()
+            }
+            catch _ {
+                fatalError("Failed to save context")
+            }
         }
         
     }
@@ -80,12 +98,41 @@ class PlayerService{
         let originalCount = gameData.value(forKey: "lost")
         if let lostCount = originalCount {
             let count = lostCount as! Int
-            let newCount = count + 1
+            let newCount = Int32(count + 1)
             gameData.setValue(newCount, forKey: "lost")
+            do {
+                try persistentContainer.viewContext.save()
+            }
+            catch _ {
+                fatalError("Failed to save context")
+            }
         }
         
     }
     
+    
+    func nameGet() -> String?{
+        let playerInfo = self.playerCategory().object(at: IndexPath(row: 0, section: 0))
+        return playerInfo.name
+        
+    }
+    
+    func hostedGet() -> Int {
+        let rooms = self.rooms().object(at: IndexPath(row: 0, section: 0))
+        return Int(rooms.hosted)
+        
+    }
+    
+    func wonGet() -> Int{
+        let gameData = self.gameData().object(at: IndexPath(row: 0, section: 0))
+        return Int(gameData.won)
+    }
+    
+    func lostGet() -> Int
+    {
+        let gameData = self.gameData().object(at: IndexPath(row: 0, section: 0))
+        return Int(gameData.lost)
+    }
     
     // MARK: Private init
     private init() {
