@@ -141,7 +141,7 @@ class PlayerService{
         persistentContainer.loadPersistentStores(completionHandler: { (storeDescription, error) in
             let context = self.persistentContainer.viewContext
             
-            context.perform {
+            context.performAndWait {
                 //guard statement to check if any player Info objects have already been created
                 let fetchRequest: NSFetchRequest<PlayerInfo> = PlayerInfo.fetchRequest()
                 let count = (try? context.count(for: fetchRequest)) ?? 0
@@ -154,7 +154,7 @@ class PlayerService{
                 
                 //PlayerInfo NSManagedObject
                 let playerInfo = PlayerInfo(context: context)
-                playerInfo.name = ""
+                playerInfo.name = "User"
                 
                 //Rooms NSManagedObject
                 let rooms = Rooms(context: context)
